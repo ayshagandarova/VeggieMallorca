@@ -69,9 +69,8 @@
                             <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
                         </a>
                         <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Nombre de restaurante 1</div>
-                            <div class="portfolio-caption-subheading text-muted">Localització o si es vegan/vegetariano
-                            </div>
+                            <div class="portfolio-caption-heading" id="nombreRestaurante"></div>
+                            <div class="portfolio-caption-subheading text-muted" id="geo1"></div>
                         </div>
                     </div>
                 </div>
@@ -254,6 +253,8 @@
                             <h2 class="text-uppercase" id="nombreRestaurante"></h2>
                         </div>
                     </div>
+
+
                     <div class="col-md-6" id="carouselRestaurant">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -308,8 +309,7 @@
 
                     <div class="row justify-content-center">
                         <div class="modal-body">
-                            <p>Aquest restaurant, situat en el centre de Palma, té una carta molt extensa, .............
-                            </p>
+                            <p id="descripcio"></p>
                             <ul class="list-inline">
                                 <li>
                                     <!-- puntuació estrelles -->
@@ -337,8 +337,8 @@
                                         </p>
                                     </form>
                                 </li>
-                                <li>Horari: 12:00-16:00h i 19:00-23:00h</li>
-                                <li>Telèfon: 999 888 777</li>
+                                <li id="horari"></li>
+                                <li id="telefono"></li>
                                 <li>Pàgina web: www.restaurantVegetarià.com</li>
                             </ul>
                             <button class="btn btn-primary" data-dismiss="modal" type="button">

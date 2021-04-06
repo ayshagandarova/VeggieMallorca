@@ -31,8 +31,30 @@ function traerDatos(){
             */
 
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
-            nombreRestaurante.innerHTML = datos[1].nom;
+            nombreRestaurante.innerHTML = datos[0].nom;
             console.log(nombreRestaurante);
+
+            let geo1 = document.querySelector('#geo1')
+            nombreRestaurante.innerHTML = datos[0].geo1;
+
+            let horari = document.querySelector('#horari')
+            nombreRestaurante.innerHTML = '<p>Horari:</p>';
+            let dias = ["dilluns", "dimarts", "dimecres", "dijous","divendres", "dissabte", "diumenge"];
+            horari.innerHTML += `
+                    <p>Dilluns: ${datos[0].horari.di}</p>
+                    <p>Dimarts: ${datos[0].horari.dm}</p>
+                    <p>Dimecres: ${datos[0].horari.dx}</p>
+                    <p>Dilluns: ${datos[0].horari.di}</p>
+                    <p>Dilluns: ${datos[0].horari.di}</p>
+                    <p>Dilluns: ${datos[0].horari.di}</p>
+                `
+            
+
+            let descripcio = document.querySelector('#descripcio')
+            nombreRestaurante.innerHTML = datos[0].descripcio;
+
+            let telefono = document.querySelector('#telefono')
+            nombreRestaurante.innerHTML = datos[0].contacte.telf;
 
 /*
             let carouselRestaurant = document.querySelector('#carouselRestaurant')
