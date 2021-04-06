@@ -1,27 +1,27 @@
 //console.log('correcto');
 document.querySelector('#rest1').addEventListener('click',traerDatos)
 
-document.querySelectorAll('#pagRest')
-const xhttp = new XMLHttpRequest();
-    console.log('en teoria dentro de la sección de restaurantes');
-    // el true indica que es asincrono, aqui importamos los datos 
-    xhttp.open('GET', 'Restaurants.json', true);
+const xhttp = new XMLHttpRequest()
+console.log('en teoria dentro de la sección de restaurantes')
+// el true indica que es asincrono, aqui importamos los datos 
+xhttp.open('GET', 'Restaurants.json', true)
 
-    xhttp.send();
+xhttp.send()
 
-    console.log('hemos hecho el send');
-    xhttp.onreadystatechange = function(){
-        let datos = JSON.parse(xhttp.responseText)
-        if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
-            console.log('guardamos los valores de geo y nombre');
-            let geo1 = document.querySelector('#geo1')
-            geo1.innerHTML = datos[0].geo1.address
-            
-            let nombreRestaurante = document.querySelector('#nombreRestaurante')
-            nombreRestaurante.innerHTML = datos[0].nom
-            console.log(nombreRestaurante);
-        }
+console.log('hemos hecho el send')
+xhttp.onreadystatechange = function(){
+    let datos = JSON.parse(xhttp.responseText)
+
+    if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
+        console.log('guardamos los valores de geo y nombre')
+        let geo1 = document.querySelector('#geo1')
+        geo1.innerHTML = datos[0].geo1.address
+        
+        let nombreRestaurante = document.querySelector('#nombreRestaurante')
+        nombreRestaurante.innerHTML = datos[0].nom
+        console.log(nombreRestaurante)
     }
+}
 
 /*
 function traerDatosBasicos(){
@@ -48,36 +48,17 @@ function traerDatosBasicos(){
 //función que trae los datos cuando se pulsa el boton
 function traerDatos(){
    // console.log('dentro de la función');
-   console.log('estamos en la función traer datos');
-    const xhttp = new XMLHttpRequest();
-
-    // el true indica que es asincrono, aqui importamos los datos 
-    xhttp.open('GET', 'Restaurants.json', true);
-
-    xhttp.send();
-
-    
+   console.log('estamos en la función traer datos')
+   
     xhttp.onreadystatechange = function(){
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
-            //console.log(this.responseText); // esto nos trae todo el archivo json en formato texto
-            //nos devuelve texto
-            //el json parse nos permite recibir texto y transformarlo en json
+            
 
-            let datos = JSON.parse(xhttp.responseText)
-            //console.log(datos); //nos devuelve array
- 
-            /*
-            let respuesta = document.querySelector('#respuesta');
-            respuesta.innerHTML = ''; //para que vacie el array siempre
-            //para acceder a los nombres
-            */
-
-            /*
-
+            
             let geo1 = document.querySelector('#geo1')
             geo1.innerHTML = datos[0].geo1.address
 
-            /*let horari = document.querySelector('#horari')
+            let horari = document.querySelector('#horari')
             horari.innerHTML += `
                 <p>Horari:</p>
                 <ul>
@@ -90,15 +71,13 @@ function traerDatos(){
                     <li>Diumenge: ${datos[0].horari.dg[0].in}-${datos[0].horari.dg[0].out}</li>
                 </ul>
                 `
-            
-
             let descripcio = document.querySelector('#descripcio')
             descripcio.innerHTML = datos[0].descripcio
 
             let telefono = document.querySelector('#telefono')
             telefono.innerHTML = datos[0].contacte.telf
 
-*/
+
 
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
             nombreRestaurante.innerHTML = datos[0].nom
@@ -111,16 +90,13 @@ function traerDatos(){
                 carouselRestaurant += ``
                 
             }
-
-                respuesta.innerHTML += `
+            respuesta.innerHTML += `
                     
                         <p>${item.nom}</p>
                         <p>${item.descripcio}</p>
                         <p>${item.tipus}</p>
                         <p>${item.puntuacio}</p>
-                `
-            
-                */
+                `*/
         }
     }
 
