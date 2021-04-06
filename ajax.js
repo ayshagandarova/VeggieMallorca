@@ -30,23 +30,22 @@ function traerDatos(){
             //para acceder a los nombres
             */
 
-            let nombreRestaurante = document.querySelector('#nombreRestaurante')
-            nombreRestaurante.innerHTML = datos[0].nom
+            
 
             let geo1 = document.querySelector('#geo1')
-            geo1.innerHTML = datos[0].geo1;
+            geo1.innerHTML = datos[0].geo1.address;
 
             let horari = document.querySelector('#horari')
             horari.innerHTML = `<p>Horari:</p>`
             horari.innerHTML += `
                 <ul>
                     <li>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</li>
-                    <li>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.di[0].out}</li>
-                    <li>Dimecres: ${datos[0].horari.dx[0].in}-${datos[0].horari.di[0].out}</li>
-                    <li>Dijous: ${datos[0].horari.dj[0].in}-${datos[0].horari.di[0].out}</li>
-                    <li>Divendres: ${datos[0].horari.dv[0].in}-${datos[0].horari.di[0].out}</li>
-                    <li>Dissabte: ${datos[0].horari.ds[0].in}-${datos[0].horari.di[0].out}</li>
-                    <li>Diumenge: ${datos[0].horari.dg[0].in}-${datos[0].horari.di[0].out}</li>
+                    <li>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.document[0].out}</li>
+                    <li>Dimecres: ${datos[0].horari.dx[0].in}-${datos[0].horari.dx[0].out}</li>
+                    <li>Dijous: ${datos[0].horari.dj[0].in}-${datos[0].horari.dj[0].out}</li>
+                    <li>Divendres: ${datos[0].horari.dv[0].in}-${datos[0].horari.dv[0].out}</li>
+                    <li>Dissabte: ${datos[0].horari.ds[0].in}-${datos[0].horari.ds[0].out}</li>
+                    <li>Diumenge: ${datos[0].horari.dg[0].in}-${datos[0].horari.dg[0].out}</li>
                 </ul>
                 `
             
@@ -56,6 +55,10 @@ function traerDatos(){
 
             let telefono = document.querySelector('#telefono')
             telefono.innerHTML = datos[0].contacte.telf
+
+
+            let nombreRestaurante = document.querySelector('#nombreRestaurante')
+            nombreRestaurante.innerHTML = datos[0].nom
 
 /*
             let carouselRestaurant = document.querySelector('#carouselRestaurant')
