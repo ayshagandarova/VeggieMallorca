@@ -1,7 +1,7 @@
 //console.log('correcto');
 
 document.querySelector('#rest1').addEventListener('click',traerDatos);
-document.querySelector('#pagRest').addEventListener('click',traerDatosBasicos)
+document.querySelector('#pagRest').addEventListener('click',traerDatosBasicos())
 
 function traerDatosBasicos(){
     const xhttp = new XMLHttpRequest();
