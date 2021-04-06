@@ -1,23 +1,25 @@
 [
     {
         "nom":"EcoVegetaria",
-        "descripcio": "Paredes amarillas y techos altos con vigas de madera oscura en restaurante vegetariano ovolácteo y ecológico.",
-        "detall": "",
-        "tipus": "vegetariano,",
+        "descripcio": "Restaurant vegetarià, ovolàcteo i ecològic. Situat en el centre de Palma.",
+        "detall": "Fan enviaments a domicili.",
+        "tipus": "vegetarià",
         "identificador":"1",
         "comentari": "exemple: posar tipus de menjar del restaurante",
         "preu":{
-            "-import":"",
+            "import":"9-14€",
             "coment-preu":""
         },
         "contacte":{
             "telf": "971 28 25 62", 
             "email": "",
-            "xarxes": [      
-                {"facebook": ""},
-                {"twitter": ""},
-                {"tripadvisor": ""}
-            ]
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://es-es.facebook.com/EcoVegetaria/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/ecovegetaria/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d2316133-Reviews-Restaurante_EcoVegetaria-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
         },
         "puntuacio":"4,2",
         "visualitzacions":"",
@@ -28,12 +30,12 @@
             " "
         ],
         "imatges": [
-            "/EcoVegetaria/restaurante.png",
-            "/EcoVegetaria/fuera.png",
-            "/EcoVegetaria/plato1.png",
-            "/EcoVegetaria/plato2.png",
-            "/EcoVegetaria/plato3.png",
-            "/EcoVegetaria/plato4.png"
+            "/assets/img/Restaurants/EcoVegetaria/restaurante.png",
+            "/assets/img/Restaurants/EcoVegetaria/fuera.png",
+            "/assets/img/Restaurants/EcoVegetaria/plato1.png",
+            "/assets/img/Restaurants/EcoVegetaria/plato2.png",
+            "/assets/img/Restaurants/EcoVegetaria/plato3.png",
+            "/assets/img/Restaurants/EcoVegetaria/plato4.png"
         ],
         "videos": [
             {"tipus": "youtube"},
@@ -45,28 +47,49 @@
         ],
         "geo1":{
             "address": "Carrer Comte de Barcelona, 26",
-            "lat": 39.235432,
-            "long":2.6765454,
+            "lat": 39.57304093831823,
+            "long":2.637623597939436,
             "city":"Palma",
             "Country":"Espanya",
             "zip": "07013"
         },
         "geo2":{
-            "address": "carrer ...",
-            "lat": 39.235432,
-            "long":2.6765454,
-            "city":"Palma",
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
             "Country":"",
             "zip":""
         },
         "horari":{
-            "di":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dm":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dx":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dj":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dv":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "ds":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dg":[{"in": "-", "out": "-"},{"in": "-", "out": "-"}]
+                "di": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
         },
         "calendari" :{
             "startDataEvent": "",
@@ -83,26 +106,28 @@
 
 
     {
-        "nom":"Restaurante 2 juju",
-        "descripcio": "Paredes amarillas y techos altos con vigas de madera oscura en restaurante vegetariano ovolácteo y ecológico.",
-        "detall": "",
-        "tipus": "vegetariano",
+        "nom":"Plaer Vegetarià",
+        "descripcio": "Ofereixen menjars elaborats amb productes locals, d'agricultura ecològica i de comerç just, per una alimentació sana i gustosa.",
+        "detall": "Els dijous fan tapes.",
+        "tipus": "vegetarià",
         "identificador":"1",
-        "comentari": "exemple: posar tipus de menjar del restaurante",
+        "comentari": "",
         "preu":{
-            "-import":"",
+            "import":"10-15€",
             "coment-preu":""
         },
         "contacte":{
-            "telf": "971 28 25 62", 
+            "telf": "971 55 55 04", 
             "email": "",
-            "xarxes": [      
-                {"facebook": ""},
-                {"twitter": ""},
-                {"tripadvisor": ""}
-            ]
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://es-es.facebook.com/plaervegetariamanacor",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/plaervegetaria/?igshid=1s4j8txh1sela",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurants-g580304-zfz10665-Manacor_Majorca_Balearic_Islands.html"
+            }
         },
-        "puntuacio":"4,2",
+        "puntuacio":"4,8",
         "visualitzacions":"",
         "likes":0,
 
@@ -110,9 +135,13 @@
             " ",
             " "
         ],
-        "imatges": [
-            " ",
-            " "
+        "imatges": [ 
+            "/assets/img/Restaurants/PlaerVegetaria/restaurante.png",
+            "/assets/img/Restaurants/PlaerVegetaria/plato1.png",
+            "/assets/img/Restaurants/PlaerVegetaria/plato2.png",
+            "/assets/img/Restaurants/PlaerVegetaria/plato3.png",
+            "/assets/img/Restaurants/PlaerVegetaria/plato4.png",
+            "/assets/img/Restaurants/PlaerVegetaria/plato5.png"
         ],
         "videos": [
             {"tipus": "youtube"},
@@ -123,29 +152,50 @@
             {"url": ""}
         ],
         "geo1":{
-            "address": "Carrer Comte de Barcelona, 26",
-            "lat": 39.235432,
-            "long":2.6765454,
-            "city":"Palma",
+            "address": "Carrer des Creuers, 1",
+            "lat": 39.57197943556464, 
+            "long":3.2025410162769328,
+            "city":"Manacor",
             "Country":"Espanya",
-            "zip": "07013"
+            "zip": "07500"
         },
         "geo2":{
-            "address": "carrer ...",
-            "lat": 39.235432,
-            "long":2.6765454,
-            "city":"Palma",
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
             "Country":"",
             "zip":""
         },
         "horari":{
-            "di":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dm":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dx":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dj":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dv":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "ds":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
-            "dg":[{"in": "-", "out": "-"},{"in": "-", "out": "-"}]
+                "di": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "20:00","out": "22:15"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "20:00","out": "22:15"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
         },
         "calendari" :{
             "startDataEvent": "",
@@ -154,8 +204,112 @@
             "endTimeEvent":""
         },
         "dadesPropies" : { 
-            "menu": "icartaweb.com",
-            "pedido": "deliveroo.es"
+            "menu": "al seu instagram",
+            "pedido": ""
+        }
+        
+    },
+    {
+        "nom":"Plaer Natural",
+        "descripcio": "Cervesses artesanes i plats vegetarians internacionals a un restaurant amb altillo de fusta i terrassa.",
+        "detall": "Fan menú del dia complet per 15€.",
+        "tipus": "vegetarià",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"13-15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 22 77 80", 
+            "email": "",
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://es-es.facebook.com/pages/category/Vegetarian-Vegan-Restaurant/Plaer-Natural-247394029401/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/plaernatural/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d1126640-Reviews-Restaurante_Plaer_Natural-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"4,5",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "/assets/img/Restaurants/PlaerNatural/restaurante.png",
+            "/assets/img/Restaurants/PlaerNatural/menu.png",
+            "/assets/img/Restaurants/PlaerNatural/plato1.png",
+            "/assets/img/Restaurants/PlaerNatural/plato2.png",
+            "/assets/img/Restaurants/PlaerNatural/plato3.png",
+            "/assets/img/Restaurants/PlaerNatural/plato4.png"  
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Plaça de la Quartera, 3",
+            "lat": 39.5708947272306,  
+            "long":2.653288999607834,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07002"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "al seu instagram",
+            "pedido": ""
         }
         
     }
