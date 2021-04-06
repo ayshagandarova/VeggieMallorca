@@ -11,7 +11,7 @@ const xhttp = new XMLHttpRequest();
 
     console.log('hemos hecho el send');
     xhttp.onreadystatechange = function(){
-        
+        let datos = JSON.parse(xhttp.responseText)
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
             console.log('guardamos los valores de geo y nombre');
             let geo1 = document.querySelector('#geo1')
