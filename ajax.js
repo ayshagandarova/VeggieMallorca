@@ -30,8 +30,9 @@ function traerDatos(){
 
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
             nombreRestaurante.innerHTML = datos[1].nom;
+            console.log(nombreRestaurante);
 
-
+/*
             let carouselRestaurant = document.querySelector('#carouselRestaurant')
 
             for(let fotos in datos[1].imatges){
@@ -47,6 +48,7 @@ function traerDatos(){
                         <p>${item.puntuacio}</p>
                 `
             
+                */
         }
     }
 
