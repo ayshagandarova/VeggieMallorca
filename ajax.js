@@ -24,9 +24,11 @@ function traerDatos(){
             let datos = JSON.parse(this.responseText);
             //console.log(datos); //nos devuelve array
  
+            /*
             let respuesta = document.querySelector('#respuesta');
             respuesta.innerHTML = ''; //para que vacie el array siempre
             //para acceder a los nombres
+            */
 
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
             nombreRestaurante.innerHTML = datos[1].nom;
