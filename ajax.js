@@ -1,6 +1,27 @@
 //console.log('correcto');
-
+document.querySelector('#pagRest').addEventListener('click',traerDatosBasicos);
 document.querySelector('#rest1').addEventListener('click',traerDatos);
+
+
+function traerDatosBasicos(){
+    const xhttp = new XMLHttpRequest();
+
+    // el true indica que es asincrono, aqui importamos los datos 
+    xhttp.open('GET', 'Restaurants.json', true);
+
+    xhttp.send();
+
+    xhttp.onreadystatechange = function(){
+        if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
+         
+            let geo1 = document.querySelector('#geo1')
+            geo1.innerHTML = datos[0].geo1.address
+            
+            let nombreRestaurante = document.querySelector('#nombreRestaurante')
+            nombreRestaurante.innerHTML = datos[0].nom
+        }
+    }
+}
 
 
 //función que trae los datos cuando se pulsa el boton
@@ -33,7 +54,7 @@ function traerDatos(){
             
 
             let geo1 = document.querySelector('#geo1')
-            geo1.innerHTML = datos[0].geo1.address;
+            geo1.innerHTML = datos[0].geo1.address
 
             let horari = document.querySelector('#horari')
             horari.innerHTML = `<p>Horari:</p>`
