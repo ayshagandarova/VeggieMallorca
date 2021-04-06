@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html long="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Document</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <button class="btn" id="boton">JSON</button>
+
+            <!-- creamos la tabla -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre Restaurante:</th>
+                        <th>Descripción:</th>
+                    </tr>
+                </thead>
+                <!-- aquí es donde importamos los datos, dinamicamente-->
+                <tbody id="respuesta">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="ajaxIntento.js"></script>
+</body>
+
+
+<!-- 
+<body>
+<div id="id01"></div>
+
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "jsonBase.json";
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status ==200){
+            var myArr = JSON.parse(xmlhttp.responseText);
+            miFuncion(myArr);
+        }
+    };
+
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    function miFuncion(arr){
+        var out ="";
+        var i;
+        for (i=0; i<arr.length; i++){
+            out += '<a href' + arr[i].nom + '>' + arr[i].descripcion + '</a><br>';
+        }
+        document.getElementById("id01").innerHTML = out;
+
+    }
+</script>
+</body>
+-->
+</html>
