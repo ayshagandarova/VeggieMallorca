@@ -21,7 +21,7 @@ function traerDatos(){
             //nos devuelve texto
             //el json parse nos permite recibir texto y transformarlo en json
 
-            let datos = JSON.parse(this.responseText);
+            let datos = JSON.parse(this.responseText)
             //console.log(datos); //nos devuelve array
  
             /*
@@ -31,30 +31,31 @@ function traerDatos(){
             */
 
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
-            nombreRestaurante.innerHTML = datos[0].nom;
-            console.log(nombreRestaurante);
+            nombreRestaurante.innerHTML = datos[0].nom
 
             let geo1 = document.querySelector('#geo1')
             geo1.innerHTML = datos[0].geo1;
 
             let horari = document.querySelector('#horari')
-            horari.innerHTML = '<p>Horari:</p>';
-            let dias = ["dilluns", "dimarts", "dimecres", "dijous","divendres", "dissabte", "diumenge"];
+            horari.innerHTML = `<p>Horari:</p>`
             horari.innerHTML += `
-                    <p>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</p>
-                    <p>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.di[0].out}</p>
-                    <p>Dimecres: ${datos[0].horari.dx[0].in}-${datos[0].horari.di[0].out}</p>
-                    <p>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</p>
-                    <p>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</p>
-                    <p>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</p>
+                <ul>
+                    <li>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</li>
+                    <li>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.di[0].out}</li>
+                    <li>Dimecres: ${datos[0].horari.dx[0].in}-${datos[0].horari.di[0].out}</li>
+                    <li>Dijous: ${datos[0].horari.dj[0].in}-${datos[0].horari.di[0].out}</li>
+                    <li>Divendres: ${datos[0].horari.dv[0].in}-${datos[0].horari.di[0].out}</li>
+                    <li>Dissabte: ${datos[0].horari.ds[0].in}-${datos[0].horari.di[0].out}</li>
+                    <li>Diumenge: ${datos[0].horari.dg[0].in}-${datos[0].horari.di[0].out}</li>
+                </ul>
                 `
             
 
             let descripcio = document.querySelector('#descripcio')
-            descripcio.innerHTML = datos[0].descripcio;
+            descripcio.innerHTML = datos[0].descripcio
 
             let telefono = document.querySelector('#telefono')
-            telefono.innerHTML = datos[0].contacte.telf;
+            telefono.innerHTML = datos[0].contacte.telf
 
 /*
             let carouselRestaurant = document.querySelector('#carouselRestaurant')
