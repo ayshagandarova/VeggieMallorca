@@ -1,8 +1,7 @@
 //console.log('correcto');
+document.querySelector('#rest1').addEventListener('click',traerDatos)
 
-document.querySelector('#rest1').addEventListener('click',traerDatos);
-document.querySelector('#pagRest').addEventListener('click',traerDatosBasicos())
-
+/*
 function traerDatosBasicos(){
     const xhttp = new XMLHttpRequest();
 
@@ -23,7 +22,7 @@ function traerDatosBasicos(){
     }
 }
 
-
+*/
 //función que trae los datos cuando se pulsa el boton
 function traerDatos(){
    // console.log('dentro de la función');
@@ -42,7 +41,7 @@ function traerDatos(){
             //nos devuelve texto
             //el json parse nos permite recibir texto y transformarlo en json
 
-            let datos = JSON.parse(this.responseText)
+            let datos = JSON.parse(xhttp.responseText)
             //console.log(datos); //nos devuelve array
  
             /*
@@ -51,12 +50,12 @@ function traerDatos(){
             //para acceder a los nombres
             */
 
-            
+            /*
 
             let geo1 = document.querySelector('#geo1')
             geo1.innerHTML = datos[0].geo1.address
 
-            let horari = document.querySelector('#horari')
+            /*let horari = document.querySelector('#horari')
             horari.innerHTML += `
                 <p>Horari:</p>
                 <ul>
@@ -77,7 +76,7 @@ function traerDatos(){
             let telefono = document.querySelector('#telefono')
             telefono.innerHTML = datos[0].contacte.telf
 
-
+*/
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
             nombreRestaurante.innerHTML = datos[0].nom
 
