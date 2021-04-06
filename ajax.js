@@ -1,13 +1,14 @@
 //console.log('correcto');
 document.querySelector('#rest1').addEventListener('click',traerDatos)
 
-
+document.querySelectorAll('#pagRest')
 const xhttp = new XMLHttpRequest();
 
     // el true indica que es asincrono, aqui importamos los datos 
     xhttp.open('GET', 'Restaurants.json', true);
 
     xhttp.send();
+    
 
     xhttp.onreadystatechange = function(){
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
@@ -19,7 +20,7 @@ const xhttp = new XMLHttpRequest();
             nombreRestaurante.innerHTML = datos[0].nom
         }
     }
-    
+
 /*
 function traerDatosBasicos(){
     const xhttp = new XMLHttpRequest();
