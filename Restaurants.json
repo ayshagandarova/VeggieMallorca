@@ -1,0 +1,162 @@
+[
+    {
+        "nom":"EcoVegetaria",
+        "descripcio": "Paredes amarillas y techos altos con vigas de madera oscura en restaurante vegetariano ovolácteo y ecológico.",
+        "detall": "",
+        "tipus": "vegetariano,",
+        "identificador":"1",
+        "comentari": "exemple: posar tipus de menjar del restaurante",
+        "preu":{
+            "-import":"",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 28 25 62", 
+            "email": "",
+            "xarxes": [      
+                {"facebook": ""},
+                {"twitter": ""},
+                {"tripadvisor": ""}
+            ]
+        },
+        "puntuacio":"4,2",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "/EcoVegetaria/restaurante.png",
+            "/EcoVegetaria/fuera.png",
+            "/EcoVegetaria/plato1.png",
+            "/EcoVegetaria/plato2.png",
+            "/EcoVegetaria/plato3.png",
+            "/EcoVegetaria/plato4.png"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer Comte de Barcelona, 26",
+            "lat": 39.235432,
+            "long":2.6765454,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "carrer ...",
+            "lat": 39.235432,
+            "long":2.6765454,
+            "city":"Palma",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+            "di":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dm":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dx":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dj":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dv":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "ds":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dg":[{"in": "-", "out": "-"},{"in": "-", "out": "-"}]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "icartaweb.com",
+            "pedido": "deliveroo.es"
+        }
+        
+    },
+
+
+    {
+        "nom":"Restaurante 2 juju",
+        "descripcio": "Paredes amarillas y techos altos con vigas de madera oscura en restaurante vegetariano ovolácteo y ecológico.",
+        "detall": "",
+        "tipus": "vegetariano",
+        "identificador":"1",
+        "comentari": "exemple: posar tipus de menjar del restaurante",
+        "preu":{
+            "-import":"",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 28 25 62", 
+            "email": "",
+            "xarxes": [      
+                {"facebook": ""},
+                {"twitter": ""},
+                {"tripadvisor": ""}
+            ]
+        },
+        "puntuacio":"4,2",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            " ",
+            " "
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer Comte de Barcelona, 26",
+            "lat": 39.235432,
+            "long":2.6765454,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "carrer ...",
+            "lat": 39.235432,
+            "long":2.6765454,
+            "city":"Palma",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+            "di":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dm":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dx":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dj":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dv":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "ds":[{"in": "13:00", "out": "16:00"},{"in": "-", "out": "-"}],
+            "dg":[{"in": "-", "out": "-"},{"in": "-", "out": "-"}]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "icartaweb.com",
+            "pedido": "deliveroo.es"
+        }
+        
+    }
+]
