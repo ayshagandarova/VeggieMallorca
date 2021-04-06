@@ -1,7 +1,7 @@
 //console.log('correcto');
-document.querySelector('#pagRest').addEventListener('click',traerDatosBasicos);
-document.querySelector('#rest1').addEventListener('click',traerDatos);
 
+document.querySelector('#rest1').addEventListener('click',traerDatos);
+document.querySelector('#pagRest').addEventListener('click',traerDatosBasicos)
 
 function traerDatosBasicos(){
     const xhttp = new XMLHttpRequest();
@@ -57,8 +57,8 @@ function traerDatos(){
             geo1.innerHTML = datos[0].geo1.address
 
             let horari = document.querySelector('#horari')
-            horari.innerHTML = `<p>Horari:</p>`
             horari.innerHTML += `
+                <p>Horari:</p>
                 <ul>
                     <li>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</li>
                     <li>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.document[0].out}</li>
