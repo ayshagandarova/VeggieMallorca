@@ -18,7 +18,7 @@ function mostrarRestaurants(){
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
             let restaurants = document.querySelector('#restaurants')
             restaurants.innerHTML = ''
-            restaurants.innerHTML += `<div class="row">`
+          //  restaurants.innerHTML += `<div class="row">`
             for(let item of datos){
                 restaurants.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
@@ -31,14 +31,14 @@ function mostrarRestaurants(){
                                 <img class="img-fluid" src=${item.imatges[0]} alt="" />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading" id=${item.nom}></div>
-                                <div class="portfolio-caption-subheading text-muted" id=${item.geo1}></div>
+                                <div class="portfolio-caption-heading">"${item.nom}"</div>
+                                <div class="portfolio-caption-subheading text-muted">"${item.geo1}"</div>
                             </div>
                         </div>
                     </div>  
                 `
             }
-            restaurants.innerHTML += `</div> `
+           // restaurants.innerHTML += `</div> `
 
 
 
