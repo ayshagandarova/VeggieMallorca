@@ -8,7 +8,7 @@ xhttp.send()
 
 console.log('hemos hecho el send')
 xhttp.onreadystatechange = function(){
-    let datos = JSON.parse(xhttp.responseText)
+let datos = JSON.parse(xhttp.responseText)
 
     if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
         console.log('guardamos los valores de geo y nombre')
@@ -50,7 +50,7 @@ xhttp.send()
                 <p>Horari:</p>
                 <ul>
                     <li>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</li>
-                    <li>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.document[0].out}</li>
+                    <li>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.dm[0].out}</li>
                     <li>Dimecres: ${datos[0].horari.dx[0].in}-${datos[0].horari.dx[0].out}</li>
                     <li>Dijous: ${datos[0].horari.dj[0].in}-${datos[0].horari.dj[0].out}</li>
                     <li>Divendres: ${datos[0].horari.dv[0].in}-${datos[0].horari.dv[0].out}</li>
