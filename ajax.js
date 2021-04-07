@@ -31,8 +31,8 @@ function mostrarRestaurants(){
                                 <img class="img-fluid" src=${item.imatges[0]} alt="" />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">"${item.nom}"</div>
-                                <div class="portfolio-caption-subheading text-muted">"${item.geo1}"</div>
+                                <div class="portfolio-caption-heading">${item.nom}</div>
+                                <div class="portfolio-caption-subheading text-muted">${item.geo1.address}</div>
                             </div>
                         </div>
                     </div>  
