@@ -1,6 +1,3 @@
-//console.log('correcto');
-document.querySelector('#rest1').addEventListener('click',traerDatos)
-
 const xhttp = new XMLHttpRequest()
 console.log('en teoria dentro de la sección de restaurantes')
 // el true indica que es asincrono, aqui importamos los datos 
@@ -14,15 +11,18 @@ xhttp.onreadystatechange = function(){
 
     if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
         console.log('guardamos los valores de geo y nombre')
-        let geo1 = document.querySelector('#geo1')
-        geo1.innerHTML = datos[0].geo1.address
-        
+        //aixo es mostra des de la pantalla de restaurants just quan l'obrim.
         let nombreRestaurante = document.querySelector('#nombreRestaurante')
         nombreRestaurante.innerHTML = datos[0].nom
         console.log(nombreRestaurante)
+
+        let geo1 = document.querySelector('#geo1')
+        geo1.innerHTML = datos[0].geo1.address
+        
+       
     }
 }
-
+document.querySelector('#rest1').addEventListener('click',traerDatos)
 /*
 function traerDatosBasicos(){
     const xhttp = new XMLHttpRequest();
@@ -81,7 +81,7 @@ function traerDatos(){
 
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
             nombreRestaurante.innerHTML = datos[0].nom
-            console.log('se ha guardado el valor de nombrerestaurante');
+            console.log('se ha guardado el valor de nombrerestaurante')
 
 /*
             let carouselRestaurant = document.querySelector('#carouselRestaurant')
