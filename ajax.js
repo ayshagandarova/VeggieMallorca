@@ -44,7 +44,7 @@ xhttp.send()
             
             let geopos1 = document.querySelector('#geopos1')
             geopos1.innerHTML = datos[0].geo1.address
-/*
+
             let horari = document.querySelector('#horari')
             horari.innerHTML += `
                 <p>Horari:</p>
@@ -57,7 +57,7 @@ xhttp.send()
                     <li>Dissabte: ${datos[0].horari.ds[0].in}-${datos[0].horari.ds[0].out}</li>
                     <li>Diumenge: ${datos[0].horari.dg[0].in}-${datos[0].horari.dg[0].out}</li>
                 </ul>
-                `*/
+                `
             let descripcio = document.querySelector('#descripcio')
             descripcio.innerHTML = datos[0].descripcio
 
