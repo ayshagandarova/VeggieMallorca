@@ -42,8 +42,8 @@ xhttp.send()
             
 
             
-            let geo1 = document.querySelector('#geo1')
-            geo1.innerHTML = datos[0].geo1.address
+            let geopos1 = document.querySelector('#geopos1')
+            geopos1.innerHTML = datos[0].geo1.address
 /*
             let horari = document.querySelector('#horari')
             horari.innerHTML += `
@@ -57,14 +57,14 @@ xhttp.send()
                     <li>Dissabte: ${datos[0].horari.ds[0].in}-${datos[0].horari.ds[0].out}</li>
                     <li>Diumenge: ${datos[0].horari.dg[0].in}-${datos[0].horari.dg[0].out}</li>
                 </ul>
-                `
+                `*/
             let descripcio = document.querySelector('#descripcio')
             descripcio.innerHTML = datos[0].descripcio
 
             let telefono = document.querySelector('#telefono')
             telefono.innerHTML = datos[0].contacte.telf
 
-*/
+
 
             let nombreRest = document.querySelector('#nombreRest')
             nombreRest.innerHTML = datos[0].nom
