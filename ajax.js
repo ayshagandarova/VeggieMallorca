@@ -1,4 +1,4 @@
-/*
+
 const xhttp = new XMLHttpRequest()
 console.log('en teoria dentro de la sección de restaurantes')
 // el true indica que es asincrono, aqui importamos los datos 
@@ -23,7 +23,7 @@ xhttp.onreadystatechange = function(){
        
     }
 }
-*/
+
 document.querySelector('#rest1').addEventListener('click',traerDatos)
 
 //función que trae los datos cuando se pulsa el boton
@@ -37,6 +37,7 @@ xhttp.send()
    console.log('estamos en la función traer datos')
    
     xhttp.onreadystatechange = function(){
+        let datos = JSON.parse(xhttp.responseText)
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
             
 
