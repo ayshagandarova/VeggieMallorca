@@ -136,12 +136,12 @@
             " "
         ],
         "imatges": [ 
-            "/assets/img/Restaurants/PlaerVegetaria/restaurante.png",
-            "/assets/img/Restaurants/PlaerVegetaria/plato1.png",
-            "/assets/img/Restaurants/PlaerVegetaria/plato2.png",
-            "/assets/img/Restaurants/PlaerVegetaria/plato3.png",
-            "/assets/img/Restaurants/PlaerVegetaria/plato4.png",
-            "/assets/img/Restaurants/PlaerVegetaria/plato5.png"
+            "/assets/img/Restaurants/PlaerVegetaria/restaurante.jpg",
+            "/assets/img/Restaurants/PlaerVegetaria/plato1.jpg",
+            "/assets/img/Restaurants/PlaerVegetaria/plato2.jpg",
+            "/assets/img/Restaurants/PlaerVegetaria/plato3.jpg",
+            "/assets/img/Restaurants/PlaerVegetaria/plato4.jpg",
+            "/assets/img/Restaurants/PlaerVegetaria/plato5.jpg"
         ],
         "videos": [
             {"tipus": "youtube"},
@@ -241,11 +241,11 @@
         ],
         "imatges": [ 
             "/assets/img/Restaurants/PlaerNatural/restaurante.png",
-            "/assets/img/Restaurants/PlaerNatural/menu.png",
+            "/assets/img/Restaurants/PlaerNatural/menu.jpg",
             "/assets/img/Restaurants/PlaerNatural/plato1.png",
             "/assets/img/Restaurants/PlaerNatural/plato2.png",
-            "/assets/img/Restaurants/PlaerNatural/plato3.png",
-            "/assets/img/Restaurants/PlaerNatural/plato4.png"  
+            "/assets/img/Restaurants/PlaerNatural/plato3.jpg",
+            "/assets/img/Restaurants/PlaerNatural/plato4.jpg"  
         ],
         "videos": [
             {"tipus": "youtube"},
