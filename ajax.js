@@ -1,3 +1,4 @@
+/*
 const xhttp = new XMLHttpRequest()
 console.log('en teoria dentro de la sección de restaurantes')
 // el true indica que es asincrono, aqui importamos los datos 
@@ -22,6 +23,7 @@ xhttp.onreadystatechange = function(){
        
     }
 }
+*/
 document.querySelector('#rest1').addEventListener('click',traerDatos)
 
 //función que trae los datos cuando se pulsa el boton
