@@ -23,31 +23,15 @@ xhttp.onreadystatechange = function(){
     }
 }
 document.querySelector('#rest1').addEventListener('click',traerDatos)
-/*
-function traerDatosBasicos(){
-    const xhttp = new XMLHttpRequest();
 
-    // el true indica que es asincrono, aqui importamos los datos 
-    xhttp.open('GET', 'Restaurants.json', true);
-
-    xhttp.send();
-
-    xhttp.onreadystatechange = function(){
-        if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
-         
-            let geo1 = document.querySelector('#geo1')
-            geo1.innerHTML = datos[0].geo1.address
-            
-            let nombreRestaurante = document.querySelector('#nombreRestaurante')
-            nombreRestaurante.innerHTML = datos[0].nom
-        }
-    }
-}
-
-*/
 //función que trae los datos cuando se pulsa el boton
 function traerDatos(){
-   // console.log('dentro de la función');
+    const xhttp = new XMLHttpRequest()
+// el true indica que es asincrono, aqui importamos los datos 
+xhttp.open('GET', 'Restaurants.json', true)
+
+xhttp.send()
+
    console.log('estamos en la función traer datos')
    
     xhttp.onreadystatechange = function(){
@@ -57,7 +41,7 @@ function traerDatos(){
             
             let geo1 = document.querySelector('#geo1')
             geo1.innerHTML = datos[0].geo1.address
-
+/*
             let horari = document.querySelector('#horari')
             horari.innerHTML += `
                 <p>Horari:</p>
@@ -77,7 +61,7 @@ function traerDatos(){
             let telefono = document.querySelector('#telefono')
             telefono.innerHTML = datos[0].contacte.telf
 
-
+*/
 
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
             nombreRestaurante.innerHTML = datos[0].nom
