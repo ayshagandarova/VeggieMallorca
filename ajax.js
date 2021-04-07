@@ -1,7 +1,7 @@
 //console.log('correcto');
 document.querySelector('#restaurants').addEventListener('click',traerDatos)
 
-
+mostrarRestaurants();
 
 function mostrarRestaurants(){
     const xhttp = new XMLHttpRequest()
@@ -51,8 +51,8 @@ function mostrarRestaurants(){
             let nombreRestaurante = document.querySelector('#nombreRestaurante')
             nombreRestaurante.innerHTML = datos[0].nom
             console.log(nombreRestaurante)
-
-            */
+*/
+            
         }
     }
 }
