@@ -63,7 +63,7 @@ xhttp.send()
 
 */
 
-            let nombreRestaurante = document.querySelector('#nombreRestaurante')
+            let nombreRestaurante = document.querySelector('#nombreRest')
             nombreRestaurante.innerHTML = datos[0].nom
             console.log('se ha guardado el valor de nombrerestaurante')
 
