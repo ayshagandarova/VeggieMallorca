@@ -23,13 +23,31 @@ function mostrarRestaurants(){
                 restaurants.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
-                        <!--  <a class="portfolio-link" data-toggle="modal" id="rest1">-->  
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1"> 
+                            <a class="portfolio-link" data-toggle="modal" id="restaurants" href="#plantillaFlotante"> 
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
                                 <img class="img-fluid" src=${item.imatges[0]} alt="" />
                             </a>
+
+
+                            <div class="portfolio-modal modal fade" id="plantillaFlotante" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="modal-body">
+                                                    <h2 class="text-uppercase">${item.nom}</h2>
+                                                    <!-- aquí poner lo que viene dentro de la página flotante -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">${item.nom}</div>
                                 <div class="portfolio-caption-subheading text-muted">${item.geo1.address}</div>
