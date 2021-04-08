@@ -18,7 +18,6 @@ function mostrarRestaurants() {
         if (this.readyState == 4 && this.status == 200) { //esto sale en otro video y parece que siempre es asi
             let restaurants = document.querySelector('#restaurants')
             restaurants.innerHTML = ''
-            restaurants.innerHTML += `<div class="row">`
             for (let item of datos) {
                 restaurants.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
@@ -39,7 +38,6 @@ function mostrarRestaurants() {
                     </div>  
                 `
             }
-            restaurantsGrid.innerHTML += `</div> `
         }
     }
 }
