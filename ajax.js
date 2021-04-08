@@ -1,7 +1,7 @@
 //console.log('correcto');
 
 mostrarRestaurants();
-document.querySelector('#elementoRestaurante').addEventListener('click', traerDatos)
+document.querySelector('#restaurants').addEventListener('click', traerDatos)
 
 function mostrarRestaurants() {
     const xhttp = new XMLHttpRequest()
@@ -16,14 +16,15 @@ function mostrarRestaurants() {
         //tenemos todos los restaurantes
 
         if (this.readyState == 4 && this.status == 200) { //esto sale en otro video y parece que siempre es asi
-            let restaurantsGrid = document.querySelector('#restaurantsGrid"')
-            restaurantsGrid.innerHTML = ''
-            restaurantsGrid.innerHTML += `<div class="row">`
+            let restaurants = document.querySelector('#restaurants"')
+            restaurants.innerHTML = ''
+            restaurants.innerHTML += `<div class="row">`
             for (let item of datos) {
-                restaurantsGrid.innerHTML += `
+                restaurants.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" id="elementoRestaurante" href="#plantillaFlotante"> 
+                            <!-- añadir id="elementoRestaurante" abajo -->
+                            <a class="portfolio-link" data-toggle="modal"  href="#plantillaFlotante"> 
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
@@ -51,7 +52,7 @@ function traerDatos() {
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) { //esto sale en otro video y parece que siempre es asi
-            let infoRestaurant = document.querySelector('#elementoRestaurante')
+            /*let infoRestaurant = document.querySelector('#elementoRestaurante')
             infoRestaurant.innerHTML = `
                 <div class="portfolio-modal modal fade" id="plantillaFlotante" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -68,7 +69,7 @@ function traerDatos() {
                         </div>
                     </div>
                 </div>
-            `
+            `*/
 
 
 
