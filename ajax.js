@@ -1,25 +1,25 @@
 //console.log('correcto');
-document.querySelector('#elementoRestaurante').addEventListener('click',traerDatos)
+document.querySelector('#elementoRestaurante').addEventListener('click', traerDatos)
 
 mostrarRestaurants();
 
-function mostrarRestaurants(){
+function mostrarRestaurants() {
     const xhttp = new XMLHttpRequest()
     // el true indica que es asincrono, aqui importamos los datos 
     xhttp.open('GET', 'Restaurants.json', true)
 
     xhttp.send()
 
-    xhttp.onreadystatechange = function(){
+    xhttp.onreadystatechange = function () {
         let datos = JSON.parse(xhttp.responseText)
 
         //tenemos todos los restaurantes
 
-        if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
+        if (this.readyState == 4 && this.status == 200) { //esto sale en otro video y parece que siempre es asi
             let restaurantsGrid = document.querySelector('#elementoRestaurante"')
             restaurantsGrid.innerHTML = ''
             restaurantsGrid.innerHTML += `<div class="row">`
-            for(let item of datos){
+            for (let item of datos) {
                 restaurantsGrid.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
@@ -45,12 +45,12 @@ function mostrarRestaurants(){
 
 
 //función que trae los datos cuando se pulsa el boton
-function traerDatos(){
-   // console.log('dentro de la función');
-   console.log('estamos en la función traer datos')
-   
-    xhttp.onreadystatechange = function(){
-        if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
+function traerDatos() {
+    // console.log('dentro de la función');
+    console.log('estamos en la función traer datos')
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) { //esto sale en otro video y parece que siempre es asi
             let infoRestaurant = document.querySelector('#elementoRestaurante')
             infoRestaurant.innerHTML = `
                 <div class="portfolio-modal modal fade" id="plantillaFlotante" tabindex="-1" role="dialog" aria-hidden="true">
@@ -70,9 +70,9 @@ function traerDatos(){
                 </div>
             `
 
-            
 
-            
+
+
             let geo1 = document.querySelector('#geo1')
             geo1.innerHTML = datos[0].geo1.address
 
@@ -101,20 +101,20 @@ function traerDatos(){
             nombreRestaurante.innerHTML = datos[0].nom
             console.log('se ha guardado el valor de nombrerestaurante');
 
-/*
-            let carouselRestaurant = document.querySelector('#carouselRestaurant')
-
-            for(let fotos in datos[1].imatges){
-                carouselRestaurant += ``
-                
-            }
-            respuesta.innerHTML += `
-                    
-                        <p>${item.nom}</p>
-                        <p>${item.descripcio}</p>
-                        <p>${item.tipus}</p>
-                        <p>${item.puntuacio}</p>
-                `*/
+            /*
+                        let carouselRestaurant = document.querySelector('#carouselRestaurant')
+            
+                        for(let fotos in datos[1].imatges){
+                            carouselRestaurant += ``
+                            
+                        }
+                        respuesta.innerHTML += `
+                                
+                                    <p>${item.nom}</p>
+                                    <p>${item.descripcio}</p>
+                                    <p>${item.tipus}</p>
+                                    <p>${item.puntuacio}</p>
+                            `*/
         }
     }
 
@@ -134,7 +134,7 @@ function traerDatos(){
                                     </ol>
                                     <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                            <img class="first-slide" src="assets/img/portfolio/01-full.jpg" alt="First slide" 
+                                            <img class="first-slide" src="assets/img/portfolio/01-full.jpg" alt="First slide"
                                             style="object-fit:scale-down;
                                             width:500px;
                                             height:300px;
@@ -154,7 +154,7 @@ function traerDatos(){
                                             </div>
                                         </div>
                                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                                        
+
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Previous</span>
                                     </a>
@@ -165,7 +165,7 @@ function traerDatos(){
                                     </div>
                             </div>
                             <!-- <div class="col-lg-6">
-                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/01.1-full.jpg" alt="" /> 
+                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/01.1-full.jpg" alt="" />
                             </div>-->
                         </div>
                     </div>
