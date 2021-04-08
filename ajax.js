@@ -1,5 +1,5 @@
 //console.log('correcto');
-document.querySelector('#restaurants').addEventListener('click',traerDatos)
+document.querySelector('#elementoRestaurante').addEventListener('click',traerDatos)
 
 mostrarRestaurants();
 
@@ -16,37 +16,19 @@ function mostrarRestaurants(){
         //tenemos todos los restaurantes
 
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
-            let restaurants = document.querySelector('#restaurants')
-            restaurants.innerHTML = ''
-          //  restaurants.innerHTML += `<div class="row">`
+            let restaurantsGrid = document.querySelector('#restaurantsGrid"')
+            restaurantsGrid.innerHTML = ''
+            restaurantsGrid.innerHTML += `<div class="row">`
             for(let item of datos){
-                restaurants.innerHTML += `
+                restaurantsGrid.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" id="restaurants" href="#plantillaFlotante"> 
+                            <a class="portfolio-link" data-toggle="modal" id="elementoRestaurante" href="#plantillaFlotante"> 
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src=${item.imatges[0]} alt="" />
+                                <img class="img-fluid" src=${item.imatges[0]} alt="" /> <!-- portada -->
                             </a>
-
-
-                            <div class="portfolio-modal modal fade" id="plantillaFlotante" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                                        <div class="container">
-                                            <div class="row justify-content-center">
-                                                <div class="modal-body">
-                                                    <h2 class="text-uppercase">${item.nom}</h2>
-                                                    <!-- aquí poner lo que viene dentro de la página flotante -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
 
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">${item.nom}</div>
@@ -56,49 +38,12 @@ function mostrarRestaurants(){
                     </div>  
                 `
             }
-           // restaurants.innerHTML += `</div> `
-
-
-
-
-
-
-            /*
-            let geo1 = document.querySelector('#geo1')
-            geo1.innerHTML = datos[0].geo1.address
-            
-            let nombreRestaurante = document.querySelector('#nombreRestaurante')
-            nombreRestaurante.innerHTML = datos[0].nom
-            console.log(nombreRestaurante)
-*/
-            
+            restaurantsGrid.innerHTML += `</div> `
         }
     }
 }
 
 
-/*
-function traerDatosBasicos(){
-    const xhttp = new XMLHttpRequest();
-
-    // el true indica que es asincrono, aqui importamos los datos 
-    xhttp.open('GET', 'Restaurants.json', true);
-
-    xhttp.send();
-
-    xhttp.onreadystatechange = function(){
-        if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
-         
-            let geo1 = document.querySelector('#geo1')
-            geo1.innerHTML = datos[0].geo1.address
-            
-            let nombreRestaurante = document.querySelector('#nombreRestaurante')
-            nombreRestaurante.innerHTML = datos[0].nom
-        }
-    }
-}
-
-*/
 //función que trae los datos cuando se pulsa el boton
 function traerDatos(){
    // console.log('dentro de la función');
@@ -106,6 +51,25 @@ function traerDatos(){
    
     xhttp.onreadystatechange = function(){
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
+            let infoRestaurant = document.querySelector('#elementoRestaurante')
+            infoRestaurant.innerHTML = `
+                <div class="portfolio-modal modal fade" id="plantillaFlotante" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="modal-body">
+                                        <h2 class="text-uppercase">HOLAAAAAAA</h2>
+                                        <!-- aquí poner lo que viene dentro de la página flotante -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+
             
 
             
