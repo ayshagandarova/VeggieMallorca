@@ -4005,6 +4005,7 @@ input[type=button].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  float:left;
 }
 .navbar .container,
 .navbar .container-fluid,
@@ -4362,6 +4363,49 @@ input[type=button].btn-block {
 .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
   color: #fff;
 }
+
+
+
+
+ul, ol {
+  list-style:none;
+}
+
+
+.navbar li a {
+  background-color:#000;
+  color:#fff;
+  text-decoration:none;
+  padding:10px 12px;
+  display:block;
+}
+
+.navbar li a:hover {
+  background-color:#434343;
+}
+
+.navbar li ul {
+  display:none;
+  position:absolute;
+  min-width:140px;
+}
+
+.navbar li:hover > ul {
+  display:block;
+}
+
+.navbar li ul li {
+  position:relative;
+}
+
+.navbar li ul li ul {
+  right:-140px;
+  top:0px;
+}
+
+
+
+
 
 .card {
   position: relative;
