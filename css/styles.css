@@ -4366,47 +4366,6 @@ input[type=button].btn-block {
 
 
 
-
-ul, ol {
-  list-style:none;
-}
-
-
-.navbar li a {
-  background-color:#000;
-  color:#fff;
-  text-decoration:none;
-  padding:10px 12px;
-  display:block;
-}
-
-.navbar li a:hover {
-  background-color:#434343;
-}
-
-.navbar li ul {
-  display:none;
-  position:absolute;
-  min-width:140px;
-}
-
-.navbar li:hover > ul {
-  display:block;
-}
-
-.navbar li ul li {
-  position:relative;
-}
-
-.navbar li ul li ul {
-  right:-140px;
-  top:0px;
-}
-
-
-
-
-
 .card {
   position: relative;
   display: flex;
