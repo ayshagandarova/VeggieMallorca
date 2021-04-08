@@ -1,7 +1,7 @@
 //console.log('correcto');
-document.querySelector('#elementoRestaurante').addEventListener('click', traerDatos)
 
 mostrarRestaurants();
+document.querySelector('#elementoRestaurante').addEventListener('click', traerDatos)
 
 function mostrarRestaurants() {
     const xhttp = new XMLHttpRequest()
