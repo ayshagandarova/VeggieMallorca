@@ -16,7 +16,7 @@ function mostrarRestaurants() {
         //tenemos todos los restaurantes
 
         if (this.readyState == 4 && this.status == 200) { //esto sale en otro video y parece que siempre es asi
-            let restaurantsGrid = document.querySelector('#elementoRestaurante"')
+            let restaurantsGrid = document.querySelector('#restaurantsGrid"')
             restaurantsGrid.innerHTML = ''
             restaurantsGrid.innerHTML += `<div class="row">`
             for (let item of datos) {
