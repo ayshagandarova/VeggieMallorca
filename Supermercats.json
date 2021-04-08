@@ -102,5 +102,213 @@
             "pedido": "deliveroo.es"
         }
         
+    },
+    {
+        "nom":"Herbolari Navarro Palma",
+        "descripcio": "A les nostres tendes trobaràs una extensa gama d'alimentació natural i ecològica, artícles per dietes macrobiòtiques, cosmètica, llibres i altres articles relacionats amb la vida sana i natural." ,
+        "detall": "Productes d'alta qualitat.",
+        "tipus": "supermercat",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"5-100€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 72 69 73", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.herbolarionavarro.es",   
+                "facebook": "https://es-es.facebook.com/pages/category/Medical-Company/Herbolario-Navarro-1851513438399283/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/herbolarionavarro._/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187529-d11780674-Reviews-Navarro_Herbolario_healthy_food_cafe-Valencia_Province_of_Valencia_Valencian_Cou.html"
+            }
+        },
+        "puntuacio":"4,5",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "/assets/img/Supermercats/herbolariNavarro/tenda.png",
+            "/assets/img/Supermercats/herbolariNavarro/tenda2.png",
+            "/assets/img/Supermercats/herbolariNavarro/tenda3.png",
+            "/assets/img/Supermercats/herbolariNavarro/tenda4.png",
+            "/assets/img/Supermercats/herbolariNavarro/tenda5.png",
+            "/assets/img/Supermercats/herbolariNavarro/tenda6.png"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de Caro, 34",
+            "lat": 39.57323848125534, 
+            "long":2.638011230029481,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+        
+    },
+    {
+        "nom":"",
+        "descripcio": "Tenda d'aliments a granel. Productes de qualitat: arrossos, llgums, farines, fruites deshidratades, vi, vermut... A més, hi ha conserves i varietat de snacks." ,
+        "detall": "Aposta per el producte local i per pensar un poc més en el medi ambient.",
+        "tipus": "supermercat a pes",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"5-100€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 72 86 81", 
+            "email": "",
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://www.facebook.com/es20debonaire/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/es20debonaire/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d12748719-Reviews-Es_20_de_Bonaire-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"5",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "/assets/img/Supermercats/20Bonaire/tenda.png",
+            "/assets/img/Supermercats/20Bonaire/tenda2.png",
+            "/assets/img/Supermercats/20Bonaire/producte1.png",
+            "/assets/img/Supermercats/20Bonaire/producte2.png",
+            "/assets/img/Supermercats/20Bonaire/producte3.png",
+            "/assets/img/Supermercats/20Bonaire/producte4.png"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer Comte de Barcelona, 26",
+            "lat": 39.57304093831823,
+            "long":2.637623597939436,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "icartaweb.com",
+            "pedido": "deliveroo.es"
+        }
+        
     }
 ]
