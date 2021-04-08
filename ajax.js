@@ -1,6 +1,7 @@
 //console.log('correcto');
 document.querySelector('#restaurants').addEventListener('click',traerDatos)
 
+document.querySelector('#pagRest').addEventListener('click',mostrarRestaurants)
 mostrarRestaurants();
 
 function mostrarRestaurants(){
