@@ -1,7 +1,7 @@
 //console.log('correcto');
 
-//document.querySelector('#pagRest').addEventListener('click',mostrarRestaurants)
-mostrarRestaurants();
+document.querySelector('#portfolioModal1').addEventListener('click',mostrarRestaurants)
+//mostrarRestaurants();
 
 //función que trae los datos cuando se pulsa el boton
    // console.log('dentro de la función');
@@ -11,40 +11,43 @@ mostrarRestaurants();
 
     xhttp.send()
     xhttp.onreadystatechange = function(){
-        let datos = JSON.parse(xhttp.responseText)
-        if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
-                        
-            let geo1 = document.querySelector('#geo1')
-            geo1.innerHTML = datos[0].geo1.address
+        
+    let datos = JSON.parse(xhttp.responseText)
 
-            let horari = document.querySelector('#horari1')
-            horari.innerHTML += `
-                <ul>
-                    <li>Horari:</li>
-                    <li>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</li>
-                    <li>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.dm[0].out}</li>
-                    <li>Dimecres: ${datos[0].horari.dx[0].in}-${datos[0].horari.dx[0].out}</li>
-                    <li>Dijous: ${datos[0].horari.dj[0].in}-${datos[0].horari.dj[0].out}</li>
-                    <li>Divendres: ${datos[0].horari.dv[0].in}-${datos[0].horari.dv[0].out}</li>
-                    <li>Dissabte: ${datos[0].horari.ds[0].in}-${datos[0].horari.ds[0].out}</li>
-                    <li>Diumenge: ${datos[0].horari.dg[0].in}-${datos[0].horari.dg[0].out}</li>
-                </ul>
-                `
-            let descripcio = document.querySelector('#descripcio1')
-            descripcio.innerHTML = datos[0].descripcio
 
-            let telefono = document.querySelector('#telefono1')
-            telefono.innerHTML = datos[0].contacte.telf
+    if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
+        
+        let geo1 = document.querySelector('#geoRest1')
+        geo1.innerHTML = datos[0].geo1.address
 
-            let nombreRestaurante = document.querySelector('#nombreRest1')
-            nombreRestaurante.innerHTML = datos[0].nom
+        let horari = document.querySelector('#horariRest1')
+        horari.innerHTML += `
+            <ul>
+                <li>Horari:</li>
+                <li>Dilluns: ${datos[0].horari.di[0].in}-${datos[0].horari.di[0].out}</li>
+                <li>Dimarts: ${datos[0].horari.dm[0].in}-${datos[0].horari.dm[0].out}</li>
+                <li>Dimecres: ${datos[0].horari.dx[0].in}-${datos[0].horari.dx[0].out}</li>
+                <li>Dijous: ${datos[0].horari.dj[0].in}-${datos[0].horari.dj[0].out}</li>
+                <li>Divendres: ${datos[0].horari.dv[0].in}-${datos[0].horari.dv[0].out}</li>
+                <li>Dissabte: ${datos[0].horari.ds[0].in}-${datos[0].horari.ds[0].out}</li>
+                <li>Diumenge: ${datos[0].horari.dg[0].in}-${datos[0].horari.dg[0].out}</li>
+            </ul>
+            `
+        let descripcio = document.querySelector('#descripcioRest1')
+        descripcio.innerHTML = datos[0].descripcio
 
-            let pagweb = document.querySelector('#paginaweb1')
-            pagweb.innerHTML = datos[0].contacte.pagweb
+        let telefono = document.querySelector('#telRest1')
+        telefono.innerHTML = datos[0].contacte.telf
+
+        let nombreRestaurante = document.querySelector('#nomRest1')
+        nombreRestaurante.innerHTML = datos[0].nom
+
+        let pagweb = document.querySelector('#paginawebRest1')
+        pagweb.innerHTML = datos[0].contacte.pagweb
 
         }
     }
-    
+
 
 function mostrarRestaurants(){
     const xhttp = new XMLHttpRequest()
@@ -63,6 +66,8 @@ function mostrarRestaurants(){
             restaurants.innerHTML = ''
             restaurants.innerHTML += `<div class="row">`
             for(let item of datos){
+                
+                /*
                 restaurants.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
@@ -73,15 +78,13 @@ function mostrarRestaurants(){
                                 </div>
                                 <img class="img-fluid" src=${item.imatges[0]} alt="" />
                             </a>
-
-
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">${item.nom}</div>
                                 <div class="portfolio-caption-subheading text-muted">${item.geo1.address}</div>
                             </div>
                         </div>
                     </div>  
-                `
+                `*/
             }
             restaurants.innerHTML += `</div> `
         }
