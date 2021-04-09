@@ -4,7 +4,7 @@
         "descripcio": "Restaurant vegetarià, ovolàcteo i ecològic. Situat en el centre de Palma.",
         "detall": "Fan enviaments a domicili.",
         "tipus": "vegetarià",
-        "identificador":"1",
+        "identificador":"0",
         "comentari": "exemple: posar tipus de menjar del restaurante",
         "preu":{
             "import":"9-14€",
@@ -214,7 +214,7 @@
         "descripcio": "Cervesses artesanes i plats vegetarians internacionals a un restaurant amb altillo de fusta i terrassa.",
         "detall": "Fan menú del dia complet per 15€.",
         "tipus": "vegetarià",
-        "identificador":"1",
+        "identificador":"2",
         "comentari": "",
         "preu":{
             "import":"13-15€",
@@ -317,7 +317,7 @@
         "descripcio": "Consumir alimentos crudi-veganos de Vegan & Raw despertara en ti la curiosidad de una nueva forma de nutrirse, mas sabia, respetuoso con nuestro entorno y uno mismo. Te llevara a tomar mas conciencia de tu forma de alimentarte y dará ese impulso de vida a zonas de tu cuerpo donde faltaba salud.",
         "detall": "Fan menú del dia complet per 15€.",
         "tipus": "vegan",
-        "identificador":"1",
+        "identificador":"3",
         "comentari": "",
         "preu":{
             "import":"2-3€",

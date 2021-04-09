@@ -1,6 +1,7 @@
 //console.log('correcto');
 document.querySelector('#restaurants').addEventListener('click',traerDatos)
 
+
 document.querySelector('#pagRest').addEventListener('click',mostrarRestaurants)
 mostrarRestaurants();
 
@@ -17,7 +18,7 @@ function mostrarRestaurants(){
         //tenemos todos los restaurantes
 
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
-            let restaurants = document.querySelector('#pagRest')
+            let restaurants = document.querySelector('#restaurants')
             restaurants.innerHTML = `<div class="row">
             `
          
@@ -65,10 +66,16 @@ function mostrarRestaurants(){
 function traerDatos(){
    // console.log('dentro de la función');
    console.log('estamos en la función traer datos')
-   
+   const xhttp = new XMLHttpRequest()
+    // el true indica que es asincrono, aqui importamos los datos 
+    xhttp.open('GET', 'Restaurants.json', true)
+
+    xhttp.send()
+
+        
     xhttp.onreadystatechange = function(){
+        let datos = JSON.parse(xhttp.responseText)
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
-            
 
             
             let geo1 = document.querySelector('#geo1')
