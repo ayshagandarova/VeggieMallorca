@@ -1,6 +1,6 @@
 //console.log('correcto');
 
-document.querySelector('#portfolioModal1').addEventListener('click',mostrarRestaurants)
+//document.querySelector('#portfolioModal1').addEventListener('click',mostrarRestaurants)
 //mostrarRestaurants();
 
 //función que trae los datos cuando se pulsa el boton
@@ -48,7 +48,7 @@ document.querySelector('#portfolioModal1').addEventListener('click',mostrarResta
         }
     }
 
-
+/*
 function mostrarRestaurants(){
     const xhttp = new XMLHttpRequest()
     // el true indica que es asincrono, aqui importamos los datos 
@@ -84,7 +84,7 @@ function mostrarRestaurants(){
                             </div>
                         </div>
                     </div>  
-                `*/
+                `
             }
             restaurants.innerHTML += `</div> `
         }
