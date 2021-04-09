@@ -10163,7 +10163,7 @@ img::-moz-selection {
   font-size: 0.75rem;
   color: #fff;
   text-transform: uppercase;
-  background-color: #a0ca84;
+  background-color: #ff0202;
   border: 0;
 }
 #mainNav .navbar-brand {
@@ -10181,7 +10181,7 @@ img::-moz-selection {
   font-size: 0.95rem;
   color: #fff;
   letter-spacing: 0.0625em;
-  background-color: #df1212;
+  /* aqui es el fondo de los botones de main navbar*/
 }
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
   color: #a0ca84;
