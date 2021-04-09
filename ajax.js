@@ -1,9 +1,10 @@
 //console.log('correcto');
-//document.querySelector('#restaurants').addEventListener('click',traerDatos)
+document.querySelector('#restaurants').addEventListener('click',traerDatos)
 
 
-//document.querySelector('#pagRest').addEventListener('click',mostrarRestaurants)
-mostrarRestaurants()
+document.querySelector('#pagRest').addEventListener('click',mostrarRestaurants)
+mostrarRestaurants();
+
 function mostrarRestaurants(){
     const xhttp = new XMLHttpRequest()
     // el true indica que es asincrono, aqui importamos los datos 
