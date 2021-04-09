@@ -311,6 +311,110 @@
             "menu": "al seu instagram",
             "pedido": ""
         }
-        
+    },
+    {
+        "nom":"Vegan&Raw",
+        "descripcio": "Consumir alimentos crudi-veganos de Vegan & Raw despertara en ti la curiosidad de una nueva forma de nutrirse, mas sabia, respetuoso con nuestro entorno y uno mismo. Te llevara a tomar mas conciencia de tu forma de alimentarte y dará ese impulso de vida a zonas de tu cuerpo donde faltaba salud.",
+        "detall": "Fan menú del dia complet per 15€.",
+        "tipus": "vegan",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"2-3€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 22 90 58", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.veganandraw.es",   
+                "facebook": "https://www.facebook.com/vegandraw/",
+                "twitter": "",
+                "instagram": "",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d10127302-Reviews-Vegan_And_Raw-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"4,2",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "/assets/img/Restaurants/Vegan&Raw/portada.png",
+            "/assets/img/Restaurants/Vegan&Raw/interior.png",
+            "/assets/img/Restaurants/Vegan&Raw/menu.png",
+            "/assets/img/Restaurants/Vegan&Raw/plato1.png",
+            "/assets/img/Restaurants/Vegan&Raw/plato2.png",
+            "/assets/img/Restaurants/Vegan&Raw/plato3.png",
+            "/assets/img/Restaurants/Vegan&Raw/plato4.png"  
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Plaça del Bisbe Berenguer de Palou, 2",
+            "lat": "",  
+            "long": "",
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07003"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "podemos poner la foto",
+            "pedido": ""
+        }
     }
+
 ]
