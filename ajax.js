@@ -1,7 +1,6 @@
 //console.log('correcto');
 document.querySelector('#restaurants').addEventListener('click',traerDatos)
 
-
 document.querySelector('#pagRest').addEventListener('click',mostrarRestaurants)
 mostrarRestaurants();
 
@@ -19,7 +18,8 @@ function mostrarRestaurants(){
 
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
             let restaurants = document.querySelector('#restaurants')
-            restaurants.innerHTML = `<div class="row"`
+            restaurants.innerHTML = ''
+            restaurants.innerHTML += `<div class="row">`
             for(let item of datos){
                 restaurants.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
@@ -30,6 +30,7 @@ function mostrarRestaurants(){
                                 </div>
                                 <img class="img-fluid" src=${item.imatges[0]} alt="" />
                             </a>
+
 
                             <div class="portfolio-modal modal fade" id="plantillaFlotante" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -47,6 +48,7 @@ function mostrarRestaurants(){
                                 </div>
                             </div>
 
+
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">${item.nom}</div>
                                 <div class="portfolio-caption-subheading text-muted">${item.geo1.address}</div>
@@ -55,25 +57,19 @@ function mostrarRestaurants(){
                     </div>  
                 `
             }
-            restaurants.innerHTML=+ `</div>`
+            restaurants.innerHTML += `</div> `
         }
     }
-} 
+}
 
 //función que trae los datos cuando se pulsa el boton
 function traerDatos(){
    // console.log('dentro de la función');
    console.log('estamos en la función traer datos')
-   const xhttp = new XMLHttpRequest()
-    // el true indica que es asincrono, aqui importamos los datos 
-    xhttp.open('GET', 'Restaurants.json', true)
-
-    xhttp.send()
-
-        
+   
     xhttp.onreadystatechange = function(){
-        let datos = JSON.parse(xhttp.responseText)
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
+            
 
             
             let geo1 = document.querySelector('#geo1')
