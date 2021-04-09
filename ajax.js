@@ -77,6 +77,7 @@ function traerDatos1(){
 
     xhttp.send()
     xhttp.onreadystatechange = function(){
+        let datos = JSON.parse(xhttp.responseText)
         if(this.readyState==4 && this.status==200){ //esto sale en otro video y parece que siempre es asi
                         
             let geo1 = document.querySelector('#geo1')
