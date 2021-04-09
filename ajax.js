@@ -1,5 +1,5 @@
 //console.log('correcto');
-document.querySelector('#restaurants').addEventListener('click',traerDatos1)
+document.querySelector('#restaurants1').addEventListener('click',traerDatos1)
 
 document.querySelector('#pagRest').addEventListener('click',mostrarRestaurants)
 mostrarRestaurants();
@@ -24,7 +24,7 @@ function mostrarRestaurants(){
                 restaurants.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" id="restaurants" href="#plantillaFlotante"> 
+                            <a class="portfolio-link" data-toggle="modal" id="restaurants1" href="#portfolioModal1"> 
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
