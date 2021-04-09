@@ -1,5 +1,5 @@
 //console.log('correcto');
-document.querySelector('#restaurants').addEventListener('click',traerDatos)
+//document.querySelector('#restaurants').addEventListener('click',traerDatos)
 
 
 document.querySelector('#pagRest').addEventListener('click',mostrarRestaurants)
@@ -26,7 +26,7 @@ function mostrarRestaurants(){
                 restaurants.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" id="restaurants" href="#plantillaFlotante"> 
+                            <a class="portfolio-link" data-toggle="modal" href="#plantillaFlotante"> 
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
@@ -81,7 +81,7 @@ function mostrarSupermercats(){
                 supermercats.innerHTML += `
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" id="supermercats" href="#plantillaFlotante"> 
+                            <a class="portfolio-link" data-toggle="modal" href="#plantillaFlotante"> 
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
