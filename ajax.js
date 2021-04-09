@@ -20,6 +20,9 @@
         let geo1 = document.querySelector('#geoRest1')
         geo1.innerHTML = datos[0].geo1.address
 
+        let nombreRestaurante = document.querySelector('#nomRest1')
+        nombreRestaurante.innerHTML = datos[0].nom
+
         let geopos1 = document.querySelector('#geoposRest1')
         geopos1.innerHTML = datos[0].geo1.address
 
@@ -42,8 +45,7 @@
         let telefono = document.querySelector('#telRest1')
         telefono.innerHTML = datos[0].contacte.telf
 
-        let nombreRestaurante = document.querySelector('#nomRest1')
-        nombreRestaurante.innerHTML = datos[0].nom
+        
 
         let nomRestaurante = document.querySelector('#nombreRest1')
         nomRestaurante.innerHTML = datos[0].nom
