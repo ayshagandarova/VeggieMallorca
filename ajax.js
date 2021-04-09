@@ -62,7 +62,7 @@ function mostrarRestaurants(){
     }
 }
 
-function mostrarRestaurants(){
+function mostrarSupermercats(){
     const xhttp = new XMLHttpRequest()
     // el true indica que es asincrono, aqui importamos los datos 
     xhttp.open('GET', 'Supermercats.json', true)
