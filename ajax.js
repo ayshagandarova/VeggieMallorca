@@ -8,7 +8,7 @@
   
   
   
-   function leer() {
+   function leerRestaurantes() {
     var xmlhttp = new XMLHttpRequest();
     var url = "Restaurants.json";
     xmlhttp.onreadystatechange = function() {
@@ -41,6 +41,33 @@
     xmlhttp.send();
   }
 
+
+  function leerSupermercats() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "Supermercats.json";
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var datos = JSON.parse(xmlhttp.responseText);
+            //super1
+            var nombre = document.getElementById("nomSuper1")
+            nombre.innerHTML = datos[0].nom
+            var geo = document.getElementById("geoSuper1")
+            geo.innerHTML = datos[0].geo1.address
+            //super2
+            var nombre = document.getElementById("nomSuper2")
+            nombre.innerHTML = datos[1].nom
+            var geo = document.getElementById("geoSuper2")
+            geo.innerHTML = datos[1].geo1.address
+            //super3
+             var nombre = document.getElementById("nomSuper")
+             nombre.innerHTML = datos[2].nom
+             var geo = document.getElementById("geoSuper3")
+             geo.innerHTML = datos[2].geo1.address
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  }
 
 
 
