@@ -14,11 +14,17 @@
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-            var geo1 = document.getElementById("geoRest1")
-            geo1.innerHTML = datos[0].geo1.address
-    
+            //rest1
             var nombreRestaurante = document.getElementById("nomRest1")
             nombreRestaurante.innerHTML = datos[0].nom
+            var geo1 = document.getElementById("geoRest1")
+            geo1.innerHTML = datos[0].geo1.address
+            //rest2
+            var nombreRestaurante = document.getElementById("nomRest2")
+            nombreRestaurante.innerHTML = datos[1].nom
+            var geo1 = document.getElementById("geoRest2")
+            geo1.innerHTML = datos[1].geo1.address
+            
         }
     };
     xmlhttp.open("GET", url, true);
