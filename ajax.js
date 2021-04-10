@@ -4,7 +4,6 @@
 //mostrarRestaurants();
 
 //función que trae los datos cuando se pulsa el boton
-   // console.log('dentro de la función');
   
   
   
