@@ -59,7 +59,7 @@
             var geo = document.getElementById("geoSuper2")
             geo.innerHTML = datos[1].geo1.address
             //super3
-             var nombre = document.getElementById("nomSuper")
+             var nombre = document.getElementById("nomSuper3")
              nombre.innerHTML = datos[2].nom
              var geo = document.getElementById("geoSuper3")
              geo.innerHTML = datos[2].geo1.address
