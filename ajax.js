@@ -24,6 +24,16 @@
             nombreRestaurante.innerHTML = datos[1].nom
             var geo1 = document.getElementById("geoRest2")
             geo1.innerHTML = datos[1].geo1.address
+            //rest3
+             var nombreRestaurante = document.getElementById("nomRest3")
+             nombreRestaurante.innerHTML = datos[2].nom
+             var geo1 = document.getElementById("geoRest3")
+             geo1.innerHTML = datos[2].geo1.address
+            //rest4
+            var nombreRestaurante = document.getElementById("nomRest4")
+            nombreRestaurante.innerHTML = datos[3].nom
+            var geo1 = document.getElementById("geoRest4")
+            geo1.innerHTML = datos[3].geo1.address
             
         }
     };
