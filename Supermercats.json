@@ -208,10 +208,10 @@
         
     },
     {
-        "nom":"",
-        "descripcio": "Tenda d'aliments a granel. Productes de qualitat: arrossos, llgums, farines, fruites deshidratades, vi, vermut... A més, hi ha conserves i varietat de snacks." ,
-        "detall": "Aposta per el producte local i per pensar un poc més en el medi ambient.",
-        "tipus": "supermercat a pes",
+        "nom":"Veritas",
+        "descripcio": "En Veritas apostem per un model ecològic, per això, en els nostres supermercats només trobaràs productes ecològics. Diversitat en l'assortit, Fórmules saludables, Envasos sostenibles" ,
+        "detall": "",
+        "tipus": "",
         "identificador":"1",
         "comentari": "",
         "preu":{
@@ -219,17 +219,17 @@
             "coment-preu":""
         },
         "contacte":{
-            "telf": "971 72 86 81", 
+            "telf": "871 90 45 85", 
             "email": "",
             "xarxes":  {  
-                "web": "",   
-                "facebook": "https://www.facebook.com/es20debonaire/",
+                "web": "https://www.veritas.es",   
+                "facebook": "",
                 "twitter": "",
-                "instagram": "https://www.instagram.com/es20debonaire/",
-                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d12748719-Reviews-Es_20_de_Bonaire-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+                "instagram": "",
+                "tripadvisor": ""
             }
         },
-        "puntuacio":"5",
+        "puntuacio":"4,3",
         "visualitzacions":"",
         "likes":0,
 
@@ -238,12 +238,10 @@
             " "
         ],
         "imatges": [
-            "/assets/img/Supermercats/20Bonaire/tenda.png",
-            "/assets/img/Supermercats/20Bonaire/tenda2.png",
-            "/assets/img/Supermercats/20Bonaire/producte1.png",
-            "/assets/img/Supermercats/20Bonaire/producte2.png",
-            "/assets/img/Supermercats/20Bonaire/producte3.png",
-            "/assets/img/Supermercats/20Bonaire/producte4.png"
+            "/assets/img/Supermercats/Veritas/tenda1.png",
+            "/assets/img/Supermercats/Veritas/tenda2.png",
+            "/assets/img/Supermercats/Veritas/tenda3.png",
+            "/assets/img/Supermercats/Veritas/tenda4.png"
         ],
         "videos": [
             {"tipus": "youtube"},
@@ -254,44 +252,44 @@
             {"url": ""}
         ],
         "geo1":{
-            "address": "Carrer Comte de Barcelona, 26",
+            "address": "Carrer de l'Emperadriu Eugènia, 9",
             "lat": 39.57304093831823,
             "long":2.637623597939436,
             "city":"Palma",
             "Country":"Espanya",
-            "zip": "07013"
+            "zip": "07010"
         },
         "geo2":{
-            "address": "",
+            "address": "Plaça del Comtat del Rosselló, 6",
             "lat": "",
             "long":"",
-            "city":"",
-            "Country":"",
-            "zip":""
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip":"07002"
         },
         "horari":{
                 "di": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "09:15","out": "21:15"},
                     {"in": "-","out": "-"}
                 ],
                 "dm": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "09:15","out": "21:15"},
                     {"in": "-","out": "-"}
                 ],
                 "dx": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "09:15","out": "21:15"},
                     {"in": "-","out": "-"}
                 ],
                 "dj": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "09:15","out": "21:15"},
                     {"in": "-","out": "-"}
                 ],
                 "dv": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "09:15","out": "21:15"},
                     {"in": "-","out": "-"}
                 ],
                 "ds": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "09:15","out": "21:15"},
                     {"in": "-","out": "-"}
                 ],
                 "dg": [
