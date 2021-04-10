@@ -5,6 +5,32 @@
 
 //función que trae los datos cuando se pulsa el boton
    // console.log('dentro de la función');
+  
+  
+  
+  
+   function leer() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "Restaurants.json";
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var myArr = JSON.parse(xmlhttp.responseText);
+            let geo1 = document.getElementById('#geoRest1')
+            geo1.innerHTML = datos[0].geo1.address
+    
+            let nombreRestaurante = document.getElementById('#nomRest1')
+            nombreRestaurante.innerHTML = datos[0].nom
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  }
+  
+  
+  
+  
+  
+  /*
    const xhttp = new XMLHttpRequest()
     // el true indica que es asincrono, aqui importamos los datos 
     xhttp.open('GET', 'Restaurants.json', true)
