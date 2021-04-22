@@ -18,13 +18,22 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+
+    <script>
+        function show(shown, hidden) {
+            document.getElementById(shown).style.display = 'block';
+            document.getElementById(hidden).style.display = 'none';
+            return false;
+        }
+    </script>
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="leerRestaurantes()">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="index.html"><img src="assets/img/veggieLogo.png"
+            <a class="navbar-brand js-scroll-trigger" href="#"
+                onclick="return show('paginaIndex','paginaRestaurants');"><img src="assets/img/veggieLogo.png"
                     alt="" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -38,13 +47,19 @@
                     <nav id="menu">
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <!-- Aquí estarán todos los links a las planas-->
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" id="pagRest" href="restaurants.html">Restaurants</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" id="pagSuper" href="supermercats.html">Supermercats</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" id="pagInfo" href="informacio.html">+Informació</a>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"
+                                    onclick="return show('paginaRestaurants','paginaIndex');">Restaurants</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"
+                                    onclick="return show('paginaSupermercats','paginaIndex');">Supermercats</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"
+                                    onclick="return show('paginaInformacio','paginaIndex');">+Informació</a>
                                 <ul class="navbar-nav text-uppercase ml-auto">
-                                    <li class="subitem"> <a href="restaurants.html"> Cursos</a></li>
-                                    <li class="subitem"> <a href="restaurants.html"> Fires</a></li>
-                                    <li class="subitem"> <a href="restaurants.html"> +Info</a></li>
+                                    <li class="subitem"> <a href="#"
+                                            onclick="return show('paginaInformacio','paginaIndex');"> Cursos</a></li>
+                                    <li class="subitem"> <a href="#"
+                                            onclick="return show('paginaInformacio','paginaIndex');"> Fires</a></li>
+                                    <li class="subitem"> <a href="#"
+                                            onclick="return show('paginaInformacio','paginaIndex');"> +Info</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -53,113 +68,800 @@
             </div>
         </div>
     </nav>
-    <!-- Masthead-->
-    <header class="masthead">
-        <div class="container">
-            <div class="masthead-subheading">Benvinguts i benvingudes! </div>
-            <div class="masthead-heading text-uppercase">Veggie Mallorca</div>
 
-            <!-- Això és el botó q posava "hello" en groc
+    <!-- INDEX-->
+    <div id="paginaIndex">
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Benvinguts i benvingudes! </div>
+                <div class="masthead-heading text-uppercase">Veggie Mallorca</div>
+
+                <!-- Això és el botó q posava "hello" en groc
                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#restaurants">hello</a>-->
-        </div>
-    </header>
-    <!-- Services-->
-    <section class="page-section">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase">Menjar bé tots els dies és més senzill del que et penses.
-                </h2>
-                <h3 class="section-subheading text-muted">Descobreix les meravelles que ofereix el món vegetarià: troba
-                    aquí
-                    tota la inspiració necessària i troba una nova forma de cuidar-te.</h3>
             </div>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fas fa-utensils fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">Restaurants</h4>
-                    <p class="text-muted">Guia dels millors restaurants vegetarians i vegans de l'illa.</p>
+        </header>
+        <!-- Services-->
+        <section class="page-section">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Menjar bé tots els dies és més senzill del que et penses.
+                    </h2>
+                    <h3 class="section-subheading text-muted">Descobreix les meravelles que ofereix el món vegetarià:
+                        troba
+                        aquí
+                        tota la inspiració necessària i troba una nova forma de cuidar-te.</h3>
                 </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fas fa-shopping-basket fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">Supermercats</h4>
-                    <p class="text-muted">Selecció de supermercats i petits comerços que ofereixen productes ecològics.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fas fa-info fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">+ Informació</h4>
-                    <p class="text-muted">Noticíes d'actualitat sobre el vegetarianisme. També tenim diversos cursos
-                        tant presencials com online.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team-->
-    <section class="page-section bg-light" id="team">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase">EL NOSTRE EQUIP</h2>
-                <h3 class="section-subheading text-muted">Treballam per anar millorant dia a dia.</h3>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="" />
-                        <h4>Maria Orell</h4>
-                        <p class="text-muted">Enginyera Informàtica</p>
-                        <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-utensils fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Restaurants</h4>
+                        <p class="text-muted">Guia dels millors restaurants vegetarians i vegans de l'illa.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-shopping-basket fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Supermercats</h4>
+                        <p class="text-muted">Selecció de supermercats i petits comerços que ofereixen productes
+                            ecològics.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-info fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">+ Informació</h4>
+                        <p class="text-muted">Noticíes d'actualitat sobre el vegetarianisme. També tenim diversos cursos
+                            tant presencials com online.</p>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="" />
-                        <h4>Aysha Gandarova</h4>
-                        <p class="text-muted">Enginyera Informàtica</p>
-                        <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+            </div>
+        </section>
+
+        <!-- Team-->
+        <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">EL NOSTRE EQUIP</h2>
+                    <h3 class="section-subheading text-muted">Treballam per anar millorant dia a dia.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="" />
+                            <h4>Maria Orell</h4>
+                            <p class="text-muted">Enginyera Informàtica</p>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="" />
+                            <h4>Aysha Gandarova</h4>
+                            <p class="text-muted">Enginyera Informàtica</p>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <p class="large text-muted">Sobre nosotros....</p>
                     </div>
                 </div>
-
             </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <p class="large text-muted">Sobre nosotros....</p>
+        </section>
+        <!-- Clients-->
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png"
+                                width="100" alt="" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png"
+                                width="200" alt="" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/ecoVegetaria.png"
+                                width="100" alt="" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/santosha.png"
+                                width="170" alt="" /></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Clients-->
-    <div class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png" width="100"
-                            alt="" /></a>
+    </div>
+
+    <!-- RESTAURANTS -->
+    <div id="paginaRestaurants">
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Restaurants</h2>
+                    <h3 class="section-subheading text-muted">Aquí trobàs la millor secció de restaurants que tenen
+                        opcions
+                        veganes o vegetarianes.</h3>
                 </div>
-                <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png"
-                            width="200" alt="" /></a>
+                <div class="infoRest" id="restaurants">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                            <div class="portfolio-item">
+                                <a class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal1">
+                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/img/Restaurants/EcoVegetaria/portada.png"
+                                            alt="" />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading" id="nomRest1"></div>
+                                        <div class="portfolio-caption-subheading text-muted" id="geoRest1"></div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                            <div class="portfolio-item">
+                                <a class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal2">
+                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                        </div>
+                                        <img class="img-fluid"
+                                            src="assets/img/Restaurants/PlaerVegetaria/restaurante.png" alt="" />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading" id="nomRest2"></div>
+                                        <div class="portfolio-caption-subheading text-muted" id="geoRest2"></div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                            <div class="portfolio-item">
+                                <a class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal3">
+                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/img/Restaurants/PlaerNatural/restaurante.png"
+                                            alt="" />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading" id="nomRest3"></div>
+                                        <div class="portfolio-caption-subheading text-muted" id="geoRest3"></div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                            <div class="portfolio-item">
+                                <a class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal4">
+                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/img/Restaurants/Vegan&Raw/portada.png"
+                                            alt="" />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading" id="nomRest4"></div>
+                                        <div class="portfolio-caption-subheading text-muted" id="geoRest4"></div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                            <div class="portfolio-item">
+                                <a class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal5">
+                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/img/Restaurants/EcoVegetaria/portada.png"
+                                            alt="" />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading" id="nomRest5">Restaurant 5</div>
+                                        <div class="portfolio-caption-subheading text-muted" id="geoRest5">Carrer X, núm
+                                            20
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                            <div class="portfolio-item">
+                                <a class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal6">
+                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/img/Restaurants/EcoVegetaria/portada.png"
+                                            alt="" />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading" id="nomRest6">Restaurant 6</div>
+                                        <div class="portfolio-caption-subheading text-muted" id="geoRest6">Carrer X, núm
+                                            20
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- aquí viene todo lo referente a crear las diferentes casillas para los restaurantes -->
+                    </div>
                 </div>
-                <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/ecoVegetaria.png"
-                            width="100" alt="" /></a>
+            </div>
+        </section>
+    </div>
+
+    <!-- SUPERMERCATS -->
+    <div id="paginaSupermercats">
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Supermercats</h2>
+                    <h3 class="section-subheading text-muted">Aquí trobàs la millor secció de supermercats que tenen
+                        opcions
+                        veganes o vegetarianes.</h3>
                 </div>
-                <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/santosha.png" width="170"
-                            alt="" /></a>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/Supermercats/20Bonaire/tenda.png" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading" id="nomSuper1"></div>
+                                <div class="portfolio-caption-subheading text-muted" id="geoSuper1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/Supermercats/herbolariNavarro/tenda.jpg"
+                                    alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading" id="nomSuper2"></div>
+                                <div class="portfolio-caption-subheading text-muted" id="geoSuper2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/Supermercats/Veritas/tenda4.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading" id="nomSuper3"></div>
+                                <div class="portfolio-caption-subheading text-muted" id="geoSuper3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/Supermercats/20Bonaire/tenda.png" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading" id="nomSuper4">Restaurant X</div>
+                                <div class="portfolio-caption-subheading text-muted" id="geoSuper4">Carrer X, núm 20
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/Supermercats/20Bonaire/tenda.png" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading" id="nomSuper5">Restaurant X</div>
+                                <div class="portfolio-caption-subheading text-muted" id="geoSuper5">Carrer X, núm 20
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/Supermercats/20Bonaire/tenda.png" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading" id="nomSuper6">Restaurant X</div>
+                                <div class="portfolio-caption-subheading text-muted" id="geoSuper6">Carrer X, núm 20
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- INFORMACIO -->
+    <div id="paginaInformacio">
+        <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">MÉS INFORMACIÓ RELLEVANT</h2>
+                    <h3 class="section-subheading text-muted">Segueix descobrint visitant les fires de l'illa, diferents
+                        cursos i tot un conjunt de curiositats.</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image" data-toggle="modal" href="#portfolioModal1"><img
+                                class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading" data-toggle="modal" href="#portfolioModal1">
+                                <h4>Fira Vegana Inca</h4>
+                                <h4 class="subheading">30 octubre de 2019</h4>
+                            </div>
+                            <div class="timeline-body" data-toggle="modal" href="#portfolioModal1">
+                                <p class="text-muted">«Va a haber stands de comida vegana, y el domingo haremos un
+                                    concurso, además de platos condimentados y talleres, haremos charlas para explicar
+                                    qué significa ser vegano y como vive un vegano». </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg"
+                                alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Curs online veterarià.</h4>
+                                <h4 class="subheading">Nou curs disponible</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
+                                    voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit
+                                    vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg"
+                                alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Receptes veganes Nadal.</h4>
+                                <h4 class="subheading">No et quedis sense idees!</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
+                                    voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit
+                                    vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg"
+                                alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Fira ecològica Santa Maria.</h4>
+                                <h4 class="subheading">Més de 50 paradetes.</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
+                                    voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit
+                                    vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>
+                                Continua
+                                <br />
+                                descobrint
+                                <br />
+                                aquí!
+                            </h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Portfolio</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Threads</div>
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/02-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Explore</div>
+                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/03-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Finish</div>
+                                <div class="portfolio-caption-subheading text-muted">Identity</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/04-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Lines</div>
+                                <div class="portfolio-caption-subheading text-muted">Branding</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/05-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Southwest</div>
+                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/06-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Window</div>
+                                <div class="portfolio-caption-subheading text-muted">Photography</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team-->
+        <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">EL NOSTRE EQUIP</h2>
+                    <h3 class="section-subheading text-muted">Treballam per anar millorant dia a dia.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="" />
+                            <h4>Maria Orell</h4>
+                            <p class="text-muted">Enginyera Informàtica</p>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="" />
+                            <h4>Aysha Gandarova</h4>
+                            <p class="text-muted">Enginyera Informàtica</p>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <p class="large text-muted">Sobre nosotros....</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Clients-->
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png"
+                                width="100" alt="" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png"
+                                width="200" alt="" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/ecoVegetaria.png"
+                                width="100" alt="" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/santosha.png"
+                                width="170" alt="" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modals-->
+        <!-- Modal 1-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/01-full.jpg"
+                                        alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>Date: January 2020</li>
+                                        <li>Client: Threads</li>
+                                        <li>Category: Illustration</li>
+                                    </ul>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 2-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/02-full.jpg"
+                                        alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>Date: January 2020</li>
+                                        <li>Client: Explore</li>
+                                        <li>Category: Graphic Design</li>
+                                    </ul>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 3-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/03-full.jpg"
+                                        alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>Date: January 2020</li>
+                                        <li>Client: Finish</li>
+                                        <li>Category: Identity</li>
+                                    </ul>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 4-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/04-full.jpg"
+                                        alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>Date: January 2020</li>
+                                        <li>Client: Lines</li>
+                                        <li>Category: Branding</li>
+                                    </ul>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 5-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/05-full.jpg"
+                                        alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>Date: January 2020</li>
+                                        <li>Client: Southwest</li>
+                                        <li>Category: Website Design</li>
+                                    </ul>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 6-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/06-full.jpg"
+                                        alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>Date: January 2020</li>
+                                        <li>Client: Window</li>
+                                        <li>Category: Photography</li>
+                                    </ul>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
