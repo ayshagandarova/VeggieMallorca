@@ -20,20 +20,23 @@
     <link href="css/styles.css" rel="stylesheet" />
 
     <script>
-        function show(shown, hidden) {
+        function show(shown, hidden1, hidden2, hidden3) {
             document.getElementById(shown).style.display = 'block';
-            document.getElementById(hidden).style.display = 'none';
+            document.getElementById(hidden1).style.display = 'none';
+            document.getElementById(hidden2).style.display = 'none';
+            document.getElementById(hidden3).style.display = 'none';
+
             return false;
         }
     </script>
 </head>
 
-<body id="page-top" onload="leerRestaurantes()">
+<body id="page-top" onload="leerRestaurantes(),leerSupermercats()">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="#"
-                onclick="return show('paginaIndex','paginaRestaurants');"><img src="assets/img/veggieLogo.png"
+                onclick="return show('paginaIndex','paginaRestaurants','paginaSupermercats','paginaInformacio');"><img src="assets/img/veggieLogo.png"
                     alt="" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -48,18 +51,18 @@
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <!-- Aquí estarán todos los links a las planas-->
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"
-                                    onclick="return show('paginaRestaurants','paginaIndex');">Restaurants</a></li>
+                                    onclick="return show('paginaRestaurants','paginaIndex','paginaSupermercats','paginaInformacio');">Restaurants</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"
-                                    onclick="return show('paginaSupermercats','paginaIndex');">Supermercats</a></li>
+                                    onclick="return show('paginaSupermercats','paginaIndex','paginaRestaurants','paginaInformacio');">Supermercats</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"
-                                    onclick="return show('paginaInformacio','paginaIndex');">+Informació</a>
+                                    onclick="return show('paginaInformacio','paginaIndex','paginaRestaurants','paginaRestaurants');">+Informació</a>
                                 <ul class="navbar-nav text-uppercase ml-auto">
                                     <li class="subitem"> <a href="#"
-                                            onclick="return show('paginaInformacio','paginaIndex');"> Cursos</a></li>
+                                            onclick="return show('paginaInformacio','paginaIndex','paginaRestaurants','paginaRestaurants');"> Cursos</a></li>
                                     <li class="subitem"> <a href="#"
-                                            onclick="return show('paginaInformacio','paginaIndex');"> Fires</a></li>
+                                            onclick="return show('paginaInformacio','paginaIndex','paginaRestaurants','paginaRestaurants');"> Fires</a></li>
                                     <li class="subitem"> <a href="#"
-                                            onclick="return show('paginaInformacio','paginaIndex');"> +Info</a></li>
+                                            onclick="return show('paginaInformacio','paginaIndex','paginaRestaurants','paginaRestaurants');"> +Info</a></li>
                                 </ul>
                             </li>
                         </ul>
