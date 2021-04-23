@@ -14,6 +14,7 @@
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
+            
             //rest1
             var nombreRestaurante = document.getElementById("nomRest1")
             nombreRestaurante.innerHTML = datos[0].nom
@@ -70,6 +71,36 @@
   }
 
 
+var Twit = require('twit');
+var config = require('./config');
+var T = new Twit(config);
+var params = {
+    q: 'rainbow',
+    count: 2
+}
+T.get('search/tweets', params, gotData);
+function gotData(err, data, response){
+    var tweets = data.statuses;
+    for (var i = 0; i < tweets.length; i++){
+        console.log(tweets[i].text);
+    }
+}
+
+function updateTweets(tweets) { 
+    var tweetSelection = document.getElementById("tweets");
+  
+    for (var i = 0; i < tweets.length; i++) {
+      tweet = tweets[i];
+      var option = document.createElement("option");
+      option.text = tweet.text;
+      option.value = tweet.text.replace("\"", "'");
+      console.log("The option is: " + option);
+  
+      tweetSelection.options.add(option);
+    }
+  
+    tweetsSelection.selectedIndex = 0;
+  }
 
   /*
    const xhttp = new XMLHttpRequest()
