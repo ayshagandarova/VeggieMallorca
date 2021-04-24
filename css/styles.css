@@ -10614,6 +10614,13 @@ section#contact form#contactForm :-ms-input-placeholder {
   background-image: url('../assets/img/punteroMapa.png');
   background-size: cover;
   width: 50px;
-  height: 50px;
+  height: 70px;
   cursor: pointer;
 }
+.mapboxgl-popup {
+  max-width: 200px;
+  }
+  .mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  }
