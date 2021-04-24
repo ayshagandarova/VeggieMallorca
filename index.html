@@ -29,9 +29,10 @@
             return false;
         }
     </script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
+    <!-- GOOGLE MAPS -->
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body id="page-top" onload="leerRestaurantes(),leerSupermercats()">
@@ -174,29 +175,6 @@
                 </div>
             </div>
         </section>
-        <!-- Clients-->
-        <div class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png"
-                                width="100" alt="" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png"
-                                width="200" alt="" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/ecoVegetaria.png"
-                                width="100" alt="" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/santosha.png"
-                                width="170" alt="" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- RESTAURANTS -->
@@ -381,10 +359,8 @@
                                 </div>
                             </div>
 
-                            <!--</div>
-                        </div>-->
-                            <div class="col-lg-6">
-                                <div id="myMap" style="height: 300px"></div>
+                            <div class="col-lg-6"> <!-- mapa-->
+                                <div id='map'></div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -1725,6 +1701,29 @@
             </div>
         </div>
     </div>
+    <!-- Clients-->
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 my-3">
+                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png" width="100"
+                            alt="" /></a>
+                </div>
+                <div class="col-md-3 col-sm-6 my-3">
+                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png"
+                            width="200" alt="" /></a>
+                </div>
+                <div class="col-md-3 col-sm-6 my-3">
+                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/ecoVegetaria.png"
+                            width="100" alt="" /></a>
+                </div>
+                <div class="col-md-3 col-sm-6 my-3">
+                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/santosha.png" width="170"
+                            alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container">
@@ -1774,7 +1773,7 @@
                         href="https://twitter.com/VeganMallorca?ref_src=twsrc%5Etfw">Tweets by VeganMallorca</a>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
-                
+
             </form>
         </div>
     </section>
@@ -1812,6 +1811,7 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <script src="ajax.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
 </body>
 
 </html>

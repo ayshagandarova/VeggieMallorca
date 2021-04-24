@@ -47,8 +47,8 @@
         ],
         "geo1":{
             "address": "Carrer Comte de Barcelona, 26",
-            "lat": 39.57304093831823,
-            "long":2.637623597939436,
+            "lat": 39.572878397466575, 
+            "long":2.637633707376558,
             "city":"Palma",
             "Country":"Espanya",
             "zip": "07013"

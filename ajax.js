@@ -4,7 +4,16 @@
 //mostrarRestaurants();
 
 //función que trae los datos cuando se pulsa el boton
-  
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [2.651537069816233, 39.570644797011795],
+  zoom: 13,
+});
+
   
   
   
@@ -20,6 +29,28 @@
             nombreRestaurante.innerHTML = datos[0].nom
             var geo1 = document.getElementById("geoRest1")
             geo1.innerHTML = datos[0].geo1.address
+
+
+            var pointer = document.createElement('div');
+            pointer.className = 'marker';
+            
+            new mapboxgl.Marker(pointer)
+                .setLngLat([datos[0].geo1.long, datos[0].geo1.lat])
+                .setPopup(
+                new mapboxgl.Popup({offset: 25})
+                .setHTML(
+                    '<h3>' +
+                    datos[0].nom +
+                    '</h3><p>' +
+                    datos[0].geo1.address +
+                    '</p>'
+                    )
+                )
+                .addTo(map);
+
+
+
+
             //rest2
             var nombreRestaurante = document.getElementById("nomRest2")
             nombreRestaurante.innerHTML = datos[1].nom
@@ -127,14 +158,42 @@ function updateTweets(tweets) {
 */
 
 
-const tilesProvider = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-let myMap = L.map('myMap').setView([51.505, -0.09], 13);
 
-L.tileLayer(tilesProvider,
-    {
-        maxZoom: 18
+
+
+
+
+
+
+/*
+var map = L.map('mapid').setView([51.505, -0.09], 13);
+'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}'
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('Nombre <br> Calle')
+    .openPopup();
+/*
+const tilesProvider = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+let myMap = L.map('myMap').setView([39.583796, 2.623672], 15);
+
+L.tileLayer(tilesProvider, {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'your.mapbox.access.token'
     }).addTo(myMap)
-  /*
+    
+let marker = L.marker([39.583796, 2.623672]).addTo(myMap)//[39.5695, 2.65002]
+
+marker.bindPopup("<b>Nombre Restaurante</b><br>Calle.").openPopup();
+  
+*/
+/*
    const xhttp = new XMLHttpRequest()
     // el true indica que es asincrono, aqui importamos los datos 
     xhttp.open('GET', 'Restaurants.json', true)
