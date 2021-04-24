@@ -70,22 +70,43 @@
     xmlhttp.send();
   }
 
-/*
-var Twit = require('twit');
-var config = require('./config');
-var T = new Twit(config);
+// TWITTER ***
+const Twit = require('twit');
+const notifier = require('node-notifier');
+const open = require('open');
+const franc = require ('franc');
+
+const apiKey = '0blFCwydwm7VV088tL852RcGL';
+const apiSecretKey = '1flgnZZx1yoQcRwOD0KsS522E6Qtv6i3IxMieNqm7xMHgXo4MU';
+//const bearerToken = AAAAAAAAAAAAAAAAAAAAAHZ%2FOwEAAAAAx4YsVYPWMA%2Bxgy9hz00qU%2F1H61M%3DoCS8coprls6FmieJblOIjMoR1eRz5kLx2jhSCGpm1wUWX22yrD;
+const accessToken = '911228614380855297-92l1HsihKFewmKabBs7gM9QJEC1khd3';
+const accessTokenSecret = 'q1zkDKB9QHC2GK95TRu3N7XxfWsrWNjsfa4Dptlp04YF9';
+
+var T = new Twit({
+    consumer_key: apiKey,
+    consumer_secret: apiSecretKey,
+    access_token: accessToken,
+    access_token_secret: accessTokenSecret,
+});
+
 var params = {
-    q: 'rainbow',
+    q: '#tesla since:2020-04-15',
     count: 2
 }
-T.get('search/tweets', params, gotData);
+
+(async () => {
+    //get recent tweets
+    T.get('search/tweets', params, gotData);
+})
+    
+
 function gotData(err, data, response){
     var tweets = data.statuses;
     for (var i = 0; i < tweets.length; i++){
         console.log(tweets[i].text);
     }
 }
-
+/*
 function updateTweets(tweets) { 
     var tweetSelection = document.getElementById("tweets");
   
@@ -102,15 +123,6 @@ function updateTweets(tweets) {
     tweetsSelection.selectedIndex = 0;
   }
 */
-
-
-const tilesProvider = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-let myMap = L.map('myMap').setView([51.505, -0.09], 13);
-
-L.tileLayer(tilesProvider,
-    {
-        maxZoom: 18
-    }).addTo(myMap)
   /*
    const xhttp = new XMLHttpRequest()
     // el true indica que es asincrono, aqui importamos los datos 
