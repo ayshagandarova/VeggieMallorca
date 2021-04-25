@@ -1,0 +1,312 @@
+[
+    {
+        "nom":"Curs cuina vegetariana Galley Club",
+        "descripcio": "Curs de cuina vegetariana, on pots preparar i cuinar les millors verdures de temporada, del mercat directament a la taula." ,
+        "detall": "Aposta per el producte local.",
+        "tipus": "curs",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"50€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "662 348 306", 
+            "email": "",
+            "xarxes":  {  
+                "web": "http://thegalleyclub.com",   
+                "facebook": "https://es-es.facebook.com/TheGalleyClub",
+                "twitter": "https://twitter.com/thegalleyclub?lang=es",
+                "instagram": "https://www.instagram.com/thegalleyclub/",
+                "tripadvisor": "https://www.tripadvisor.es/Attraction_Review-g187463-d8842102-Reviews-The_Galley_Club_One_Day_Classes-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "/assets/img/Informacio/cursos/vegetariaGalley/foto1.jpeg",
+            "/assets/img/Informacio/cursos/vegetariaGalley/foto2.jpg",
+            "/assets/img/Informacio/cursos/vegetariaGalley/foto3.jpeg",
+            "/assets/img/Informacio/cursos/vegetariaGalley/foto3.jpeg",
+            "/assets/img/Informacio/cursos/vegetariaGalley/foto5.jpg",
+            ""
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de Cotoner, 21",
+            "lat": 39.572338939589834, 
+            "long":2.637020987852384,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "30 març",
+            "startTimeEvent": "18:00",
+            "endDataEvent":"30 març",
+            "endTimeEvent":"21:00"
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+        
+    },
+    {
+        "nom":"Curs introducció cuina saludable Galley Club",
+        "descripcio": "Si estàs pensant en dur una dieta més vegetariana, menjar mé sa i veure lo bé que ets trobes fent un canvi d'alimentació, amb aquest curs podràs conèixer el món vegetarià des de la base, sense gastar fortunes en la teva alimentació, sentint-te amb molta més vitalitat." ,
+        "detall": "Només per 4 alumnes.",
+        "tipus": "curs",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"200€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "662 348 306", 
+            "email": "",
+            "xarxes":  {  
+                "web": "http://thegalleyclub.com",   
+                "facebook": "https://es-es.facebook.com/TheGalleyClub",
+                "twitter": "https://twitter.com/thegalleyclub?lang=es",
+                "instagram": "https://www.instagram.com/thegalleyclub/",
+                "tripadvisor": "https://www.tripadvisor.es/Attraction_Review-g187463-d8842102-Reviews-The_Galley_Club_One_Day_Classes-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "/assets/img/Informacio/cursos/saludableGalley/foto1.jpg",
+            "/assets/img/Informacio/cursos/saludableGalley/foto2.jpg",
+            "/assets/img/Informacio/cursos/saludableGalley/foto3.jpg",
+            "/assets/img/Informacio/cursos/saludableGalley/foto3.jpg",
+            "/assets/img/Informacio/cursos/saludableGalley/foto5.jpg",
+            ""
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de Cotoner, 21",
+            "lat": 39.572338939589834, 
+            "long":2.637020987852384,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "18:00","out": "21:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "7 desembre",
+            "startTimeEvent": "18:00",
+            "endDataEvent":"28 desembre",
+            "endTimeEvent":"21:00"
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+        
+    },
+    {
+        "nom":"--",
+        "descripcio": "En Veritas apostem per un model ecològic, per això, en els nostres supermercats només trobaràs productes ecològics. Diversitat en l'assortit, Fórmules saludables, Envasos sostenibles" ,
+        "detall": "",
+        "tipus": "",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"5-100€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "871 90 45 85", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.veritas.es",   
+                "facebook": "",
+                "twitter": "",
+                "instagram": "",
+                "tripadvisor": ""
+            }
+        },
+        "puntuacio":"4,3",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "/assets/img/Supermercats/Veritas/tenda1.png",
+            "/assets/img/Supermercats/Veritas/tenda2.png",
+            "/assets/img/Supermercats/Veritas/tenda3.png",
+            "/assets/img/Supermercats/Veritas/tenda4.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de l'Emperadriu Eugènia, 9",
+            "lat": 39.57304093831823,
+            "long":2.637623597939436,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07010"
+        },
+        "geo2":{
+            "address": "Plaça del Comtat del Rosselló, 6",
+            "lat": "",
+            "long":"",
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip":"07002"
+        },
+        "horari":{
+                "di": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "icartaweb.com",
+            "pedido": "deliveroo.es"
+        }
+        
+    }
+]
