@@ -13,7 +13,16 @@ var map = new mapboxgl.Map({
   center: [2.651537069816233, 39.570644797011795],
   zoom: 13,
 });
-
+map.addControl(new mapboxgl.NavigationControl());
+// Add geolocate control to the map.
+map.addControl(
+    new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+    },
+    trackUserLocation: true
+    })
+    );
   
   
   
@@ -34,9 +43,9 @@ var map = new mapboxgl.Map({
             var pointer = document.createElement('div');
             pointer.className = 'marker';
             
-            new mapboxgl.Marker(pointer)
-                .setLngLat([datos[0].geo1.long, datos[0].geo1.lat])
-                .setPopup(
+            var marker = new mapboxgl.Marker()
+            .setLngLat([datos[0].geo1.long, datos[0].geo1.lat])
+            .setPopup(
                 new mapboxgl.Popup({offset: 25})
                 .setHTML(
                     '<h3>' +
@@ -46,10 +55,7 @@ var map = new mapboxgl.Map({
                     '</p>'
                     )
                 )
-                .addTo(map);
-
-
-
+            .addTo(map);
 
             //rest2
             var nombreRestaurante = document.getElementById("nomRest2")
