@@ -5,28 +5,51 @@
 
 //función que trae los datos cuando se pulsa el boton
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
+// mapa:
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
 
-var map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [2.651537069816233, 39.570644797011795],
-  zoom: 13,
-});
-map.addControl(new mapboxgl.NavigationControl());
-// Add geolocate control to the map.
-map.addControl(
-    new mapboxgl.GeolocateControl({
-    positionOptions: {
-    enableHighAccuracy: true
-    },
-    trackUserLocation: true
-    })
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [2.651537069816233, 39.570644797011795],
+    zoom: 13,
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+    // Add geolocate control to the map.
+    map.addControl(
+        new mapboxgl.GeolocateControl({
+        positionOptions: {
+        enableHighAccuracy: true
+        },
+        trackUserLocation: true
+        })  
     );
+
+// Botón para subir arriba;
+
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    }
   
-  
-  
-   function leerRestaurantes() {
+// función para extraer datos de restaurantes
+   
+function leerRestaurantes() {
     var xmlhttp = new XMLHttpRequest();
     var url = "Restaurants.json";
     xmlhttp.onreadystatechange = function() {
@@ -77,10 +100,11 @@ map.addControl(
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-  }
+}
 
+// función para extraer datos de supermercados
 
-  function leerSupermercats() {
+function leerSupermercats() {
     var xmlhttp = new XMLHttpRequest();
     var url = "Supermercats.json";
     xmlhttp.onreadystatechange = function() {
@@ -105,7 +129,7 @@ map.addControl(
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-  }
+}
 
 /*
 
