@@ -50,20 +50,17 @@
 // función para extraer datos de restaurantes
    
 function leerRestaurantes() {
+    //********andrea me ha dicho q ellas cargan el json una vez solo cuando se carga la pagina
     var xmlhttp = new XMLHttpRequest();
     var url = "Restaurants.json";
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-            
-            //rest1
-           // var nombreRestaurante = document.getElementById("nomRest1")
-            //nombreRestaurante.innerHTML = datos[0].nom
-            $("#nomRest1").append(datos[0].nom)
-            var geo1 = document.getElementById("geoRest1")
-            geo1.innerHTML = datos[0].geo1.address
-
-
+            for (var i = 0; i <5 ; i++){
+                $("#nomRest"+(i+1)).append(datos[i].nom)
+                $("#geoRest"+(i+1)).append(datos[i].geo1.address)
+            }
+           
             var pointer = document.createElement('div');
             pointer.className = 'marker';
             
@@ -80,23 +77,23 @@ function leerRestaurantes() {
                     )
                 )
             .addTo(map);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
 
-            //rest2
-            var nombreRestaurante = document.getElementById("nomRest2")
-            nombreRestaurante.innerHTML = datos[1].nom
-            var geo1 = document.getElementById("geoRest2")
-            geo1.innerHTML = datos[1].geo1.address
-            //rest3
-             var nombreRestaurante = document.getElementById("nomRest3")
-             nombreRestaurante.innerHTML = datos[2].nom
-             var geo1 = document.getElementById("geoRest3")
-             geo1.innerHTML = datos[2].geo1.address
-            //rest4
-            var nombreRestaurante = document.getElementById("nomRest4")
-            nombreRestaurante.innerHTML = datos[3].nom
-            var geo1 = document.getElementById("geoRest4")
-            geo1.innerHTML = datos[3].geo1.address
-            
+function restDesplegable() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "Restaurants.json";
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var datos = JSON.parse(xmlhttp.responseText);
+            for (var i = 0; i <4 ; i++){
+                $("#nomRestaurant"+(i+1)).html("");//limpias la seccion
+                $("#nomRestaurant"+(i+1)).html((datos[i].nom));//agregas nuevos elementos
+                //$("#geoSuper"+(i+1)).append(datos[i].geo1.address)
+            }
         }
     };
     xmlhttp.open("GET", url, true);
@@ -111,21 +108,10 @@ function leerSupermercats() {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-            //super1
-            var nombre = document.getElementById("nomSuper1")
-            nombre.innerHTML = datos[0].nom
-            var geo = document.getElementById("geoSuper1")
-            geo.innerHTML = datos[0].geo1.address
-            //super2
-            var nombre = document.getElementById("nomSuper2")
-            nombre.innerHTML = datos[1].nom
-            var geo = document.getElementById("geoSuper2")
-            geo.innerHTML = datos[1].geo1.address
-            //super3
-             var nombre = document.getElementById("nomSuper3")
-             nombre.innerHTML = datos[2].nom
-             var geo = document.getElementById("geoSuper3")
-             geo.innerHTML = datos[2].geo1.address
+            for (var i = 0; i <5 ; i++){
+                $("#nomSuper"+(i+1)).append(datos[i].nom)
+                $("#geoSuper"+(i+1)).append(datos[i].geo1.address)
+            }
         }
     };
     xmlhttp.open("GET", url, true);
