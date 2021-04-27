@@ -10172,6 +10172,7 @@ img::-moz-selection {
   font-weight: 700;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
+  
 }
 #mainNav .navbar-brand img {
   height: 1.5rem;
@@ -10181,6 +10182,7 @@ img::-moz-selection {
   font-size: 0.95rem;
   color: #fff;
   letter-spacing: 0.0625em;
+  
   /* aqui es el fondo de los botones de main navbar*/
 }
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
@@ -10194,10 +10196,12 @@ img::-moz-selection {
     border: none;
     background-color: dark;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+  
   }
   #mainNav .navbar-brand {
     font-size: 1.5em;
     transition: font-size 0.3s ease-in-out;
+    
   }
   #mainNav .navbar-brand img {
     height: 2rem;
@@ -10644,3 +10648,8 @@ section#contact form#contactForm :-ms-input-placeholder {
   #myBtn:hover {
     background-color: #555;
   }
+
+  
+ .subitem {
+  background-color: #212529;
+}
