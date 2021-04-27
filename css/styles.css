@@ -9849,6 +9849,7 @@ button.bg-dark:focus {
   text-transform: uppercase !important;
 }
 
+
 .text-capitalize {
   text-transform: capitalize !important;
 }
@@ -10155,7 +10156,7 @@ img::-moz-selection {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #212529;
+  background-color: #F8D160;  /* añadir color aquí */
 }
 #mainNav .navbar-toggler {
   padding: 0.75rem;
@@ -10210,7 +10211,7 @@ img::-moz-selection {
   #mainNav.navbar-shrink {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: #212529;
+    background-color: #F8D160;  /* añadir color aquí */
   }
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.25em;
@@ -10549,7 +10550,7 @@ header.masthead .masthead-heading {
 }
 
 section#contact {
-  background-color: #212529;
+  background-color: #9FD1C9; /*  añadir color aquí */
   background-image: url("../assets/img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
