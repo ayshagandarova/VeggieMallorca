@@ -57,8 +57,9 @@ function leerRestaurantes() {
             var datos = JSON.parse(xmlhttp.responseText);
             
             //rest1
-            var nombreRestaurante = document.getElementById("nomRest1")
-            nombreRestaurante.innerHTML = datos[0].nom
+           // var nombreRestaurante = document.getElementById("nomRest1")
+            //nombreRestaurante.innerHTML = datos[0].nom
+            $("#nomRest1").append(datos[0].nom)
             var geo1 = document.getElementById("geoRest1")
             geo1.innerHTML = datos[0].geo1.address
 
