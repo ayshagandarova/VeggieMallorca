@@ -19,16 +19,18 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <!-- GOOGLE MAPS -->
-     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <!-- ???????????? esto de q se haga aqui el onload no me gusta mucho-->
-<body id="page-top" onload="leerRestaurantes(),leerSupermercats()">
-     <!-- Navigation-->
+
+<body id="page-top" onload="Cercador(), leerRestaurantes(),leerSupermercats()">
+    <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="index.html"><img src="assets/img/veggieLogo.png" alt="" /></a>
+            <a class="navbar-brand js-scroll-trigger" href="index.html"><img src="assets/img/veggieLogo.png"
+                    alt="" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -41,17 +43,20 @@
                     <nav id="menu">
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <!-- Aquí estarán todos los links a las planas-->
-                            <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="portfolio.html">Restaurants</a>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                    href="portfolio.html">Restaurants</a>
                             </li>
-                            <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="portfolio.html">Supermercats</a>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                    href="portfolio.html">Supermercats</a>
                             </li>
-                            <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="informacio.html">+Informació</a>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                    href="informacio.html">+Informació</a>
                                 <ul class="navbar-nav text-uppercase ml-auto">
-                                    <li class="subitem" > <a href="informacio.html">
+                                    <li class="subitem"> <a href="informacio.html">
                                             Cursos</a></li>
                                     <li class="subitem"> <a href="informacio.html">
                                             Fires</a></li>
-                                    <li class="subitem" > <a href="informacio.html">
+                                    <li class="subitem"> <a href="informacio.html">
                                             +Info</a></li>
                                 </ul>
                             </li>
@@ -75,23 +80,21 @@
                         veganes o vegetarianes.</h3>
                 </div>
                 <div class="infoRest" id="restaurants">
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-6 mb-4">
-                            <div class="portfolio-item">
-                            
-                               
-                                    <a onclick="restDesplegable()" class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal1">
+                    <div class="row" id="restaurant1">
+
+                        <!-- 
+                        <div class="col-lg-4 col-sm-6 mb-4 portfolio-item" id="restaurant1">
+                                <a onclick="restDesplegable()" class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal1">
                                         <div class="portfolio-hover">
                                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                         </div>
                                         <img class="img-fluid" src="assets/img/Restaurants/EcoVegetaria/portada.png"
                                             alt="" />
-                                    </a>
-                                    <div class="portfolio-caption">
+                                </a>
+                                <div class="portfolio-caption">
                                         <div class="portfolio-caption-heading" id="nomRest1"></div>
                                         <div class="portfolio-caption-subheading text-muted" id="geoRest1"></div>
-                                    </div>
-                            </div>
+                                </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 mb-4">
                             <div class="portfolio-item">
@@ -173,6 +176,7 @@
                                 </a>
                             </div>
                         </div>
+                    -->
                         <!-- aquí viene todo lo referente a crear las diferentes casillas para los restaurantes -->
                     </div>
                 </div>
@@ -238,7 +242,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6"> <!-- mapa-->
+                            <div class="col-lg-6">
+                                <!-- mapa-->
                                 <div id='map'></div>
                             </div>
                         </div>
@@ -1218,7 +1223,7 @@
     </footer>
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class='fas fa-arrow-up'></i> </button>
     <!-- o esta flecha far fa-arrow-alt-circle-up-->
-    
+
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>

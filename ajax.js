@@ -47,8 +47,93 @@
     document.documentElement.scrollTop = 0;
     }
   
+
+//función crear divs restaurantes
+function Cercador() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "Restaurants.json";
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var datos = JSON.parse(xmlhttp.responseText);
+        addElement(datos);
+      }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  
+  }
+
+function addElement (datos) {
+    for (var i = 0; i <datos.length; i++){
+    var newDiv = document.createElement("div");   // crea un nuevo div
+    newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4 portfolio-item")
+
+
+    var newa1 = document.createElement("a");
+    newa1.setAttribute('onclick', "restDesplegable()");
+    newa1.setAttribute('class', "portfolio-link");
+    newa1.setAttribute('data-toggle', "modal");
+    newa1.setAttribute('href', "#portfolioModal1");
+
+    newDiv.appendChild(newa1); //añade texto al div creado.
+  
+    var newDiv2 = document.createElement("div");   // crea un nuevo div
+    newDiv2.setAttribute('class', "portfolio-hover")
+
+    newa1.appendChild(newDiv2);
+
+    var newDiv3 = document.createElement("div");   // crea un nuevo div
+    newDiv3.setAttribute('class', "portfolio-hover-content")
+
+    newDiv2.appendChild(newDiv3);
+
+    var newi = document.createElement("i");   // crea un nuevo div
+    newi.setAttribute('class', "fas fa-plus fa-3x")
+
+    newDiv3.appendChild(newi);
+    
+    var newimg = document.createElement("img");   // crea un nuevo div
+    newimg.setAttribute('class', "img-fluid")
+    newimg.setAttribute('src', datos[i].imatges[0])
+    newimg.setAttribute('alt', "")
+
+    newa1.appendChild(newimg);   
+    
+    var newDiv2 = document.createElement("div");   // crea un nuevo div
+    newDiv2.setAttribute('class', "portfolio-hover")
+
+    newa1.appendChild(newDiv2);
+
+    var newDiv3 = document.createElement("div");   // crea un nuevo div
+    newDiv2.setAttribute('class', "portfolio-caption")
+
+    newDiv.appendChild(newDiv3);
+
+    var newDiv4 = document.createElement("div");   // crea un nuevo div
+    newDiv4.setAttribute('class', "portfolio-caption-heading")
+    var newContent = document.createTextNode(datos[i].nom); //nom Rest
+     newDiv4.appendChild(newContent)
+
+    newDiv3.appendChild(newDiv4);
+
+    var newDiv5 = document.createElement("div");   // crea un nuevo div
+    newDiv5.setAttribute('class', "portfolio-caption-subheading text-muted")
+    var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
+    newDiv5.appendChild(newContent2)
+    newDiv3.appendChild(newDiv5);
+
+    // añade el elemento creado y su contenido al DOM
+    $("#restaurant1").append(newDiv);
+    }
+  }
+
+  
+  
+
+
+
 // función para extraer datos de restaurantes
-   
+   /*
 function leerRestaurantes() {
     //********andrea me ha dicho q ellas cargan el json una vez solo cuando se carga la pagina
     var xmlhttp = new XMLHttpRequest();
@@ -82,7 +167,7 @@ function leerRestaurantes() {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
-
+*/
 function restDesplegable() {
     var xmlhttp = new XMLHttpRequest();
     var url = "Restaurants.json";
