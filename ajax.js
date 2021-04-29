@@ -48,8 +48,7 @@
     }
   
 
-//función crear divs restaurantes
-function Cercador() {
+  function Cercador() {
     var xmlhttp = new XMLHttpRequest();
     var url = "Restaurants.json";
     xmlhttp.onreadystatechange = function () {
@@ -63,11 +62,15 @@ function Cercador() {
   
   }
 
+
 function addElement (datos) {
     for (var i = 0; i <datos.length; i++){
     var newDiv = document.createElement("div");   // crea un nuevo div
-    newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4 portfolio-item")
+    newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4")
 
+    var newDiv1 = document.createElement("div");   // crea un nuevo div
+    newDiv1.setAttribute('class', "portfolio-item")
+    newDiv.appendChild(newDiv1); //añade texto al div creado.
 
     var newa1 = document.createElement("a");
     newa1.setAttribute('onclick', "restDesplegable()");
@@ -75,7 +78,7 @@ function addElement (datos) {
     newa1.setAttribute('data-toggle', "modal");
     newa1.setAttribute('href', "#portfolioModal1");
 
-    newDiv.appendChild(newa1); //añade texto al div creado.
+    newDiv1.appendChild(newa1); //añade texto al div creado.
   
     var newDiv2 = document.createElement("div");   // crea un nuevo div
     newDiv2.setAttribute('class', "portfolio-hover")
@@ -103,11 +106,12 @@ function addElement (datos) {
     newDiv2.setAttribute('class', "portfolio-hover")
 
     newa1.appendChild(newDiv2);
+    //
 
     var newDiv3 = document.createElement("div");   // crea un nuevo div
     newDiv2.setAttribute('class', "portfolio-caption")
 
-    newDiv.appendChild(newDiv3);
+    newDiv1.appendChild(newDiv3);
 
     var newDiv4 = document.createElement("div");   // crea un nuevo div
     newDiv4.setAttribute('class', "portfolio-caption-heading")
@@ -133,7 +137,7 @@ function addElement (datos) {
 
 
 // función para extraer datos de restaurantes
-   /*
+   
 function leerRestaurantes() {
     //********andrea me ha dicho q ellas cargan el json una vez solo cuando se carga la pagina
     var xmlhttp = new XMLHttpRequest();
@@ -141,10 +145,7 @@ function leerRestaurantes() {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-            for (var i = 0; i <5 ; i++){
-                $("#nomRest"+(i+1)).append(datos[i].nom)
-                $("#geoRest"+(i+1)).append(datos[i].geo1.address)
-            }
+            
            
             var pointer = document.createElement('div');
             pointer.className = 'marker';
@@ -167,7 +168,7 @@ function leerRestaurantes() {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
-*/
+
 function restDesplegable() {
     var xmlhttp = new XMLHttpRequest();
     var url = "Restaurants.json";
