@@ -1,0 +1,1037 @@
+[
+    {
+        "nom":"Es 20 de Bonaire",
+        "descripcio": "Tenda d'aliments a granel. Productes de qualitat: arrossos, llgums, farines, fruites deshidratades, vi, vermut... A més, hi ha conserves i varietat de snacks." ,
+        "detall": "Aposta per el producte local i per pensar un poc més en el medi ambient.",
+        "tipus": "supermercat",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"5-100€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 72 86 81", 
+            "email": "",
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://www.facebook.com/es20debonaire/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/es20debonaire/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d12748719-Reviews-Es_20_de_Bonaire-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"5",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/tenda.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/tenda2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte3.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte4.png"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer Comte de Barcelona, 26",
+            "lat": 39.57304093831823,
+            "long":2.637623597939436,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "icartaweb.com",
+            "pedido": "deliveroo.es"
+        }
+        
+    },
+    {
+        "nom":"Herbolari Navarro Palma",
+        "descripcio": "A les nostres tendes trobaràs una extensa gama d'alimentació natural i ecològica, artícles per dietes macrobiòtiques, cosmètica, llibres i altres articles relacionats amb la vida sana i natural." ,
+        "detall": "Productes d'alta qualitat.",
+        "tipus": "supermercat",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"5-100€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 72 69 73", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.herbolarionavarro.es",   
+                "facebook": "https://es-es.facebook.com/pages/category/Medical-Company/Herbolario-Navarro-1851513438399283/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/herbolarionavarro._/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187529-d11780674-Reviews-Navarro_Herbolario_healthy_food_cafe-Valencia_Province_of_Valencia_Valencian_Cou.html"
+            }
+        },
+        "puntuacio":"4,5",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/herbolariNavarro/tenda.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/herbolariNavarro/tenda2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/herbolariNavarro/tenda3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/herbolariNavarro/tenda4.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/herbolariNavarro/tenda5.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/herbolariNavarro/tenda6.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de Caro, 34",
+            "lat": 39.57323848125534, 
+            "long":2.638011230029481,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "09:00","out": "20:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+        
+    },
+    {
+        "nom":"Veritas",
+        "descripcio": "En Veritas apostem per un model ecològic, per això, en els nostres supermercats només trobaràs productes ecològics. Diversitat en l'assortit, Fórmules saludables, Envasos sostenibles" ,
+        "detall": "",
+        "tipus": "supermercat",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"5-100€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "871 90 45 85", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.veritas.es",   
+                "facebook": "",
+                "twitter": "",
+                "instagram": "",
+                "tripadvisor": ""
+            }
+        },
+        "puntuacio":"4,3",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda3.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda4.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de l'Emperadriu Eugènia, 9",
+            "lat": 39.57304093831823,
+            "long":2.637623597939436,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07010"
+        },
+        "geo2":{
+            "address": "Plaça del Comtat del Rosselló, 6",
+            "lat": "",
+            "long":"",
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip":"07002"
+        },
+        "horari":{
+                "di": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "icartaweb.com",
+            "pedido": "deliveroo.es"
+        }
+        
+    },
+    {
+        "nom":"EcoVegetaria",
+        "descripcio": "Restaurant vegetarià, ovolàcteo i ecològic. Situat en el centre de Palma.",
+        "detall": "Fan enviaments a domicili.",
+        "tipus": "restaurant",
+        "identificador":"1",
+        "comentari": "exemple: posar tipus de menjar del restaurante",
+        "preu":{
+            "import":"9-14€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 28 25 62", 
+            "email": "",
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://es-es.facebook.com/EcoVegetaria/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/ecovegetaria/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d2316133-Reviews-Restaurante_EcoVegetaria-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"4,2",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/portada.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato3.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato4.png"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer Comte de Barcelona, 26",
+            "lat": 39.572878397466575, 
+            "long":2.637633707376558,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "icartaweb.com",
+            "pedido": "deliveroo.es"
+        }
+        
+    },
+    {
+        "nom":"Plaer Vegetarià",
+        "descripcio": "Ofereixen menjars elaborats amb productes locals, d'agricultura ecològica i de comerç just, per una alimentació sana i gustosa.",
+        "detall": "Els dijous fan tapes.",
+        "tipus": "restaurant",
+        "identificador":"2",
+        "comentari": "",
+        "preu":{
+            "import":"10-15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 55 55 04", 
+            "email": "",
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://es-es.facebook.com/plaervegetariamanacor",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/plaervegetaria/?igshid=1s4j8txh1sela",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurants-g580304-zfz10665-Manacor_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"4,8",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerVegetaria/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerVegetaria/plato1.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerVegetaria/plato2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerVegetaria/plato3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerVegetaria/plato4.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerVegetaria/plato5.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer des Creuers, 1",
+            "lat": 39.57197943556464, 
+            "long":3.2025410162769328,
+            "city":"Manacor",
+            "Country":"Espanya",
+            "zip": "07500"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "20:00","out": "22:15"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "15:30"},
+                    {"in": "20:00","out": "22:15"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "al seu instagram",
+            "pedido": ""
+        }
+        
+    },
+    {
+        "nom":"Plaer Natural",
+        "descripcio": "Cervesses artesanes i plats vegetarians internacionals a un restaurant amb altillo de fusta i terrassa.",
+        "detall": "Fan menú del dia complet per 15€.",
+        "tipus": "restaurant",
+        "identificador":"3",
+        "comentari": "",
+        "preu":{
+            "import":"13-15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 22 77 80", 
+            "email": "",
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://es-es.facebook.com/pages/category/Vegetarian-Vegan-Restaurant/Plaer-Natural-247394029401/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/plaernatural/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d1126640-Reviews-Restaurante_Plaer_Natural-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"4,5",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerNatural/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerNatural/menu.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerNatural/plato1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerNatural/plato2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerNatural/plato3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/PlaerNatural/plato4.jpg"  
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Plaça de la Quartera, 3",
+            "lat": 39.5708947272306,  
+            "long":2.653288999607834,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07002"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "al seu instagram",
+            "pedido": ""
+        }
+    },
+    {
+        "nom":"Vegan&Raw",
+        "descripcio": "Consumir alimentos crudi-veganos de Vegan & Raw despertara en ti la curiosidad de una nueva forma de nutrirse, mas sabia, respetuoso con nuestro entorno y uno mismo. Te llevara a tomar mas conciencia de tu forma de alimentarte y dará ese impulso de vida a zonas de tu cuerpo donde faltaba salud.",
+        "detall": "Fan menú del dia complet per 15€.",
+        "tipus": "restaurant",
+        "identificador":"4",
+        "comentari": "",
+        "preu":{
+            "import":"2-3€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 22 90 58", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.veganandraw.es",   
+                "facebook": "https://www.facebook.com/vegandraw/",
+                "twitter": "",
+                "instagram": "",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d10127302-Reviews-Vegan_And_Raw-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"4,2",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/portada.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/interior.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/menu.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato3.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato4.png"  
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Plaça del Bisbe Berenguer de Palou, 2",
+            "lat": "",  
+            "long": "",
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07003"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "podemos poner la foto",
+            "pedido": ""
+        }
+    },
+    {
+        "nom":"Curs cuina vegetariana Galley Club",
+        "descripcio": "Curs de cuina vegetariana, on pots preparar i cuinar les millors verdures de temporada, del mercat directament a la taula." ,
+        "detall": "Aposta per el producte local.",
+        "tipus": "curs",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"50€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "662 348 306", 
+            "email": "",
+            "xarxes":  {  
+                "web": "http://thegalleyclub.com",   
+                "facebook": "https://es-es.facebook.com/TheGalleyClub",
+                "twitter": "https://twitter.com/thegalleyclub?lang=es",
+                "instagram": "https://www.instagram.com/thegalleyclub/",
+                "tripadvisor": "https://www.tripadvisor.es/Attraction_Review-g187463-d8842102-Reviews-The_Galley_Club_One_Day_Classes-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/vegetariaGalley/foto1.jpeg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/vegetariaGalley/foto2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/vegetariaGalley/foto3.jpeg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/vegetariaGalley/foto3.jpeg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/vegetariaGalley/foto5.jpg",
+            ""
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de Cotoner, 21",
+            "lat": 39.572338939589834, 
+            "long":2.637020987852384,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "30 març",
+            "startTimeEvent": "18:00",
+            "endDataEvent":"30 març",
+            "endTimeEvent":"21:00"
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+        
+    },
+    {
+        "nom":"Curs introducció cuina saludable Galley Club",
+        "descripcio": "Si estàs pensant en dur una dieta més vegetariana, menjar mé sa i veure lo bé que ets trobes fent un canvi d'alimentació, amb aquest curs podràs conèixer el món vegetarià des de la base, sense gastar fortunes en la teva alimentació, sentint-te amb molta més vitalitat." ,
+        "detall": "Només per 4 alumnes.",
+        "tipus": "curs",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"200€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "662 348 306", 
+            "email": "",
+            "xarxes":  {  
+                "web": "http://thegalleyclub.com",   
+                "facebook": "https://es-es.facebook.com/TheGalleyClub",
+                "twitter": "https://twitter.com/thegalleyclub?lang=es",
+                "instagram": "https://www.instagram.com/thegalleyclub/",
+                "tripadvisor": "https://www.tripadvisor.es/Attraction_Review-g187463-d8842102-Reviews-The_Galley_Club_One_Day_Classes-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":"",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto1.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto5.jpg",
+            ""
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de Cotoner, 21",
+            "lat": 39.572338939589834, 
+            "long":2.637020987852384,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07013"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "18:00","out": "21:00"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "7 desembre",
+            "startTimeEvent": "18:00",
+            "endDataEvent":"28 desembre",
+            "endTimeEvent":"21:00"
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+        
+    },
+    {
+        "nom":"--",
+        "descripcio": "En Veritas apostem per un model ecològic, per això, en els nostres supermercats només trobaràs productes ecològics. Diversitat en l'assortit, Fórmules saludables, Envasos sostenibles" ,
+        "detall": "",
+        "tipus": "",
+        "identificador":"1",
+        "comentari": "",
+        "preu":{
+            "import":"5-100€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "871 90 45 85", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.veritas.es",   
+                "facebook": "",
+                "twitter": "",
+                "instagram": "",
+                "tripadvisor": ""
+            }
+        },
+        "puntuacio":"4,3",
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda3.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda4.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de l'Emperadriu Eugènia, 9",
+            "lat": 39.57304093831823,
+            "long":2.637623597939436,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07010"
+        },
+        "geo2":{
+            "address": "Plaça del Comtat del Rosselló, 6",
+            "lat": "",
+            "long":"",
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip":"07002"
+        },
+        "horari":{
+                "di": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dm": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dx": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dj": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dv": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "ds": [
+                    {"in": "09:15","out": "21:15"},
+                    {"in": "-","out": "-"}
+                ],
+                "dg": [
+                    {"in": "-","out": "-"},
+                    {"in": "-","out": "-"}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "icartaweb.com",
+            "pedido": "deliveroo.es"
+        }
+        
+    }
+]
