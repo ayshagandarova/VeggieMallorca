@@ -31,11 +31,11 @@
         ],
         "imatges": [
             "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/tenda.png",
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/tenda2.png",
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte1.png",
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte2.png",
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte3.png",
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte4.png"
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/tenda2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte1.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/20Bonaire/producte4.jpg"
         ],
         "videos": [
             {"tipus": "youtube"},
