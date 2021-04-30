@@ -4,7 +4,7 @@
 //mostrarRestaurants();
 
 //función que trae los datos cuando se pulsa el boton
-
+/*
 // mapa:
     mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
 
@@ -24,7 +24,7 @@
         trackUserLocation: true
         })  
     );
-
+*/
 // Botón para subir arriba;
 
     //Get the button
@@ -85,10 +85,10 @@ function addElement (datos) {
             newDiv.appendChild(newDiv1); //añade texto al div creado.
 
             var newa1 = document.createElement("a");
-            newa1.setAttribute('onclick', "restDesplegable()");
+            newa1.setAttribute('onclick', "desplegable("+i+")");
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
-            newa1.setAttribute('href', "#portfolioModal1");
+            newa1.setAttribute('href', "#portfolioModal"+i);
 
             newDiv1.appendChild(newa1); //añade texto al div creado.
         
@@ -144,17 +144,30 @@ function addElement (datos) {
     }
 }
 
-  
-  
-
-
-
 // función para extraer datos de restaurantes
    
-function leerRestaurantes() {
+function hacerMapa(x) {
     //********andrea me ha dicho q ellas cargan el json una vez solo cuando se carga la pagina
     var xmlhttp = new XMLHttpRequest();
-    var url = "Restaurants.json";
+    var url = "dades.json";
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
+
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [2.651537069816233, 39.570644797011795],
+    zoom: 13,
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+    // Add geolocate control to the map.
+    map.addControl(
+        new mapboxgl.GeolocateControl({
+        positionOptions: {
+        enableHighAccuracy: true
+        },
+        trackUserLocation: true
+        })  
+    );
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
@@ -164,14 +177,14 @@ function leerRestaurantes() {
             pointer.className = 'marker';
             
             var marker = new mapboxgl.Marker()
-            .setLngLat([datos[0].geo1.long, datos[0].geo1.lat])
+            .setLngLat([datos[x].geo1.long, datos[x].geo1.lat])
             .setPopup(
                 new mapboxgl.Popup({offset: 25})
                 .setHTML(
                     '<h3>' +
-                    datos[0].nom +
+                    datos[x].nom +
                     '</h3><p>' +
-                    datos[0].geo1.address +
+                    datos[x].geo1.address +
                     '</p>'
                     )
                 )
@@ -181,18 +194,267 @@ function leerRestaurantes() {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
+/*
+    <!-- Modal 1-->
+  0      <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+  1          <div class="modal-dialog">
+  2              <div class="modal-content">                
+   4                  <div class="container">    
+    7                    <div class="row justify-content-center">
+  
+                        </div>
 
-function restDesplegable() {
+
+     14                   <div class="row justify-content-center">
+     15                       <div class="modal-body">
+      16                          <p id="descripcio1"></p>
+                                  <ul class="list-inline">
+                                    <li>
+                                        <!-- puntuació estrelles -->
+                                        <form></form>
+                                        <p class="clasificacion">
+                                            <input id="radio1" type="radio" name="estrellas" value="5">
+                                            <!--
+                                        --><label for="radio1">★</label>
+                                            <!--
+                                        --><input id="radio2" type="radio" name="estrellas" value="4">
+                                            <!--
+                                        --><label for="radio2">★</label>
+                                            <!--
+                                        --><input id="radio3" type="radio" name="estrellas" value="3">
+                                            <!--
+                                        --><label for="radio3">★</label>
+                                            <!--
+                                        --><input id="radio4" type="radio" name="estrellas" value="2">
+                                            <!--
+                                        --><label for="radio4">★</label>
+                                            <!--
+                                        --><input id="radio5" type="radio" name="estrellas" value="1">
+                                            <!--
+                                        --><label for="radio5">★</label>
+                                        </p>
+                                        </form>
+                                    </li>
+                                    <li id="horariRest1">Dilluns-Dissabte: 13:00h - 16:00h</li>
+                                    <li id="geoposRest1">Carrer Comte de Barcelona, 26</li>
+                                    <li id="telRest1">971 28 25 62</li>
+                                    <li id="paginawebRest1">www.webRestaurant.com</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times mr-1"></i>
+                                    Tanca
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+*/
+
+
+
+function desplegable(i) {
     var xmlhttp = new XMLHttpRequest();
-    var url = "Restaurants.json";
+    var url = "dades.json";
+    
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-            for (var i = 0; i <4 ; i++){
-                $("#nomRestaurant"+(i+1)).html("");//limpias la seccion
-                $("#nomRestaurant"+(i+1)).html((datos[i].nom));//agregas nuevos elementos
-                //$("#geoSuper"+(i+1)).append(datos[i].geo1.address)
+            var newDiv = document.createElement("div");   // crea un nuevo div
+            newDiv.setAttribute('class', "portfolio-modal modal fade")
+            newDiv.setAttribute('id', "portfolioModal" +i)
+            newDiv.setAttribute('tabindex', "-1")
+            newDiv.setAttribute('role', "dialog")
+            newDiv.setAttribute('aria-hidden', "true")
+            
+            var newDiv1 = document.createElement("div");   // crea un nuevo div
+            newDiv1.setAttribute('class', "modal-dialog")
+            newDiv.appendChild(newDiv1); //añade texto al div creado.
+
+            var newDiv2 = document.createElement("div");   // crea un nuevo div
+            newDiv2.setAttribute('class', "modal-content")
+            newDiv1.appendChild(newDiv2); //añade texto al div creado.
+
+            var newDiv3 = document.createElement("div");   // crea un nuevo div
+            newDiv3.setAttribute('class', "close-modal")
+            newDiv3.setAttribute('data-dismiss', "modal")
+            newDiv2.appendChild(newDiv3); //añade texto al div creado.
+
+            var newImg = document.createElement("img");   // crea un nuevo div
+            newImg.setAttribute('src', "assets/img/close-icon.svg")
+            newImg.setAttribute('alt', "Close modal")
+            newDiv3.appendChild(newImg); //añade texto al div creado.
+
+            var newDiv4 = document.createElement("div");   // crea un nuevo div
+            newDiv4.setAttribute('class', "container")
+            newDiv2.appendChild(newDiv4); //añade texto al div creado.
+
+            var newDiv5 = document.createElement("div");   // crea un nuevo div
+            newDiv5.setAttribute('class', "row justify-content-center")
+            newDiv4.appendChild(newDiv5); //añade texto al div creado.
+
+            var newDiv6 = document.createElement("div");   // crea un nuevo div
+            newDiv6.setAttribute('class', "modal-body")
+            newDiv5.appendChild(newDiv6); //añade texto al div creado.
+
+            var newH2 = document.createElement("h2");   // crea un nuevo div
+            newH2.setAttribute('class', "portfolio-caption-heading")
+            newH2.setAttribute('id', "nomElement")
+            newDiv6.appendChild(newH2); //añade texto al div creado.
+            
+
+            var newP = document.createElement("p");   // crea un nuevo div
+            newP.setAttribute('class', "item-intro text-mutedg")
+            newP.setAttribute('id', "descripcioElement")
+            newDiv6.appendChild(newP); //añade texto al div creado.
+
+            var newDiv7 = document.createElement("div");   // crea un nuevo div
+            newDiv7.setAttribute('class', "row justify-content-center")
+            newDiv4.appendChild(newDiv7); //añade texto al div creado.
+
+            var newDiv8 = document.createElement("div");   // crea un nuevo div
+            newDiv8.setAttribute('class', "col-lg-6")
+            newDiv7.appendChild(newDiv8); //añade texto al div creado.
+
+            var newDiv9 = document.createElement("div");   // crea un nuevo div
+            newDiv9.setAttribute('class', "carousel slide")
+            newDiv9.setAttribute('id', "myCarousel")
+            newDiv9.setAttribute('data-ride', "carousel")
+            newDiv8.appendChild(newDiv9); //añade texto al div creado.
+
+            var newOl = document.createElement("ol");   // crea un nuevo div
+            newOl.setAttribute('class', "carousel-indicators")
+            newDiv9.appendChild(newOl); //añade texto al div creado.
+
+            for (var k=0; k<datos[i].imatges.length; k++){
+                var newLiK = document.createElement("li");   // crea un nuevo div
+                if (k==0){
+                    newLiK.setAttribute('class', "active")
+                }
+                newLiK.setAttribute('data-target', "#myCarousel")
+                newLiK.setAttribute('data-slide-to', k)
+                newOl.appendChild(newLiK); //añade texto al div creado.
             }
+
+            var newDiv10 = document.createElement("div");   // crea un nuevo div
+            newDiv10.setAttribute('class', "carousel-inner")
+            newDiv9.appendChild(newDiv10); //añade texto al div creado.
+
+            var newDiv11 = document.createElement("div");   // crea un nuevo div
+            newDiv11.setAttribute('class', "carousel-item active")
+            newDiv10.appendChild(newDiv11); //añade texto al div creado.
+
+            var newImg1 = document.createElement("img");   // crea un nuevo div
+            newImg1.setAttribute('class',  "0-slide")
+            newImg1.setAttribute('src', datos[i].imatges[0])
+            newImg1.setAttribute('alt', "0-slide")
+            newImg1.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
+            newDiv11.appendChild(newImg1); //añade texto al div creado.
+
+            for (var k=1; k<datos[i].imatges.length; k++){
+                var newDivK = document.createElement("div");   // crea un nuevo div
+                newDivK.setAttribute('class', "carousel-item")
+                newDiv10.appendChild(newDivK); //añade texto al div creado.
+
+                var newImgK = document.createElement("img");   // crea un nuevo div
+                newImgK.setAttribute('class', k + "-slide")
+                newImgK.setAttribute('src', datos[i].imatges[k])
+                newImgK.setAttribute('alt', k + "-slide")
+                newImgK.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
+                newDivK.appendChild(newImgK); //añade texto al div creado.
+            }
+            
+            var newA = document.createElement("a");   // crea un nuevo div
+            newA.setAttribute('class',  "carousel-control-prev")
+            newA.setAttribute('href', "#myCarousel")
+            newA.setAttribute('role', "button")
+            newA.setAttribute('data-slide', "data-slide")
+            newDiv9.appendChild(newA); //añade texto al div creado.
+            
+            var newSpan = document.createElement("span");   // crea un nuevo div
+            newSpan.setAttribute('class',  "carousel-control-prev-icon")
+            newSpan.setAttribute('aria-hidden', "true")
+            newA.appendChild(newSpan); //añade texto al div creado.
+
+            var newSpan1 = document.createElement("span");   // crea un nuevo div
+            newSpan1.setAttribute('class',  "sr-only")
+            newSpan1.setAttribute('id',  "num1-slide")
+            $("#num1-slide").append("Previous")
+            newA.appendChild(newSpan1); //añade texto al div creado.
+
+
+            var newA1 = document.createElement("a");   // crea un nuevo div
+            newA1.setAttribute('class',  "carousel-control-next")
+            newA1.setAttribute('href', "#myCarousel")
+            newA1.setAttribute('role', "button")
+            newA1.setAttribute('data-slide', "next")
+            newDiv9.appendChild(newA1); //añade texto al div creado.
+            
+            var newSpan2 = document.createElement("span");   // crea un nuevo div
+            newSpan2.setAttribute('class',  "carousel-control-next-icon")
+            newSpan2.setAttribute('aria-hidden', "true")
+            newA1.appendChild(newSpan2); //añade texto al div creado.
+
+            var newSpan3 = document.createElement("span");   // crea un nuevo div
+            newSpan3.setAttribute('class',  "sr-only")
+            newSpan3.setAttribute('id',  "num2-slide")
+            $("#num2-slide").append("Next")
+            newA1.appendChild(newSpan3); //añade texto al div creado.
+
+            var newDiv12 = document.createElement("div");   // crea un nuevo div
+            newDiv12.setAttribute('class', "col-lg-6")
+            newDiv7.appendChild(newDiv12); //añade texto al div creado.
+
+            var newDiv13 = document.createElement("div");   // crea un nuevo div
+            newDiv13.setAttribute('id', "map")
+            newDiv12.appendChild(newDiv13); //añade texto al div creado.
+                    
+
+            // horario + info :
+            var newUl = document.createElement("ul");   // crea un nuevo ul
+            newUl.setAttribute('class', "list-inline")
+            newDiv7.appendChild(newUl); //añade texto al div creado.
+
+            var newLi1 = document.createElement("li");   // crea un nuevo ul
+            newLi1.setAttribute('id', "horariElem")
+            newUl.appendChild(newLi1); //añade texto al div creado.
+
+            var newLi2 = document.createElement("li");   // crea un nuevo ul
+            newLi2.setAttribute('id', "geoposElem")
+            newUl.appendChild(newLi2); //añade texto al div creado.
+
+            var newLi3 = document.createElement("li");   // crea un nuevo ul
+            newLi3.setAttribute('id', "telElem")
+            newUl.appendChild(newLi3); //añade texto al div creado.
+
+            var newLi4 = document.createElement("li");   // crea un nuevo ul
+            newLi4.setAttribute('id', "paginawebElem")
+            newUl.appendChild(newLi4); //añade texto al div creado.
+
+
+            $("#nomElement").append(datos[i].nom)
+            $("#descripcioElement").append(datos[i].descripcio)
+            $("#horariElem").append(
+                `
+                <h3>Horari:</h3>
+                <p>Dilluns: ${datos[i].horari.di[0].in}-${datos[i].horari.di[0].out}</p>
+                <p>Dimarts: ${datos[i].horari.dm[0].in}-${datos[i].horari.dm[0].out}</p>
+                <p>Dimecres: ${datos[i].horari.dx[0].in}-${datos[i].horari.dx[0].out}</p>
+                <p>Dijous: ${datos[i].horari.dj[0].in}-${datos[i].horari.dj[0].out}</p>
+                <p>Divendres: ${datos[i].horari.dv[0].in}-${datos[i].horari.dv[0].out}</p>
+                <p>Dissabte: ${datos[i].horari.ds[0].in}-${datos[i].horari.ds[0].out}</p>
+                <p>Diumenge: ${datos[i].horari.dg[0].in}-${datos[i].horari.dg[0].out}</p>
+            `
+            )
+            $("#geoposElem").append(datos[i].geo1.address)
+            $("#telElem").append(datos[i].contacte.telf)
+            $("#paginawebElem").append(datos[i].contacte.xarxes.web)
+
+            $("#paginaAux").append(newDiv);
         }
     };
     xmlhttp.open("GET", url, true);
@@ -200,22 +462,6 @@ function restDesplegable() {
 }
 
 // función para extraer datos de supermercados
-
-function leerSupermercats() {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "Supermercats.json";
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
-            for (var i = 0; i <5 ; i++){
-                $("#nomSuper"+(i+1)).append(datos[i].nom)
-                $("#geoSuper"+(i+1)).append(datos[i].geo1.address)
-            }
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
 
 /*
 
@@ -309,7 +555,7 @@ let marker = L.marker([39.583796, 2.623672]).addTo(myMap)//[39.5695, 2.65002]
 marker.bindPopup("<b>Nombre Restaurante</b><br>Calle.").openPopup();
   
 */
-/*
+
    const xhttp = new XMLHttpRequest()
     // el true indica que es asincrono, aqui importamos los datos 
     xhttp.open('GET', 'Restaurants.json', true)
