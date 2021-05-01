@@ -260,7 +260,6 @@ function hacerMapa(x) {
 function vaciarDesplegable(i) {
     document.getElementById("nomElement").innerHTML = ""; 
     document.getElementById("descripcioElement").innerHTML = ""; 
-    document.getElementById("horariElem").innerHTML = ""; 
      document.getElementById("geoposElem").innerHTML = ""; 
     document.getElementById("telElem").innerHTML = ""; 
     document.getElementById("paginawebElem").innerHTML = ""; 
