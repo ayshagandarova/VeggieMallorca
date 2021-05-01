@@ -89,6 +89,7 @@ function addElement (datos) {
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
             newa1.setAttribute('href', "#portfolioModal"+i);
+            newa1.setAttribute('id', "iddeslplegable")
 
             newDiv1.appendChild(newa1); //añade texto al div creado.
         
@@ -256,11 +257,21 @@ function hacerMapa(x) {
 */
 
 
+function vaciarDesplegable(i) {
+    document.getElementById("nomElement").innerHTML = ""; 
+    document.getElementById("descripcioElement").innerHTML = ""; 
+    document.getElementById("horariElem").innerHTML = ""; 
+  /*  document.getElementById("geoposElem").innerHTML = ""; 
+    document.getElementById("telElem").innerHTML = ""; 
+    document.getElementById("paginawebElem").innerHTML = ""; */
+}
 
 function desplegable(i) {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
-    
+
+    var arrayHorario = ["Dilluns","Dimarts","Dimecres","Dijous","Divendres","Dissabte","Diumenge"]
+    var accesoHorario =["di","dm","dx","dj","dv","ds","dg"]
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
@@ -287,11 +298,13 @@ function desplegable(i) {
             var newImg = document.createElement("img");   // crea un nuevo div
             newImg.setAttribute('src', "assets/img/close-icon.svg")
             newImg.setAttribute('alt', "Close modal")
+            newImg.setAttribute('onclick', "vaciarDesplegable()")
             newDiv3.appendChild(newImg); //añade texto al div creado.
 
             var newDiv4 = document.createElement("div");   // crea un nuevo div
             newDiv4.setAttribute('class', "container")
             newDiv2.appendChild(newDiv4); //añade texto al div creado.
+            
 
             var newDiv5 = document.createElement("div");   // crea un nuevo div
             newDiv5.setAttribute('class', "row justify-content-center")
@@ -415,13 +428,65 @@ function desplegable(i) {
                     
 
             // horario + info :
-            var newUl = document.createElement("ul");   // crea un nuevo ul
-            newUl.setAttribute('class', "list-inline")
-            newDiv7.appendChild(newUl); //añade texto al div creado.
+            var newDivRow = document.createElement("div");   // crea un nuevo ul
+            newDivRow.setAttribute('id', "informacionElement")
+            newDivRow.setAttribute('class', "row justify-content-centert")
+            newDiv4.appendChild(newDivRow); //añade texto al div creado.
 
-            var newLi1 = document.createElement("li");   // crea un nuevo ul
-            newLi1.setAttribute('id', "horariElem")
-            newUl.appendChild(newLi1); //añade texto al div creado.
+            var newDivCol1 = document.createElement("div");   // crea un nuevo ul
+            newDivCol1.setAttribute('class', "col-lg-6")
+            newDivRow.appendChild(newDivCol1); //añade texto al div creado.
+
+            var newTable = document.createElement("table");   // crea un nuevo ul
+            newTable.setAttribute('id', "horariElem")
+            newDivCol1.appendChild(newTable); //añade texto al div creado.
+
+            var newThead = document.createElement("thead");   // crea un nuevo ul
+            newTable.appendChild(newThead); //añade texto al div creado.
+
+            var newTr = document.createElement("tr");   // crea un nuevo ul
+            newThead.appendChild(newTr); //añade texto al div creado.
+
+            var newTh1 = document.createElement("th");   // crea un nuevo ul
+            newTh1.setAttribute('id', "infoTh")
+            newTr.appendChild(newTh1); //añade texto al div creado.
+
+            var newTh2 = document.createElement("th");   // crea un nuevo ul
+            newTr.appendChild(newTh2); //añade texto al div creado.
+
+            var newTh3 = document.createElement("th");   // crea un nuevo ul
+            newTr.appendChild(newTh3); //añade texto al div creado.
+
+            var newTbody = document.createElement("tbody");   // crea un nuevo ul
+            newTable.appendChild(newTbody); //añade texto al div creado.
+
+
+            for (var j=0; j< 7;j++){
+                var newTrJ = document.createElement("tr");   // crea un nuevo ul
+                newTbody.appendChild(newTrJ); //añade texto al div creado.
+
+                var newTd = document.createElement("td");   // crea un nuevo ul
+                var text = document.createTextNode(arrayHorario[j]);
+                newTd.appendChild(text);
+                newTrJ.appendChild(newTd); //añade texto al div creado.
+
+                var newTd2 = document.createElement("td");   // crea un nuevo ul
+                var text2 = document.createTextNode(datos[i].horari + "." + accesoHorario[j] + "[0].in");
+                newTd2.appendChild(text2);
+                newTrJ.appendChild(newTd2); //añade texto al div creado.
+
+                var newTd3 = document.createElement("td");   // crea un nuevo ul
+                var text3 = document.createTextNode(datos[i].horari + "." + accesoHorario[j] + "[0].out");
+                newTd3.appendChild(text3);
+                newTrJ.appendChild(newTd3); //añade texto al div creado.
+            }
+
+            var newDivCol2 = document.createElement("div");   // crea un nuevo ul
+            newDivCol2.setAttribute('class', "col-lg-6")
+            newDivRow.appendChild(newDivCol2); //añade texto al div creado.
+            
+            var newUl = document.createElement("ul");   // crea un nuevo ul
+            newDivCol2.appendChild(newUl); //añade texto al div creado.
 
             var newLi2 = document.createElement("li");   // crea un nuevo ul
             newLi2.setAttribute('id', "geoposElem")
@@ -438,22 +503,12 @@ function desplegable(i) {
 
             $("#nomElement").append(datos[i].nom)
             $("#descripcioElement").append(datos[i].descripcio)
-            $("#horariElem").append(
-                `
-                <h3>Horari:</h3>
-                <p>Dilluns: ${datos[i].horari.di[0].in}-${datos[i].horari.di[0].out}</p>
-                <p>Dimarts: ${datos[i].horari.dm[0].in}-${datos[i].horari.dm[0].out}</p>
-                <p>Dimecres: ${datos[i].horari.dx[0].in}-${datos[i].horari.dx[0].out}</p>
-                <p>Dijous: ${datos[i].horari.dj[0].in}-${datos[i].horari.dj[0].out}</p>
-                <p>Divendres: ${datos[i].horari.dv[0].in}-${datos[i].horari.dv[0].out}</p>
-                <p>Dissabte: ${datos[i].horari.ds[0].in}-${datos[i].horari.ds[0].out}</p>
-                <p>Diumenge: ${datos[i].horari.dg[0].in}-${datos[i].horari.dg[0].out}</p>
-            `
-            )
+            $("#infoTh").append("Horari:")
+            /*
             $("#geoposElem").append(datos[i].geo1.address)
             $("#telElem").append(datos[i].contacte.telf)
             $("#paginawebElem").append(datos[i].contacte.xarxes.web)
-
+*/
             $("#paginaAux").append(newDiv);
         }
     };
