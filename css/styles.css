@@ -6407,6 +6407,9 @@ button.bg-dark:focus {
 
 .rounded-circle {
   border-radius: 50% !important;
+  background-color: #F8D160;
+  cursor: pointer;
+  pointer-events: none;
 }
 
 .rounded-pill {
@@ -10570,10 +10573,27 @@ header.masthead .masthead-heading {
   margin-bottom: 3rem;
   text-align: center;
 }
+
 .team-member img {
   width: 14rem;
   height: 14rem;
   border: 0.5rem solid rgba(0, 0, 0, 0.1);
+  
+}
+.transicion-team-member{
+  pointer-events: none;
+  position: relative;
+  transform: translateY(20px) scale(1.15);
+  transform-origin: 50% bottom;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-member:hover .transicion-team-member {
+  transform: translateY(0) scale(1.25);
+}
+
+.team-member img:hover{
+  transform: translateY(0) scale(1.2);
 }
 .team-member h4 {
   margin-top: 1.5rem;
