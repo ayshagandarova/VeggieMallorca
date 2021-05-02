@@ -260,7 +260,7 @@ function hacerMapa(x) {
 function vaciarDesplegable(i) {
     document.getElementById("nomElement").innerHTML = ""; 
     document.getElementById("descripcioElement").innerHTML = ""; 
-     document.getElementById("geoposElem").innerHTML = ""; 
+    document.getElementById("geoposElem").innerHTML = ""; 
     document.getElementById("telElem").innerHTML = ""; 
     document.getElementById("paginawebElem").innerHTML = ""; 
 }
@@ -271,6 +271,7 @@ function desplegable(i) {
 
     var arrayHorario = ["Dilluns","Dimarts","Dimecres","Dijous","Divendres","Dissabte","Diumenge"]
     var accesoHorario =["di","dm","dx","dj","dv","ds","dg"]
+    
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
@@ -447,7 +448,8 @@ function desplegable(i) {
             newThead.appendChild(newTr); //añade texto al div creado.
 
             var newTh1 = document.createElement("th");   // crea un nuevo ul
-            newTh1.setAttribute('id', "infoTh")
+            var texto = document.createTextNode("Horari:");
+            newTh1.appendChild(texto);
             newTr.appendChild(newTh1); //añade texto al div creado.
 
             var newTh2 = document.createElement("th");   // crea un nuevo ul
@@ -470,12 +472,12 @@ function desplegable(i) {
                 newTrJ.appendChild(newTd); //añade texto al div creado.
 
                 var newTd2 = document.createElement("td");   // crea un nuevo ul
-                var text2 = document.createTextNode(datos[i].horari + "." + accesoHorario[j] + "[0].in");
+                var text2 = document.createTextNode(datos[i].horari.di[0].in);
                 newTd2.appendChild(text2);
                 newTrJ.appendChild(newTd2); //añade texto al div creado.
 
                 var newTd3 = document.createElement("td");   // crea un nuevo ul
-                var text3 = document.createTextNode(datos[i].horari + "." + accesoHorario[j] + "[0].out");
+                var text3 = document.createTextNode(datos[i].horari.di[0].out);
                 newTd3.appendChild(text3);
                 newTrJ.appendChild(newTd3); //añade texto al div creado.
             }
@@ -502,12 +504,11 @@ function desplegable(i) {
 
             $("#nomElement").append(datos[i].nom)
             $("#descripcioElement").append(datos[i].descripcio)
-            $("#infoTh").append("Horari:")
-            /*
+            
             $("#geoposElem").append(datos[i].geo1.address)
             $("#telElem").append(datos[i].contacte.telf)
             $("#paginawebElem").append(datos[i].contacte.xarxes.web)
-*/
+
             $("#paginaAux").append(newDiv);
         }
     };
