@@ -48,7 +48,7 @@
     }
   
 
-  function Cercador() {
+function Cercador() {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
@@ -516,69 +516,119 @@ function desplegable(i) {
     xmlhttp.send();
 }
 
-// función para extraer datos de supermercados
+//+ INFORMACIO.HTML
+//Crear la timeline dinámicamente:
+
+function buscador() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "dades.json";
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var datos = JSON.parse(xmlhttp.responseText);
+        addElemTimeLine(datos);
+      }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  
+  }
+
 
 /*
+<li>
+     <div class="timeline-image" data-toggle="modal" href="#portfolioModal1">
+         <img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="" /></div>
+     <div class="timeline-panel">
+        <div class="timeline-heading" data-toggle="modal" href="#portfolioModal1">
+             <h4>Fira Vegana Inca</h4>
+            <h4 class="subheading">30 octubre de 2019</h4>
+         </div>
+        <div class="timeline-body" data-toggle="modal" href="#portfolioModal1">
+            <p class="text-muted">«Va a haber stands de comida vegana, y el domingo haremos un
+                 concurso, además de platos condimentados y talleres, haremos charlas para explicar
+                 qué significa ser vegano y como vive un vegano». </p>
+         </div>
+     </div>
+  </li>
+  */
+  function addElemTimeLine(datos) {
+    for (var i = 0; i <datos.length; i++){
+        if(datos[i].tipus == "curs" || datos[i].tipus == "fira" || datos[i].tipus == "info" ){ 
+            if (i%2){
+                var newLi = document.createElement("li")
+            }else{
+                var newLi = document.createElement("li")
+                newLi.setAttribute('class', "timeline-inverted")
 
-// TWITTER ***
-const Twit = require('twit');
-const notifier = require('node-notifier');
-const open = require('open');
-const franc = require ('franc');
+            }
+            var newDiv = document.createElement("div")  // crea un nuevo div
+            newDiv.setAttribute('class', "timeline-image")
+            newDiv.setAttribute('data-toggle', "modal")
+           newDiv.setAttribute('href', "#portfolioModal1")
+            newLi.appendChild(newDiv)//añade texto al div creado.
 
-const apiKey = '0blFCwydwm7VV088tL852RcGL';
-const apiSecretKey = '1flgnZZx1yoQcRwOD0KsS522E6Qtv6i3IxMieNqm7xMHgXo4MU';
-//const bearerToken = AAAAAAAAAAAAAAAAAAAAAHZ%2FOwEAAAAAx4YsVYPWMA%2Bxgy9hz00qU%2F1H61M%3DoCS8coprls6FmieJblOIjMoR1eRz5kLx2jhSCGpm1wUWX22yrD;
-const accessToken = '911228614380855297-92l1HsihKFewmKabBs7gM9QJEC1khd3';
-const accessTokenSecret = 'q1zkDKB9QHC2GK95TRu3N7XxfWsrWNjsfa4Dptlp04YF9';
+            var newimg = document.createElement("img");   // crea un nuevo div
+            newimg.setAttribute('class', "rounded-circle img-fluid")
+            newimg.setAttribute('src', datos[i].imatges[0]) // datos[i].imatges[0]
+            newimg.setAttribute('alt', "")
+            newDiv.appendChild(newimg)
 
-var T = new Twit({
-    consumer_key: apiKey,
-    consumer_secret: apiSecretKey,
-    access_token: accessToken,
-    access_token_secret: accessTokenSecret,
-});
+            var newDiv1 = document.createElement("div")  // crea un nuevo div
+            newDiv1.setAttribute('class', "timeline-panel")
+            newLi.appendChild(newDiv1)//añade texto al div creado.
 
-var params = {
-    q: '#tesla since:2020-04-15',
-    count: 2
-}
+            var newDiv2 = document.createElement("div")  // crea un nuevo div
+            newDiv2.setAttribute('class', "timeline-heading")
+            newDiv2.setAttribute('data-toggle', "modal")
+            newDiv2.setAttribute('href', "#portfolioModal1")
+            newDiv1.appendChild(newDiv2)//añade texto al div creado.
 
-(async () => {
-    //get recent tweets
-    T.get('search/tweets', params, gotData);
-})
+            var newh4 = document.createElement("h4") 
+            var newContent = document.createTextNode(datos[i].nom); //nom Rest datos[i].nom
+            newh4.appendChild(newContent)
+            newDiv2.appendChild(newh4)
 
+            var newh4_2 = document.createElement("h4") 
+            newh4_2.setAttribute('class', "subheading")
+            var newContent2 = document.createTextNode(datos[i].calendari.startDataEvent); 
+            newh4_2.appendChild(newContent2)
+            newDiv2.appendChild(newh4_2)
 
-function gotData(err, data, response){
-    var tweets = data.statuses;
-    for (var i = 0; i < tweets.length; i++){
-        console.log(tweets[i].text);
+            var newDiv3 = document.createElement("div")  // crea un nuevo div
+            newDiv3.setAttribute('class', "timeline-body")
+            newDiv3.setAttribute('data-toggle', "modal")
+            newDiv3.setAttribute('href', "#portfolioModal1")
+            newDiv1.appendChild(newDiv3)//añade texto al div creado.
+
+            var newp = document.createElement("p") 
+            newp.setAttribute('class', "text-muted")
+            var newContent3 = document.createTextNode(datos[i].descripcio); //«Va a haber stands de comida vegana, y el domingo haremos unconcurso, además de platos condimentados y talleres, haremos charlas para explicar qué significa ser vegano y como vive un vegano».
+            newp.appendChild(newContent3)
+            newDiv3.appendChild(newp)
+
+                
+            // añade el elemento creado y su contenido al DOM
+            $("#timeLineInfo").append(newLi);
+        }
     }
+    var newLi2 = document.createElement("li")
+    var newDiv4 = document.createElement("div")  // crea un nuevo div
+    newDiv4.setAttribute('class', "timeline-image")
+    newDiv4.setAttribute('data-toggle', "modal")
+    newDiv4.setAttribute('href', "#portfolioModal1")
+    newLi2.appendChild(newDiv4)//añade texto al div creado.
+
+    var newh4_2 = document.createElement("h4") 
+    var newContent4 = document.createTextNode("Continua\n"); //nom Rest datos[i].nom
+    newh4_2.appendChild(newContent4)
+    var newContent5 = document.createTextNode("descobrint \r"); //nom Rest datos[i].nom
+    newh4_2.appendChild(newContent5)
+    var newContent6 = document.createTextNode("\naquí!\n"); //nom Rest datos[i].nom
+    newh4_2.appendChild(newContent6)
+    
+    newDiv4.appendChild(newh4_2)
+    $("#timeLineInfo").append(newLi2);  
 }
-/
-function updateTweets(tweets) { 
-    var tweetSelection = document.getElementById("tweets");
-
-    for (var i = 0; i < tweets.length; i++) {
-      tweet = tweets[i];
-      var option = document.createElement("option");
-      option.text = tweet.text;
-      option.value = tweet.text.replace(""", "'");
-      console.log("The option is: " + option);
-
-      tweetSelection.options.add(option);
-    }
-
-    tweetsSelection.selectedIndex = 0;
-  }
-*/
-
-
-
-
-
-
 
 
 

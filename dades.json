@@ -933,10 +933,10 @@
         
     },
     {
-        "nom":"--",
+        "nom":"???",
         "descripcio": "En Veritas apostem per un model ecològic, per això, en els nostres supermercats només trobaràs productes ecològics. Diversitat en l'assortit, Fórmules saludables, Envasos sostenibles" ,
         "detall": "",
-        "tipus": "",
+        "tipus": "f",
         "identificador":"1",
         "comentari": "",
         "preu":{
