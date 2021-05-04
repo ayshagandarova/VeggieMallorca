@@ -72,7 +72,8 @@ function Cercador() {
   
   }
 
-
+  
+  
 function addElement (datos, id) {
 //filtrar para distinguir entre restaurantes o supermercados
     
@@ -87,11 +88,11 @@ function addElement (datos, id) {
             newDiv.appendChild(newDiv1); //añade texto al div creado.
 
             var newa1 = document.createElement("a");
-            newa1.setAttribute('onclick', "desplegable("+i+")");
+            //newa1.setAttribute('onclick', "desplegable("+i+")");
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
             newa1.setAttribute('href', "#portfolioModal"+i);
-            newa1.setAttribute('id', "iddeslplegable")
+            //newa1.setAttribute('id', "iddeslplegable")
 
             newDiv1.appendChild(newa1); //añade texto al div creado.
         
@@ -109,37 +110,34 @@ function addElement (datos, id) {
             newi.setAttribute('class', "fas fa-plus fa-3x")
 
             newDiv3.appendChild(newi);
-            
+
             var newimg = document.createElement("img");   // crea un nuevo div
-            newimg.setAttribute('class', "img-fluid")
+          //  newimg.className ="img-fluid"
+            newimg.setAttribute('width', 350)
+            newimg.setAttribute('height', 250)
+            newimg.setAttribute('margin-righ', 30)
             newimg.setAttribute('src', datos[i].imatges[0])
             newimg.setAttribute('alt', "")
 
             newa1.appendChild(newimg);   
             
-            var newDiv2 = document.createElement("div");   // crea un nuevo div
-            newDiv2.setAttribute('class', "portfolio-hover")
-
-            newa1.appendChild(newDiv2);
-            //
-
-            var newDiv3 = document.createElement("div");   // crea un nuevo div
-            newDiv2.setAttribute('class', "portfolio-caption")
-
-            newDiv1.appendChild(newDiv3);
-
             var newDiv4 = document.createElement("div");   // crea un nuevo div
-            newDiv4.setAttribute('class', "portfolio-caption-heading")
-            var newContent = document.createTextNode(datos[i].nom); //nom Rest
-            newDiv4.appendChild(newContent)
+            newDiv4.setAttribute('class', "portfolio-caption")
 
-            newDiv3.appendChild(newDiv4);
+            newDiv1.appendChild(newDiv4);
 
             var newDiv5 = document.createElement("div");   // crea un nuevo div
-            newDiv5.setAttribute('class', "portfolio-caption-subheading text-muted")
+            newDiv5.setAttribute('class', "portfolio-caption-heading")
+            var newContent = document.createTextNode(datos[i].nom); //nom Rest
+            newDiv5.appendChild(newContent)
+
+            newDiv4.appendChild(newDiv5);
+
+            var newDiv6 = document.createElement("div");   // crea un nuevo div
+            newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
             var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
-            newDiv5.appendChild(newContent2)
-            newDiv3.appendChild(newDiv5);
+            newDiv6.appendChild(newContent2)
+            newDiv4.appendChild(newDiv6);
 
             // añade el elemento creado y su contenido al DOM
             $("#restaurant1").append(newDiv);
@@ -530,17 +528,21 @@ function buscador() {
         var urlweb = location.search //agafa la url on hem clicat a partir de l'? inclòs
         var id = urlweb.replace("?","")
         if(id == "informacio"){
-            addElemTimeLine(datos);
             $("#headingInfo").append("MÉS INFORMACIÓ RELLEVANT")
             $("#subHeadingInfo").append("Segueix descobrint visitant les fires de l'illa, diferents cursos i tot un conjunt de curiositats.")
+            addElemTimeLine(datos);
         } else if(id == "curs"){
             $("#headingInfo").append("CURSOS")
             $("#subHeadingInfo").append("Troba aquí una petita selecció de cursos online i presencials vegetarians o vegans")
-            addCurs(datos, id);
+            afegirElemPortfoli(datos, id);
         }else if(id == "info"){
             $("#headingInfo").append("DADES INTERESSANTS")
             $("#subHeadingInfo").append("No et perdis les darreres notícies.")
-            addCurs(datos, id);
+            afegirElemPortfoli(datos, id);
+        }else if(id == "fira"){
+            $("#headingInfo").append("FIRES VEGETARIANES I VENAGES DE L'ILLA")
+            $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
+            afegirElemPortfoli(datos, id);
         }
         
       }
@@ -648,9 +650,10 @@ function buscador() {
     $("#timeLineInfo").append(newLi2);  
 }
 
-function addCurs (datos, id) {
-    //filtrar para distinguir entre restaurantes o supermercados
-        
+
+
+function afegirElemPortfoli (datos, id) {
+
         for (var i = 0; i <datos.length; i++){
     
             if(datos[i].tipus == id){ //id = "restaurant o sueprmercats"
@@ -662,11 +665,11 @@ function addCurs (datos, id) {
                 newDiv.appendChild(newDiv1); //añade texto al div creado.
     
                 var newa1 = document.createElement("a");
-                newa1.setAttribute('onclick', "desplegable("+i+")");
+                //newa1.setAttribute('onclick', "desplegable("+i+")");
                 newa1.setAttribute('class', "portfolio-link");
                 newa1.setAttribute('data-toggle', "modal");
                 newa1.setAttribute('href', "#portfolioModal1") //+i)
-                newa1.setAttribute('id', "iddeslplegable")
+               // newa1.setAttribute('id', "iddeslplegable")
     
                 newDiv1.appendChild(newa1); //añade texto al div creado.
             
@@ -686,35 +689,32 @@ function addCurs (datos, id) {
                 newDiv3.appendChild(newi);
                 
                 var newimg = document.createElement("img");   // crea un nuevo div
-                newimg.setAttribute('class', "img-fluid")
+                //newimg.setAttribute('class', "img-fluid")
+                newimg.setAttribute('width', 348)
+                newimg.setAttribute('height', 350)
+                newimg.setAttribute('margin-righ', 30)
                 newimg.setAttribute('src', datos[i].imatges[0])
                 newimg.setAttribute('alt', "")
     
                 newa1.appendChild(newimg);   
-                
-                var newDiv2 = document.createElement("div");   // crea un nuevo div
-                newDiv2.setAttribute('class', "portfolio-hover")
-    
-                newa1.appendChild(newDiv2);
-                //
-    
-                var newDiv3 = document.createElement("div");   // crea un nuevo div
-                newDiv2.setAttribute('class', "portfolio-caption")
-    
-                newDiv1.appendChild(newDiv3);
     
                 var newDiv4 = document.createElement("div");   // crea un nuevo div
-                newDiv4.setAttribute('class', "portfolio-caption-heading")
-                var newContent = document.createTextNode(datos[i].nom); //nom Rest
-                newDiv4.appendChild(newContent)
+                newDiv4.setAttribute('class', "portfolio-caption")
     
-                newDiv3.appendChild(newDiv4);
+                newDiv1.appendChild(newDiv4);
     
                 var newDiv5 = document.createElement("div");   // crea un nuevo div
-                newDiv5.setAttribute('class', "portfolio-caption-subheading text-muted")
+                newDiv5.setAttribute('class', "portfolio-caption-heading")
+                var newContent = document.createTextNode(datos[i].nom); //nom Rest
+                newDiv5.appendChild(newContent)
+    
+                newDiv4.appendChild(newDiv5);
+   
+                var newDiv6 = document.createElement("div");   // crea un nuevo div
+                newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
                 var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
-                newDiv5.appendChild(newContent2)
-                newDiv3.appendChild(newDiv5);
+                newDiv6.appendChild(newContent2)
+                newDiv4.appendChild(newDiv6);
     
                 // añade el elemento creado y su contenido al DOM
                 $("#portfolioInfo").append(newDiv);
