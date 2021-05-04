@@ -20,16 +20,18 @@
     <link href="css/styles.css" rel="stylesheet" />
 
     <!-- GOOGLE MAPS -->
-     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <!-- ???????????? esto de q se haga aqui el onload no me gusta mucho-->
+
 <body id="page-top" onload="buscador()">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="index.html"><img src="assets/img/veggieLogo.png" alt="" /></a>
+            <a class="navbar-brand js-scroll-trigger" href="index.html"><img src="assets/img/veggieLogo.png"
+                    alt="" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -42,17 +44,20 @@
                     <nav id="menu">
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <!-- Aquí estarán todos los links a las planas-->
-                            <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="portfolio.html?restaurant">Restaurants</a>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                    href="portfolio.html?restaurant">Restaurants</a>
                             </li>
-                            <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="portfolio.html?supermercat">Supermercats</a>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                    href="portfolio.html?supermercat">Supermercats</a>
                             </li>
-                            <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="informacio.html">+Informació</a>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                    href="informacio.html?informacio">+Informació</a>
                                 <ul class="navbar-nav text-uppercase ml-auto">
-                                    <li class="subitem" > <a href="informacio.html?curs">
+                                    <li class="subitem"> <a href="informacio.html?curs">
                                             Cursos</a></li>
-                                    <li class="subitem"> <a href="informacio.html?fires">
+                                    <li class="subitem"> <a href="informacio.html?fira">
                                             Fires</a></li>
-                                    <li class="subitem" > <a href="informacio.html?info">
+                                    <li class="subitem"> <a href="informacio.html?info">
                                             +Info</a></li>
                                 </ul>
                             </li>
@@ -65,116 +70,25 @@
 
     <!-- INFORMACIO -->
     <div id="paginaInformacio">
-        <!-- About-->
+        <!-- About / informacio general-->
         <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">MÉS INFORMACIÓ RELLEVANT</h2>
-                    <h3 class="section-subheading text-muted">Segueix descobrint visitant les fires de l'illa, diferents
-                        cursos i tot un conjunt de curiositats.</h3>
+                    <h2 class="section-heading text-uppercase" id="headingInfo"></h2>
+                    <h3 class="section-subheading text-muted" id="subHeadingInfo"></h3>
                 </div>
                 <!-- TIME LINE -->
-                <div class="row" id="restaurant1">
-                <ul class="timeline" id ="timeLineInfo"></ul>
-            </div>
-        </section>
+                <ul class="timeline" id="timeLineInfo"></ul>
 
-        <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
-                            </div>
-                        </div>
+                <!-- Portfolio Grid per CURS /FIRA / + INFO-->
+                <section id="portfolio">
+                    <div class="container">
+                        <div class="row" id="portfolioInfo"></div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/02-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Explore</div>
-                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/03-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
-                                <div class="portfolio-caption-subheading text-muted">Identity</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/04-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Lines</div>
-                                <div class="portfolio-caption-subheading text-muted">Branding</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/05-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Southwest</div>
-                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/06-thumbnail.jpg" alt="" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Window</div>
-                                <div class="portfolio-caption-subheading text-muted">Photography</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </section>
+
             </div>
         </section>
-        
         <!-- Portfolio Modals-->
         <!-- Modal 1-->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -482,7 +396,7 @@
     </footer>
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class='fas fa-arrow-up'></i> </button>
     <!-- o esta flecha far fa-arrow-alt-circle-up-->
-    
+
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
