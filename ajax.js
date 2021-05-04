@@ -73,7 +73,6 @@ function Cercador() {
   }
 
   
-  
 function addElement (datos, id) {
 //filtrar para distinguir entre restaurantes o supermercados
     
@@ -88,7 +87,15 @@ function addElement (datos, id) {
             newDiv.appendChild(newDiv1); //añade texto al div creado.
 
             var newa1 = document.createElement("a");
-            //newa1.setAttribute('onclick', "desplegable("+i+")");
+            newa1.type = "button"
+            newa1.setAttribute('onclick', "desplegable( "+ i + ")");
+            /*newa1.addEventListener('click', function(){
+                desplegable(i);
+            });
+            newa1.getElementById("holita").addEventListener("click", function() {
+                desplegable(i);
+            }, false);*/
+           // newa1.setAttribute('onclick', "test()");
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
             newa1.setAttribute('href', "#portfolioModal"+i);
@@ -113,7 +120,7 @@ function addElement (datos, id) {
 
             var newimg = document.createElement("img");   // crea un nuevo div
           //  newimg.className ="img-fluid"
-            newimg.setAttribute('width', 350)
+            newimg.setAttribute('width', 355)
             newimg.setAttribute('height', 250)
             newimg.setAttribute('margin-righ', 30)
             newimg.setAttribute('src', datos[i].imatges[0])
@@ -268,7 +275,6 @@ function vaciarDesplegable(i) {
 function desplegable(i) {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
-
     var arrayHorario = ["Dilluns","Dimarts","Dimecres","Dijous","Divendres","Dissabte","Diumenge"]
     var accesoHorario =["di","dm","dx","dj","dv","ds","dg"]
     
@@ -666,6 +672,7 @@ function afegirElemPortfoli (datos, id) {
     
                 var newa1 = document.createElement("a");
                 //newa1.setAttribute('onclick', "desplegable("+i+")");
+                //newa1.setAttribute('onclick', "test()");
                 newa1.setAttribute('class', "portfolio-link");
                 newa1.setAttribute('data-toggle', "modal");
                 newa1.setAttribute('href', "#portfolioModal1") //+i)
@@ -721,6 +728,8 @@ function afegirElemPortfoli (datos, id) {
             }
         }
     }
+
+    
 
 
 
