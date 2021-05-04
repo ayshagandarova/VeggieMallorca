@@ -864,7 +864,7 @@
             "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto1.jpg",
             "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto2.jpg",
             "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto3.jpeg",
-            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto4.jpg",
             "https://veggiemallorca.netlify.app/assets/img/Informacio/cursos/saludableGalley/foto5.jpg",
             ""
         ],
@@ -935,28 +935,28 @@
         
     },
     {
-        "nom":"???",
-        "descripcio": "En Veritas apostem per un model ecològic, per això, en els nostres supermercats només trobaràs productes ecològics. Diversitat en l'assortit, Fórmules saludables, Envasos sostenibles" ,
+        "nom":"Next Level Meat de Lidl",
+        "descripcio": "Tota una nova gama de productes vegans." ,
         "detall": "",
-        "tipus": "f",
+        "tipus": "info",
         "identificador":"1",
         "comentari": "",
         "preu":{
-            "import":"5-100€",
+            "import":"2-5€",
             "coment-preu":""
         },
         "contacte":{
-            "telf": "871 90 45 85", 
+            "telf": "", 
             "email": "",
             "xarxes":  {  
-                "web": "https://www.veritas.es",   
-                "facebook": "",
-                "twitter": "",
-                "instagram": "",
+                "web": "https://www.lidl.es/es/next-level-meat/b1695",   
+                "facebook": "https://www.facebook.com/lidlespana/",
+                "twitter": "https://twitter.com/lidlespana?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+                "instagram": "https://www.instagram.com/lidlespana/?hl=es",
                 "tripadvisor": ""
             }
         },
-        "puntuacio":"4,3",
+        "puntuacio":"",
         "visualitzacions":"",
         "likes":0,
 
@@ -965,10 +965,11 @@
             " "
         ],
         "imatges": [
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda1.png",
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda2.png",
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda3.png",
-            "https://veggiemallorca.netlify.app/assets/img/Supermercats/Veritas/tenda4.jpg"
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto1.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto4.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto5.jpg"
         ],
         "videos": [
             {"tipus": "youtube"},
@@ -979,15 +980,15 @@
             {"url": ""}
         ],
         "geo1":{
-            "address": "Carrer de l'Emperadriu Eugènia, 9",
-            "lat": 39.57304093831823,
-            "long":2.637623597939436,
-            "city":"Palma",
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
             "Country":"Espanya",
             "zip": "07010"
         },
         "geo2":{
-            "address": "Plaça del Comtat del Rosselló, 6",
+            "address": "",
             "lat": "",
             "long":"",
             "city":"Palma",
@@ -996,27 +997,27 @@
         },
         "horari":{
                 "di": [
-                    {"in": "09:15","out": "21:15"},
+                    {"in": "09:00","out": "21:30"},
                     {"in": "-","out": "-"}
                 ],
                 "dm": [
-                    {"in": "09:15","out": "21:15"},
+                    {"in": "09:00","out": "21:30"},
                     {"in": "-","out": "-"}
                 ],
                 "dx": [
-                    {"in": "09:15","out": "21:15"},
+                    {"in": "09:00","out": "21:30"},
                     {"in": "-","out": "-"}
                 ],
                 "dj": [
-                    {"in": "09:15","out": "21:15"},
+                    {"in": "09:00","out": "21:30"},
                     {"in": "-","out": "-"}
                 ],
                 "dv": [
-                    {"in": "09:15","out": "21:15"},
+                    {"in": "09:00","out": "21:30"},
                     {"in": "-","out": "-"}
                 ],
                 "ds": [
-                    {"in": "09:15","out": "21:15"},
+                    {"in": "09:00","out": "21:30"},
                     {"in": "-","out": "-"}
                 ],
                 "dg": [
@@ -1031,8 +1032,8 @@
             "endTimeEvent":""
         },
         "dadesPropies" : { 
-            "menu": "icartaweb.com",
-            "pedido": "deliveroo.es"
+            "menu": "",
+            "pedido": ""
         }
         
     }

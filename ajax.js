@@ -537,9 +537,10 @@ function buscador() {
             $("#headingInfo").append("CURSOS")
             $("#subHeadingInfo").append("Troba aquí una petita selecció de cursos online i presencials vegetarians o vegans")
             addCurs(datos, id);
-            //id=portfolioInfo
-           // $("#titolPortfoli").append("Supermercats")
-            //$("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
+        }else if(id == "info"){
+            $("#headingInfo").append("DADES INTERESSANTS")
+            $("#subHeadingInfo").append("No et perdis les darreres notícies.")
+            addCurs(datos, id);
         }
         
       }
