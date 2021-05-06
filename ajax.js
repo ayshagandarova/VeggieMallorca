@@ -87,22 +87,12 @@ function addElement (datos, id) {
             newDiv.appendChild(newDiv1); //añade texto al div creado.
 
             var newa1 = document.createElement("a");
-            newa1.type = "button"
-            newa1.setAttribute('onclick', "desplegable( "+ i + ")");
-            /*newa1.addEventListener('click', function(){
-                desplegable(i);
-            });
-            newa1.getElementById("holita").addEventListener("click", function() {
-                desplegable(i);
-            }, false);*/
-           // newa1.setAttribute('onclick', "test()");
+            //   newa1.setAttribute('onclick', "desplegable("+i+"); this.onclick=null;");
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
-            newa1.setAttribute('href', "#portfolioModal"+i);
-            //newa1.setAttribute('id', "iddeslplegable")
-
+            newa1.setAttribute('data-target', "#myModal");
             newDiv1.appendChild(newa1); //añade texto al div creado.
-        
+
             var newDiv2 = document.createElement("div");   // crea un nuevo div
             newDiv2.setAttribute('class', "portfolio-hover")
 
