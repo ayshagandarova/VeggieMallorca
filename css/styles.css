@@ -10718,3 +10718,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 .inline-section.is-visible {
   opacity: 1;
 }
+
+
+/* MAPA */
+#mapid { height: 180px; }

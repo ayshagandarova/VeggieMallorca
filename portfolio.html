@@ -20,8 +20,18 @@
     <link href="css/styles.css" rel="stylesheet" />
     <!-- GOOGLE MAPS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- ESTOS LINKS SE PUEDEN BORRAR AYSHAAAAAAAAAAAAAAAAAAAA********************* -->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- API MAPA -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script>
+
 </head>
 <!-- ???????????? esto de q se haga aqui el onload no me gusta mucho-->
 
@@ -79,7 +89,7 @@
                     <h3 class="section-subheading text-muted" id="descPortfoli"></h3>
                 </div>
                 <div class="infoRest" >
-                    <div class="row" id="restaurant1">
+                    <div class="row" id="galeriaPortfoli">
 
                         <!-- 
                         <div class="col-lg-4 col-sm-6 mb-4 portfolio-item" id="restaurant1">
@@ -105,18 +115,33 @@
                 </div>
             </div>
         </section>
-        <!-- Portfolio Modals-->
-       
     </div>
-    
+    <!-- Portfolio Modals-->
+
     <div class="portfolio-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" onclick="eliminarDatos();" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
-                </div>
-                <div class="container" id="añadirInfoElemento">
-                    
-                </div>
+        <div class="modal-dialog"  id="añadirInfoElemento" >
+          <!--    <div class="modal-content">  
+                <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
+                    <div class="container"> 
+                        <div class= "row justify-content-center">
+                            <div class= "modal-body">
+                                <h2 class="portfolio-caption-heading" id="nomElement"></h2>
+                                <p class= "item-intro text-mutedg" id= "descripcioElement"></p> -->
+            
+            
+            
+            
+                        <div id="hola">
+
+                        
+                        <div id="mapid"></div>
+
+
+
+                            </div>
+                        </div> 
+                    </div>
+                </div> 
             </div>
         </div>
     </div>
@@ -236,6 +261,7 @@
     <script src="js/scripts.js"></script>
     <script src="ajax.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    
 </body>
 
 </html>
