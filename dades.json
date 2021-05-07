@@ -409,7 +409,10 @@
         },
         "dadesPropies" : { 
             "menu": "icartaweb.com",
-            "pedido": "deliveroo.es"
+            "pedido": "deliveroo.es",
+            "scriptComentaris": "https://apps.elfsight.com/p/platform.js",
+            "divComentaris": "elfsight-app-4cf356d3-6a73-4798-8a50-148d829a9c5d"
+            
         }
         
     },

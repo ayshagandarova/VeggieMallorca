@@ -6,7 +6,7 @@
 //función que trae los datos cuando se pulsa el boton
 
 // mapa:
-    
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
 var map = new mapboxgl.Map({
 container: 'mapid', // container ID
@@ -25,8 +25,6 @@ map.addControl(new mapboxgl.NavigationControl());
         })
     );
 var marker;
-
-
 
 
 
@@ -182,6 +180,7 @@ function desplegableDatos(i) {
             
             $("#nombreDescripcioElement").append(newDescripcio);
 
+            
             // Puntero:
             marker = new mapboxgl.Marker()
                 .setLngLat([datos[i].geo1.long, datos[i].geo1.lat])
@@ -328,260 +327,17 @@ function desplegableDatos(i) {
             $("#horariElement").append(newThead);
             $("#horariElement").append(newTbody);
 
+            var newScript = document.createElement('script');
+            newScript.setAttribute('src', datos[i].dadesPropies.scriptComentaris);
+
+            var newDivComentari = document.createElement('div');
+            newDivComentari.setAttribute('class',datos[i].dadesPropies.divComentaris)
+            $("#comentaris").append(newScript);
+            $("#comentaris").append(newDivComentari);
         }
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
-   
-
-/*
-            var newDiv2 = document.createElement("div");   // crea un nuevo div
-            newDiv2.setAttribute('class', "modal-content")
-            //newDiv1.appendChild(newDiv2); //añade texto al div creado.
-
-            var newDiv3 = document.createElement("div");   // crea un nuevo div
-            newDiv3.setAttribute('class', "close-modal")
-            newDiv3.setAttribute('data-dismiss', "modal")
-            newDiv2.appendChild(newDiv3); //añade texto al div creado.
-
-            var newImg = document.createElement("img");   // crea un nuevo div
-            newImg.setAttribute('src', "assets/img/close-icon.svg")
-            newImg.setAttribute('alt', "Close modal")
-            //newImg.setAttribute('onclick', "vaciarDesplegable()")
-            newDiv3.appendChild(newImg); //añade texto al div creado.
-
-
-
-            var newDiv4 = document.createElement("div");   // crea un nuevo div
-            newDiv4.setAttribute('class', "container")
-            newDiv2.appendChild(newDiv4); //añade texto al div creado.
-
-            var newDiv5 = document.createElement("div");   // crea un nuevo div
-            newDiv5.setAttribute('class', "row justify-content-center")
-            newDiv4.appendChild(newDiv5); //añade texto al div creado.
-
-            var newDiv6 = document.createElement("div");   // crea un nuevo div
-            newDiv6.setAttribute('class', "modal-body")
-            newDiv5.appendChild(newDiv6); //añade texto al div creado.
-
-
-            var newH2 = document.createElement("h2");   // crea un nuevo div
-            newH2.setAttribute('class', "portfolio-caption-heading")
-            //newH2.setAttribute('id', "nomElement")
-            var newContent1 = document.createTextNode(datos[i].nom); //nom Rest
-            newH2.appendChild(newContent1)
-            newDiv6.appendChild(newH2); //añade texto al div creado.
-
-
-            var newP = document.createElement("p");   // crea un nuevo div
-            newP.setAttribute('class', "item-intro text-mutedg")
-            //newP.setAttribute('id', "descripcioElement")
-            var newContent2 = document.createTextNode(datos[i].descripcio); //nom Rest
-            newP.appendChild(newContent2)
-            newDiv6.appendChild(newP); //añade texto al div creado.
-
-
-
-
-
-
-            //$("#nomElement").append(datos[i].nom)
-
-            //  $("#descripcioElement").append(datos[i].descripcio)
-
-
-
-
-
-
-
-
-
-            var newDiv7 = document.createElement("div");   // crea un nuevo div
-            newDiv7.setAttribute('class', "row justify-content-center")
-            newDiv4.appendChild(newDiv7); //añade texto al div creado.
-
-            var newDiv8 = document.createElement("div");   // crea un nuevo div
-            newDiv8.setAttribute('class', "col-lg-6")
-            newDiv7.appendChild(newDiv8); //añade texto al div creado.
-
-            var newDiv9 = document.createElement("div");   // crea un nuevo div
-            newDiv9.setAttribute('class', "carousel slide")
-            newDiv9.setAttribute('id', "myCarousel")
-            newDiv9.setAttribute('data-ride', "carousel")
-            newDiv8.appendChild(newDiv9); //añade texto al div creado.
-
-            var newOl = document.createElement("ol");   // crea un nuevo div
-            newOl.setAttribute('class', "carousel-indicators")
-            newDiv9.appendChild(newOl); //añade texto al div creado.
-
-            for (var k = 0; k < datos[i].imatges.length; k++) {
-                var newLiK = document.createElement("li");   // crea un nuevo div
-                if (k == 0) {
-                    newLiK.setAttribute('class', "active")
-                }
-                newLiK.setAttribute('data-target', "#myCarousel")
-                newLiK.setAttribute('data-slide-to', k)
-                newOl.appendChild(newLiK); //añade texto al div creado.
-            }
-
-            var newDiv10 = document.createElement("div");   // crea un nuevo div
-            newDiv10.setAttribute('class', "carousel-inner")
-            newDiv9.appendChild(newDiv10); //añade texto al div creado.
-
-            var newDiv11 = document.createElement("div");   // crea un nuevo div
-            newDiv11.setAttribute('class', "carousel-item active")
-            newDiv10.appendChild(newDiv11); //añade texto al div creado.
-
-            var newImg1 = document.createElement("img");   // crea un nuevo div
-            newImg1.setAttribute('class', "0-slide")
-            newImg1.setAttribute('src', datos[i].imatges[0])
-            newImg1.setAttribute('alt', "0-slide")
-            newImg1.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
-            newDiv11.appendChild(newImg1); //añade texto al div creado.
-
-            for (var k = 1; k < datos[i].imatges.length; k++) {
-                var newDivK = document.createElement("div");   // crea un nuevo div
-                newDivK.setAttribute('class', "carousel-item")
-                newDiv10.appendChild(newDivK); //añade texto al div creado.
-
-                var newImgK = document.createElement("img");   // crea un nuevo div
-                newImgK.setAttribute('class', k + "-slide")
-                newImgK.setAttribute('src', datos[i].imatges[k])
-                newImgK.setAttribute('alt', k + "-slide")
-                newImgK.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
-                newDivK.appendChild(newImgK); //añade texto al div creado.
-            }
-
-            var newA = document.createElement("a");   // crea un nuevo div
-            newA.setAttribute('class', "carousel-control-prev")
-            newA.setAttribute('href', "#myCarousel")
-            newA.setAttribute('role', "button")
-            newA.setAttribute('data-slide', "data-slide")
-            newDiv9.appendChild(newA); //añade texto al div creado.
-
-            var newSpan = document.createElement("span");   // crea un nuevo div
-            newSpan.setAttribute('class', "carousel-control-prev-icon")
-            newSpan.setAttribute('aria-hidden', "true")
-            newA.appendChild(newSpan); //añade texto al div creado.
-
-            var newSpan1 = document.createElement("span");   // crea un nuevo div
-            newSpan1.setAttribute('class', "sr-only")
-            newSpan1.setAttribute('id', "num1-slide")
-            $("#num1-slide").append("Previous")
-            newA.appendChild(newSpan1); //añade texto al div creado.
-
-
-            var newA1 = document.createElement("a");   // crea un nuevo div
-            newA1.setAttribute('class', "carousel-control-next")
-            newA1.setAttribute('href', "#myCarousel")
-            newA1.setAttribute('role', "button")
-            newA1.setAttribute('data-slide', "next")
-            newDiv9.appendChild(newA1); //añade texto al div creado.
-
-            var newSpan2 = document.createElement("span");   // crea un nuevo div
-            newSpan2.setAttribute('class', "carousel-control-next-icon")
-            newSpan2.setAttribute('aria-hidden', "true")
-            newA1.appendChild(newSpan2); //añade texto al div creado.
-
-            var newSpan3 = document.createElement("span");   // crea un nuevo div
-            newSpan3.setAttribute('class', "sr-only")
-            newSpan3.setAttribute('id', "num2-slide")
-            $("#num2-slide").append("Next")
-            newA1.appendChild(newSpan3); //añade texto al div creado.
-
-
-            newDiv12.appendChild(newDiv13); //añade texto al div creado.
-
-
-
-
-
-            // horario + info :
-            var newDivRow = document.createElement("div");   // crea un nuevo ul
-            newDivRow.setAttribute('id', "informacionElement")
-            newDivRow.setAttribute('class', "row justify-content-centert")
-            newDiv4.appendChild(newDivRow); //añade texto al div creado.
-
-            var newDivCol1 = document.createElement("div");   // crea un nuevo ul
-            newDivCol1.setAttribute('class', "col-lg-6")
-            newDivRow.appendChild(newDivCol1); //añade texto al div creado.
-
-            var newTable = document.createElement("table");   // crea un nuevo ul
-            newTable.setAttribute('id', "horariElem")
-            newDivCol1.appendChild(newTable); //añade texto al div creado.
-
-            var newThead = document.createElement("thead");   // crea un nuevo ul
-            newTable.appendChild(newThead); //añade texto al div creado.
-
-            var newTr = document.createElement("tr");   // crea un nuevo ul
-            newThead.appendChild(newTr); //añade texto al div creado.
-
-            var newTh1 = document.createElement("th");   // crea un nuevo ul
-            var texto = document.createTextNode("Horari:");
-            newTh1.appendChild(texto);
-            newTr.appendChild(newTh1); //añade texto al div creado.
-
-            var newTh2 = document.createElement("th");   // crea un nuevo ul
-            newTr.appendChild(newTh2); //añade texto al div creado.
-
-            var newTh3 = document.createElement("th");   // crea un nuevo ul
-            newTr.appendChild(newTh3); //añade texto al div creado.
-
-            var newTbody = document.createElement("tbody");   // crea un nuevo ul
-            newTable.appendChild(newTbody); //añade texto al div creado.
-
-            for (var j = 0; j < 7; j++) {
-                var newTrJ = document.createElement("tr");   // crea un nuevo ul
-                newTbody.appendChild(newTrJ); //añade texto al div creado.
-
-                var newTd = document.createElement("td");   // crea un nuevo ul
-                var text = document.createTextNode(arrayHorario[j]);
-                newTd.appendChild(text);
-                newTrJ.appendChild(newTd); //añade texto al div creado.
-
-                var newTd2 = document.createElement("td");   // crea un nuevo ul
-                var text2 = document.createTextNode(datos[i].horari.di[0].in);
-                newTd2.appendChild(text2);
-                newTrJ.appendChild(newTd2); //añade texto al div creado.
-
-                var newTd3 = document.createElement("td");   // crea un nuevo ul
-                var text3 = document.createTextNode(datos[i].horari.di[0].out);
-                newTd3.appendChild(text3);
-                newTrJ.appendChild(newTd3); //añade texto al div creado.
-            }
-
-            var newDivCol2 = document.createElement("div");   // crea un nuevo ul
-            newDivCol2.setAttribute('class', "col-lg-6")
-            newDivRow.appendChild(newDivCol2); //añade texto al div creado.
-
-            var newUl = document.createElement("ul");   // crea un nuevo ul
-            newDivCol2.appendChild(newUl); //añade texto al div creado.
-
-            var newLi2 = document.createElement("li");   // crea un nuevo ul
-            var texte1 = document.createTextNode(datos[i].geo1.address)
-            newLi2.appendChild(texte1)
-            newUl.appendChild(newLi2); //añade texto al div creado.
-
-            var newLi3 = document.createElement("li");   // crea un nuevo ul
-            var texte2 = document.createTextNode(datos[i].contacte.telf)
-            newLi3.appendChild(texte2)
-            newUl.appendChild(newLi3); //añade texto al div creado.
-
-            /*var newLi4 = document.createElement("li");   // crea un nuevo ul
-            var texte3 = document.createTextNode(datos[i].contacte.xarxes.web)
-            newLi4.appendChild(texte3)
-            newUl.appendChild(newLi4); //añade texto al div creado.
-
-
-
-
-            $("#añadirInfoElemento").html("");
-            $("#añadirInfoElemento").html(newDiv2)
-
-        */
-
 }
 
 
