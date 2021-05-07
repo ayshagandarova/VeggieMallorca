@@ -25,35 +25,10 @@ map.addControl(new mapboxgl.NavigationControl());
         })
     );
 var marker;
-/*
-function hacerMapa(x) {
-
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
 
 
-            var pointer = document.createElement('div');
-            pointer.className = 'marker';
 
-            var marker = new mapboxgl.Marker()
-                .setLngLat([datos[x].geo1.long, datos[x].geo1.lat])
-                .setPopup(
-                    new mapboxgl.Popup({ offset: 25 })
-                        .setHTML(
-                            '<h3>' +
-                            datos[x].nom +
-                            '</h3><p>' +
-                            datos[x].geo1.address +
-                            '</p>'
-                        )
-                )
-                .addTo(map);
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}*/
+
 
 // Botón para subir arriba;
 

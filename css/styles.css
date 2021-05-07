@@ -10722,3 +10722,38 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 /* MAPA */
 #mapid { height: 180px; }
+
+.search-container {
+  float: left;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.search-container button {
+
+  background: #F8D160;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #F3B04E;
+}
+/*
+.search-container input[type=text] {
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+@media screen and (max-width: 600px) {
+  
+  .search-container input[type=text] {
+    border: 1px solid #ccc;  
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+  }
+}*/
