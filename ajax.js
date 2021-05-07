@@ -4,41 +4,17 @@
 //mostrarRestaurants();
 
 //función que trae los datos cuando se pulsa el boton
-/*
+
 // mapa:
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
-
-    var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [2.651537069816233, 39.570644797011795],
-    zoom: 13,
-    });
-    map.addControl(new mapboxgl.NavigationControl());
-    // Add geolocate control to the map.
-    map.addControl(
-        new mapboxgl.GeolocateControl({
-        positionOptions: {
-        enableHighAccuracy: true
-        },
-        trackUserLocation: true
-        })  
-    );
-
-
-function hacerMapa(x) {
-    //********andrea me ha dicho q ellas cargan el json una vez solo cuando se carga la pagina
-    var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json";
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
-
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [2.651537069816233, 39.570644797011795],
-        zoom: 13,
-    });
-    map.addControl(new mapboxgl.NavigationControl());
+    
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
+var map = new mapboxgl.Map({
+container: 'mapid', // container ID
+style: 'mapbox://styles/mapbox/streets-v11', // style URL
+center: [2.651537069816233, 39.570644797011795], // starting position [lng, lat]
+zoom: 9 // starting zoom
+});
+map.addControl(new mapboxgl.NavigationControl());
     // Add geolocate control to the map.
     map.addControl(
         new mapboxgl.GeolocateControl({
@@ -48,6 +24,10 @@ function hacerMapa(x) {
             trackUserLocation: true
         })
     );
+var marker;
+/*
+function hacerMapa(x) {
+
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
@@ -139,9 +119,7 @@ function addElement(datos, id) {
             //   newa1.setAttribute('onclick', "desplegable("+i+"); this.onclick=null;");
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
-
             newa1.setAttribute('data-target', "#myModal");
-            //newa1.setAttribute('onclick', "vaciarDesplegable("+i+");");
             newa1.setAttribute('onclick', "desplegableDatos(" + i + ");");
             newDiv1.appendChild(newa1); //añade texto al div creado.
 
@@ -162,9 +140,10 @@ function addElement(datos, id) {
 
             var newimg = document.createElement("img");   // crea un nuevo div
             //  newimg.className ="img-fluid"
-            newimg.setAttribute('width', 355)
-            newimg.setAttribute('height', 250)
-            newimg.setAttribute('margin-righ', 30)
+           // newimg.setAttribute('width', 355)
+          //  newimg.setAttribute('height', 250)
+           // newimg.setAttribute('margin-righ', 30)
+            newimg.setAttribute('class', "img-fluid")
             newimg.setAttribute('src', datos[i].imatges[0])
             newimg.setAttribute('alt', "")
 
@@ -194,83 +173,194 @@ function addElement(datos, id) {
     }
 }
 
-
-
-/*
-    <!-- Modal 1-->
-  0      <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-  1          <div class="modal-dialog">
-  2              <div class="modal-content">                
-   4                  <div class="container">    
-    7                    <div class="row justify-content-center">
-  
-                        </div>
-
-
-     14                   <div class="row justify-content-center">
-     15                       <div class="modal-body">
-      16                          <p id="descripcio1"></p>
-                                  <ul class="list-inline">
-                                    <li>
-                                        <!-- puntuació estrelles -->
-                                        <form></form>
-                                        <p class="clasificacion">
-                                            <input id="radio1" type="radio" name="estrellas" value="5">
-                                            <!--
-                                        --><label for="radio1">★</label>
-                                            <!--
-                                        --><input id="radio2" type="radio" name="estrellas" value="4">
-                                            <!--
-                                        --><label for="radio2">★</label>
-                                            <!--
-                                        --><input id="radio3" type="radio" name="estrellas" value="3">
-                                            <!--
-                                        --><label for="radio3">★</label>
-                                            <!--
-                                        --><input id="radio4" type="radio" name="estrellas" value="2">
-                                            <!--
-                                        --><label for="radio4">★</label>
-                                            <!--
-                                        --><input id="radio5" type="radio" name="estrellas" value="1">
-                                            <!--
-                                        --><label for="radio5">★</label>
-                                        </p>
-                                        </form>
-                                    </li>
-                                    <li id="horariRest1">Dilluns-Dissabte: 13:00h - 16:00h</li>
-                                    <li id="geoposRest1">Carrer Comte de Barcelona, 26</li>
-                                    <li id="telRest1">971 28 25 62</li>
-                                    <li id="paginawebRest1">www.webRestaurant.com</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times mr-1"></i>
-                                    Tanca
-                                </button>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
+function eliminarDatosElemento(){
+    $("#nombreDescripcioElement").html(""); //limpiar la seccion
+    $("#carouselElement").html(""); //limpiar la seccion
+    $("#horariElement").html(""); //limpiar la seccion
+   // $("#informació").html(""); //limpiar la seccion
+    $("#tiempoElemento").html(""); //limpiar la seccion
+    marker.remove();
 }
-*/
-
-
-
 
 function desplegableDatos(i) {
-
-    var arrayHorario = ["Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte", "Diumenge"]
-    var accesoHorario = ["di", "dm", "dx", "dj", "dv", "ds", "dg"]
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
 
+            var arrayHorario = ["Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte", "Diumenge"]
+            var accesoHorario = ["di", "dm", "dx", "dj", "dv", "ds", "dg"]
+        
+            // Nombre y descripcion:
+            var newTitulo = document.createElement("h2");   // Añade el título a la ventana emergente
+            newTitulo.setAttribute('class', "portfolio-caption-heading")
+            var texto1 = document.createTextNode(datos[i].nom);
+            newTitulo.appendChild(texto1)
+        
+            $("#nombreDescripcioElement").append(newTitulo);
+        
+            var newDescripcio = document.createElement("p");   // Añade la descripción a la ventana emergente
+            newDescripcio.setAttribute('class', "item-intro text-mutedg")
+            var text2 = document.createTextNode(datos[i].descripcio); 
+            newDescripcio.appendChild(text2)
+            
+            $("#nombreDescripcioElement").append(newDescripcio);
 
+            // Puntero:
+            marker = new mapboxgl.Marker()
+                .setLngLat([datos[i].geo1.long, datos[i].geo1.lat])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            '<h4>' +
+                            datos[i].nom +
+                            '</h4><p>' +
+                            datos[i].geo1.address +
+                            '</p>'
+                        )
+                )
+                .addTo(map);
+
+            // Carousel:
+            var newCarousel1 = document.createElement("div");    
+            newCarousel1.setAttribute('class', "carousel slide")
+            newCarousel1.setAttribute('id', "myCarousel")
+            newCarousel1.setAttribute('data-ride', "carousel")
+
+            var newCarousel2 = document.createElement("ol");    
+            newCarousel2.setAttribute('class', "carousel-indicators")
+            newCarousel1.appendChild(newCarousel2);  
+
+            for (var k = 0; k < datos[i].imatges.length; k++) {
+                var newCarouselLiK = document.createElement("li");    
+                if (k == 0) {
+                    newCarouselLiK.setAttribute('class', "active")
+                }
+                newCarouselLiK.setAttribute('data-target', "#myCarousel")
+                newCarouselLiK.setAttribute('data-slide-to', k)
+                newCarousel2.appendChild(newCarouselLiK);  
+            }
+
+            var newCarousel3 = document.createElement("div");    
+            newCarousel3.setAttribute('class', "carousel-inner")
+            newCarousel1.appendChild(newCarousel3);  
+
+            var newCarousel4 = document.createElement("div");    
+            newCarousel4.setAttribute('class', "carousel-item active")
+            newCarousel3.appendChild(newCarousel4);  
+
+            var newCarouselImg1 = document.createElement("img");    
+            newCarouselImg1.setAttribute('class', "0-slide")
+            newCarouselImg1.setAttribute('src', datos[i].imatges[0])
+            newCarouselImg1.setAttribute('alt', "0-slide")
+            newCarouselImg1.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
+            newCarousel4.appendChild(newCarouselImg1);  
+
+            for (var k = 1; k < datos[i].imatges.length; k++) {
+                var newCarouselK = document.createElement("div");    
+                newCarouselK.setAttribute('class', "carousel-item")
+                newCarousel3.appendChild(newCarouselK);  
+
+                var newCarouselImgK = document.createElement("img");    
+                newCarouselImgK.setAttribute('class', k + "-slide")
+                newCarouselImgK.setAttribute('src', datos[i].imatges[k])
+                newCarouselImgK.setAttribute('alt', k + "-slide")
+                newCarouselImgK.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
+                newCarouselK.appendChild(newCarouselImgK);  
+            }
+
+            var newCarouselA = document.createElement("a");    
+            newCarouselA.setAttribute('class', "carousel-control-prev")
+            newCarouselA.setAttribute('href', "#myCarousel")
+            newCarouselA.setAttribute('role', "button")
+            newCarouselA.setAttribute('data-slide', "data-slide")
+            newCarousel1.appendChild(newCarouselA);  
+
+            var newSpan = document.createElement("span");    
+            newSpan.setAttribute('class', "carousel-control-prev-icon")
+            newSpan.setAttribute('aria-hidden', "true")
+            newCarouselA.appendChild(newSpan);  
+
+            var newSpan1 = document.createElement("span");    
+            newSpan1.setAttribute('class', "sr-only")
+            newSpan1.setAttribute('id', "num1-slide")
+            $("#num1-slide").append("Previous")
+            newCarouselA.appendChild(newSpan1);  
+
+
+            var newCarouselA1 = document.createElement("a");    
+            newCarouselA1.setAttribute('class', "carousel-control-next")
+            newCarouselA1.setAttribute('href', "#myCarousel")
+            newCarouselA1.setAttribute('role', "button")
+            newCarouselA1.setAttribute('data-slide', "next")
+            newCarousel1.appendChild(newCarouselA1);  
+
+            var newCarouselSpan2 = document.createElement("span");    
+            newCarouselSpan2.setAttribute('class', "carousel-control-next-icon")
+            newCarouselSpan2.setAttribute('aria-hidden', "true")
+            newCarouselA1.appendChild(newCarouselSpan2);  
+
+            var newCarouselSpan3 = document.createElement("span");    
+            newCarouselSpan3.setAttribute('class', "sr-only")
+            newCarouselSpan3.setAttribute('id', "num2-slide")
+            $("#num2-slide").append("Next")
+            newCarouselA1.appendChild(newCarouselSpan3);  
+
+            $("#carouselElement").append(newCarousel1);
+
+            // Horario:
+           
+
+            var newThead = document.createElement("thead");    
+
+            var newTr = document.createElement("tr");    
+            newThead.appendChild(newTr);  
+
+            var newTh1 = document.createElement("th");    
+            var texto = document.createTextNode("Horari:");
+            newTh1.appendChild(texto);
+            newTr.appendChild(newTh1);  
+
+            var newTh2 = document.createElement("th");    
+            newTr.appendChild(newTh2);  
+
+            var newTh3 = document.createElement("th");    
+            newTr.appendChild(newTh3);  
+
+            var newTbody = document.createElement("tbody");    
+
+            // hay que cambiar para que aparezca para cada dida de la semana
+            for (var j = 0; j < 7; j++) {
+                var newTrJ = document.createElement("tr");    
+                newTbody.appendChild(newTrJ);  
+
+                var newTd = document.createElement("td");    
+                var text = document.createTextNode(arrayHorario[j]);
+                newTd.appendChild(text);
+                newTrJ.appendChild(newTd);  
+
+                var newTd2 = document.createElement("td");    
+                var text2 = document.createTextNode(datos[i].horari.di[0].in);
+                newTd2.appendChild(text2);
+                newTrJ.appendChild(newTd2);  
+
+                var newTd3 = document.createElement("td");    
+                var text3 = document.createTextNode(datos[i].horari.di[0].out);
+                newTd3.appendChild(text3);
+                newTrJ.appendChild(newTd3);  
+            }
+            $("#horariElement").append(newThead);
+            $("#horariElement").append(newTbody);
+
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+   
+
+/*
             var newDiv2 = document.createElement("div");   // crea un nuevo div
             newDiv2.setAttribute('class', "modal-content")
             //newDiv1.appendChild(newDiv2); //añade texto al div creado.
@@ -426,24 +516,6 @@ function desplegableDatos(i) {
             $("#num2-slide").append("Next")
             newA1.appendChild(newSpan3); //añade texto al div creado.
 
-            //MAPA
-            var newDiv12 = document.createElement("div");   // crea un nuevo div
-            newDiv12.setAttribute('class', "col-lg-6")
-            newDiv7.appendChild(newDiv12); //añade texto al div creado.
-
-            var newDiv13 = document.createElement("div");   // crea un nuevo div
-            newDiv13.setAttribute('id', 'hola')
-            var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFyaWFvcmVsbCIsImEiOiJja29kZnprMG0wMjBuMm50cnU5Ymg5MDd6In0.gU02alWtIBUOCEP2xtx5ug', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                accessToken: 'your.mapbox.access.token'
-            }).addTo(mymap);
-
 
             newDiv12.appendChild(newDiv13); //añade texto al div creado.
 
@@ -527,16 +599,14 @@ function desplegableDatos(i) {
             newLi4.appendChild(texte3)
             newUl.appendChild(newLi4); //añade texto al div creado.
 
-*/
+
 
 
             $("#añadirInfoElemento").html("");
             $("#añadirInfoElemento").html(newDiv2)
 
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+        */
+
 }
 
 

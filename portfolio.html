@@ -19,14 +19,10 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <!-- GOOGLE MAPS -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <!-- ESTOS LINKS SE PUEDEN BORRAR AYSHAAAAAAAAAAAAAAAAAAAA********************* -->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
     <!-- API MAPA -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+
 
  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -120,28 +116,46 @@
 
     <div class="portfolio-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog"  id="añadirInfoElemento" >
-          <!--    <div class="modal-content">  
-                <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
-                    <div class="container"> 
-                        <div class= "row justify-content-center">
-                            <div class= "modal-body">
-                                <h2 class="portfolio-caption-heading" id="nomElement"></h2>
-                                <p class= "item-intro text-mutedg" id= "descripcioElement"></p> -->
-            
-            
-            
-            
-                        <div id="hola">
-
-                        
-                        <div id="mapid"></div>
-
-
-
-                            </div>
-                        </div> 
+              <div class="modal-content">  
+                <div class="close-modal" onclick="eliminarDatosElemento();" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
                     </div>
-                </div> 
+                <div class="container"> 
+                    <div class= "row justify-content-center">
+                        <!-- Nombre y descripción del elemento -->
+                        <div class= "modal-body" id="nombreDescripcioElement"> </div>
+                    </div>
+                    <div class= "row justify-content-center">
+                        <div class="col-lg-6">
+                            <!-- Carousel del elemento -->
+                            <div id="carouselElement"></div>
+                        </div>
+                        <div class="col-lg-6">
+                             <!-- Widget tiempo -->
+                            <a class="weatherwidget-io" href="https://forecast7.com/es/39d572d65/palma/" data-label_1="PALMA" data-icons="Climacons Animated" data-theme="pure" >PALMA</a>
+                           <script>
+                           !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                           </script>
+                            
+                        </div>
+                    </div>
+                    <div class= "row justify-content-center">
+                        <div class="col-lg-6">
+                            <!-- Mapa del elemento -->
+                            <div id='mapid'></div>
+                            
+                        </div>
+                        <div class="col-lg-6">
+                            <table id="horariElement"></table>
+                           <!-- <div id='informació'></div> -->
+                            
+                           
+                        </div>
+                    </div>
+                    <div class= "row justify-content-center">
+                        <!-- Tiempo de la zona donde se encuentra el elemento -->
+                        <div id="tiempoElemento"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
