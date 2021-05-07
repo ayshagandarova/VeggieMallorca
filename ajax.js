@@ -26,7 +26,31 @@ map.addControl(new mapboxgl.NavigationControl());
     );
 var marker;
 
+function funcionOnKeyUp() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "dades.json";
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var datos = JSON.parse(xmlhttp.responseText);
+           // var galeria, divs, a
+            var a, txtValue
+            var input = document.getElementById("myInput");
+            var filter = input.value.toUpperCase();
+            galeria = document.getElementById("galeriaPortfoli")
+            divs = galeria.getElementsByTagName("div");
+            for (i = 0; i < datos.length; i++) {
+                a = datos[i].nom
+                if (a.toUpperCase().indexOf(filter) > -1) {
+                    console.log(datos[i].nom + "y el tipo: " + datos[i].tipus);
+                } 
+            }
+        }
 
+    };
+    xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+    
+}
 
 // Botón para subir arriba;
 
@@ -83,6 +107,7 @@ function addElement(datos, id) {
         if (datos[i].tipus == id) { //id = "restaurant o sueprmercats"
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4")
+            newDiv.setAttribute('id', "elemento-"+i)
 
             var newDiv1 = document.createElement("div");   // crea un nuevo div
             newDiv1.setAttribute('class', "portfolio-item")
@@ -284,6 +309,143 @@ function desplegableDatos(i) {
 
             $("#carouselElement").append(newCarousel1);
 
+            // Disponibilidad horaria:
+
+            var date = new Date();
+            var d = date.getDay();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var hora = h+":"+m;
+            var disponibilidad;
+
+            // Comprueba si en este momento está abierto el local
+            switch (d){
+                case 1:
+                    if(hora>=datos[i].horari.di[0].in && hora <=datos[i].horari.di[0].out){
+                        disponibilidad = document.createTextNode("Abierto");
+                        $("#horario").css({"background-color": "green"});
+                    }else{
+                        disponibilidad = document.createTextNode("Cerrado");
+                        $("#horario").css({"background-color": "red"});
+                    }
+                    break;
+                case 2:
+                    if(hora>=datos[i].horari.dm[0].in && hora <=datos[i].horari.dm[0].out){
+                        disponibilidad = document.createTextNode("Abierto");
+                        $("#horario").css({"background-color": "green"});
+                    }else{
+                        disponibilidad = document.createTextNode("Cerrado");
+                        $("#horario").css({"background-color": "red"});
+                    }
+                    break;
+                case 3:
+                    if(hora>=datos[i].horari.dx[0].in && hora <=datos[i].horari.dx[0].out){
+                        disponibilidad = document.createTextNode("Abierto");
+                        $("#horario").css({"background-color": "green"});
+                    }else{
+                        disponibilidad = document.createTextNode("Cerrado");
+                        $("#horario").css({"background-color": "red"});
+                    }
+                    break;
+                case 4:
+                    if(hora>=datos[i].horari.dj[0].in && hora <=datos[i].horari.dj[0].out){
+                        disponibilidad = document.createTextNode("Abierto");
+                        $("#horario").css({"background-color": "green"});
+                    }else{
+                        disponibilidad = document.createTextNode("Cerrado");
+                        $("#horario").css({"background-color": "red"});
+                    }
+                    break;
+                case 5:
+                    if(hora>=datos[i].horari.dv[0].in && hora <=datos[i].horari.dv[0].out){
+                        disponibilidado = document.createTextNode("Abierto");
+                        $("#horario").css({"background-color": "green"});
+                    }else{
+                        disponibilidad = document.createTextNode("Cerrado");
+                        $("#horario").css({"background-color": "red"});
+                    }
+                    break;
+                case 6:
+                    if(hora>=datos[i].horari.ds[0].in && hora <=datos[i].horari.ds[0].out){
+                        disponibilidad = document.createTextNode("Abierto");
+                        $("#horario").css({"background-color": "green"});
+                    }else{
+                        disponibilidad = document.createTextNode("Cerrado");
+                        $("#horario").css({"background-color": "red"});
+                    }
+                    break;
+                case 7:
+                    if(hora>=datos[i].horari.dg[0].in && hora <=datos[i].horari.dg[0].out){
+                        disponibilidad = document.createTextNode("Abierto");
+                        $("#horario").css({"background-color": "green"});
+                    }else{
+                        disponibilidad = document.createTextNode("Cerrado");
+                        $("#horario").css({"background-color": "red"});
+                    }
+                    break;
+
+            }
+
+            // Crea el horario desplegable:
+
+            var pDi = document.createElement("p");    
+            var textDi = document.createTextNode("Dilluns: " + datos[i].horari.di[0].in +"-" + datos[i].horari.di[0].out);
+
+            var pDm = document.createElement("p");    
+            var textDm = document.createTextNode("Dimarts: " + datos[i].horari.dm[0].in +"-" + datos[i].horari.dm[0].out);
+
+            var pDx = document.createElement("p");    
+            var textDx = document.createTextNode("Dimecres: " + datos[i].horari.dx[0].in +"-" + datos[i].horari.dx[0].out);
+            
+            var pDj = document.createElement("p");    
+            var textDj = document.createTextNode("Dijous: " + datos[i].horari.dj[0].in +"-" + datos[i].horari.dj[0].out);
+            
+            var pDv = document.createElement("p");    
+            var textDv = document.createTextNode("Divendres" + datos[i].horari.dv[0].in +"-" + datos[i].horari.dv[0].out);
+
+            var pDs = document.createElement("p");    
+            var textDs = document.createTextNode("Dissabte" + datos[i].horari.ds[0].in +"-" + datos[i].horari.ds[0].out);
+
+            var pDg = document.createElement("p");    
+            var textDg = document.createTextNode("Diumenge" + datos[i].horari.dg[0].in +"-" + datos[i].horari.dg[0].out);
+
+            pDi.appendChild(textDi);  
+            pDm.appendChild(textDm);  
+            pDx.appendChild(textDx);  
+            pDj.appendChild(textDj);  
+            pDv.appendChild(textDv);  
+            pDs.appendChild(textDs);  
+            pDg.appendChild(textDg);  
+            $("#horarioDesplegable").append(pDi);
+            $("#horarioDesplegable").append(pDm);
+            $("#horarioDesplegable").append(pDx);
+            $("#horarioDesplegable").append(pDj);
+            $("#horarioDesplegable").append(pDv);
+            $("#horarioDesplegable").append(pDs);
+            $("#horarioDesplegable").append(pDg);
+
+            // Añade un listener en el botón, cuando se pulse se muestra el horario, si se vuelve a pulsar lo esconde
+
+            $("#horario").append(disponibilidad);
+            $("#horario").click(function(){
+              //  if($("#horarioDesplegable").style.display == "none"){
+                    $("#horarioDesplegable").slideDown();
+               // }else{
+                   // $("#horarioDesplegable").slideDown();
+              //  }
+            });
+
+            $("#horario").dbclick(function(){
+                //  if($("#horarioDesplegable").style.display == "none"){
+                      $("#horarioDesplegable").slideUp();
+                 // }else{
+                     // $("#horarioDesplegable").slideDown();
+                //  }
+              });
+
+
+
+            /*
             // Horario:
            
 
@@ -325,9 +487,11 @@ function desplegableDatos(i) {
                 newTd3.appendChild(text3);
                 newTrJ.appendChild(newTd3);  
             }
-            $("#horariElement").append(newThead);
-            $("#horariElement").append(newTbody);
-
+           // $("#horariElement").append(newThead);
+           // $("#horariElement").append(newTbody);
+*/
+           // Comentarios:
+            /*
             var newScript = document.createElement('script');
             newScript.setAttribute('src', datos[i].dadesPropies.scriptComentaris);
 
@@ -335,6 +499,7 @@ function desplegableDatos(i) {
             newDivComentari.setAttribute('class',datos[i].dadesPropies.divComentaris)
             $("#comentaris").append(newScript);
             $("#comentaris").append(newDivComentari);
+            */
         }
     };
     xmlhttp.open("GET", url, true);

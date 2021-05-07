@@ -88,8 +88,9 @@
                         <input
                             type="text"
                             name="search"
-                            id="search"
+                            id="myInput"
                             placeholder="Buscar..."
+                            onkeyup="funcionOnKeyUp()"
                         />
                         <button type="submit"><i class="fa fa-search"></i></button>
                 </div>
@@ -139,13 +140,15 @@
                             <!-- Carousel del elemento -->
                             <div id="carouselElement"></div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" id="horarioGrande">
                              <!-- Widget tiempo -->
-                            <a class="weatherwidget-io" href="https://forecast7.com/es/39d572d65/palma/" data-label_1="PALMA" data-icons="Climacons Animated" data-theme="pure" >PALMA</a>
+            <!--               <a class="weatherwidget-io" href="https://forecast7.com/es/39d572d65/palma/" data-label_1="PALMA" data-icons="Climacons Animated" data-theme="pure" >PALMA</a>
                            <script>
                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-                           </script>
+                           </script> --> 
+                            <p>Horario: <button class="btn btn-primary text-uppercas" id="horario"></button></p>
                             
+                            <div id="horarioDesplegable" style="display: none"></div>
                         </div>
                     </div>
                     <div class= "row justify-content-center">
@@ -269,7 +272,7 @@
     </footer>
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class='fas fa-arrow-up'></i> </button>
     <!-- o esta flecha far fa-arrow-alt-circle-up-->
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -287,31 +290,7 @@
     <script src="js/scripts.js"></script>
     <script src="ajax.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
-    <script>
-        $(document).ready(function(){
-            $.ajaxSetup({ cache: false });
-            $('#search').keyup(function(){
-             $('#result').html('');
-             $('#state').val('');
-             var searchField = $('#search').val();
-             var expression = new RegExp(searchField, "i");
-             $.getJSON('dades.json', function(dades) {
-              $.each(dades, function(key, value){
-               if (value.nom.search(expression) != -1 )
-               {
-                $('#result').append('<li class="list-group-item link-class"><img src="'+value.imatges[0]+'" height="40" width="40" class="img-thumbnail" /> '+value.nom+'</li>');
-               }
-              });   
-             });
-            });
-            
-            $('#result').on('click', 'li', function() {
-             var click_text = $(this).text().split('|');
-             $('#search').val($.trim(click_text[0]));
-             $("#result").html('');
-            });
-           });
-        </script>
+  
     
 </body>
 
