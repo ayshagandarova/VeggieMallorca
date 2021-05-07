@@ -152,6 +152,7 @@ function eliminarDatosElemento(){
     $("#horariElement").html(""); //limpiar la seccion
    // $("#informació").html(""); //limpiar la seccion
     $("#tiempoElemento").html(""); //limpiar la seccion
+    $("#comentaris").html("");
     marker.remove();
 }
 
