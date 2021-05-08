@@ -11,7 +11,6 @@ function loop() {
         element.classList.add('is-visible');
       } else {
         element.classList.remove('is-visible');
-        
       }
     });
 

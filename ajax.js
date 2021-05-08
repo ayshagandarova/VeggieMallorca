@@ -14,6 +14,10 @@ style: 'mapbox://styles/mapbox/streets-v11', // style URL
 center: [2.651537069816233, 39.570644797011795], // starting position [lng, lat]
 zoom: 9 // starting zoom
 });
+map.on('idle',function(){
+    map.resize()
+});
+
 map.addControl(new mapboxgl.NavigationControl());
     // Add geolocate control to the map.
     map.addControl(
@@ -24,6 +28,7 @@ map.addControl(new mapboxgl.NavigationControl());
             trackUserLocation: true
         })
     );
+    
 var marker;
 
 function funcionOnKeyUp() {
@@ -323,64 +328,64 @@ function desplegableDatos(i) {
                 case 1:
                     if(hora>=datos[i].horari.di[0].in && hora <=datos[i].horari.di[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "green"});
+                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "red"});
+                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
                     }
                     break;
                 case 2:
                     if(hora>=datos[i].horari.dm[0].in && hora <=datos[i].horari.dm[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "green"});
+                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "red"});
+                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
                     }
                     break;
                 case 3:
                     if(hora>=datos[i].horari.dx[0].in && hora <=datos[i].horari.dx[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "green"});
+                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "red"});
+                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
                     }
                     break;
                 case 4:
                     if(hora>=datos[i].horari.dj[0].in && hora <=datos[i].horari.dj[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "green"});
+                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "red"});
+                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
                     }
                     break;
                 case 5:
                     if(hora>=datos[i].horari.dv[0].in && hora <=datos[i].horari.dv[0].out){
                         disponibilidado = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "green"});
+                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "red"});
+                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
                     }
                     break;
                 case 6:
                     if(hora>=datos[i].horari.ds[0].in && hora <=datos[i].horari.ds[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "green"});
+                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760"  });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "red"});
+                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
                     }
                     break;
                 case 7:
                     if(hora>=datos[i].horari.dg[0].in && hora <=datos[i].horari.dg[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "green"});
+                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "red"});
+                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
                     }
                     break;
 
