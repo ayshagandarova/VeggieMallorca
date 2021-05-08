@@ -31,6 +31,8 @@ map.addControl(new mapboxgl.NavigationControl());
     
 var marker;
 
+
+//*** maria: que es esto ayshaaaa???? */
 function funcionOnKeyUp() {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
@@ -540,7 +542,7 @@ function buscador() {
             } else if (id == "fira") {
                 $("#headingInfo").append("FIRES VEGETARIANES I VENAGES DE L'ILLA")
                 $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
-                afegirElemPortfoli(datos, id);
+                buscadorFires();
             }
 
         }
@@ -549,8 +551,23 @@ function buscador() {
     xmlhttp.send();
 
 }
+//cas de fires
+function buscadorFires() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://fires-mallorca.netlify.app/jsonBase_1.json";
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var datos = JSON.parse(xmlhttp.responseText);
+            var id = "Vegeteriana";
+               // $("#headingInfo").append("FIRES VEGETARIANES I VENAGES DE L'ILLA")
+              //  $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
+            afegirElemPortfoli(datos, id);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 
-
+}
 
 /*
 <li>
@@ -569,154 +586,159 @@ function buscador() {
      </div>
   </li>
   */
-            function addElemTimeLine(datos) {
-                for (var i = 0; i < datos.length; i++) {
-                    if (datos[i].tipus == "curs" || datos[i].tipus == "fira" || datos[i].tipus == "info") {
-                        if (i % 2) {
-                            var newLi = document.createElement("li")
-                        } else {
-                            var newLi = document.createElement("li")
-                            newLi.setAttribute('class', "timeline-inverted")
-
-                        }
-                        var newDiv = document.createElement("div")  // crea un nuevo div
-                        newDiv.setAttribute('class', "timeline-image")
-                        newDiv.setAttribute('data-toggle', "modal")
-                        newDiv.setAttribute('href', "#portfolioModal1")
-                        newLi.appendChild(newDiv)//añade texto al div creado.
-
-                        var newimg = document.createElement("img");   // crea un nuevo div
-                        newimg.setAttribute('class', "rounded-circle img-fluid")
-                        newimg.setAttribute('src', datos[i].imatges[0]) // datos[i].imatges[0]
-                        newimg.setAttribute('alt', "")
-                        newDiv.appendChild(newimg)
-
-                        var newDiv1 = document.createElement("div")  // crea un nuevo div
-                        newDiv1.setAttribute('class', "timeline-panel")
-                        newLi.appendChild(newDiv1)//añade texto al div creado.
-
-                        var newDiv2 = document.createElement("div")  // crea un nuevo div
-                        newDiv2.setAttribute('class', "timeline-heading")
-                        newDiv2.setAttribute('data-toggle', "modal")
-                        newDiv2.setAttribute('href', "#portfolioModal1")
-                        newDiv1.appendChild(newDiv2)//añade texto al div creado.
-
-                        var newh4 = document.createElement("h4")
-                        var newContent = document.createTextNode(datos[i].nom); //nom Rest datos[i].nom
-                        newh4.appendChild(newContent)
-                        newDiv2.appendChild(newh4)
-
-                        var newh4_2 = document.createElement("h4")
-                        newh4_2.setAttribute('class', "subheading")
-                        var newContent2 = document.createTextNode(datos[i].calendari.startDataEvent);
-                        newh4_2.appendChild(newContent2)
-                        newDiv2.appendChild(newh4_2)
-
-                        var newDiv3 = document.createElement("div")  // crea un nuevo div
-                        newDiv3.setAttribute('class', "timeline-body")
-                        newDiv3.setAttribute('data-toggle', "modal")
-                        newDiv3.setAttribute('href', "#portfolioModal1")
-                        newDiv1.appendChild(newDiv3)//añade texto al div creado.
-
-                        var newp = document.createElement("p")
-                        newp.setAttribute('class', "text-muted")
-                        var newContent3 = document.createTextNode(datos[i].descripcio); //«Va a haber stands de comida vegana, y el domingo haremos unconcurso, además de platos condimentados y talleres, haremos charlas para explicar qué significa ser vegano y como vive un vegano».
-                        newp.appendChild(newContent3)
-                        newDiv3.appendChild(newp)
 
 
-                        // añade el elemento creado y su contenido al DOM
-                        $("#timeLineInfo").append(newLi);
-                    }
-                }
-                var newLi2 = document.createElement("li")
-                var newDiv4 = document.createElement("div")  // crea un nuevo div
-                newDiv4.setAttribute('class', "timeline-image")
-                newDiv4.setAttribute('data-toggle', "modal")
-                newDiv4.setAttribute('href', "#portfolioModal1")
-                newLi2.appendChild(newDiv4)//añade texto al div creado.
 
-                var newh4_2 = document.createElement("h4")
-                var newContent4 = document.createTextNode("Continua\n"); //nom Rest datos[i].nom
-                newh4_2.appendChild(newContent4)
-                var newContent5 = document.createTextNode("descobrint \r"); //nom Rest datos[i].nom
-                newh4_2.appendChild(newContent5)
-                var newContent6 = document.createTextNode("\naquí!\n"); //nom Rest datos[i].nom
-                newh4_2.appendChild(newContent6)
 
-                newDiv4.appendChild(newh4_2)
-                $("#timeLineInfo").append(newLi2);
+   // aqui molaria tb poner el caso de los datos fira de miquel, pero no termino de ver como hacerlo todo en uno
+function addElemTimeLine(datos) {
+    for (var i = 0; i < datos.length; i++) {
+        if (datos[i].tipus == "curs" || datos[i].tipus == "fira" || datos[i].tipus == "info") {
+            if (i % 2) {
+                var newLi = document.createElement("li")
+            } else {
+                var newLi = document.createElement("li")
+                newLi.setAttribute('class', "timeline-inverted")
+
             }
+            var newDiv = document.createElement("div")  // crea un nuevo div
+            newDiv.setAttribute('class', "timeline-image")
+            newDiv.setAttribute('data-toggle', "modal")
+            newDiv.setAttribute('href', "#portfolioModal1")
+            newLi.appendChild(newDiv)//añade texto al div creado.
+
+            var newimg = document.createElement("img");   // crea un nuevo div
+            newimg.setAttribute('class', "rounded-circle img-fluid")
+            newimg.setAttribute('src', datos[i].imatges[0]) // datos[i].imatges[0]
+            newimg.setAttribute('alt', "")
+            newDiv.appendChild(newimg)
+
+            var newDiv1 = document.createElement("div")  // crea un nuevo div
+            newDiv1.setAttribute('class', "timeline-panel")
+            newLi.appendChild(newDiv1)//añade texto al div creado.
+
+            var newDiv2 = document.createElement("div")  // crea un nuevo div
+            newDiv2.setAttribute('class', "timeline-heading")
+            newDiv2.setAttribute('data-toggle', "modal")
+            newDiv2.setAttribute('href', "#portfolioModal1")
+            newDiv1.appendChild(newDiv2)//añade texto al div creado.
+
+            var newh4 = document.createElement("h4")
+            var newContent = document.createTextNode(datos[i].nom); //nom Rest datos[i].nom
+            newh4.appendChild(newContent)
+            newDiv2.appendChild(newh4)
+
+            var newh4_2 = document.createElement("h4")
+            newh4_2.setAttribute('class', "subheading")
+            var newContent2 = document.createTextNode(datos[i].calendari.startDataEvent);
+            newh4_2.appendChild(newContent2)
+            newDiv2.appendChild(newh4_2)
+
+            var newDiv3 = document.createElement("div")  // crea un nuevo div
+            newDiv3.setAttribute('class', "timeline-body")
+            newDiv3.setAttribute('data-toggle', "modal")
+            newDiv3.setAttribute('href', "#portfolioModal1")
+            newDiv1.appendChild(newDiv3)//añade texto al div creado.
+
+            var newp = document.createElement("p")
+            newp.setAttribute('class', "text-muted")
+            var newContent3 = document.createTextNode(datos[i].descripcio); //«Va a haber stands de comida vegana, y el domingo haremos unconcurso, además de platos condimentados y talleres, haremos charlas para explicar qué significa ser vegano y como vive un vegano».
+            newp.appendChild(newContent3)
+            newDiv3.appendChild(newp)
+
+
+            // añade el elemento creado y su contenido al DOM
+            $("#timeLineInfo").append(newLi);
+        }
+    }
+    var newLi2 = document.createElement("li")
+    var newDiv4 = document.createElement("div")  // crea un nuevo div
+    newDiv4.setAttribute('class', "timeline-image")
+    newDiv4.setAttribute('data-toggle', "modal")
+    newDiv4.setAttribute('href', "#portfolioModal1")
+    newLi2.appendChild(newDiv4)//añade texto al div creado.
+
+    var newh4_2 = document.createElement("h4")
+    var newContent4 = document.createTextNode("Continua\n"); //nom Rest datos[i].nom
+    newh4_2.appendChild(newContent4)
+    var newContent5 = document.createTextNode("descobrint \r"); //nom Rest datos[i].nom
+    newh4_2.appendChild(newContent5)
+    var newContent6 = document.createTextNode("\naquí!\n"); //nom Rest datos[i].nom
+    newh4_2.appendChild(newContent6)
+
+    newDiv4.appendChild(newh4_2)
+    $("#timeLineInfo").append(newLi2);
+}
 
 
 
-            function afegirElemPortfoli(datos, id) {
+function afegirElemPortfoli(datos, id) {
 
-                for (var i = 0; i < datos.length; i++) {
+    for (var i = 0; i < datos.length; i++) {
 
-                    if (datos[i].tipus == id) { //id = "restaurant o sueprmercats"
-                        var newDiv = document.createElement("div");   // crea un nuevo div
-                        newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4")
+        if (datos[i].tipus == id) { //id = "restaurant o sueprmercats"
+            var newDiv = document.createElement("div");   // crea un nuevo div
+            newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4")
 
-                        var newDiv1 = document.createElement("div");   // crea un nuevo div
-                        newDiv1.setAttribute('class', "portfolio-item")
-                        newDiv.appendChild(newDiv1); //añade texto al div creado.
+            var newDiv1 = document.createElement("div");   // crea un nuevo div
+            newDiv1.setAttribute('class', "portfolio-item")
+            newDiv.appendChild(newDiv1); //añade texto al div creado.
 
-                        var newa1 = document.createElement("a");
-                        //newa1.setAttribute('onclick', "desplegable("+i+")");
-                        //newa1.setAttribute('onclick', "test()");
-                        newa1.setAttribute('class', "portfolio-link");
-                        newa1.setAttribute('data-toggle', "modal");
-                        newa1.setAttribute('href', "#portfolioModal1") //+i)
-                        // newa1.setAttribute('id', "iddeslplegable")
+            var newa1 = document.createElement("a");
+            //newa1.setAttribute('onclick', "desplegable("+i+")");
+            //newa1.setAttribute('onclick', "test()");
+            newa1.setAttribute('class', "portfolio-link");
+            newa1.setAttribute('data-toggle', "modal");
+            newa1.setAttribute('href', "#portfolioModal1") //+i)
+            // newa1.setAttribute('id', "iddeslplegable")
 
-                        newDiv1.appendChild(newa1); //añade texto al div creado.
+            newDiv1.appendChild(newa1); //añade texto al div creado.
 
-                        var newDiv2 = document.createElement("div");   // crea un nuevo div
-                        newDiv2.setAttribute('class', "portfolio-hover")
+            var newDiv2 = document.createElement("div");   // crea un nuevo div
+            newDiv2.setAttribute('class', "portfolio-hover")
 
-                        newa1.appendChild(newDiv2);
+            newa1.appendChild(newDiv2);
 
-                        var newDiv3 = document.createElement("div");   // crea un nuevo div
-                        newDiv3.setAttribute('class', "portfolio-hover-content")
+            var newDiv3 = document.createElement("div");   // crea un nuevo div
+            newDiv3.setAttribute('class', "portfolio-hover-content")
 
-                        newDiv2.appendChild(newDiv3);
+            newDiv2.appendChild(newDiv3);
 
-                        var newi = document.createElement("i");   // crea un nuevo div
-                        newi.setAttribute('class', "fas fa-plus fa-3x")
+            var newi = document.createElement("i");   // crea un nuevo div
+            newi.setAttribute('class', "fas fa-plus fa-3x")
 
-                        newDiv3.appendChild(newi);
+            newDiv3.appendChild(newi);
 
-                        var newimg = document.createElement("img");   // crea un nuevo div
-                        //newimg.setAttribute('class', "img-fluid")
-                        newimg.setAttribute('width', 348)
-                        newimg.setAttribute('height', 350)
-                        newimg.setAttribute('margin-righ', 30)
-                        newimg.setAttribute('src', datos[i].imatges[0])
-                        newimg.setAttribute('alt', "")
+            var newimg = document.createElement("img");   // crea un nuevo div
+            //newimg.setAttribute('class', "img-fluid")
+            newimg.setAttribute('width', 348)
+            newimg.setAttribute('height', 350)
+            newimg.setAttribute('margin-righ', 30)
+            newimg.setAttribute('src', datos[i].imatges[0])
+            newimg.setAttribute('alt', "")
 
-                        newa1.appendChild(newimg);
+            newa1.appendChild(newimg);
 
-                        var newDiv4 = document.createElement("div");   // crea un nuevo div
-                        newDiv4.setAttribute('class', "portfolio-caption")
+            var newDiv4 = document.createElement("div");   // crea un nuevo div
+            newDiv4.setAttribute('class', "portfolio-caption")
 
-                        newDiv1.appendChild(newDiv4);
+            newDiv1.appendChild(newDiv4);
 
-                        var newDiv5 = document.createElement("div");   // crea un nuevo div
-                        newDiv5.setAttribute('class', "portfolio-caption-heading")
-                        var newContent = document.createTextNode(datos[i].nom); //nom Rest
-                        newDiv5.appendChild(newContent)
+            var newDiv5 = document.createElement("div");   // crea un nuevo div
+            newDiv5.setAttribute('class', "portfolio-caption-heading")
+            var newContent = document.createTextNode(datos[i].nom); //nom Rest
+            newDiv5.appendChild(newContent)
 
-                        newDiv4.appendChild(newDiv5);
+            newDiv4.appendChild(newDiv5);
 
-                        var newDiv6 = document.createElement("div");   // crea un nuevo div
-                        newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-                        var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
-                        newDiv6.appendChild(newContent2)
-                        newDiv4.appendChild(newDiv6);
+            var newDiv6 = document.createElement("div");   // crea un nuevo div
+            newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
+            var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
+            newDiv6.appendChild(newContent2)
+            newDiv4.appendChild(newDiv6);
 
-                        // añade el elemento creado y su contenido al DOM
-                        $("#portfolioInfo").append(newDiv);
-                    }
-                }
-            }
+            // añade el elemento creado y su contenido al DOM
+            $("#portfolioInfo").append(newDiv);
+        }
+    }
+}
