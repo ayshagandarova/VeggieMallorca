@@ -4416,7 +4416,7 @@ padding:0;
 }
 
 #menu ul li .subitem:hover {
-background:#a0ca84;
+background:#F3B04E;
 }
 
 #menu ul ul {
@@ -10226,7 +10226,7 @@ img::-moz-selection {
   /* aqui es el fondo de los botones de main navbar*/
 }
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #a0ca84;
+  color: #E26C5C;
 }
 
 @media (min-width: 992px) {
@@ -10703,7 +10703,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 
   
  .subitem {
-  background-color: #212529;
+  background-color: #F8D160;
 }
 .inline-section{
   opacity: 0;
