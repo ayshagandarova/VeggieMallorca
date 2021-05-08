@@ -9880,6 +9880,7 @@ button.bg-dark:focus {
 
 .text-uppercase {
   text-transform: uppercase !important;
+  
 }
 
 
@@ -10125,6 +10126,10 @@ body {
 
 p {
   line-height: 1.75;
+}
+
+.p-justificado{
+  text-align: justify;
 }
 
 .page-section {
@@ -10751,3 +10756,10 @@ section#contact form#contactForm :-ms-input-placeholder {
     padding: 5px;
   }
 }*/
+
+.texto-vertical{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
