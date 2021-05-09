@@ -4,14 +4,12 @@
 //mostrarRestaurants();
 
 //función que trae los datos cuando se pulsa el boton
-
-// mapa:
-
+//mapa:
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
 var map = new mapboxgl.Map({
 container: 'mapid', // container ID
 style: 'mapbox://styles/mapbox/streets-v11', // style URL
-center: [2.651537069816233, 39.570644797011795], // starting position [lng, lat]
+center: [2.942477242579887, 39.63623814828035], // starting position [lng, lat]
 zoom: 9 // starting zoom
 });
 map.on('idle',function(){
@@ -20,8 +18,7 @@ map.on('idle',function(){
 
 map.addControl(new mapboxgl.NavigationControl());
     // Add geolocate control to the map.
-    map.addControl(
-        new mapboxgl.GeolocateControl({
+    map.addControl(new mapboxgl.GeolocateControl({
             positionOptions: {
                 enableHighAccuracy: true
             },
@@ -193,6 +190,7 @@ function eliminarDatosElemento(){
     $("#horariDv").html("")
     $("#horariDs").html("")
     $("#horariDg").html("")
+    $("#contactoElemento").html(""); 
     if (marker != null){
         marker.remove();
     }
@@ -212,7 +210,7 @@ function desplegable(i) {
             var accesoHorario = ["di", "dm", "dx", "dj", "dv", "ds", "dg"]
         
             // Nombre y descripcion:
-            var newTitulo = document.createElement("h2");   // Añade el título a la ventana emergente
+            var newTitulo = document.createElement("h2");    
             newTitulo.setAttribute('class', "portfolio-caption-heading")
             var texto1 = document.createTextNode(datos[i].nom);
             newTitulo.appendChild(texto1)
@@ -294,7 +292,7 @@ function desplegable(i) {
             newCarouselA.setAttribute('class', "carousel-control-prev")
             newCarouselA.setAttribute('href', "#myCarousel")
             newCarouselA.setAttribute('role', "button")
-            newCarouselA.setAttribute('data-slide', "data-slide")
+            newCarouselA.setAttribute('data-slide', "prev")
             newCarousel1.appendChild(newCarouselA);  
 
             var newSpan = document.createElement("span");    
@@ -342,65 +340,65 @@ function desplegable(i) {
                 case 1:
                     if(hora>=datos[i].horari.di[0].in && hora <=datos[i].horari.di[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
+                        $("#horario").css({"background-color": "#B8CD65"});
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
+                        $("#horario").css({"background-color": "#E99565"});
                     }
                     break;
                 case 2:
                     if(hora>=datos[i].horari.dm[0].in && hora <=datos[i].horari.dm[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
+                        $("#horario").css({"background-color": "#B8CD65" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
+                        $("#horario").css({"background-color": "#E99565" });
                     }
                     break;
                 case 3:
                     if(hora>=datos[i].horari.dx[0].in && hora <=datos[i].horari.dx[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
+                        $("#horario").css({"background-color": "#B8CD65"});
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
+                        $("#horario").css({"background-color": "#E99565"});
                     }
                     break;
                 case 4:
                     if(hora>=datos[i].horari.dj[0].in && hora <=datos[i].horari.dj[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
+                        $("#horario").css({"background-color": "#B8CD65"});
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
+                        $("#horario").css({"background-color": "#E99565"});
                     }
                     break;
                 case 5:
                     if(hora>=datos[i].horari.dv[0].in && hora <=datos[i].horari.dv[0].out){
                         disponibilidado = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
+                        $("#horario").css({"background-color": "#B8CD65"});
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
+                        $("#horario").css({"background-color": "#E99565"});
                     }
                     break;
                 case 6:
                     if(hora>=datos[i].horari.ds[0].in && hora <=datos[i].horari.ds[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760"  });
+                        $("#horario").css({"background-color": "#B8CD65" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
+                        $("#horario").css({"background-color": "#E99565"});
                     }
                     break;
                 case 0:
 
                     if(hora>=datos[i].horari.dg[0].in && hora <=datos[i].horari.dg[0].out){
                         disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
+                        $("#horario").css({"background-color": "#B8CD65" });
                     }else{
                         disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
+                        $("#horario").css({"background-color": "#E99565" });
                     }
                     break;
 
@@ -449,70 +447,49 @@ function desplegable(i) {
             // Añade un listener en el botón, cuando se pulse se muestra el horario, si se vuelve a pulsar lo esconde
 
             $("#horario").append(disponibilidad);
-            // Al clicar se despliega el horario:
-          /* $("#horario").click(function(){
-                if($("#horarioDesplegable").style.display == "none"){
-                    $("#horarioDesplegable").slideDown();
-                }else{
-                    $("#horarioDesplegable").slideDown();
-                }
-             });
 
-            $("#horario").dbclick(function(){
-                  if($("#horarioDesplegable").style.display == "none"){
-                      $("#horarioDesplegable").slideUp();
-                  }else{
-                      $("#horarioDesplegable").slideDown();
-                  }
-              });  */
+            // + info
 
+            var newDeteall = document.createElement("p");    
+            newDeteall.setAttribute('class', "item-intro text-mutedg")
+            var textoDetall = document.createTextNode(datos[i].detall);
+            newDeteall.appendChild(textoDetall)
 
+            var newTelefon = document.createElement("p");    
+            newTelefon.setAttribute('class', "item-intro text-mutedg")
+            var textoTelef = document.createTextNode("Telèfon: " +datos[i].contacte.telf);
+            newTelefon.appendChild(textoTelef)
 
-            /*
-            // Horario:
-           
+            var newp1 = document.createElement("p");  
+            var newInstagram = document.createElement("a");    
+            newInstagram.setAttribute('class', "item-intro text-mutedg")
+            newInstagram.setAttribute('href', datos[i].contacte.xarxes.instagram)
+            var textoInstagram = document.createTextNode("Instagram"); // a lo mejor añadir icono
+            newInstagram.appendChild(textoInstagram)
+            newp1.appendChild(newInstagram)
 
-            var newThead = document.createElement("thead");    
+            var newp2 = document.createElement("p");  
+            var newFacebook = document.createElement("a");   
+            newFacebook.setAttribute('class', "item-intro text-mutedg")
+            newFacebook.setAttribute('href', datos[i].contacte.xarxes.facebook)
+            var textoFacebook = document.createTextNode("Facebook");
+            newFacebook.appendChild(textoFacebook)
+            newp2.appendChild(newFacebook)
 
-            var newTr = document.createElement("tr");    
-            newThead.appendChild(newTr);  
+            var newp3 = document.createElement("p");  
+            var newTripAdvisor = document.createElement("a");    
+            newTripAdvisor.setAttribute('class', "item-intro text-mutedg")
+            newTripAdvisor.setAttribute('href', datos[i].contacte.xarxes.tripadvisor)
+            var textoTrip = document.createTextNode("Trip Advisor");
+            newTripAdvisor.appendChild(textoTrip)
+            newp3.appendChild(newTripAdvisor)
 
-            var newTh1 = document.createElement("th");    
-            var texto = document.createTextNode("Horari:");
-            newTh1.appendChild(texto);
-            newTr.appendChild(newTh1);  
+            $("#contactoElemento").append(newDeteall); 
+            $("#contactoElemento").append(newTelefon); 
+            $("#contactoElemento").append(newp1); 
+            $("#contactoElemento").append(newp2); 
+            $("#contactoElemento").append(newp3); 
 
-            var newTh2 = document.createElement("th");    
-            newTr.appendChild(newTh2);  
-
-            var newTh3 = document.createElement("th");    
-            newTr.appendChild(newTh3);  
-
-            var newTbody = document.createElement("tbody");    
-
-            // hay que cambiar para que aparezca para cada dida de la semana
-            for (var j = 0; j < 7; j++) {
-                var newTrJ = document.createElement("tr");    
-                newTbody.appendChild(newTrJ);  
-
-                var newTd = document.createElement("td");    
-                var text = document.createTextNode(arrayHorario[j]);
-                newTd.appendChild(text);
-                newTrJ.appendChild(newTd);  
-
-                var newTd2 = document.createElement("td");    
-                var text2 = document.createTextNode(datos[i].horari.di[0].in);
-                newTd2.appendChild(text2);
-                newTrJ.appendChild(newTd2);  
-
-                var newTd3 = document.createElement("td");    
-                var text3 = document.createTextNode(datos[i].horari.di[0].out);
-                newTd3.appendChild(text3);
-                newTrJ.appendChild(newTd3);  
-            }
-           // $("#horariElement").append(newThead);
-           // $("#horariElement").append(newTbody);
-*/
            // Comentarios:
             /*
             var newScript = document.createElement('script');
@@ -598,7 +575,6 @@ function buscadorFires() {
                // $("#headingInfo").append("FIRES VEGETARIANES I VENAGES DE L'ILLA")
               //  $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
             afegirElemPortfoli(dadesFires, id);
-            console.log("hola1")
         }
     };
     xmlhttp.open("GET", url, true);
@@ -710,11 +686,8 @@ function addElemTimeLine(datos) {
 
 // a lo mejor llamarlo Info o algo, para no confundir
 function afegirElemPortfoli(datos, id) {
-    console.log(datos)
     for (var i = 0; i < datos.length; i++) {
-        console.log("hola3")
         if (datos[i].tipus == id) { //id = "restaurant o sueprmercats"
-        console.log("hola4")
 
             console.log(id)
             var newDiv = document.createElement("div");   // crea un nuevo div

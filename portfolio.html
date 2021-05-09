@@ -138,29 +138,21 @@
               <div class="modal-content">  
                 <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
                     </div>
-                <div class="container"> 
                     <div class= "row justify-content-center">
                         <!-- Nombre y descripción del elemento -->
                         <div class= "modal-body" id="nombreDescripcioElement"> </div>
                     </div>
-                    <div class= "row justify-content-center">
-                        <div class="col-lg-6">
-                            <!-- Carousel del elemento -->
-                            <div id="carouselElement"></div>
-                        </div>
-                        <div class="col-lg-6" id="horarioGrande">
-                             <!-- Widget tiempo -->
-            <!--               <a class="weatherwidget-io" href="https://forecast7.com/es/39d572d65/palma/" data-label_1="PALMA" data-icons="Climacons Animated" data-theme="pure" >PALMA</a>
-                           <script>
-                           !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-                           </script> --> 
-
-
-
+                        <!-- Carousel del elemento -->
+                    <div class="container" id="carouselElement"></div>
+                <div class="container"> 
+                    
+                    <div class= "row justify-content-left" style="margin-bottom: 15px; margin-top: 15px;">
+                        <div class="col-lg-6 texto-centrado" id="horarioGrande">
+                            
                            <!-- <p>Horari: <button class="btn btn-primary text-uppercas" id="horario"></button></p>-->
 
                             <div class="dropdown">
-                                <p>Horari: <button onclick="myFunction()" class="btn btn-primary text-uppercas dropbtn" id="horario"></button></p>
+                                <p>Ahora: <button onclick="myFunction()" class="btn btn-primary text-uppercas dropbtn" id="horario"></button></p>
                                 <div id="myDropdown" class="dropdown-content">
                                   <a href="#" id="horariDll"></a>
                                   <a href="#" id="horariDm"></a>
@@ -172,26 +164,24 @@
                                 </div>
                             </div>
                             <!-- <div id="horarioDesplegable" style="display: none"></div>-->
+
+                            <!-- Contact information -->
+                            <div id="contactoElemento"></div>
                         </div>
+
+                        <div class="col-lg-6">
+                         <!-- Widget tiempo -->
+                         <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="pure" >NEW YORK WEATHER</a>
+                        <script>
+                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                        </script>
+                        </div>
+                        
                     </div>
                     <div class= "row justify-content-center">
-                        <div class="col-lg-6">
-                            <!-- Mapa del elemento -->
-                            <div id='mapid'></div>
-                            
-                        </div>
-                        <div class="col-lg-6">
-                            <table id="horariElement"></table>
-                           <!-- <div id='informació'></div> -->
-                            
-                           
-                        </div>
+                        <div class="col-md-12"id='mapid'></div>
                     </div>
-                    <div class= "row justify-content-center">
-                        <!-- Tiempo de la zona donde se encuentra el elemento -->
-                        <div id="tiempoElemento"></div>
-                    </div>
-                    <!-- <div id="comentaris" class="elfsight-app-4cf356d3-6a73-4798-8a50-148d829a9c5d"></div>-->
+                    <div id="comentaris" class="elfsight-app-4cf356d3-6a73-4798-8a50-148d829a9c5d"></div>
                 </div>
             </div>
         </div>
