@@ -10723,9 +10723,10 @@ section#contact form#contactForm :-ms-input-placeholder {
 #mapid { height: 300px; }
 
 .search-container {
-  float: left;
+  float: right;
   margin-top: 16px;
   margin-bottom: 16px;
+  width:400px;
 }
 .search-container button {
 
@@ -10738,28 +10739,44 @@ section#contact form#contactForm :-ms-input-placeholder {
 .search-container button:hover {
   background: #F3B04E;
 }
-/*
-.search-container input[type=text] {
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-@media screen and (max-width: 600px) {
-  
-  .search-container input[type=text] {
-    border: 1px solid #ccc;  
-    float: none;
-    display: block;
-    width: 100%;
-    margin: 0;
-    padding: 5px;
-  }
-}*/
 
 .texto-centrado{
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: column;
+}
+
+.select-style {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  height: 40px;
+  float: left;
+  
+  
+}
+.select-style select {
+  padding: 5px 8px;
+  width: 100%;
+  border: #454d55;
+  background-color: transparent;
+  background-image: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: white;
+  text-align: center
+}
+.select-style select:focus {
+  outline: none;
+}
+
+.select-style div:hover, .same-as-selected {
+  background-color: #F3B04E;
 }

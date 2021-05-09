@@ -77,29 +77,37 @@
     <!-- RESTAURANTS -->
     <div id="paginaRestaurants">
         <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
+        <section class="page-section" id="portfolio">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase" id="titolPortfoli"></h2>
                     <h3 class="section-subheading text-muted" id="descPortfoli"></h3>
                 </div>
-                <div class="search-container">
-                        <input
-                            type="text"
-                            name="search"
-                            id="myInput"
-                            placeholder="Buscar..."
-                            onkeyup="funcionOnKeyUp()"
-                        />
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                </div>
+                        <div class="select-style" style="background-color: #F8D160;color: #F8D160;width:600px;">
+                            <select>
+                                <option value="0"></option>
+                                <option value="1">Vegetarià</option>
+                                <option value="2">Vegà</option>
+                                <option value="3">Gluten free</option>
+                            </select>
+                        </div>
+                        <div class="search-container">
+                                <input
+                                    type="text"
+                                    name="search"
+                                    id="myInput"
+                                    placeholder="Cercar..."
+                                    
+                                />
+                                <button type="submit" onclick="filtrar();" id="buscar"><i class="fa fa-search"></i></button>
+                        </div>
                 
                 <div class="infoRest" >
                     <div class="row" id="galeriaPortfoli">
 
                         <!-- 
                         <div class="col-lg-4 col-sm-6 mb-4 portfolio-item" id="restaurant1">
-                            <div class="portfolio-item" id="restaurant1">
+                            <div class="portfolalio-item" id="restaurant1">
                                 <a onclick="restDesplegable()" class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal1">
                                         <div class="portfolio-hover">
                                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
@@ -127,7 +135,7 @@
     <div class="portfolio-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog"  id="añadirInfoElemento" >
               <div class="modal-content">  
-                <div class="close-modal" onclick="eliminarDatosElemento();" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
+                <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
                     </div>
                 <div class="container"> 
                     <div class= "row justify-content-center">
@@ -167,17 +175,14 @@
                         <!-- Tiempo de la zona donde se encuentra el elemento -->
                         <div id="tiempoElemento"></div>
                     </div>
-                    
-                    <div id="comentaris"></div>
+                    <!-- <div id="comentaris" class="elfsight-app-4cf356d3-6a73-4798-8a50-148d829a9c5d"></div>-->
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="paginaAux"></div>
-
     <!-- Clients-->
-    <div class="py-5">
+    <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 my-3">
@@ -282,7 +287,7 @@
     <script src="assets/mail/contact_me.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-    <script src="ajax.js"></script>
+    <script src="js/portfolio.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
   
     

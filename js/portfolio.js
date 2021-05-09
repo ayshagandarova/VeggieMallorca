@@ -32,8 +32,19 @@ map.addControl(new mapboxgl.NavigationControl());
 var marker;
 
 
+//resultats seria el equivalente a donde ponemos nuestras en row  columnas 
+
+var input = document.getElementById("myInput");
+// añade listener si pulsas enter:
+input.addEventListener('keyup', function(event) {
+    if (event.keyCode  === 13) {
+        event.preventDefault();
+        document.getElementById("buscar").click();
+    }
+});
+
 //*** maria: que es esto ayshaaaa???? */
-function funcionOnKeyUp() {
+function filtrar() {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
@@ -41,24 +52,21 @@ function funcionOnKeyUp() {
             var datos = JSON.parse(xmlhttp.responseText);
            // var galeria, divs, a
             var a, txtValue
-            var input = document.getElementById("myInput");
+            
             var filter = input.value.toUpperCase();
             galeria = document.getElementById("galeriaPortfoli")
             divs = galeria.getElementsByTagName("div");
             for (i = 0; i < datos.length; i++) {
                 a = datos[i].nom
                 if (a.toUpperCase().indexOf(filter) > -1) {
-                    console.log(datos[i].nom + "y el tipo: " + datos[i].tipus);
+                    console.log(datos[i].nom + " y el tipo: " + datos[i].tipus);
                 } 
             }
         }
-
     };
     xmlhttp.open("GET", url, true);
             xmlhttp.send();
-    
 }
-
 // Botón para subir arriba;
 
 //Get the button
@@ -77,6 +85,7 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
+    console.log("hello")
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
@@ -118,33 +127,31 @@ function addElement(datos, id) {
 
             var newDiv1 = document.createElement("div");   // crea un nuevo div
             newDiv1.setAttribute('class', "portfolio-item")
-            newDiv.appendChild(newDiv1); //añade texto al div creado.
+            newDiv.appendChild(newDiv1); 
 
             var newa1 = document.createElement("a");
-            //   newa1.setAttribute('onclick', "desplegable("+i+"); this.onclick=null;");
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
             newa1.setAttribute('data-target', "#myModal");
-            newa1.setAttribute('onclick', "desplegableDatos(" + i + ");");
-            newDiv1.appendChild(newa1); //añade texto al div creado.
+            newa1.setAttribute('onclick', "desplegable(" + i + ");");
+            newDiv1.appendChild(newa1); 
 
             var newDiv2 = document.createElement("div");   // crea un nuevo div
             newDiv2.setAttribute('class', "portfolio-hover")
 
             newa1.appendChild(newDiv2);
 
-            var newDiv3 = document.createElement("div");   // crea un nuevo div
+            var newDiv3 = document.createElement("div");   
             newDiv3.setAttribute('class', "portfolio-hover-content")
 
             newDiv2.appendChild(newDiv3);
 
-            var newi = document.createElement("i");   // crea un nuevo div
+            var newi = document.createElement("i");  
             newi.setAttribute('class', "fas fa-plus fa-3x")
 
             newDiv3.appendChild(newi);
 
-            var newimg = document.createElement("img");   // crea un nuevo div
-            //  newimg.className ="img-fluid"
+            var newimg = document.createElement("img"); 
            // newimg.setAttribute('width', 355)
           //  newimg.setAttribute('height', 250)
            // newimg.setAttribute('margin-righ', 30)
@@ -177,18 +184,23 @@ function addElement(datos, id) {
         }
     }
 }
-
 function eliminarDatosElemento(){
     $("#nombreDescripcioElement").html(""); //limpiar la seccion
     $("#carouselElement").html(""); //limpiar la seccion
     $("#horariElement").html(""); //limpiar la seccion
    // $("#informació").html(""); //limpiar la seccion
     $("#tiempoElemento").html(""); //limpiar la seccion
-    $("#comentaris").html("");
-    marker.remove();
+    $("#horarioDesplegable").html(""); //limpiar la seccion
+    $("#horario").html(""); //limpiar la seccion
+    if (marker != null){
+        marker.remove();
+    }
 }
 
-function desplegableDatos(i) {
+function desplegable(i) {
+    if ($("#nombreDescripcioElement").html() !== null){
+        eliminarDatosElemento();
+    }
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
@@ -324,7 +336,6 @@ function desplegableDatos(i) {
             var m = date.getMinutes();
             var hora = h+":"+m;
             var disponibilidad;
-
             // Comprueba si en este momento está abierto el local
             switch (d){
                 case 1:
@@ -381,7 +392,8 @@ function desplegableDatos(i) {
                         $("#horario").css({"background-color": "#E99565", "border-color": "#E26C5C" });
                     }
                     break;
-                case 7:
+                case 0:
+
                     if(hora>=datos[i].horari.dg[0].in && hora <=datos[i].horari.dg[0].out){
                         disponibilidad = document.createTextNode("Abierto");
                         $("#horario").css({"background-color": "#B8CD65", "border-color": "#627760" });
@@ -408,13 +420,13 @@ function desplegableDatos(i) {
             var textDj = document.createTextNode("Dijous: " + datos[i].horari.dj[0].in +"-" + datos[i].horari.dj[0].out);
             
             var pDv = document.createElement("p");    
-            var textDv = document.createTextNode("Divendres" + datos[i].horari.dv[0].in +"-" + datos[i].horari.dv[0].out);
+            var textDv = document.createTextNode("Divendres: " + datos[i].horari.dv[0].in +"-" + datos[i].horari.dv[0].out);
 
             var pDs = document.createElement("p");    
-            var textDs = document.createTextNode("Dissabte" + datos[i].horari.ds[0].in +"-" + datos[i].horari.ds[0].out);
+            var textDs = document.createTextNode("Dissabte: " + datos[i].horari.ds[0].in +"-" + datos[i].horari.ds[0].out);
 
             var pDg = document.createElement("p");    
-            var textDg = document.createTextNode("Diumenge" + datos[i].horari.dg[0].in +"-" + datos[i].horari.dg[0].out);
+            var textDg = document.createTextNode("Diumenge: " + datos[i].horari.dg[0].in +"-" + datos[i].horari.dg[0].out);
 
             pDi.appendChild(textDi);  
             pDm.appendChild(textDm);  
@@ -423,32 +435,34 @@ function desplegableDatos(i) {
             pDv.appendChild(textDv);  
             pDs.appendChild(textDs);  
             pDg.appendChild(textDg);  
-            $("#horarioDesplegable").append(pDi);
+            //Añadimos el horario de cada día al div correspondiente con el id = horarioDesplegable
+           /* $("#horarioDesplegable").append(pDi);
             $("#horarioDesplegable").append(pDm);
             $("#horarioDesplegable").append(pDx);
             $("#horarioDesplegable").append(pDj);
             $("#horarioDesplegable").append(pDv);
             $("#horarioDesplegable").append(pDs);
-            $("#horarioDesplegable").append(pDg);
+            $("#horarioDesplegable").append(pDg);*/
 
             // Añade un listener en el botón, cuando se pulse se muestra el horario, si se vuelve a pulsar lo esconde
 
             $("#horario").append(disponibilidad);
-            $("#horario").click(function(){
-              //  if($("#horarioDesplegable").style.display == "none"){
+            // Al clicar se despliega el horario:
+          /* $("#horario").click(function(){
+                if($("#horarioDesplegable").style.display == "none"){
                     $("#horarioDesplegable").slideDown();
-               // }else{
-                   // $("#horarioDesplegable").slideDown();
-              //  }
-            });
+                }else{
+                    $("#horarioDesplegable").slideDown();
+                }
+             });
 
             $("#horario").dbclick(function(){
-                //  if($("#horarioDesplegable").style.display == "none"){
+                  if($("#horarioDesplegable").style.display == "none"){
                       $("#horarioDesplegable").slideUp();
-                 // }else{
-                     // $("#horarioDesplegable").slideDown();
-                //  }
-              });
+                  }else{
+                      $("#horarioDesplegable").slideDown();
+                  }
+              });  */
 
 
 
@@ -670,8 +684,7 @@ function addElemTimeLine(datos) {
     $("#timeLineInfo").append(newLi2);
 }
 
-
-
+// a lo mejor llamarlo Info o algo, para no confundir
 function afegirElemPortfoli(datos, id) {
 
     for (var i = 0; i < datos.length; i++) {
@@ -742,3 +755,85 @@ function afegirElemPortfoli(datos, id) {
         }
     }
 }
+
+
+// para el filtrado:
+
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
