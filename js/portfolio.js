@@ -59,6 +59,7 @@ function filtrar() {
             for (i = 0; i < datos.length; i++) {
                 a = datos[i].nom
                 if (a.toUpperCase().indexOf(filter) > -1) {
+                    //aqui es donde habria q mostrarlo por pantalla y hacer el array de los datos q queremos mostrar
                     console.log(datos[i].nom + " y el tipo: " + datos[i].tipus);
                 } 
             }
@@ -434,15 +435,16 @@ function desplegable(i) {
             pDj.appendChild(textDj);  
             pDv.appendChild(textDv);  
             pDs.appendChild(textDs);  
-            pDg.appendChild(textDg);  
-            //Añadimos el horario de cada día al div correspondiente con el id = horarioDesplegable
-           /* $("#horarioDesplegable").append(pDi);
-            $("#horarioDesplegable").append(pDm);
-            $("#horarioDesplegable").append(pDx);
-            $("#horarioDesplegable").append(pDj);
-            $("#horarioDesplegable").append(pDv);
-            $("#horarioDesplegable").append(pDs);
-            $("#horarioDesplegable").append(pDg);*/
+            pDg.appendChild(textDg); 
+             //Añadimos el horario de cada día al div correspondiente con el id = respectivo
+            $("#horariDll").append(pDi);
+            $("#horariDm").append(pDm);
+            $("#horariDx").append(pDx);
+            $("#horariDj").append(pDj);
+            $("#horariDv").append(pDv);
+            $("#horariDs").append(pDs);
+            $("#horariDg").append(pDg);
+            
 
             // Añade un listener en el botón, cuando se pulse se muestra el horario, si se vuelve a pulsar lo esconde
 
@@ -568,14 +570,15 @@ function buscador() {
 //cas de fires
 function buscadorFires() {
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://fires-mallorca.netlify.app/jsonBase_1.json";
+    var url = "fires.json";
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
+            var dadesFires = JSON.parse(xmlhttp.responseText);
             var id = "Vegeteriana";
                // $("#headingInfo").append("FIRES VEGETARIANES I VENAGES DE L'ILLA")
               //  $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
-            afegirElemPortfoli(datos, id);
+            afegirElemPortfoli(dadesFires, id);
+            console.log("hola1")
         }
     };
     xmlhttp.open("GET", url, true);
@@ -606,6 +609,7 @@ function buscadorFires() {
 
    // aqui molaria tb poner el caso de los datos fira de miquel, pero no termino de ver como hacerlo todo en uno
 function addElemTimeLine(datos) {
+    //antes de empezar el for, hacer un push de las fires dentro de datos
     for (var i = 0; i < datos.length; i++) {
         if (datos[i].tipus == "curs" || datos[i].tipus == "fira" || datos[i].tipus == "info") {
             if (i % 2) {
@@ -686,10 +690,13 @@ function addElemTimeLine(datos) {
 
 // a lo mejor llamarlo Info o algo, para no confundir
 function afegirElemPortfoli(datos, id) {
-
+    console.log(datos)
     for (var i = 0; i < datos.length; i++) {
-
+        console.log("hola3")
         if (datos[i].tipus == id) { //id = "restaurant o sueprmercats"
+        console.log("hola4")
+
+            console.log(id)
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4")
 

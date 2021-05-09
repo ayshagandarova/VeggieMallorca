@@ -83,24 +83,25 @@
                     <h2 class="section-heading text-uppercase" id="titolPortfoli"></h2>
                     <h3 class="section-subheading text-muted" id="descPortfoli"></h3>
                 </div>
-                        <div class="select-style" style="background-color: #F8D160;color: #F8D160;width:600px;">
-                            <select>
-                                <option value="0"></option>
-                                <option value="1">Vegetarià</option>
-                                <option value="2">Vegà</option>
-                                <option value="3">Gluten free</option>
-                            </select>
-                        </div>
-                        <div class="search-container">
-                                <input
-                                    type="text"
-                                    name="search"
-                                    id="myInput"
-                                    placeholder="Cercar..."
-                                    
-                                />
-                                <button type="submit" onclick="filtrar();" id="buscar"><i class="fa fa-search"></i></button>
-                        </div>
+                <div class="select-style" style="background-color: #F8D160;color: #F8D160;width:600px;">
+                    <select>
+                        <option value="0"></option>
+                        <option value="1">Vegetarià</option>
+                        <option value="2">Vegà</option>
+                        <option value="3">Gluten free</option>
+                    </select>
+                </div>
+                <!-- Barra buscador-->
+                <div class="search-container">
+                        <input
+                            type="text"
+                            name="search"
+                            id="myInput"
+                            placeholder="Cercar..."
+                            
+                        />
+                        <button type="submit" onclick="filtrar();" id="buscar"><i class="fa fa-search"></i></button>
+                </div>
                 
                 <div class="infoRest" >
                     <div class="row" id="galeriaPortfoli">
@@ -153,8 +154,47 @@
                            <script>
                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
                            </script> --> 
-                            <p>Horario: <button class="btn btn-primary text-uppercas" id="horario"></button></p>
-                            
+
+
+
+                           <!-- <p>Horari: <button class="btn btn-primary text-uppercas" id="horario"></button></p>-->
+
+                            <div class="dropdown">
+                                <p>Horari: <button onclick="myFunction()" class="btn btn-primary text-uppercas dropbtn" id="horario"></button></p>
+                                <div id="myDropdown" class="dropdown-content">
+                                  <a href="#" id="horariDll"></a>
+                                  <a href="#" id="horariDm"></a>
+                                  <a href="#" id="horariDx"></a>
+                                  <a href="#" id="horariDj"></a>
+                                  <a href="#" id="horariDv"></a>
+                                  <a href="#" id="horariDs"></a>
+                                  <a href="#" id="horariDg"></a>
+                                </div>
+                            </div>
+
+
+                            <script>
+                                /* When the user clicks on the button, 
+                                toggle between hiding and showing the dropdown content */
+                                function myFunction() {
+                                  document.getElementById("myDropdown").classList.toggle("show");
+                                }
+                                
+                                // Close the dropdown if the user clicks outside of it
+                                window.onclick = function(event) {
+                                  if (!event.target.matches('.dropbtn')) {
+                                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                                    var i;
+                                    for (i = 0; i < dropdowns.length; i++) {
+                                      var openDropdown = dropdowns[i];
+                                      if (openDropdown.classList.contains('show')) {
+                                        openDropdown.classList.remove('show');
+                                      }
+                                    }
+                                  }
+                                }
+                                </script>
+
                             <div id="horarioDesplegable" style="display: none"></div>
                         </div>
                     </div>
