@@ -43,7 +43,7 @@ input.addEventListener('keyup', function(event) {
     }
 });
 
-//*** maria: que es esto ayshaaaa???? */
+/* BARRA BUSCADOR */
 function filtrar() {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
@@ -91,15 +91,14 @@ function topFunction() {
     document.documentElement.scrollTop = 0;
 }
 
-
+//Filtrar para diferenciar entre restaurants o supermercats
 function Cercador() {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-
-            var urlweb = location.search //agafa la url on hem clicat a partir de l'? inclòs
+            var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
             var id = urlweb.replace("?", "")
             if (id == "restaurant") {
                 $("#titolPortfoli").append("Restaurants")
@@ -115,20 +114,17 @@ function Cercador() {
     xmlhttp.send();
 }
 
-
+//Afegir elements al portfoli de restaurants o supermercats
 function addElement(datos, id) {
-    //filtrar para distinguir entre restaurantes o supermercados
-
     for (var i = 0; i < datos.length; i++) {
-
         if (datos[i].tipus == id) { //id = "restaurant o sueprmercats"
             var newDiv = document.createElement("div");   // crea un nuevo div
-            newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4")
+            newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
             newDiv.setAttribute('id', "elemento-"+i)
 
-            var newDiv1 = document.createElement("div");   // crea un nuevo div
+            var newDiv1 = document.createElement("div");  
             newDiv1.setAttribute('class', "portfolio-item")
-            newDiv.appendChild(newDiv1); 
+            newDiv.appendChild(newDiv1); //afegim node newDiv1 com a fill del pare newDiv
 
             var newa1 = document.createElement("a");
             newa1.setAttribute('class', "portfolio-link");
@@ -137,7 +133,7 @@ function addElement(datos, id) {
             newa1.setAttribute('onclick', "desplegable(" + i + ");");
             newDiv1.appendChild(newa1); 
 
-            var newDiv2 = document.createElement("div");   // crea un nuevo div
+            var newDiv2 = document.createElement("div");   
             newDiv2.setAttribute('class', "portfolio-hover")
 
             newa1.appendChild(newDiv2);
@@ -153,30 +149,27 @@ function addElement(datos, id) {
             newDiv3.appendChild(newi);
 
             var newimg = document.createElement("img"); 
-           // newimg.setAttribute('width', 355)
-          //  newimg.setAttribute('height', 250)
-           // newimg.setAttribute('margin-righ', 30)
             newimg.setAttribute('class', "img-fluid")
             newimg.setAttribute('src', datos[i].imatges[0])
             newimg.setAttribute('alt', "")
 
             newa1.appendChild(newimg);
 
-            var newDiv4 = document.createElement("div");   // crea un nuevo div
+            var newDiv4 = document.createElement("div");  
             newDiv4.setAttribute('class', "portfolio-caption")
 
             newDiv1.appendChild(newDiv4);
 
-            var newDiv5 = document.createElement("div");   // crea un nuevo div
+            var newDiv5 = document.createElement("div");   
             newDiv5.setAttribute('class', "portfolio-caption-heading")
-            var newContent = document.createTextNode(datos[i].nom); //nom Rest
+            var newContent = document.createTextNode(datos[i].nom); 
             newDiv5.appendChild(newContent)
 
             newDiv4.appendChild(newDiv5);
 
-            var newDiv6 = document.createElement("div");   // crea un nuevo div
+            var newDiv6 = document.createElement("div");   
             newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-            var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
+            var newContent2 = document.createTextNode(datos[i].geo1.address); 
             newDiv6.appendChild(newContent2)
             newDiv4.appendChild(newDiv6);
 
