@@ -27,7 +27,7 @@
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 </head>
 
-<body id="page-top" onload="Cercador()">
+<body id="page-top" onload="Cercador(0)">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
@@ -74,13 +74,17 @@
                 <h3 class="section-subheading text-muted" id="descPortfoli"></h3>
             </div>
             <!-- Filtrar -->
-            <div class="select-style" style="background-color: #F8D160;color: #F8D160;width:600px;">
-                <select>
-                    <option value="0"></option>
-                    <option value="1">Vegetarià</option>
-                    <option value="2">Vegà</option>
-                    <option value="3">Gluten free</option>
-                </select>
+            <div>
+                <span>Ordenar per:</span>
+                <!--<div class="select-style" style="background-color: #F8D160;color: white;width:600px;"></div>-->
+                    <select id="selectOrdenar">
+                        <option value="0">Predeterminada</option>
+                        <option value="1">Més valorades</option>
+                        <option value="2">Preu ascendent</option>
+                        <option value="3">Preu decreixent</option>
+                        <option value="4">A-Z</option>
+                    </select>
+                <!--</div>-->
             </div>
             <!-- Barra buscador-->
             <div class="search-container">
@@ -112,7 +116,7 @@
                 <div class="container" id="carouselElement"></div>
                 <div class="container"> 
                     <div class= "row justify-content-left" style="margin-bottom: 15px; margin-top: 15px;">
-                        <div class="col-lg-6 texto-centrado" id="horarioGrande">
+                        <div class="col-lg-6 ">
                             <div class="dropdown">
                                 <p>Ahora: <button onclick="myFunction()" class="btn btn-primary text-uppercas dropbtn" id="horario"></button></p>
                                 <div id="myDropdown" class="dropdown-content">
@@ -125,8 +129,11 @@
                                     <a href="#" id="horariDg"></a>
                                 </div>
                             </div>
-                            <!-- Contact information -->
-                            <div id="contactoElemento"></div>
+                            <!-- Datos information -->
+                            <div id="datosElemento"></div>
+                            <a class="btn btn-primary btn-social mx-2" target="_blank" id="facebookElem"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" target="_blank" id="InstaElem"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-social mx-2" target="_blank" id="TwitterElem"><i class="fab fa-tripadvisor"></i></i></a>
                         </div>
                         <div class="col-lg-6">
                             <!-- Widget tiempo -->

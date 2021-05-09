@@ -7,7 +7,7 @@
         "identificador":"1",
         "comentari": "",
         "preu":{
-            "import":"5-100€",
+            "import":"13€",
             "coment-preu":""
         },
         "contacte":{
@@ -21,7 +21,7 @@
                 "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d12748719-Reviews-Es_20_de_Bonaire-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
             }
         },
-        "puntuacio":"5",
+        "puntuacio":5,
         "visualitzacions":"",
         "likes":0,
 
@@ -112,7 +112,7 @@
         "identificador":"1",
         "comentari": "",
         "preu":{
-            "import":"5-100€",
+            "import":"17€",
             "coment-preu":""
         },
         "contacte":{
@@ -126,7 +126,7 @@
                 "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187529-d11780674-Reviews-Navarro_Herbolario_healthy_food_cafe-Valencia_Province_of_Valencia_Valencian_Cou.html"
             }
         },
-        "puntuacio":"4,5",
+        "puntuacio":4.5,
         "visualitzacions":"",
         "likes":0,
 
@@ -216,7 +216,7 @@
         "identificador":"1",
         "comentari": "",
         "preu":{
-            "import":"5-100€",
+            "import":"10",
             "coment-preu":""
         },
         "contacte":{
@@ -230,7 +230,7 @@
                 "tripadvisor": ""
             }
         },
-        "puntuacio":"4,3",
+        "puntuacio":4.3,
         "visualitzacions":"",
         "likes":0,
 
@@ -318,7 +318,7 @@
         "identificador":"1",
         "comentari": "exemple: posar tipus de menjar del restaurante",
         "preu":{
-            "import":"9-14€",
+            "import":"12€",
             "coment-preu":""
         },
         "contacte":{
@@ -332,7 +332,7 @@
                 "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d2316133-Reviews-Restaurante_EcoVegetaria-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
             }
         },
-        "puntuacio":"4,2",
+        "puntuacio":4.2,
         "visualitzacions":"",
         "likes":0,
 
@@ -425,7 +425,7 @@
         "identificador":"2",
         "comentari": "",
         "preu":{
-            "import":"10-15€",
+            "import":"15€",
             "coment-preu":""
         },
         "contacte":{
@@ -439,7 +439,7 @@
                 "tripadvisor": "https://www.tripadvisor.es/Restaurants-g580304-zfz10665-Manacor_Majorca_Balearic_Islands.html"
             }
         },
-        "puntuacio":"4,8",
+        "puntuacio":4.8,
         "visualitzacions":"",
         "likes":0,
 
@@ -529,7 +529,7 @@
         "identificador":"3",
         "comentari": "",
         "preu":{
-            "import":"13-15€",
+            "import":"13€",
             "coment-preu":""
         },
         "contacte":{
@@ -543,7 +543,7 @@
                 "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d1126640-Reviews-Restaurante_Plaer_Natural-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
             }
         },
-        "puntuacio":"4,5",
+        "puntuacio":4.5,
         "visualitzacions":"",
         "likes":0,
 
@@ -632,7 +632,7 @@
         "identificador":"4",
         "comentari": "",
         "preu":{
-            "import":"2-3€",
+            "import":"8€",
             "coment-preu":""
         },
         "contacte":{
@@ -646,7 +646,7 @@
                 "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g187463-d10127302-Reviews-Vegan_And_Raw-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
             }
         },
-        "puntuacio":"4,2",
+        "puntuacio":4.2,
         "visualitzacions":"",
         "likes":0,
 
@@ -750,7 +750,7 @@
                 "tripadvisor": "https://www.tripadvisor.es/Attraction_Review-g187463-d8842102-Reviews-The_Galley_Club_One_Day_Classes-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
             }
         },
-        "puntuacio":"",
+        "puntuacio":4.1,
         "visualitzacions":"",
         "likes":0,
 
@@ -856,7 +856,7 @@
                 "tripadvisor": "https://www.tripadvisor.es/Attraction_Review-g187463-d8842102-Reviews-The_Galley_Club_One_Day_Classes-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
             }
         },
-        "puntuacio":"",
+        "puntuacio":4.0,
         "visualitzacions":"",
         "likes":0,
 
@@ -946,7 +946,7 @@
         "identificador":"1",
         "comentari": "",
         "preu":{
-            "import":"2-5€",
+            "import":"4€",
             "coment-preu":""
         },
         "contacte":{
@@ -960,7 +960,7 @@
                 "tripadvisor": ""
             }
         },
-        "puntuacio":"",
+        "puntuacio":4.8,
         "visualitzacions":"",
         "likes":0,
 

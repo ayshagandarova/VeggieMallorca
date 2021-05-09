@@ -82,7 +82,7 @@ function topFunction() {
 
 /* FILTRADO */
 //Filtrar para diferenciar entre restaurants o supermercats
-function Cercador() {
+function Cercador(filtrado) {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
@@ -90,6 +90,8 @@ function Cercador() {
             var datos = JSON.parse(xmlhttp.responseText);
             var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
             var id = urlweb.replace("?", "")
+            $("#titolPortfoli").html("")
+            $("#descPortfoli").html("")
             if (id == "restaurant") {
                 $("#titolPortfoli").append("Restaurants")
                 $("#descPortfoli").append("Aquí trobàs la millor secció de restaurants que tenen opcions veganes o vegetarianes.")
@@ -97,7 +99,7 @@ function Cercador() {
                 $("#titolPortfoli").append("Supermercats")
                 $("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
             }
-            addElement(datos, id);
+            addElement(datos, id, filtrado);
         }
     };
     xmlhttp.open("GET", url, true);
@@ -105,9 +107,61 @@ function Cercador() {
 }
 
 //Afegir elements al portfoli de restaurants o supermercats
-function addElement(datos, id) {
+function addElement(datos, id, filtrado) {
+    var datosFiltrados = []
+    if (filtrado == 0){ //predeterminado
+        for (var i = 0; i < datos.length; i++){
+            datosFiltrados.push(i)
+        }
+    }else if(filtrado == 1){ //Més valorades
+        for (var i = 0; i < datos.length; i++) {
+            var idPuntuacio = 0;
+            var puntuacioAnterior = 0;
+            //mira qué actividad és la siguiente con más puntuación
+            for(var j = 0; j < datos.length; j++){
+              if(datos[j].puntuacio >= puntuacioAnterior && !datosFiltrados.includes(j)){
+                idPuntuacio = j;
+                puntuacioAnterior = datos[j].puntuacio;
+              }
+            }
+            datosFiltrados.push(idPuntuacio);
+          }
+    }else if(filtrado == 2){ //Preu ascendent
+        for (var i = 0; i < datos.length; i++) {
+            var idPreuA = 0;
+            var preuAAnterior = 0;
+            //mira qué actividad és la siguiente con más puntuación
+            for(var j = 0; j < datos.length; j++){
+              var preu = datos[j].preu.import;
+              preu = preu.replace(" €", "");
+              preu = parseFloat(preu); //Convierto el String a Int
+              if(preu >= preuAAnterior && !datosFiltrados.includes(j)){
+                idPreuA = j;
+                preuAAnterior = preu;
+              }
+            }
+            datosFiltrados.push(idPreuA);
+          }
+    }else if(filtrado == 3){ //Preu descreixent
+        for (var i = 0; i < datos.length; i++) {
+            var idPreuD = 0;
+            var preuDAnterior = 1000;
+            //mira qué actividad és la siguiente con más puntuación
+            for(var j = 0; j < datos.length; j++){
+              var preu = datos[j].preu.import;
+              preu = preu.replace(" €", "");
+              preu = parseFloat(preu); //Convierto el String a Int
+              if(preu < preuDAnterior && !datosFiltrados.includes(j)){
+                idPreuD = j;
+                preuDAnterior = preu;
+              }
+            }
+            datosFiltrados.push(idPreuD);
+          }
+    }
+    $("#galeriaPortfoli").html("")
     for (var i = 0; i < datos.length; i++) {
-        if (datos[i].tipus == id) { //id = "restaurant o sueprmercats"
+        if (datos[datosFiltrados[i]].tipus == id) { //id = "restaurant o sueprmercats"
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
             newDiv.setAttribute('id', "elemento-"+i)
@@ -140,7 +194,7 @@ function addElement(datos, id) {
 
             var newimg = document.createElement("img"); 
             newimg.setAttribute('class', "img-fluid")
-            newimg.setAttribute('src', datos[i].imatges[0])
+            newimg.setAttribute('src', datos[datosFiltrados[i]].imatges[0])
             newimg.setAttribute('alt', "")
 
             newa1.appendChild(newimg);
@@ -152,14 +206,14 @@ function addElement(datos, id) {
 
             var newDiv5 = document.createElement("div");   
             newDiv5.setAttribute('class', "portfolio-caption-heading")
-            var newContent = document.createTextNode(datos[i].nom); 
+            var newContent = document.createTextNode(datos[datosFiltrados[i]].nom); 
             newDiv5.appendChild(newContent)
 
             newDiv4.appendChild(newDiv5);
 
             var newDiv6 = document.createElement("div");   
             newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-            var newContent2 = document.createTextNode(datos[i].geo1.address); 
+            var newContent2 = document.createTextNode(datos[datosFiltrados[i]].geo1.address); 
             newDiv6.appendChild(newContent2)
             newDiv4.appendChild(newDiv6);
 
@@ -397,25 +451,25 @@ function desplegable(i) {
 
             // Crea el horario desplegable:
             var pDi = document.createElement("p");    
-            var textDi = document.createTextNode("Dilluns: " + datos[i].horari.di[0].in +"-" + datos[i].horari.di[0].out +" i "+ datos[i].horari.di[1].in +"-" + datos[i].horari.di[1].out);
+            var textDi = document.createTextNode("Dilluns: " + datos[i].horari.di[0].in +"-" + datos[i].horari.di[0].out +"  "+ datos[i].horari.di[1].in +"-" + datos[i].horari.di[1].out);
 
             var pDm = document.createElement("p");    
-            var textDm = document.createTextNode("Dimarts: " + datos[i].horari.dm[0].in +"-" + datos[i].horari.dm[0].out);
+            var textDm = document.createTextNode("Dimarts: " + datos[i].horari.dm[0].in +"-" + datos[i].horari.dm[0].out+"  "+ datos[i].horari.dm[1].in +"-" + datos[i].horari.dm[1].out);
 
             var pDx = document.createElement("p");    
-            var textDx = document.createTextNode("Dimecres: " + datos[i].horari.dx[0].in +"-" + datos[i].horari.dx[0].out);
+            var textDx = document.createTextNode("Dimecres: " + datos[i].horari.dx[0].in +"-" + datos[i].horari.dx[0].out+"  "+ datos[i].horari.dx[1].in +"-" + datos[i].horari.dx[1].out);
             
             var pDj = document.createElement("p");    
-            var textDj = document.createTextNode("Dijous: " + datos[i].horari.dj[0].in +"-" + datos[i].horari.dj[0].out+" i "+ datos[i].horari.dj[1].in +"-" + datos[i].horari.dj[1].out);
+            var textDj = document.createTextNode("Dijous: " + datos[i].horari.dj[0].in +"-" + datos[i].horari.dj[0].out+"  "+ datos[i].horari.dj[1].in +"-" + datos[i].horari.dj[1].out);
             
             var pDv = document.createElement("p");    
-            var textDv = document.createTextNode("Divendres: " + datos[i].horari.dv[0].in +"-" + datos[i].horari.dv[0].out);
+            var textDv = document.createTextNode("Divendres: " + datos[i].horari.dv[0].in +"-" + datos[i].horari.dv[0].out+"  "+ datos[i].horari.dv[1].in +"-" + datos[i].horari.dv[1].out);
 
             var pDs = document.createElement("p");    
-            var textDs = document.createTextNode("Dissabte: " + datos[i].horari.ds[0].in +"-" + datos[i].horari.ds[0].out);
+            var textDs = document.createTextNode("Dissabte: " + datos[i].horari.ds[0].in +"-" + datos[i].horari.ds[0].out+"  "+ datos[i].horari.ds[1].in +"-" + datos[i].horari.ds[1].out);
 
             var pDg = document.createElement("p");    
-            var textDg = document.createTextNode("Diumenge: " + datos[i].horari.dg[0].in +"-" + datos[i].horari.dg[0].out);
+            var textDg = document.createTextNode("Diumenge: " + datos[i].horari.dg[0].in +"-" + datos[i].horari.dg[0].out+"  "+ datos[i].horari.dg[1].in +"-" + datos[i].horari.dg[1].out);
 
             pDi.appendChild(textDi);  
             pDm.appendChild(textDm);  
@@ -433,12 +487,7 @@ function desplegable(i) {
             $("#horariDs").append(pDs);
             $("#horariDg").append(pDg);
             
-
-            // Añade un listener en el botón, cuando se pulse se muestra el horario, si se vuelve a pulsar lo esconde
-
             $("#horario").append(disponibilidad);
-
-            // + info
 
             var newDeteall = document.createElement("p");    
             newDeteall.setAttribute('class', "item-intro text-mutedg")
@@ -450,36 +499,13 @@ function desplegable(i) {
             var textoTelef = document.createTextNode("Telèfon: " +datos[i].contacte.telf);
             newTelefon.appendChild(textoTelef)
 
-            var newp1 = document.createElement("p");  
-            var newInstagram = document.createElement("a");    
-            newInstagram.setAttribute('class', "item-intro text-mutedg")
-            newInstagram.setAttribute('href', datos[i].contacte.xarxes.instagram)
-            var textoInstagram = document.createTextNode("Instagram"); // a lo mejor añadir icono
-            newInstagram.appendChild(textoInstagram)
-            newp1.appendChild(newInstagram)
+            $("#datosElemento").append(newDeteall); 
+            $("#datosElemento").append(newTelefon); 
 
-            var newp2 = document.createElement("p");  
-            var newFacebook = document.createElement("a");   
-            newFacebook.setAttribute('class', "item-intro text-mutedg")
-            newFacebook.setAttribute('href', datos[i].contacte.xarxes.facebook)
-            var textoFacebook = document.createTextNode("Facebook");
-            newFacebook.appendChild(textoFacebook)
-            newp2.appendChild(newFacebook)
-
-            var newp3 = document.createElement("p");  
-            var newTripAdvisor = document.createElement("a");    
-            newTripAdvisor.setAttribute('class', "item-intro text-mutedg")
-            newTripAdvisor.setAttribute('href', datos[i].contacte.xarxes.tripadvisor)
-            var textoTrip = document.createTextNode("Trip Advisor");
-            newTripAdvisor.appendChild(textoTrip)
-            newp3.appendChild(newTripAdvisor)
-
-            $("#contactoElemento").append(newDeteall); 
-            $("#contactoElemento").append(newTelefon); 
-            $("#contactoElemento").append(newp1); 
-            $("#contactoElemento").append(newp2); 
-            $("#contactoElemento").append(newp3); 
-
+            $("#facebookElem").attr('href',datos[i].contacte.xarxes.facebook)
+            $("#InstaElem").attr('href',datos[i].contacte.xarxes.instagram)
+            $("#TwitterElem").attr('href',datos[i].contacte.xarxes.tripadvisor)
+            
            // Comentarios:
             /*
             var newScript = document.createElement('script');
@@ -827,3 +853,27 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
+
+/* FUNCIONES JQUERY */
+
+(function ($) {
+    "use strict"; // Start of use strict
+
+    $("#selectOrdenar").change(function () {
+        if ($(this).val() ==0) {
+          Cercador(0); //predeterminat
+        } 
+        if($(this).val() == 1){
+          Cercador(1); //més valorat
+        } 
+        if($(this).val() == 2){
+          Cercador(2); //preu ascendent
+        } 
+        if($(this).val() == 3){
+            Cercador(3); //preu ascendent
+          } 
+      });
+
+
+
+  })(jQuery); // End of use strict
