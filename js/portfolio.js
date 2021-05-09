@@ -193,6 +193,13 @@ function eliminarDatosElemento(){
     $("#tiempoElemento").html(""); //limpiar la seccion
     $("#horarioDesplegable").html(""); //limpiar la seccion
     $("#horario").html(""); //limpiar la seccion
+    $("#horariDll").html("")
+    $("#horariDm").html("")
+    $("#horariDx").html("")
+    $("#horariDj").html("")
+    $("#horariDv").html("")
+    $("#horariDs").html("")
+    $("#horariDg").html("")
     if (marker != null){
         marker.remove();
     }
@@ -531,8 +538,8 @@ function desplegable(i) {
 
 
 //Funcion del desplegable de horario
- /* When the user clicks on the button, 
- toggle between hiding and showing the dropdown content */
+  /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
@@ -550,7 +557,7 @@ function myFunction() {
       }
     }
   }
-
+  
 
 //+ INFORMACIO.HTML
 //Crear la timeline dinámicamente:
