@@ -25,22 +25,16 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script> 
     <!-- elfsight-->
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-
-
 </head>
-<!-- ???????????? esto de q se haga aqui el onload no me gusta mucho-->
 
 <body id="page-top" onload="Cercador()">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="index.html"><img src="assets/img/veggieLogo.png"
-                    alt="" /></a>
+            <a class="navbar-brand js-scroll-trigger" href="index.html"><img src="assets/img/veggieLogo.png" alt="" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars ml-1"></i>
+                aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -72,115 +66,81 @@
         </div>
     </nav>
 
-    
-
-    <!-- RESTAURANTS -->
-    <div id="paginaRestaurants">
-        <!-- Portfolio Grid-->
-        <section class="page-section" id="portfolio">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase" id="titolPortfoli"></h2>
-                    <h3 class="section-subheading text-muted" id="descPortfoli"></h3>
-                </div>
-                <div class="select-style" style="background-color: #F8D160;color: #F8D160;width:600px;">
-                    <select>
-                        <option value="0"></option>
-                        <option value="1">Vegetarià</option>
-                        <option value="2">Vegà</option>
-                        <option value="3">Gluten free</option>
-                    </select>
-                </div>
-                <!-- Barra buscador-->
-                <div class="search-container">
-                        <input
-                            type="text"
-                            name="search"
-                            id="myInput"
-                            placeholder="Cercar..."
-                            
-                        />
-                        <button type="submit" onclick="filtrar();" id="buscar"><i class="fa fa-search"></i></button>
-                </div>
-                
-                <div class="infoRest" >
-                    <div class="row" id="galeriaPortfoli">
-
-                        <!-- 
-                        <div class="col-lg-4 col-sm-6 mb-4 portfolio-item" id="restaurant1">
-                            <div class="portfolalio-item" id="restaurant1">
-                                <a onclick="restDesplegable()" class="portfolio-link" data-toggle="modal" id="restaurant1" href="#portfolioModal1">
-                                        <div class="portfolio-hover">
-                                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                        </div>
-                                        <img class="img-fluid" src="assets/img/Restaurants/EcoVegetaria/portada.png"
-                                            alt="" />
-                                </a>
-                                <div class="portfolio-caption">
-                                        <div class="portfolio-caption-heading" id="nomRest1"></div>
-                                        <div class="portfolio-caption-subheading text-muted" id="geoRest1"></div>
-                                </div>
-                             </div>   
-                        </div>
-                        
-                        
-                    -->
-                        <!-- aquí viene todo lo referente a crear las diferentes casillas para los restaurantes -->
-                    </div>
-                </div>
+    <!-- Portfolio Grid: restaurants o supermercats-->
+    <section class="page-section" id="portfolio">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase" id="titolPortfoli"></h2>
+                <h3 class="section-subheading text-muted" id="descPortfoli"></h3>
             </div>
-        </section>
-    </div>
-    <!-- Portfolio Modals-->
+            <!-- Filtrar -->
+            <div class="select-style" style="background-color: #F8D160;color: #F8D160;width:600px;">
+                <select>
+                    <option value="0"></option>
+                    <option value="1">Vegetarià</option>
+                    <option value="2">Vegà</option>
+                    <option value="3">Gluten free</option>
+                </select>
+            </div>
+            <!-- Barra buscador-->
+            <div class="search-container">
+                    <input
+                        type="text"
+                        name="search"
+                        id="myInput"
+                        placeholder="Cercar..."
+                    />
+                    <button type="submit" onclick="filtrar();" id="buscar"><i class="fa fa-search"></i></button>
+            </div>
+            <!-- Aquí se rellena la galería con los diferentes restaurantes / supermercados-->
+            <div class="infoRest" >
+                 <div class="row" id="galeriaPortfoli"> </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Portfolio Modals: desplegable dels diferents supermercats / restaurants-->
     <div class="portfolio-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog"  id="añadirInfoElemento" >
-              <div class="modal-content">  
-                <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
-                    </div>
-                    <div class= "row justify-content-center">
-                        <!-- Nombre y descripción del elemento -->
-                        <div class= "modal-body" id="nombreDescripcioElement"> </div>
-                    </div>
-                        <!-- Carousel del elemento -->
-                    <div class="container" id="carouselElement"></div>
+            <div class="modal-content">  
+                <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
+                <div class= "row justify-content-center">
+                    <!-- Nombre y descripción del elemento -->
+                    <div class= "modal-body" id="nombreDescripcioElement"></div>
+                </div>
+                <!-- Carousel del elemento -->
+                <div class="container" id="carouselElement"></div>
                 <div class="container"> 
-                    
                     <div class= "row justify-content-left" style="margin-bottom: 15px; margin-top: 15px;">
                         <div class="col-lg-6 texto-centrado" id="horarioGrande">
-                            
-                           <!-- <p>Horari: <button class="btn btn-primary text-uppercas" id="horario"></button></p>-->
-
                             <div class="dropdown">
                                 <p>Ahora: <button onclick="myFunction()" class="btn btn-primary text-uppercas dropbtn" id="horario"></button></p>
                                 <div id="myDropdown" class="dropdown-content">
-                                  <a href="#" id="horariDll"></a>
-                                  <a href="#" id="horariDm"></a>
-                                  <a href="#" id="horariDx"></a>
-                                  <a href="#" id="horariDj"></a>
-                                  <a href="#" id="horariDv"></a>
-                                  <a href="#" id="horariDs"></a>
-                                  <a href="#" id="horariDg"></a>
+                                    <a href="#" id="horariDll"></a>
+                                    <a href="#" id="horariDm"></a>
+                                    <a href="#" id="horariDx"></a>
+                                    <a href="#" id="horariDj"></a>
+                                    <a href="#" id="horariDv"></a>
+                                    <a href="#" id="horariDs"></a>
+                                    <a href="#" id="horariDg"></a>
                                 </div>
                             </div>
-                            <!-- <div id="horarioDesplegable" style="display: none"></div>-->
-
                             <!-- Contact information -->
                             <div id="contactoElemento"></div>
                         </div>
-
                         <div class="col-lg-6">
-                         <!-- Widget tiempo -->
-                         <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="pure" >NEW YORK WEATHER</a>
-                        <script>
-                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-                        </script>
+                            <!-- Widget tiempo -->
+                            <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="PALMA DE MALLORCA" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="pure" >NEW YORK WEATHER</a>
+                            <script>
+                                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                            </script>
                         </div>
-                        
                     </div>
                     <div class= "row justify-content-center">
+                         <!-- Mapa -->
                         <div class="col-md-12"id='mapid'></div>
                     </div>
+                     <!-- Comentarios usuarios -->
                     <div id="comentaris" class="elfsight-app-4cf356d3-6a73-4798-8a50-148d829a9c5d"></div>
                 </div>
             </div>
@@ -192,20 +152,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png" width="100"
-                            alt="" /></a>
+                    <a href="https://www.facebook.com/caferiutort/" target="_blank">
+                    <img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png" width="100" alt="" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png"
-                            width="200" alt="" /></a>
+                    <a href="https://es-es.facebook.com/pages/category/Vegetarian-Vegan-Restaurant/Plaer-Natural-247394029401/" target="_blank">
+                    <img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png" width="200" alt="" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/ecoVegetaria.png"
-                            width="100" alt="" /></a>
+                    <a href="https://www.facebook.com/EcoVegetaria/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/logos/ecoVegetaria.png" width="100" alt="" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/santosha.png" width="170"
-                            alt="" /></a>
+                    <a href="https://www.santoshapalma.com" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/logos/santosha.png" width="170" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -269,9 +227,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-left">Copyright © VeggieMallorca 2021</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-primary btn-social mx-2" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-primary btn-social mx-2" href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-primary btn-social mx-2" href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-right">
                     <a class="mr-3" href="#!">Privacy Policy</a>
@@ -280,8 +238,11 @@
             </div>
         </div>
     </footer>
+
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class='fas fa-arrow-up'></i> </button>
     <!-- o esta flecha far fa-arrow-alt-circle-up-->
+
+     <!--Includes -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -294,9 +255,7 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <script src="js/portfolio.js"></script>
-    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
-  
-    
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>   
 </body>
 
 </html>

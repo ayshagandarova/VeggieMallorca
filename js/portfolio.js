@@ -1,10 +1,4 @@
-//console.log('correcto');
-
-//document.querySelector('#portfolioModal1').addEventListener('click',mostrarRestaurants)
-//mostrarRestaurants();
-
-//función que trae los datos cuando se pulsa el boton
-//mapa:
+/* MAPA */
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
 var map = new mapboxgl.Map({
 container: 'mapid', // container ID
@@ -27,10 +21,8 @@ map.addControl(new mapboxgl.NavigationControl());
     );
     
 var marker;
-
-
-//resultats seria el equivalente a donde ponemos nuestras en row  columnas 
-
+ 
+/* ???? ESTO  ES ???? */
 var input = document.getElementById("myInput");
 // añade listener si pulsas enter:
 input.addEventListener('keyup', function(event) {
@@ -65,8 +57,8 @@ function filtrar() {
     xmlhttp.open("GET", url, true);
             xmlhttp.send();
 }
-// Botón para subir arriba;
 
+/* BOTÓN DE SCROLL HACIA ARRIBA */
 //Get the button
 var mybutton = document.getElementById("myBtn");
 
@@ -88,6 +80,7 @@ function topFunction() {
     document.documentElement.scrollTop = 0;
 }
 
+/* FILTRADO */
 //Filtrar para diferenciar entre restaurants o supermercats
 function Cercador() {
     var xmlhttp = new XMLHttpRequest();
@@ -175,14 +168,14 @@ function addElement(datos, id) {
         }
     }
 }
+/* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
 function eliminarDatosElemento(){
     $("#nombreDescripcioElement").html(""); //limpiar la seccion
-    $("#carouselElement").html(""); //limpiar la seccion
-    $("#horariElement").html(""); //limpiar la seccion
-   // $("#informació").html(""); //limpiar la seccion
-    $("#tiempoElemento").html(""); //limpiar la seccion
-    $("#horarioDesplegable").html(""); //limpiar la seccion
-    $("#horario").html(""); //limpiar la seccion
+    $("#carouselElement").html(""); 
+    $("#horariElement").html(""); 
+    $("#tiempoElemento").html(""); 
+    $("#horarioDesplegable").html(""); 
+    $("#horario").html(""); 
     $("#horariDll").html("")
     $("#horariDm").html("")
     $("#horariDx").html("")
@@ -196,6 +189,7 @@ function eliminarDatosElemento(){
     }
 }
 
+/* Función que rellena los datos de los desplegables */
 function desplegable(i) {
     if ($("#nombreDescripcioElement").html() !== null){
         eliminarDatosElemento();
@@ -224,7 +218,6 @@ function desplegable(i) {
             
             $("#nombreDescripcioElement").append(newDescripcio);
 
-            
             // Puntero:
             marker = new mapboxgl.Marker()
                 .setLngLat([datos[i].geo1.long, datos[i].geo1.lat])
@@ -328,7 +321,6 @@ function desplegable(i) {
             $("#carouselElement").append(newCarousel1);
 
             // Disponibilidad horaria:
-
             var date = new Date();
             var d = date.getDay();
             var h = date.getHours();
@@ -401,13 +393,11 @@ function desplegable(i) {
                         $("#horario").css({"background-color": "#E99565" });
                     }
                     break;
-
             }
 
             // Crea el horario desplegable:
-
             var pDi = document.createElement("p");    
-            var textDi = document.createTextNode("Dilluns: " + datos[i].horari.di[0].in +"-" + datos[i].horari.di[0].out);
+            var textDi = document.createTextNode("Dilluns: " + datos[i].horari.di[0].in +"-" + datos[i].horari.di[0].out +" i "+ datos[i].horari.di[1].in +"-" + datos[i].horari.di[1].out);
 
             var pDm = document.createElement("p");    
             var textDm = document.createTextNode("Dimarts: " + datos[i].horari.dm[0].in +"-" + datos[i].horari.dm[0].out);
@@ -416,7 +406,7 @@ function desplegable(i) {
             var textDx = document.createTextNode("Dimecres: " + datos[i].horari.dx[0].in +"-" + datos[i].horari.dx[0].out);
             
             var pDj = document.createElement("p");    
-            var textDj = document.createTextNode("Dijous: " + datos[i].horari.dj[0].in +"-" + datos[i].horari.dj[0].out);
+            var textDj = document.createTextNode("Dijous: " + datos[i].horari.dj[0].in +"-" + datos[i].horari.dj[0].out+" i "+ datos[i].horari.dj[1].in +"-" + datos[i].horari.dj[1].out);
             
             var pDv = document.createElement("p");    
             var textDv = document.createTextNode("Divendres: " + datos[i].horari.dv[0].in +"-" + datos[i].horari.dv[0].out);
