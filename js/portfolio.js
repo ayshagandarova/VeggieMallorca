@@ -846,8 +846,7 @@ function closeAllSelect(elmnt) {
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 
-/* FUNCIONES JQUERY */
-
+/* FUNCIONS JQUERY */
 (function ($) {
     "use strict"; // Start of use strict
     $("#selectOrdenar").change(function () {
