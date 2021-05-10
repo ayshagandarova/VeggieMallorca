@@ -31,7 +31,6 @@ var marker;
 
 // si se pulsa enter reacciona igual que si clicas el botón de buscar:
 var input = document.getElementById("myInput");
-// añade listener si pulsas enter:
 input.addEventListener('keyup', function(event) {
     if (event.keyCode  === 13) {
         event.preventDefault();
@@ -40,15 +39,13 @@ input.addEventListener('keyup', function(event) {
 });
 
 // coger el texto y imprimir los elementos en la consola que se corresponden a la busqueda 
-function filtrar() {
+function searchBar() {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-           // var galeria, divs, a
-            var a, txtValue
-            
+            var a
             var filter = input.value.toUpperCase();
             galeria = document.getElementById("galeriaPortfoli")
             divs = galeria.getElementsByTagName("div");
@@ -66,14 +63,12 @@ function filtrar() {
 }
 
 /* BOTÓN DE SCROLL HACIA ARRIBA */
-//Get the button
+
 var mybutton = document.getElementById("myBtn");
-
-// When the user scrolls down 20px from the top of the document, show the button
+// si baja 150px
 window.onscroll = function () { scrollFunction() };
-
 function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
         mybutton.style.display = "block";
     } else {
         mybutton.style.display = "none";
@@ -82,7 +77,6 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-    console.log("hello")
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
@@ -247,6 +241,7 @@ function eliminarDatosElemento(){
     $("#horariDs").html("")
     $("#horariDg").html("")
     $("#contactoElemento").html(""); 
+    $("#datosElemento").html(""); 
     if (marker != null){
         marker.remove();
     }
@@ -262,10 +257,6 @@ function desplegable(i) {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-
-            
-            var arrayHorario = ["Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte", "Diumenge"]
-            var accesoHorario = ["di", "dm", "dx", "dj", "dv", "ds", "dg"]
         
             // Nombre y descripcion:
             var newTitulo = document.createElement("h2");    
@@ -859,7 +850,6 @@ document.addEventListener("click", closeAllSelect);
 
 (function ($) {
     "use strict"; // Start of use strict
-
     $("#selectOrdenar").change(function () {
         if ($(this).val() ==0) {
           Cercador(0); //predeterminat
@@ -874,7 +864,4 @@ document.addEventListener("click", closeAllSelect);
             Cercador(3); //preu ascendent
           } 
       });
-
-
-
   })(jQuery); // End of use strict

@@ -10714,7 +10714,6 @@ section#contact form#contactForm :-ms-input-placeholder {
   float: right;
   margin-top: 16px;
   margin-bottom: 16px;
-  width:400px;
 }
 .search-container button {
 
@@ -10820,4 +10819,8 @@ section#contact form#contactForm :-ms-input-placeholder {
 .weatherwidget-io {
   margin-top: 20px;
   margin-bottom: 16px;
+}
+
+#selectOrdenar{
+  background-color: #F8D160;
 }

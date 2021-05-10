@@ -5,7 +5,7 @@ var mybutton = document.getElementById("myBtn");
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
         mybutton.style.display = "block";
     } else {
         mybutton.style.display = "none";
@@ -14,7 +14,6 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-    console.log("hello")
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
