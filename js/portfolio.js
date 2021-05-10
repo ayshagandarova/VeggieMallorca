@@ -796,7 +796,6 @@ function desplegableFires(i) {
             $("#nombreDescripcioElement").append(newDescripcio);
 
             // Puntero:
-            
             marker = new mapboxgl.Marker()
                 .setLngLat([datos[i].geoposicionament1.long, datos[i].geoposicionament1.lat])
                 .setPopup(
