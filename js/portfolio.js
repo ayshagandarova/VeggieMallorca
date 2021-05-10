@@ -516,16 +516,6 @@ function desplegable(i) {
             $("#InstaElem").attr('href',datos[i].contacte.xarxes.instagram)
             $("#TwitterElem").attr('href',datos[i].contacte.xarxes.tripadvisor)
             
-           // Comentarios:
-            /*
-            var newScript = document.createElement('script');
-            newScript.setAttribute('src', datos[i].dadesPropies.scriptComentaris);
-
-            var newDivComentari = document.createElement('div');
-            newDivComentari.setAttribute('class',datos[i].dadesPropies.divComentaris)
-            $("#comentaris").append(newScript);
-            $("#comentaris").append(newDivComentari);
-            */
         }
     };
     xmlhttp.open("GET", url, true);
