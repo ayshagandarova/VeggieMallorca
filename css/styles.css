@@ -10810,3 +10810,14 @@ section#contact form#contactForm :-ms-input-placeholder {
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+.sort-container {
+  float: left;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.weatherwidget-io {
+  margin-top: 20px;
+  margin-bottom: 16px;
+}

@@ -21,8 +21,15 @@ map.addControl(new mapboxgl.NavigationControl());
     );
     
 var marker;
+
+// Tiempo 
+
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
  
-/* ???? ESTO  ES ???? */
+
+/* BARRA BUSCADOR */
+
+// si se pulsa enter reacciona igual que si clicas el botón de buscar:
 var input = document.getElementById("myInput");
 // añade listener si pulsas enter:
 input.addEventListener('keyup', function(event) {
@@ -32,7 +39,7 @@ input.addEventListener('keyup', function(event) {
     }
 });
 
-/* BARRA BUSCADOR */
+// coger el texto y imprimir los elementos en la consola que se corresponden a la busqueda 
 function filtrar() {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
@@ -177,6 +184,8 @@ function addElement(datos, id, filtrado) {
             newa1.setAttribute('onclick', "desplegable(" + i + ");");
             newDiv1.appendChild(newa1); 
 
+            
+
             var newDiv2 = document.createElement("div");   
             newDiv2.setAttribute('class', "portfolio-hover")
 
@@ -254,6 +263,7 @@ function desplegable(i) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
 
+            
             var arrayHorario = ["Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte", "Diumenge"]
             var accesoHorario = ["di", "dm", "dx", "dj", "dv", "ds", "dg"]
         
@@ -573,12 +583,10 @@ function buscador() {
                 $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
                 buscadorFires();
             }
-
         }
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
 }
 //cas de fires
 function buscadorFires() {
@@ -634,7 +642,8 @@ function addElemTimeLine(datos) {
             var newDiv = document.createElement("div")  // crea un nuevo div
             newDiv.setAttribute('class', "timeline-image")
             newDiv.setAttribute('data-toggle', "modal")
-            newDiv.setAttribute('href', "#portfolioModal1")
+            newDiv.setAttribute('data-target', "#myModal");
+            newDiv.setAttribute('onclick', "desplegable(" + i + ");");
             newLi.appendChild(newDiv)//añade texto al div creado.
 
             var newimg = document.createElement("img");   // crea un nuevo div
@@ -650,7 +659,8 @@ function addElemTimeLine(datos) {
             var newDiv2 = document.createElement("div")  // crea un nuevo div
             newDiv2.setAttribute('class', "timeline-heading")
             newDiv2.setAttribute('data-toggle', "modal")
-            newDiv2.setAttribute('href', "#portfolioModal1")
+            newDiv2.setAttribute('data-target', "#myModal");
+            newDiv2.setAttribute('onclick', "desplegable(" + i + ");");
             newDiv1.appendChild(newDiv2)//añade texto al div creado.
 
             var newh4 = document.createElement("h4")
@@ -717,8 +727,9 @@ function afegirElemPortfoli(datos, id) {
             //newa1.setAttribute('onclick', "desplegable("+i+")");
             //newa1.setAttribute('onclick', "test()");
             newa1.setAttribute('class', "portfolio-link");
-            newa1.setAttribute('data-toggle', "modal");
-            newa1.setAttribute('href', "#portfolioModal1") //+i)
+            newa1.setAttribute('data-toggle', "modal")
+            newa1.setAttribute('data-target', "#myModal");
+            newa1.setAttribute('onclick', "desplegable(" + i + ");");
             // newa1.setAttribute('id', "iddeslplegable")
 
             newDiv1.appendChild(newa1); //añade texto al div creado.
