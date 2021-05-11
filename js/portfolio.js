@@ -175,7 +175,7 @@ function addElement(datos, id, filtrado) {
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
             newa1.setAttribute('data-target', "#myModal");
-            newa1.setAttribute('onclick', "desplegable(" + i + ");");
+            newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");");
             newDiv1.appendChild(newa1); 
 
             
