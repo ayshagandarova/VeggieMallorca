@@ -724,9 +724,10 @@ function afegirElemPortfoliInfo(datos, id) {
             
             
             if(datos[i].tipus == "curs" || datos[i].tipus == "info" ){
-                newimg.setAttribute('width', 348)
+                /*newimg.setAttribute('width', 348)
                 newimg.setAttribute('height', 350)
-                newimg.setAttribute('margin-righ', 30)
+                newimg.setAttribute('margin-righ', 30)*/
+                newimg.setAttribute('class', "img-fluid")
             }else {
                 /*newimg.setAttribute('width', 355)
                 newimg.setAttribute('height', 240)
@@ -734,7 +735,7 @@ function afegirElemPortfoliInfo(datos, id) {
                 newimg.setAttribute('class', "img-fluid")
                 
             }
-            newimg.setAttribute('src', datos[i].imatges[0])
+            newimg.setAttribute('src', datos[i].imatges[1])
             newimg.setAttribute('alt', "")
 
             newa1.appendChild(newimg);

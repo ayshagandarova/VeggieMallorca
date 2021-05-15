@@ -10261,32 +10261,48 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/inicioo.gif");
+
+  max-width: 40rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: auto;
+  /*background-image: url("../assets/img/inicioo.gif");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
-  background-size: cover;
+  background-size: cover;*/
 }
-header.informaciomes {
-  padding-top: 10.5rem;
-  padding-bottom: 6rem;
-  text-align: center;
-  color: #fff;
-  background-image: url("../assets/img/inicioo.gif");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
-  background-size: cover;
+#videoHeader{
+position:fixed;
+right : 0;
+bottom: 0;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+background-size: cover;
 }
+/*Ara afectarem a només l'etiqueta video
+header.masthead .header-video video{
+min-width: 100%;
+min-height: 100%;
+}*/
+
+
 header.masthead .masthead-subheading {
+  position: absolute; /* aixi feim que estigui per damunt del video*/
   font-size: 1.5rem;
   font-style: italic;
   line-height: 1.5rem;
   margin-bottom: 25px;
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  padding-bottom: 2rem;
 }
 header.masthead .masthead-heading {
   font-size: 3.25rem;
+  margin-bottom: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  position: absolute; /* aixi feim que estigui per damunt del video*/
   font-weight: 700;
   line-height: 3.25rem;
   margin-bottom: 2rem;
