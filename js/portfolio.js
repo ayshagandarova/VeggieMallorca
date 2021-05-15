@@ -318,12 +318,22 @@ function desplegable(i) {
 
             var newCarouselImg1 = document.createElement("img");    
             newCarouselImg1.setAttribute('class', "0-slide")
-            newCarouselImg1.setAttribute('src', datos[i].imatges[0])
+            if(datos[i].tipus == "curs" || datos[i].tipus == "info" ){
+                newCarouselImg1.setAttribute('src', datos[i].imatges[1])
+            }else {
+                newCarouselImg1.setAttribute('src', datos[i].imatges[0])
+            }
+            
             newCarouselImg1.setAttribute('alt', "0-slide")
             newCarouselImg1.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
-            newCarousel4.appendChild(newCarouselImg1);  
+            newCarousel4.appendChild(newCarouselImg1); 
 
-            for (var k = 1; k < datos[i].imatges.length; k++) {
+            if(datos[i].tipus == "curs" || datos[i].tipus == "info" ){
+                var k = 2
+            }else {
+                var k = 1
+            }
+            for (k; k < datos[i].imatges.length; k++) {
                 var newCarouselK = document.createElement("div");    
                 newCarouselK.setAttribute('class', "carousel-item")
                 newCarousel3.appendChild(newCarouselK);  
@@ -742,12 +752,13 @@ function afegirElemPortfoliInfo(datos, id) {
 
             var newDiv6 = document.createElement("div");   // crea un nuevo div
             newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-            if(datos[i].tipus == "Vegetariana"){
-            var newContent2 = document.createTextNode(datos[i].geoposicionament1.address); //geo Rest
+
+            if(datos[i].tipus == "curs" || datos[i].tipus == "info" ){
+                var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
             newDiv6.appendChild(newContent2)
-            }else if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
-            var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
-            newDiv6.appendChild(newContent2)
+            }else {
+                var newContent2 = document.createTextNode(datos[i].geoposicionament1.address); //geo Rest
+                newDiv6.appendChild(newContent2) 
             }
             newDiv4.appendChild(newDiv6);
 
