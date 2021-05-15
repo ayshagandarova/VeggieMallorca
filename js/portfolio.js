@@ -240,6 +240,7 @@ function eliminarDatosElemento() {
     $("#horariDv").html("")
     $("#horariDs").html("")
     $("#horariDg").html("")
+    $("#calendar").html("")
     $("#eventNum1").html("")
     $("#eventNum2").html("")
     $("#contactoElemento").html("");
@@ -387,6 +388,13 @@ function desplegable(i) {
 
             $("#carouselElement").append(newCarousel1);
 
+            /*
+                        if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
+            
+                        } else {
+            
+            */
+
             // Disponibilidad horaria:
             var date = new Date();
             var d = date.getDay();
@@ -394,12 +402,15 @@ function desplegable(i) {
             var m = date.getMinutes();
             var hora = h + ":" + m;
             var disponibilidad;
+
+
             // Comprueba si en este momento está abierto el local
             switch (d) {
                 case 1:
                     if (hora >= datos[i].horari.di[0].in && hora <= datos[i].horari.di[0].out) {
                         disponibilidad = document.createTextNode("Abierto");
                         $("#horario").css({ "background-color": "#B8CD65" });
+                    
                     } else {
                         disponibilidad = document.createTextNode("Cerrado");
                         $("#horario").css({ "background-color": "#E99565" });
@@ -461,7 +472,7 @@ function desplegable(i) {
                     }
                     break;
             }
-
+            $("#horario").append(disponibilidad);
             // Crea el horario desplegable:
             var pDi = document.createElement("p");
             var textDi = document.createTextNode("Dilluns: " + datos[i].horari.di[0].in + "-" + datos[i].horari.di[0].out + "  " + datos[i].horari.di[1].in + "-" + datos[i].horari.di[1].out);
@@ -499,12 +510,6 @@ function desplegable(i) {
             $("#horariDv").append(pDv);
             $("#horariDs").append(pDs);
             $("#horariDg").append(pDg);
-
-            if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
-                /* */
-            } else {
-                $("#horario").append(disponibilidad);
-            }
 
 
             var newDeteall = document.createElement("p");
@@ -902,9 +907,9 @@ function desplegableFires(i) {
 
             $("#carouselElement").append(newCarousel1);
 
-            disponibilidad = document.createTextNode("Mostra horari");
-            $("#horario").css({ "background-color": "#B8CD65" });
-            $("#horario").append(disponibilidad);
+            disponibilitat = document.createTextNode("Mostra horari");
+            $("#calendar").css({ "background-color": "#B8CD65" });
+            $("#calendar").append(disponibilitat);
 
             //for (var m = 0; i < 2; m++) {//datos[i].dadesPropies.events.length
 
@@ -914,7 +919,7 @@ function desplegableFires(i) {
             var textEvent1 = document.createTextNode(datos[i].dadesPropies.events[0].nom);
             event1.appendChild(textEvent1);
             $("#eventNum1").append(event1);
-            
+
 
             var event1_preu = document.createElement("p");
             var text2Event1 = document.createTextNode("Preu: " + datos[i].dadesPropies.events[0].preu);
@@ -936,7 +941,7 @@ function desplegableFires(i) {
             var textEvent2 = document.createTextNode(datos[i].dadesPropies.events[1].nom);
             event2.appendChild(textEvent2);
             $("#eventNum2").append(event2);
-            
+
             var event2_preu = document.createElement("p");
             var text2Event2 = document.createTextNode("Preu: " + datos[i].dadesPropies.events[1].preu);
             event2_preu.appendChild(text2Event2);
