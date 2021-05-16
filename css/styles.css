@@ -6261,6 +6261,10 @@ button.bg-danger:focus {
   background-color: #f8f9fa !important;
 }
 
+.bg-white {
+  background-color: #ffffff !important;
+}
+
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
 button.bg-light:focus {
@@ -10279,7 +10283,7 @@ bottom: 0;
 min-width: 100%;
 min-height: 100%;
 width: auto;
-height: auto;
+height: 20%;
 background-size: cover;
 }
 /*Ara afectarem a només l'etiqueta video
@@ -10290,7 +10294,8 @@ min-height: 100%;
 
 
 header.masthead .masthead-subheading {
-  position: absolute; /* aixi feim que estigui per damunt del video*/
+  text-align: center;
+  position: relative; /* aixi feim que estigui per damunt del video*/
   font-size: 1.5rem;
   font-style: italic;
   line-height: 1.5rem;
@@ -10299,10 +10304,11 @@ header.masthead .masthead-subheading {
   padding-bottom: 2rem;
 }
 header.masthead .masthead-heading {
+  text-align: center;
   font-size: 3.25rem;
   margin-bottom: 0;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  position: absolute; /* aixi feim que estigui per damunt del video*/
+  position: relative; /* aixi feim que estigui per damunt del video*/
   font-weight: 700;
   line-height: 3.25rem;
   margin-bottom: 2rem;
@@ -10725,6 +10731,9 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 /* MAPA */
 #mapid { height: 500px; }
+
+/* MAPA GRAN */
+#mapidGran { height: 700px; }
 
 .search-container {
   float: right;

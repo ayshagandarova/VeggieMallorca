@@ -9,7 +9,7 @@ var map = new mapboxgl.Map({
 map.on('idle', function () {
     map.resize()
 });
-
+map.scrollZoom.disable();
 map.addControl(new mapboxgl.NavigationControl());
 // Add geolocate control to the map.
 map.addControl(new mapboxgl.GeolocateControl({
