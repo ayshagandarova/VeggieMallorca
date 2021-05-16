@@ -10295,7 +10295,7 @@ min-height: 100%;
 
 header.masthead .masthead-subheading {
   text-align: center;
-  position: relative; /* aixi feim que estigui per damunt del video*/
+  position: relative; 
   font-size: 1.5rem;
   font-style: italic;
   line-height: 1.5rem;
@@ -10308,7 +10308,7 @@ header.masthead .masthead-heading {
   font-size: 3.25rem;
   margin-bottom: 0;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  position: relative; /* aixi feim que estigui per damunt del video*/
+  position: relative;
   font-weight: 700;
   line-height: 3.25rem;
   margin-bottom: 2rem;

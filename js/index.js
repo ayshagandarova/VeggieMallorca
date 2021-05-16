@@ -74,7 +74,6 @@ map.touchZoomRotate.enable();
 map.on('idle', function () {
     map.resize()
 });
-
 map.addControl(new mapboxgl.NavigationControl());
 // Add geolocate control to the map.
 map.addControl(new mapboxgl.GeolocateControl({
@@ -90,7 +89,6 @@ var marker;
 var xmlhttp = new XMLHttpRequest();
 var url = "dades.json"
  xmlhttp.onreadystatechange = function () {
-  console.log("holaa3");
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
     var datos = JSON.parse(xmlhttp.responseText);
     console.log(datos);
