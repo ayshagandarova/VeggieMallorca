@@ -84,7 +84,6 @@ map.addControl(new mapboxgl.GeolocateControl({
     trackUserLocation: true
 })
 );
-console.log("holaa");
 var marker;
 
 var xmlhttp = new XMLHttpRequest();

@@ -245,6 +245,7 @@ function eliminarDatosElemento() {
     $("#eventNum2").html("")
     $("#contactoElemento").html("");
     $("#datosElemento").html("");
+    $("#favorito").html("");
     if (marker != null) {
         marker.remove();
     }
@@ -530,6 +531,14 @@ function desplegable(i) {
             $("#InstaElem").attr('href', datos[i].contacte.xarxes.instagram)
             $("#TwitterElem").attr('href', datos[i].contacte.xarxes.tripadvisor)
 
+           // var newA1 = document.createElement("a");
+            var newI1 = document.createElement("i");
+            newI1.setAttribute('class', "fa fa-heart");
+            newI1.setAttribute('onclick', "guardarFav("+i+")");
+            newI1.setAttribute('id', "fav"+i);
+            $("#favorito").append(newI1);
+           // newA1.appendChild(newI1);
+           guardarFav(i);
         }
     };
     xmlhttp.open("GET", url, true);
@@ -557,8 +566,40 @@ window.onclick = function (event) {
         }
     }
 }
+//Función para guardar favoritos
+function guardarFav(i) {
 
-
+    console.log("favs");
+  
+    var datos = {
+      id: i
+    };
+  
+    // leemos los favoritos del localStorage
+    var favoritos = localStorage.getItem("favoritos") || "[]";
+    favoritos = JSON.parse(favoritos);
+  
+    // buscamos el producto en la lista de favoritos
+    var posLista = favoritos.findIndex(function(e) { return e.id == datos.id; });
+    if (posLista > -1) {
+      // si está, lo quitamos
+      favoritos.splice(posLista, 1);
+      //Cambiar Icono
+      console.log("Quitar");
+      var ic = document.getElementById("fav"+i);
+      ic.setAttribute('style',"color:black");
+    } else {
+      // si no está, lo añadimos
+      favoritos.push(datos);
+      //Cambiar ICono
+      console.log("Poner");
+      var ic = document.getElementById("fav"+i);
+      ic.setAttribute('style',"color:red");
+    }
+  
+    // guardamos la lista de favoritos 
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  }
 //+ INFORMACIO.HTML
 //Crear la timeline dinámicamente:
 function buscador() {
@@ -582,7 +623,7 @@ function buscador() {
                 $("#subHeadingInfo").append("No et perdis les darreres notícies.")
                 afegirElemPortfoliInfo(datos, id);
             } else if (id == "fira") {
-                $("#headingInfo").append("FIRES VEGETARIANES I VENAGES DE L'ILLA")
+                $("#headingInfo").append("FIRES VEGETARIANES I VEGANES DE L'ILLA")
                 $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
                 buscadorFires();
             }
@@ -1034,7 +1075,7 @@ function buscador() {
                 $("#subHeadingInfo").append("No et perdis les darreres notícies.")
                 afegirElemPortfoliInfo(datos, id);
             } else if (id == "fira") {
-                $("#headingInfo").append("FIRES VEGETARIANES I VENAGES DE L'ILLA")
+                $("#headingInfo").append("FIRES VEGETARIANES I VEGANES DE L'ILLA")
                 $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
                 buscadorFires();
             }
