@@ -286,7 +286,8 @@ function desplegable(i) {
                             datos[i].nom +
                             '</h4><p>' +
                             datos[i].geo1.address +
-                            '</p>'
+                            '</p>'+
+                            '<img src="' + datos[i].imatges[0]+ '" style="height: 150px;"/>'
                         )
                 )
                 .addTo(map);
