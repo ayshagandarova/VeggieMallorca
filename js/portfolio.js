@@ -536,9 +536,34 @@ function desplegable(i) {
             newI1.setAttribute('class', "fa fa-heart");
             newI1.setAttribute('onclick', "guardarFav("+i+")");
             newI1.setAttribute('id', "fav"+i);
+
+
+
+            var datos = {
+                id: datos[i].nom
+              };
+        
+              // leemos los favoritos del localStorage
+              var favoritos = localStorage.getItem("favoritos") || "[]";
+              favoritos = JSON.parse(favoritos);
+              console.log(favoritos)
+        
+              // buscamos el producto en la lista de favoritos
+              var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
+              if (posLista == -1) {
+                console.log("negro");
+                newI1.setAttribute('style', "color:black");
+              } else {
+                console.log("rojo");
+                newI1.setAttribute('style', "color:red");
+              }
+
+
             $("#favorito").append(newI1);
            // newA1.appendChild(newI1);
-           guardarFav(i);
+           
+
+
         }
     };
     xmlhttp.open("GET", url, true);
@@ -569,37 +594,49 @@ window.onclick = function (event) {
 //Función para guardar favoritos
 function guardarFav(i) {
 
-    console.log("favs");
+    var xmlhttp = new XMLHttpRequest();
+    var url = "dades.json";
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var datos = JSON.parse(xmlhttp.responseText);
   
-    var datos = {
-      id: i
+        var datos = {
+          id: datos[i].nom
+        };
+  
+        // leemos los favoritos del localStorage
+        var favoritos = localStorage.getItem("favoritos") || "[]";
+        favoritos = JSON.parse(favoritos);
+  
+        // buscamos el producto en la lista de favoritos
+        var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
+        if (posLista > -1) {
+          // si está, lo quitamos
+          favoritos.splice(posLista, 1);
+          //Cambiar Icono
+          console.log("Quitar");
+          var ic = document.getElementById("fav" + i);
+          ic.setAttribute('style', "color:black");
+        } else {
+          // si no está, lo añadimos
+          favoritos.push(datos);
+          //Cambiar ICono
+          console.log("Poner");
+          var ic = document.getElementById("fav" + i);
+          ic.setAttribute('style', "color:red");
+        }
+  
+        // guardamos la lista de favoritos 
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  
+      }
     };
-  
-    // leemos los favoritos del localStorage
-    var favoritos = localStorage.getItem("favoritos") || "[]";
-    favoritos = JSON.parse(favoritos);
-  
-    // buscamos el producto en la lista de favoritos
-    var posLista = favoritos.findIndex(function(e) { return e.id == datos.id; });
-    if (posLista > -1) {
-      // si está, lo quitamos
-      favoritos.splice(posLista, 1);
-      //Cambiar Icono
-      console.log("Quitar");
-      var ic = document.getElementById("fav"+i);
-      ic.setAttribute('style',"color:black");
-    } else {
-      // si no está, lo añadimos
-      favoritos.push(datos);
-      //Cambiar ICono
-      console.log("Poner");
-      var ic = document.getElementById("fav"+i);
-      ic.setAttribute('style',"color:red");
-    }
-  
-    // guardamos la lista de favoritos 
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    console.log("favs");
   }
+
+
 //+ INFORMACIO.HTML
 //Crear la timeline dinámicamente:
 function buscador() {
