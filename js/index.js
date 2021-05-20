@@ -100,9 +100,7 @@ var url = "dades.json"
         .setPopup(
             new mapboxgl.Popup({ offset: 25 })
                 .setHTML(
-                    '<h4>' +
-                    datos[i].tipus +
-                  '</h4><h4>'  +
+                    '<h4>'  +
                     datos[i].nom +
                     '</h4><p>' +
                     datos[i].geo1.address +
