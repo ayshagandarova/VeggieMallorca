@@ -247,6 +247,7 @@ function eliminarDatosElemento() {
     $("#contactoElemento").html("");
     $("#datosElemento").html("");
     $("#favorito").html("");
+    $("#puntuacio").html("");
     if (marker != null) {
         marker.remove();
     }
@@ -544,7 +545,7 @@ function desplegable(i) {
             newI1.setAttribute('onclick', "guardarFav(" + i + ")");
             newI1.setAttribute('id', "fav" + i);
 
-            var datos = {
+            var dades = {
                 id: datos[i].nom
             };
 
@@ -557,10 +558,10 @@ function desplegable(i) {
             var newComentFav = document.createElement("p")
             var activo = document.createTextNode("Afegeix a favorits: ");
             var inactivo = document.createTextNode("Elimina de favorits: ")
-            favo.innerHTML=""; // Limpia el contenido.
+            favo.innerHTML = ""; // Limpia el contenido.
 
             // buscamos el producto en la lista de favoritos
-            var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
+            var posLista = favoritos.findIndex(function (e) { return e.id == dades.id; });
             if (posLista == -1) {
                 newI1.setAttribute('style', "color:black");
                 //Text inicial
@@ -573,6 +574,27 @@ function desplegable(i) {
                 newComentFav.appendChild(inactivo);
             }
             $("#favorito").append(newI1);
+            
+            //Poner estrellas hasta que queden 0,5 o ninguna estrella por poner
+            //json totes les puntuacions han de ser .5 o senceres
+            var estrellas = datos[i].puntuacio
+            console.log(datos[i].puntuacio)
+            
+           
+            for (var x = 0.5; x < estrellas; estrellas--) {
+                var newI1 = document.createElement("i");
+                newI1.setAttribute('style', "color:#f8d160");
+                newI1.setAttribute('class', "fa fa-star");
+                $("#puntuacio").append(newI1);
+            }
+ 
+            //Comrpobar si falta la media estrella
+            if (estrellas == 0.5) {
+                var newI1 = document.createElement("i");
+                newI1.setAttribute('style', "color:#f8d160");
+                newI1.setAttribute('class', "fas fa-star-half-alt");
+                $("#puntuacio").append(newI1);
+            }
 
         }
     };
@@ -620,9 +642,9 @@ function guardarFav(i) {
             //Aquest és el texte que es va canviant depenent de l'estat del coret.
             var favo = document.getElementById("Textfavorito");
             var newComentFav = document.createElement("p")
-            var activo = document.createTextNode("Afegeix a favorits: ");
-            var inactivo = document.createTextNode("Elimina de favorits: ")
-            favo.innerHTML=""; // Limpia el contenido.
+            var activo = document.createTextNode("Afegeix a favorits ");
+            var inactivo = document.createTextNode("Elimina de favorits ")
+            favo.innerHTML = ""; // Limpia el contenido.
 
             // buscamos el producto en la lista de favoritos
             var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
