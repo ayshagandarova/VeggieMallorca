@@ -216,7 +216,7 @@ function addElement(datos, id, filtrado) {
 
             var newDiv6 = document.createElement("div");
             newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-            var newContent2 = document.createTextNode(datos[datosFiltrados[i]].geo1.address);
+            var newContent2 = document.createTextNode(datos[datosFiltrados[i]].geo1.city);
             newDiv6.appendChild(newContent2)
             newDiv4.appendChild(newDiv6);
 

@@ -1073,7 +1073,7 @@
             " "
         ],
         "imatges": [ 
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/GrillLeSazon/restaurant.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/GrillLeSazon/restaurante.png",
             "https://veggiemallorca.netlify.app/assets/img/Restaurants/GrillLeSazon/plato1.png"
         ],
         "videos": [
@@ -1143,8 +1143,8 @@
     },
     {
         "nom":"Donna Vegana",
-        "descripcio": "Aquest restaurant no te opciones veganer pero si vegetarianes.",
-        "detall": "Fan menú del dia complet per 15€.",
+        "descripcio": "IN 2019 DONNA VEGANA WAS FOUNDED WITH THE IDEA TO CREATE A FUN AND TASTY MENU WHICH ALLOWS US TO MAKE CHOICES THAT ARE HEALTHY FOR OURSELF AND FOR THE PLANET. WE BELIEVE THAT LIFE IT’S ABOUT BALANCE, OUR BODY IS OUR TEMPLE AND WE DISCOVER THAT HEALTH AND FUN CAN BE VERY GOOD TOGHETER.",
+        "detall": " OUR MENU IS 100% VEGAN, ORGANIC AND GLUTEN FREE, MOSTLY LOCAL PRODUCED.",
         "tipus": "restaurant",
         "identificador":"3",
         "comentari": "",
@@ -1173,7 +1173,7 @@
         ],
         "imatges": [ 
             "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante2.png",
             "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato1.png",
             "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato2.png",
             "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato3.jpg"
@@ -1188,9 +1188,9 @@
         ],
         "geo1":{
             "address": "Carrer de Chopin, 5",
-            "lat": 39.63413304105074,  
-            "long":2.6454920686025405,
-            "city":"Santa Ponsa",
+            "lat": 39.496643389203626,  
+            "long": 2.4752153262686827,
+            "city":"Santa Ponça",
             "Country":"Espanya",
             "zip": "07180"
         },
@@ -1258,11 +1258,11 @@
             "telf": "871 17 70 65", 
             "email": "",
             "xarxes":  {  
-                "web": "https://donnavegana.com/restaurant-menu/",   
-                "facebook": "https://www.facebook.com/DonnaVeganaMallorca",
+                "web": "http://naturalcafeportandratx.com/CARTA/",   
+                "facebook": "https://www.facebook.com/naturalcafepuertodeandratx/",
                 "twitter": "",
-                "instagram": "https://www.instagram.com/donnaveganacafe/",
-                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g562815-d17623933-Reviews-Donna_Vegana-Santa_Ponsa_Calvia_Majorca_Balearic_Islands.html"
+                "instagram": "",
+                "tripadvisor": ""
             }
         },
         "puntuacio":4.9,
@@ -1274,11 +1274,11 @@
             " "
         ],
         "imatges": [ 
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato1.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato2.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato3.jpg"
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/NaturalCafeVegetarian&Vegan/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/NaturalCafeVegetarian&Vegan/plato1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/NaturalCafeVegetarian&Vegan/plato2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/NaturalCafeVegetarian&Vegan/plato3.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/NaturalCafeVegetarian&Vegan/plato4.png"
         ],
         "videos": [
             {"tipus": "youtube"},
@@ -1290,11 +1290,11 @@
         ],
         "geo1":{
             "address": "Pl. dels Patrons Cristino, 5",
-            "lat": 39.63413304105074,  
-            "long":2.6454920686025405,
+            "lat": 39.54444389281312,  
+            "long":2.388986168599924,
             "city":"Port d'Andratx",
             "Country":"Espanya",
-            "zip": "07180"
+            "zip": "07157"
         },
         "geo2":{
             "address": "",
@@ -1306,31 +1306,132 @@
         },
         "horari":{
                 "di": [
-                    {"in": "9:00","out": "17:00"},
+                    {"in": "9:00","out": "21:00"},
                     {"in": "","out": ""}
                 ],
                 "dm": [
-                    {"in": "9:00","out": "17:00"},
+                    {"in": "9:00","out": "21:00"},
                     {"in": "","out": ""}
                 ],
                 "dx": [
-                    {"in": "9:00","out": "17:00"},
+                    {"in": "9:00","out": "21:00"},
                     {"in": "","out": ""}
                 ],
                 "dj": [
-                    {"in": "9:00","out": "17:00"},
+                    {"in": "9:00","out": "21:00"},
                     {"in": "","out": ""}
                 ],
                 "dv": [
-                    {"in": "","out": ""},
+                    {"in": "9:00","out": "21:00"},
                     {"in": "","out": ""}
                 ],
                 "ds": [
-                    {"in": "9:00","out": "17:00"},
+                    {"in": "9:00","out": "21:00"},
                     {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "9:00","out": "17:00"},
+                    {"in": "9:00","out": "16:00"},
+                    {"in": "","out": ""}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+    },
+    {
+        "nom":"Es Ginebró",
+        "descripcio": "Aquest restaurant no te opciones veganer pero si vegetarianes.",
+        "detall": "Fan menú del dia complet per 15€.",
+        "tipus": "restaurant",
+        "identificador":"3",
+        "comentari": "",
+        "preu":{
+            "import":"15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 50 02 09", 
+            "email": "",
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://www.facebook.com/retaurantesginebro.coll",
+                "twitter": "",
+                "instagram": "",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g1064376-d3679887-Reviews-Es_Ginebro-Inca_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":4.5,
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EsGinebro/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EsGinebro/plato1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EsGinebro/plato2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EsGinebro/plato3.png"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Avenida del, Carrer del Bisbe Llompart, 124",
+            "lat": 39.71891388570578,  
+            "long":2.906833166965568,
+            "city":"Inca",
+            "Country":"Espanya",
+            "zip": "07300"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
+                ],
+                "dm": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "","out": ""}
+                ],
+                "dx": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "","out": ""}
+                ],
+                "dj": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "20:00","out": "23:00"}
+                ],
+                "dv": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "20:00","out": "23:00"}
+                ],
+                "ds": [
+                    {"in": "13:00","out": "16:00"},
+                    {"in": "20:00","out": "23:00"}
+                ],
+                "dg": [
+                    {"in": "13:00","out": "16:00"},
                     {"in": "","out": ""}
                 ]
         },
