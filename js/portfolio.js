@@ -520,12 +520,18 @@ function desplegable(i) {
             var textoDetall = document.createTextNode(datos[i].detall);
             newDeteall.appendChild(textoDetall)
 
+            var newGeo = document.createElement("p");
+            newGeo.setAttribute('class', "item-intro text-mutedg")
+            var textoGeo = document.createTextNode(datos[i].geo1.address);
+            newGeo.appendChild(textoGeo)
+
             var newTelefon = document.createElement("p");
             newTelefon.setAttribute('class', "item-intro text-mutedg")
             var textoTelef = document.createTextNode("Telèfon: " + datos[i].contacte.telf);
             newTelefon.appendChild(textoTelef)
 
             $("#datosElemento").append(newDeteall);
+            $("#datosElemento").append(newGeo);
             $("#datosElemento").append(newTelefon);
 
             $("#facebookElem").attr('href', datos[i].contacte.xarxes.facebook)
