@@ -287,8 +287,8 @@ function desplegable(i) {
                             datos[i].nom +
                             '</h4><p>' +
                             datos[i].geo1.address +
-                            '</p>'+
-                            '<img src="' + datos[i].imatges[0]+ '" style="height: 150px;"/>'
+                            '</p>' +
+                            '<img src="' + datos[i].imatges[0] + '" style="height: 150px;"/>'
                         )
                 )
                 .addTo(map);
@@ -412,7 +412,7 @@ function desplegable(i) {
                     if (hora >= datos[i].horari.di[0].in && hora <= datos[i].horari.di[0].out) {
                         disponibilidad = document.createTextNode("Abierto");
                         $("#horario").css({ "background-color": "#B8CD65" });
-                    
+
                     } else {
                         disponibilidad = document.createTextNode("Cerrado");
                         $("#horario").css({ "background-color": "#E99565" });
@@ -531,38 +531,41 @@ function desplegable(i) {
             $("#InstaElem").attr('href', datos[i].contacte.xarxes.instagram)
             $("#TwitterElem").attr('href', datos[i].contacte.xarxes.tripadvisor)
 
-           // var newA1 = document.createElement("a");
+            // var newA1 = document.createElement("a");
             var newI1 = document.createElement("i");
             newI1.setAttribute('class', "fa fa-heart");
-            newI1.setAttribute('onclick', "guardarFav("+i+")");
-            newI1.setAttribute('id', "fav"+i);
-
-
+            newI1.setAttribute('onclick', "guardarFav(" + i + ")");
+            newI1.setAttribute('id', "fav" + i);
 
             var datos = {
                 id: datos[i].nom
-              };
-        
-              // leemos los favoritos del localStorage
-              var favoritos = localStorage.getItem("favoritos") || "[]";
-              favoritos = JSON.parse(favoritos);
-              console.log(favoritos)
-        
-              // buscamos el producto en la lista de favoritos
-              var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
-              if (posLista == -1) {
-                console.log("negro");
+            };
+
+            // leemos los favoritos del localStorage
+            var favoritos = localStorage.getItem("favoritos") || "[]";
+            favoritos = JSON.parse(favoritos);
+
+            //Aquest és el text que surt inicialment:
+            var favo = document.getElementById("Textfavorito");
+            var newComentFav = document.createElement("p")
+            var activo = document.createTextNode("Afegeix a favorits: ");
+            var inactivo = document.createTextNode("Elimina de favorits: ")
+            favo.innerHTML=""; // Limpia el contenido.
+
+            // buscamos el producto en la lista de favoritos
+            var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
+            if (posLista == -1) {
                 newI1.setAttribute('style', "color:black");
-              } else {
-                console.log("rojo");
+                //Text inicial
+                favo.appendChild(newComentFav);
+                newComentFav.appendChild(activo);
+            } else {
                 newI1.setAttribute('style', "color:red");
-              }
-
-
+                //Text inicial
+                favo.appendChild(newComentFav);
+                newComentFav.appendChild(inactivo);
+            }
             $("#favorito").append(newI1);
-           // newA1.appendChild(newI1);
-           
-
 
         }
     };
@@ -597,44 +600,54 @@ function guardarFav(i) {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        var datos = JSON.parse(xmlhttp.responseText);
-  
-        var datos = {
-          id: datos[i].nom
-        };
-  
-        // leemos los favoritos del localStorage
-        var favoritos = localStorage.getItem("favoritos") || "[]";
-        favoritos = JSON.parse(favoritos);
-  
-        // buscamos el producto en la lista de favoritos
-        var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
-        if (posLista > -1) {
-          // si está, lo quitamos
-          favoritos.splice(posLista, 1);
-          //Cambiar Icono
-          console.log("Quitar");
-          var ic = document.getElementById("fav" + i);
-          ic.setAttribute('style', "color:black");
-        } else {
-          // si no está, lo añadimos
-          favoritos.push(datos);
-          //Cambiar ICono
-          console.log("Poner");
-          var ic = document.getElementById("fav" + i);
-          ic.setAttribute('style', "color:red");
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var datos = JSON.parse(xmlhttp.responseText);
+
+            var datos = {
+                id: datos[i].nom
+            };
+
+            // leemos los favoritos del localStorage
+            var favoritos = localStorage.getItem("favoritos") || "[]";
+            favoritos = JSON.parse(favoritos);
+            //Aquest és el texte que es va canviant depenent de l'estat del coret.
+            var favo = document.getElementById("Textfavorito");
+            var newComentFav = document.createElement("p")
+            var activo = document.createTextNode("Afegeix a favorits: ");
+            var inactivo = document.createTextNode("Elimina de favorits: ")
+            favo.innerHTML=""; // Limpia el contenido.
+
+            // buscamos el producto en la lista de favoritos
+            var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
+            if (posLista > -1) {
+                // si está, lo quitamos
+                favoritos.splice(posLista, 1);
+                //Cambiar Icono
+                var ic = document.getElementById("fav" + i);
+                ic.setAttribute('style', "color:black");
+
+                favo.appendChild(newComentFav);
+                newComentFav.appendChild(activo);
+            } else {
+                // si no está, lo añadimos
+                favoritos.push(datos);
+                //Cambiar ICono
+                var ic = document.getElementById("fav" + i);
+                ic.setAttribute('style', "color:red");
+
+                favo.appendChild(newComentFav);
+                newComentFav.appendChild(inactivo);
+            }
+
+            // guardamos la lista de favoritos 
+            localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
         }
-  
-        // guardamos la lista de favoritos 
-        localStorage.setItem("favoritos", JSON.stringify(favoritos));
-  
-      }
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
     console.log("favs");
-  }
+}
 
 
 //+ INFORMACIO.HTML
