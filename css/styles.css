@@ -2566,6 +2566,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #545b62;
   border-color: #4e555b;
+  
 }
 .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus, .show > .btn-secondary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
@@ -10676,6 +10677,10 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.text-footer {
+  color: white;
+}
+
 .marker {
   background-image: url('../assets/img/punteroMapa.png');
   background-size: cover;
@@ -10757,6 +10762,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  position: absolute;
 }
 
 .select-style {

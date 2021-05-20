@@ -227,7 +227,8 @@ function addElement(datos, id, filtrado) {
 }
 /* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
 function eliminarDatosElemento() {
-    $("#nombreDescripcioElement").html(""); //limpiar la seccion
+    $("#nombreElement").html(""); //limpiar la seccion
+    $("#descripcioElement").html("");
     $("#carouselElement").html("");
     $("#horariElement").html("");
     $("#tiempoElemento").html("");
@@ -253,7 +254,7 @@ function eliminarDatosElemento() {
 
 /* Función que rellena los datos de los desplegables */
 function desplegable(i) {
-    if ($("#nombreDescripcioElement").html() !== null) {
+    if ($("#nombreElement").html() !== null) {
         eliminarDatosElemento();
     }
     var xmlhttp = new XMLHttpRequest();
@@ -268,14 +269,14 @@ function desplegable(i) {
             var texto1 = document.createTextNode(datos[i].nom);
             newTitulo.appendChild(texto1)
 
-            $("#nombreDescripcioElement").append(newTitulo);
+            $("#nombreElement").append(newTitulo);
 
             var newDescripcio = document.createElement("p");   // Añade la descripción a la ventana emergente
             newDescripcio.setAttribute('class', "item-intro text-mutedg")
             var text2 = document.createTextNode(datos[i].descripcio);
             newDescripcio.appendChild(text2)
 
-            $("#nombreDescripcioElement").append(newDescripcio);
+            $("#descripcioElement").append(newDescripcio);
 
             // Puntero:
             marker = new mapboxgl.Marker()

@@ -169,31 +169,31 @@
         "horari":{
                 "di": [
                     {"in": "09:00","out": "20:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dm": [
                     {"in": "09:00","out": "20:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dx": [
                     {"in": "09:00","out": "20:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dj": [
                     {"in": "09:00","out": "20:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dv": [
                     {"in": "09:00","out": "20:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "ds": [
                     {"in": "09:00","out": "20:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ]
         },
         "calendari" :{
@@ -271,31 +271,31 @@
         "horari":{
                 "di": [
                     {"in": "09:15","out": "21:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dm": [
                     {"in": "09:15","out": "21:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dx": [
                     {"in": "09:15","out": "21:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dj": [
                     {"in": "09:15","out": "21:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dv": [
                     {"in": "09:15","out": "21:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "ds": [
                     {"in": "09:15","out": "21:15"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ]
         },
         "calendari" :{
@@ -482,15 +482,15 @@
         "horari":{
                 "di": [
                     {"in": "13:00","out": "15:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dm": [
                     {"in": "13:00","out": "15:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dx": [
                     {"in": "13:00","out": "15:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dj": [
                     {"in": "13:00","out": "15:30"},
@@ -501,12 +501,12 @@
                     {"in": "20:00","out": "22:15"}
                 ],
                 "ds": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ]
         },
         "calendari" :{
@@ -586,31 +586,31 @@
         "horari":{
                 "di": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dm": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dx": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dj": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dv": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "ds": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ]
         },
         "calendari" :{
@@ -690,31 +690,31 @@
         "horari":{
                 "di": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dm": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dx": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dj": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dv": [
                     {"in": "13:00","out": "16:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "ds": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ]
         },
         "calendari" :{
@@ -795,32 +795,32 @@
         },
         "horari":{
                 "di": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dm": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dx": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dj": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dv": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "ds": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ]
         },
         "calendari" :{
@@ -900,31 +900,31 @@
         "horari":{
                 "di": [
                     {"in": "18:00","out": "21:00"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dm": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dx": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dj": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dv": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "ds": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ]
         },
         "calendari" :{
@@ -1004,31 +1004,31 @@
         "horari":{
                 "di": [
                     {"in": "09:00","out": "21:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dm": [
                     {"in": "09:00","out": "21:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dx": [
                     {"in": "09:00","out": "21:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dj": [
                     {"in": "09:00","out": "21:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dv": [
                     {"in": "09:00","out": "21:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "ds": [
                     {"in": "09:00","out": "21:30"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "-","out": "-"},
-                    {"in": "-","out": "-"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ]
         },
         "calendari" :{
@@ -1042,5 +1042,307 @@
             "pedido": ""
         }
         
+    },{
+        "nom":"Grill LeSazon",
+        "descripcio": "Aquest restaurant no te opciones veganer pero si vegetarianes.",
+        "detall": "Fan menú del dia complet per 15€.",
+        "tipus": "restaurant",
+        "identificador":"3",
+        "comentari": "",
+        "preu":{
+            "import":"15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "603 81 00 02", 
+            "email": "",
+            "xarxes":  {  
+                "web": "",   
+                "facebook": "https://www.facebook.com/manolos.grill.restaurante",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/plaernatural/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g562815-d6208935-Reviews-Restaurante_Grill_Manolo_s-Santa_Ponsa_Calvia_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":4.8,
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/GrillLeSazon/restaurant.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/GrillLeSazon/plato1.png"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Camí de l’Ullastre",
+            "lat": 39.63413304105074,  
+            "long":2.6454920686025405,
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip": "07120"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
+                ],
+                "dm": [
+                    {"in": "11:00","out": "18:30"},
+                    {"in": "","out": ""}
+                ],
+                "dx": [
+                    {"in": "11:00","out": "18:30"},
+                    {"in": "","out": ""}
+                ],
+                "dj": [
+                    {"in": "11:00","out": "18:30"},
+                    {"in": "","out": ""}
+                ],
+                "dv": [
+                    {"in": "11:00","out": "18:30"},
+                    {"in": "","out": ""}
+                ],
+                "ds": [
+                    {"in": "10:00","out": "18:00"},
+                    {"in": "","out": ""}
+                ],
+                "dg": [
+                    {"in": "11:00","out": "18:00"},
+                    {"in": "","out": ""}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+    },
+    {
+        "nom":"Donna Vegana",
+        "descripcio": "Aquest restaurant no te opciones veganer pero si vegetarianes.",
+        "detall": "Fan menú del dia complet per 15€.",
+        "tipus": "restaurant",
+        "identificador":"3",
+        "comentari": "",
+        "preu":{
+            "import":"15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "871 17 70 65", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://donnavegana.com/restaurant-menu/",   
+                "facebook": "https://www.facebook.com/DonnaVeganaMallorca",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/donnaveganacafe/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g562815-d17623933-Reviews-Donna_Vegana-Santa_Ponsa_Calvia_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":4.8,
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato3.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de Chopin, 5",
+            "lat": 39.63413304105074,  
+            "long":2.6454920686025405,
+            "city":"Santa Ponsa",
+            "Country":"Espanya",
+            "zip": "07180"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dm": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dx": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dj": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dv": [
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
+                ],
+                "ds": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dg": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+    },
+    {
+        "nom":"Natural Café Vegetarian & Vegan",
+        "descripcio": "Aquest restaurant no te opciones veganer pero si vegetarianes.",
+        "detall": "Fan menú del dia complet per 15€.",
+        "tipus": "restaurant",
+        "identificador":"3",
+        "comentari": "",
+        "preu":{
+            "import":"15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "871 17 70 65", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://donnavegana.com/restaurant-menu/",   
+                "facebook": "https://www.facebook.com/DonnaVeganaMallorca",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/donnaveganacafe/",
+                "tripadvisor": "https://www.tripadvisor.es/Restaurant_Review-g562815-d17623933-Reviews-Donna_Vegana-Santa_Ponsa_Calvia_Majorca_Balearic_Islands.html"
+            }
+        },
+        "puntuacio":4.9,
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/restaurante.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/DonnaVegana/plato3.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Pl. dels Patrons Cristino, 5",
+            "lat": 39.63413304105074,  
+            "long":2.6454920686025405,
+            "city":"Port d'Andratx",
+            "Country":"Espanya",
+            "zip": "07180"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dm": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dx": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dj": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dv": [
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
+                ],
+                "ds": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ],
+                "dg": [
+                    {"in": "9:00","out": "17:00"},
+                    {"in": "","out": ""}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
     }
 ]

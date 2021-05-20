@@ -110,10 +110,12 @@
                 </div>
                 <div class="row justify-content-center">
                     <!-- Nombre y descripción del elemento -->
-                    <div class="modal-body" id="nombreDescripcioElement"></div>
+                    <div class="modal-body" id="nombreElement"></div>
                 </div>
                 <div class="container" id="carouselElement"></div> <!-- Carousel del elemento -->
-                <div class="container">
+                <div class="modal-body" id="descripcioElement"></div>
+                    
+                    <div class="container">
                     <div class="row justify-content-left" style="margin-bottom: 15px; margin-top: 15px;">
                         <div class="col-lg-6 ">
                             <div class="dropdown">
@@ -138,16 +140,16 @@
                             <a class="btn btn-primary btn-social mx-2" target="_blank" id="TwitterElem"><i
                                     class="fab fa-tripadvisor"></i></i></a>
                                     
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6" id="Textfavorito">
-                                </div>
-                                <div class="col-md-2 col-sm-6" id="favorito">
-                                </div>
-                            </div>
+                            
                         </div>
-                        <div class="col-lg-6 texto-centrado">
+                        <div class="col-lg-6">
+                            <!-- Favoritos -->
+                            <div class="row justify-content-center">
+                                <div class="col-md-6" id="Textfavorito"> </div>
+                                <div class="col-md-2" id="favorito"></div>
+                            </div>
                             <!-- Widget tiempo -->
-                            <a class="weatherwidget-io" href="https://forecast7.com/es/39d572d65/palma/"
+                            <a class="weatherwidget-io  texto-centrado" href="https://forecast7.com/es/39d572d65/palma/"
                                 data-label_1="PALMA" data-label_2="WEATHER" data-icons="Climacons Animated"
                                 data-mode="Forecast" data-theme="pure">PALMA</a>
                         </div>
