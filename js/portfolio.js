@@ -182,8 +182,6 @@ function addElement(datos, id, filtrado) {
             newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");");
             newDiv1.appendChild(newa1);
 
-
-
             var newDiv2 = document.createElement("div");
             newDiv2.setAttribute('class', "portfolio-hover")
 
@@ -230,7 +228,6 @@ function addElement(datos, id, filtrado) {
     }
 
     //Para luego en la página de favoritos podrías hacer un listado simple:
-
     // leemos los favoritos del localStorage
     var favoritos = localStorage.getItem("favoritos") || "[]";
     favoritos = JSON.parse(favoritos);
@@ -238,9 +235,10 @@ function addElement(datos, id, filtrado) {
         for (var j = 0; j < datos.length; j++) {
             for (var x = 0; x < favoritos.length; x++) {
                 if ((favoritos[x].id == datos[j].nom) & (id == "favorits"))   {
+
                     var newDiv = document.createElement("div");   // crea un nuevo div
                     newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
-                    newDiv.setAttribute('id', "elemento-" + j)
+                    //newDiv.setAttribute('id', "elemento-" + j)
 
                     var newDiv1 = document.createElement("div");
                     newDiv1.setAttribute('class', "portfolio-item")
@@ -250,7 +248,8 @@ function addElement(datos, id, filtrado) {
                     newa1.setAttribute('class', "portfolio-link");
                     newa1.setAttribute('data-toggle', "modal");
                     newa1.setAttribute('data-target', "#myModal");
-                    newa1.setAttribute('onclick', "desplegable(" + j + ");"); //datosFiltrados[i]
+                    newa1.setAttribute('onclick', "desplegable(" + j + ");");
+                    newa1.setAttribute('id', "iddeslplegable")
                     newDiv1.appendChild(newa1);
 
                     var newDiv2 = document.createElement("div");
@@ -270,11 +269,12 @@ function addElement(datos, id, filtrado) {
 
                     var newimg = document.createElement("img");
                     newimg.setAttribute('class', "img-fluid")
+                    //newimg.setAttribute('class', "ml-1")
                     newimg.setAttribute('src', datos[j].imatges[0])
                     newimg.setAttribute('alt', "")
 
                     newa1.appendChild(newimg);
-
+        
                     var newDiv4 = document.createElement("div");
                     newDiv4.setAttribute('class', "portfolio-caption")
 
@@ -682,11 +682,6 @@ function desplegable(i) {
                 $("#enlaces").append(newEmaila);
             }
 
-
-
-
-
-
             // var newA1 = document.createElement("a");
             var newI1 = document.createElement("i");
             newI1.setAttribute('class', "fa fa-heart");
@@ -726,7 +721,6 @@ function desplegable(i) {
             //Poner estrellas hasta que queden 0,5 o ninguna estrella por poner
             //json totes les puntuacions han de ser .5 o senceres
             var estrellas = datos[i].puntuacio
-            console.log(datos[i].puntuacio)
 
 
             for (var x = 0.5; x < estrellas; estrellas--) {
@@ -964,8 +958,6 @@ function addElemTimeLine(datos) {
 function afegirElemPortfoliInfo(datos, id) {
     for (var i = 0; i < datos.length; i++) {
         if (datos[i].tipus == id) {
-
-            console.log(id)
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4")
 
@@ -974,22 +966,16 @@ function afegirElemPortfoliInfo(datos, id) {
             newDiv.appendChild(newDiv1); //añade texto al div creado.
 
             var newa1 = document.createElement("a");
-            //newa1.setAttribute('onclick', "desplegable("+i+")");
             //newa1.setAttribute('onclick', "test()");
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal")
             newa1.setAttribute('data-target', "#myModal");
             if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
-                console.log("Desplefable")
                 newa1.setAttribute('onclick', "desplegable(" + i + ");")
             } else {
-                console.log("firesDesplefable")
                 newa1.setAttribute('onclick', "desplegableFires(" + i + ");");
 
             }
-
-            //newa1.setAttribute('onclick', "desplegable(" + i + ");");
-            // newa1.setAttribute('id', "iddeslplegable")
 
             newDiv1.appendChild(newa1); //añade texto al div creado.
 
