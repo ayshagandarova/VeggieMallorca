@@ -84,46 +84,51 @@ map.addControl(new mapboxgl.GeolocateControl({
     trackUserLocation: true
 })
 );
-var marker;
-
-var xmlhttp = new XMLHttpRequest();
-var url = "dades.json"
- xmlhttp.onreadystatechange = function () {
-  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    var datos = JSON.parse(xmlhttp.responseText);
-
-    datos.forEach(function (marker){
-       // add markers to map
-
-          // create a HTML element for each feature
-          console.log(marker.tipus  )
-          var el = document.createElement('div');
-          el.className = 'marker-' + marker.tipus ;
-
-          // make a marker for each feature and add to the map
-          new mapboxgl.Marker(el)
-            .setLngLat([marker.geo1.long, marker.geo1.lat])
-            .setPopup(
-              new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(
-                    '<h4>'  +
-                    marker.nom +
-                    '</h4><p>' +
-                    marker.geo1.address +
-                    '</p>'+
-                    '<img src="' + marker.imatges[0]+ '" style="height: 150px;"/>'  
-                )
-              )
-            .addTo(map);
-
-          });
 
 
+function punteros(){
+  var xmlhttp = new XMLHttpRequest();
+  var url = "dades.json"
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      console.log("holaaaa");
+      var datos = JSON.parse(xmlhttp.responseText);
+      
+      datos.forEach(function (marker){ // marker = datos[i]
+        // add markers to map
 
-       
+        // create a HTML element for each feature
         
+        var el = document.createElement('div');
+        el.className = 'marker-' + marker.tipus ;
 
-   /*     marker = new mapboxgl.Marker()
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el)
+          .setLngLat([marker.geo1.long, marker.geo1.lat])
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                  '<h4>'  +
+                  marker.nom +
+                  '</h4><p>' +
+                  marker.geo1.address +
+                  '</p>'+
+                  '<img src="' + marker.imatges[0]+ '" style="height: 150px;"/>'  
+              )
+            )
+          .addTo(map);
+        });
+    }
+  };
+
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+}
+
+punteros();
+
+
+       /*     marker = new mapboxgl.Marker()
         .setLngLat([datos[i].geo1.long, datos[i].geo1.lat])
         .setPopup(
             new mapboxgl.Popup({ offset: 25 })
@@ -138,37 +143,40 @@ var url = "dades.json"
                 )
         )
         .addTo(map);*/
-      }
-    }
-xmlhttp.open("GET", url, true);
-    xmlhttp.send();
 
-var numSuper=0,numRest=0, numCursos=0,numInfo=0;
-xmlhttp.onreadystatechange = function () {
-  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      var datos = JSON.parse(xmlhttp.responseText);
-      var numSuper=0, numRest=0, numCursos=0, numInfo=0;
-      for(var i=0; i< datos.length; i++){
-        switch(datos[i].tipus){
-          case 'supermercat':
-            console.log("supermercaaat");
-            numSuper++;
-            break;
-          case 'restaurant':
-            numRest++;
-            break;
-          case 'curs':
-            numCursos++;
-            break;
-          case 'info':
-            numInfo++;
-            break;
+
+function contador(){
+  var xmlhttp = new XMLHttpRequest();
+  var url = "dades.json"
+  var numSuper=0,numRest=0, numCursos=0,numInfo=0;
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var datos = JSON.parse(xmlhttp.responseText);
+        var numSuper=0, numRest=0, numCursos=0, numInfo=0;
+        for(var i=0; i< datos.length; i++){
+          switch(datos[i].tipus){
+            case 'supermercat':
+              numSuper++;
+              break;
+            case 'restaurant':
+              numRest++;
+              break;
+            case 'curs':
+              numCursos++;
+              break;
+            case 'info':
+              numInfo++;
+              break;
+          }
         }
-      }
-      $("#numrest").append(document.createTextNode("Restaurants: "+ numRest));
-      $("#numsup").append(document.createTextNode("Supermercats: "+ numSuper));
-      $("#numcurs").append(document.createTextNode("Cursos: "+ numCursos));
-      $("#numinfo").append(document.createTextNode("Info: "+ numInfo));
-  }
+        $("#numrest").append(document.createTextNode("Restaurants: "+ numRest));
+        $("#numsup").append(document.createTextNode("Supermercats: "+ numSuper));
+        $("#numcurs").append(document.createTextNode("Cursos: "+ numCursos));
+        $("#numinfo").append(document.createTextNode("Info: "+ numInfo));
+    }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
 }
 
+contador();
