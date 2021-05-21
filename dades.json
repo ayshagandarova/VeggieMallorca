@@ -1492,12 +1492,114 @@
             {"url": ""}
         ],
         "geo1":{
-            "address": "Avenida del, Carrer del Bisbe Llompart, 124",
-            "lat": 39.71891388570578,  
-            "long":2.906833166965568,
-            "city":"Inca",
+            "address": "Carretera Palma Soller, 999B",
+            "lat": 39.702639340237646,    
+            "long":2.691517759846518,
+            "city":"Bunyola",
             "Country":"Espanya",
-            "zip": "07300"
+            "zip": "07110"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "08:00","out": "21:00"},
+                    {"in": "","out": ""}
+                ],
+                "dm": [
+                    {"in": "08:00","out": "21:00"},
+                    {"in": "","out": ""}
+                ],
+                "dx": [
+                    {"in": "08:00","out": "21:00"},
+                    {"in": "","out": ""}
+                ],
+                "dj": [
+                    {"in": "08:00","out": "21:00"},
+                    {"in": "","out": ""}
+                ],
+                "dv": [
+                    {"in": "08:00","out": "21:00"},
+                    {"in": "","out": ""}
+                ],
+                "ds": [
+                    {"in": "08:00","out": "21:00"},
+                    {"in": "","out": ""}
+                ],
+                "dg": [
+                    {"in": "08:00","out": "14:00"},
+                    {"in": "","out": ""}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+    },
+    {
+        "nom":"Viveco",
+        "descripcio": "A Viveco li apassiona que la vida sostenible sigui accessible per a tanta gent com sigui possible. Nosaltres hem provat i provat tots els articles i pretenem emmagatzemar productes funcionals, ètics i ben dissenyats que ajudin a reduir l’ús diari de plàstic.",
+        "detall": "Ofrece artículos alternativos que generan menos residuos y que empleamos a diario en estancias como la cocina o el baño.",
+        "tipus": "supermercat",
+        "identificador":"",
+        "comentari": "",
+        "preu":{
+            "import":"15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "634 32 69 81", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.viveco.co",   
+                "facebook": "https://www.facebook.com/vivecomallorca/",
+                "twitter": "",
+                "instagram": "https://www.instagram.com/viveco.co/",
+                "tripadvisor": ""
+            }
+        },
+        "puntuacio":4,
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/viveco/foto1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/viveco/foto2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/viveco/foto3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/viveco/foto4.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/viveco/foto5.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer de Pere Sampol de son Curt, 26",
+            "lat": 39.71607511972643,    
+            "long":2.79831682322449 ,
+            "city":"Alaró",
+            "Country":"Espanya",
+            "zip": "07340"
         },
         "geo2":{
             "address": "",
@@ -1513,27 +1615,27 @@
                     {"in": "","out": ""}
                 ],
                 "dm": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "","out": ""},
                     {"in": "","out": ""}
                 ],
                 "dx": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "09:30","out": "13:30"},
                     {"in": "","out": ""}
                 ],
                 "dj": [
-                    {"in": "13:00","out": "16:00"},
-                    {"in": "20:00","out": "23:00"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dv": [
-                    {"in": "13:00","out": "16:00"},
-                    {"in": "20:00","out": "23:00"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "ds": [
-                    {"in": "13:00","out": "16:00"},
-                    {"in": "20:00","out": "23:00"}
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
                 ],
                 "dg": [
-                    {"in": "13:00","out": "16:00"},
+                    {"in": "","out": ""},
                     {"in": "","out": ""}
                 ]
         },
