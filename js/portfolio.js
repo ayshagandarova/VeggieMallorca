@@ -248,6 +248,7 @@ function eliminarDatosElemento() {
     $("#datosElemento").html("");
     $("#favorito").html("");
     $("#puntuacio").html("");
+    $("#enlaces").html("");
     if (marker != null) {
         marker.remove();
     }
@@ -535,9 +536,79 @@ function desplegable(i) {
             $("#datosElemento").append(newGeo);
             $("#datosElemento").append(newTelefon);
 
-            $("#facebookElem").attr('href', datos[i].contacte.xarxes.facebook)
-            $("#InstaElem").attr('href', datos[i].contacte.xarxes.instagram)
-            $("#TwitterElem").attr('href', datos[i].contacte.xarxes.tripadvisor)
+            if (datos[i].contacte.xarxes.facebook != ""){
+                var newFacebooka = document.createElement("a");
+                newFacebooka.setAttribute('class', "btn btn-primary btn-social mx-2");
+                newFacebooka.setAttribute('target', "_blank");
+                newFacebooka.setAttribute('href', datos[i].contacte.xarxes.facebook);
+
+                var newFacebooki = document.createElement("i");
+                newFacebooki.setAttribute('class', "fab fa-facebook-f") 
+                newFacebooka.appendChild(newFacebooki);
+                $("#enlaces").append(newFacebooka);
+            }
+
+            if (datos[i].contacte.xarxes.tripadvisor != ""){
+                var newTripAdvisora = document.createElement("a");
+                newTripAdvisora.setAttribute('class', "btn btn-primary btn-social mx-2");
+                newTripAdvisora.setAttribute('target', "_blank");
+                newTripAdvisora.setAttribute('href',  datos[i].contacte.xarxes.tripadvisor);
+
+                var newTripAdvisori = document.createElement("i");
+                newTripAdvisori.setAttribute('class', "fab fa-tripadvisor") 
+                newTripAdvisora.appendChild(newTripAdvisori);
+                $("#enlaces").append(newTripAdvisora);
+            }
+            if (datos[i].contacte.xarxes.instagram != ""){
+                var newInstagrama = document.createElement("a");
+                newInstagrama.setAttribute('class', "btn btn-primary btn-social mx-2");
+                newInstagrama.setAttribute('target', "_blank");
+                newInstagrama.setAttribute('href', datos[i].contacte.xarxes.instagram);
+
+                var newInstagrami = document.createElement("i");
+                newInstagrami.setAttribute('class', "fab fa-instagram") 
+                newInstagrama.appendChild(newInstagrami);
+                $("#enlaces").append(newInstagrama);
+            }
+            if (datos[i].contacte.xarxes.twitter != ""){
+                var newTwittera = document.createElement("a");
+                newTwittera.setAttribute('class', "btn btn-primary btn-social mx-2");
+                newTwittera.setAttribute('target', "_blank");
+                newTwittera.setAttribute('href', datos[i].contacte.xarxes.twitter);
+
+                var newTwitteri = document.createElement("i");
+                newTwitteri.setAttribute('class', "fab fa-twitter") 
+                newTwittera.appendChild(newTwitteri);
+                $("#enlaces").append(newTwittera);
+            }
+            if (datos[i].contacte.xarxes.web != ""){
+                var newWeba = document.createElement("a");
+                newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
+                newWeba.setAttribute('target', "_blank");
+                newWeba.setAttribute('href', datos[i].contacte.xarxes.web);
+
+                var newWebi = document.createElement("i");
+                newWebi.setAttribute('class', "fas fa-at") 
+                //fas fa-globe-europe">
+                newWeba.append(newWebi);
+                $("#enlaces").append(newWeba);
+            }
+            if (datos[i].contacte.email != ""){
+                var newEmaila = document.createElement("a");
+                newEmaila.setAttribute('class', "btn btn-primary btn-social mx-2");
+                newEmaila.setAttribute('target', "_blank");
+                newEmaila.setAttribute('href', datos[i].contacte.email);
+
+                var newEmaili = document.createElement("i");
+                newEmaili.setAttribute('class', "fa fa-envelope") 
+                newEmaila.appendChild(newEmaili);
+                $("#enlaces").append(newEmaila);
+            }
+            
+            
+           
+            
+            
 
             // var newA1 = document.createElement("a");
             var newI1 = document.createElement("i");
@@ -1098,9 +1169,66 @@ function desplegableFires(i) {
             $("#datosElemento").append(newDeteall);
             $("#datosElemento").append(newTelefon);
 
-            $("#facebookElem").attr('href', datos[i].contacte.xarxes.facebook)
-            $("#InstaElem").attr('href', datos[i].contacte.xarxes.instagram)
-            $("#TwitterElem").attr('href', datos[i].contacte.xarxes.tripadvisor)
+            var newFacebooka = document.createElement("a");
+            newFacebooka.setAttribute('class', "btn btn-primary btn-social mx-2");
+            newFacebooka.setAttribute('target', "_blank");
+            newFacebooka.setAttribute('href', "datos[i].contacte.xarxes.facebook");
+
+            var newFacebooki = document.createElement("i");
+            newFacebooki.setAttribute('class', "fab fa-facebook-f") 
+            newFacebooka.appendChild(newFacebooki);
+
+            var newTripAdvisora = document.createElement("a");
+            newTripAdvisora.setAttribute('class', "btn btn-primary btn-social mx-2");
+            newTripAdvisora.setAttribute('target', "_blank");
+            newTripAdvisora.setAttribute('href',  datos[i].contacte.xarxes.tripadvisor);
+
+            var newTripAdvisori = document.createElement("i");
+            newTripAdvisori.setAttribute('class', "fab fa-tripadvisor") 
+            newTripAdvisora.appendChild(newTripAdvisori);
+
+            var newInstagrama = document.createElement("a");
+            newInstagrama.setAttribute('class', "btn btn-primary btn-social mx-2");
+            newInstagrama.setAttribute('target', "_blank");
+            newInstagrama.setAttribute('href', datos[i].contacte.xarxes.instagram);
+
+            var newInstagrami = document.createElement("i");
+            newInstagrami.setAttribute('class', "fab fa-instagram") 
+            newInstagrama.appendChild(newInstagrami);
+
+            var newTwittera = document.createElement("a");
+            newTwittera.setAttribute('class', "btn btn-primary btn-social mx-2");
+            newTwittera.setAttribute('target', "_blank");
+            newTwittera.setAttribute('href', datos[i].contacte.xarxes.twitter);
+
+            var newTwitteri = document.createElement("i");
+            newTwitteri.setAttribute('class', "fab fa-twitter") 
+            newTwittera.appendChild(newTwitteri);
+
+            var newWeba = document.createElement("a");
+            newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
+            newWeba.setAttribute('target', "_blank");
+            newWeba.setAttribute('href', datos[i].contacte.xarxes.web);
+
+            var newWebi = document.createElement("i");
+            newWebi.setAttribute('class', "fab fa-globe") 
+            newWeba.append(newWebi);
+
+            var newEmaila = document.createElement("a");
+            newEmaila.setAttribute('class', "btn btn-primary btn-social mx-2");
+            newEmaila.setAttribute('target', "_blank");
+            newEmaila.setAttribute('href', datos[i].contacte.xarxes.web);
+
+            var newEmaili = document.createElement("i");
+            newEmaili.setAttribute('class', "fab fa-envelope") 
+            newEmaila.appendChild(newEmaili);
+
+            console.log("heyyy");
+            $("#enlaces").append(newWeba);
+         /*   $("#enlaces").append(newEmaila);
+            $("#enlaces").append(newTripAdvisora);
+            $("#enlaces").append(newInstagrama);
+            $("#enlaces").append(newTwittera);*/
 
         }
     };

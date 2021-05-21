@@ -10856,3 +10856,39 @@ section#contact form#contactForm :-ms-input-placeholder {
 #selectOrdenar{
   background-color: #F8D160;
 }
+
+.marker-supermercat {
+  background-image: url('../assets/img/icones/supermercats.svg');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 0%;
+  cursor: pointer;
+}
+
+.marker-restuarant {
+  background-image: url('../assets/img/icones/restaurants.svg');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 0%;
+  cursor: pointer;
+}
+
+.marker-curs {
+  background-image: url('../assets/img/icones/fires.svg');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 0%;
+  cursor: pointer;
+}
+
+.marker-info {
+  background-image: url('../assets/img/icones/cursos.svg');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 0%;
+  cursor: pointer;
+}
