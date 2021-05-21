@@ -96,9 +96,12 @@ function Cercador(filtrado) {
             if (id == "restaurant") {
                 $("#titolPortfoli").append("Restaurants")
                 $("#descPortfoli").append("Aquí trobàs la millor secció de restaurants que tenen opcions veganes o vegetarianes.")
-            } else {
+            } else if (id == "supermercat") {
                 $("#titolPortfoli").append("Supermercats")
                 $("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
+            } else if (id == "favorits") {
+                $("#titolPortfoli").append("Favorits")
+                $("#descPortfoli").append("Conjunt de restaurants i supermercats favorits.")
             }
             addElement(datos, id, filtrado);
         }
@@ -161,6 +164,7 @@ function addElement(datos, id, filtrado) {
         }
     }
     $("#galeriaPortfoli").html("")
+
     for (var i = 0; i < datos.length; i++) {
         if (datos[datosFiltrados[i]].tipus == id) { //id = "restaurant o sueprmercats"
             var newDiv = document.createElement("div");   // crea un nuevo div
@@ -224,6 +228,79 @@ function addElement(datos, id, filtrado) {
             $("#galeriaPortfoli").append(newDiv);
         }
     }
+
+    //Para luego en la página de favoritos podrías hacer un listado simple:
+
+    // leemos los favoritos del localStorage
+    var favoritos = localStorage.getItem("favoritos") || "[]";
+    favoritos = JSON.parse(favoritos);
+    // para cada producto en favoritos
+        for (var j = 0; j < datos.length; j++) {
+            for (var x = 0; x < favoritos.length; x++) {
+                if ((favoritos[x].id == datos[j].nom) & (id == "favorits"))   {
+                    var newDiv = document.createElement("div");   // crea un nuevo div
+                    newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
+                    newDiv.setAttribute('id', "elemento-" + j)
+
+                    var newDiv1 = document.createElement("div");
+                    newDiv1.setAttribute('class', "portfolio-item")
+                    newDiv.appendChild(newDiv1); //afegim node newDiv1 com a fill del pare newDiv
+
+                    var newa1 = document.createElement("a");
+                    newa1.setAttribute('class', "portfolio-link");
+                    newa1.setAttribute('data-toggle', "modal");
+                    newa1.setAttribute('data-target', "#myModal");
+                    newa1.setAttribute('onclick', "desplegable(" + j + ");"); //datosFiltrados[i]
+                    newDiv1.appendChild(newa1);
+
+                    var newDiv2 = document.createElement("div");
+                    newDiv2.setAttribute('class', "portfolio-hover")
+
+                    newa1.appendChild(newDiv2);
+
+                    var newDiv3 = document.createElement("div");
+                    newDiv3.setAttribute('class', "portfolio-hover-content")
+
+                    newDiv2.appendChild(newDiv3);
+
+                    var newi = document.createElement("i");
+                    newi.setAttribute('class', "fas fa-plus fa-3x")
+
+                    newDiv3.appendChild(newi);
+
+                    var newimg = document.createElement("img");
+                    newimg.setAttribute('class', "img-fluid")
+                    newimg.setAttribute('src', datos[j].imatges[0])
+                    newimg.setAttribute('alt', "")
+
+                    newa1.appendChild(newimg);
+
+                    var newDiv4 = document.createElement("div");
+                    newDiv4.setAttribute('class', "portfolio-caption")
+
+                    newDiv1.appendChild(newDiv4);
+
+                    var newDiv5 = document.createElement("div");
+                    newDiv5.setAttribute('class', "portfolio-caption-heading")
+                    var newContent = document.createTextNode(datos[j].nom);
+                    newDiv5.appendChild(newContent)
+
+                    newDiv4.appendChild(newDiv5);
+
+                    var newDiv6 = document.createElement("div");
+                    newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
+                    var newContent2 = document.createTextNode(datos[j].geo1.city);
+                    newDiv6.appendChild(newContent2)
+                    newDiv4.appendChild(newDiv6);
+
+                    // añade el elemento creado y su contenido al DOM
+                    $("#galeriaPortfoli").append(newDiv);
+
+                }
+            }
+        }
+  
+
 }
 /* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
 function eliminarDatosElemento() {
@@ -536,79 +613,79 @@ function desplegable(i) {
             $("#datosElemento").append(newGeo);
             $("#datosElemento").append(newTelefon);
 
-            if (datos[i].contacte.xarxes.facebook != ""){
+            if (datos[i].contacte.xarxes.facebook != "") {
                 var newFacebooka = document.createElement("a");
                 newFacebooka.setAttribute('class', "btn btn-primary btn-social mx-2");
                 newFacebooka.setAttribute('target', "_blank");
                 newFacebooka.setAttribute('href', datos[i].contacte.xarxes.facebook);
 
                 var newFacebooki = document.createElement("i");
-                newFacebooki.setAttribute('class', "fab fa-facebook-f") 
+                newFacebooki.setAttribute('class', "fab fa-facebook-f")
                 newFacebooka.appendChild(newFacebooki);
                 $("#enlaces").append(newFacebooka);
             }
 
-            if (datos[i].contacte.xarxes.tripadvisor != ""){
+            if (datos[i].contacte.xarxes.tripadvisor != "") {
                 var newTripAdvisora = document.createElement("a");
                 newTripAdvisora.setAttribute('class', "btn btn-primary btn-social mx-2");
                 newTripAdvisora.setAttribute('target', "_blank");
-                newTripAdvisora.setAttribute('href',  datos[i].contacte.xarxes.tripadvisor);
+                newTripAdvisora.setAttribute('href', datos[i].contacte.xarxes.tripadvisor);
 
                 var newTripAdvisori = document.createElement("i");
-                newTripAdvisori.setAttribute('class', "fab fa-tripadvisor") 
+                newTripAdvisori.setAttribute('class', "fab fa-tripadvisor")
                 newTripAdvisora.appendChild(newTripAdvisori);
                 $("#enlaces").append(newTripAdvisora);
             }
-            if (datos[i].contacte.xarxes.instagram != ""){
+            if (datos[i].contacte.xarxes.instagram != "") {
                 var newInstagrama = document.createElement("a");
                 newInstagrama.setAttribute('class', "btn btn-primary btn-social mx-2");
                 newInstagrama.setAttribute('target', "_blank");
                 newInstagrama.setAttribute('href', datos[i].contacte.xarxes.instagram);
 
                 var newInstagrami = document.createElement("i");
-                newInstagrami.setAttribute('class', "fab fa-instagram") 
+                newInstagrami.setAttribute('class', "fab fa-instagram")
                 newInstagrama.appendChild(newInstagrami);
                 $("#enlaces").append(newInstagrama);
             }
-            if (datos[i].contacte.xarxes.twitter != ""){
+            if (datos[i].contacte.xarxes.twitter != "") {
                 var newTwittera = document.createElement("a");
                 newTwittera.setAttribute('class', "btn btn-primary btn-social mx-2");
                 newTwittera.setAttribute('target', "_blank");
                 newTwittera.setAttribute('href', datos[i].contacte.xarxes.twitter);
 
                 var newTwitteri = document.createElement("i");
-                newTwitteri.setAttribute('class', "fab fa-twitter") 
+                newTwitteri.setAttribute('class', "fab fa-twitter")
                 newTwittera.appendChild(newTwitteri);
                 $("#enlaces").append(newTwittera);
             }
-            if (datos[i].contacte.xarxes.web != ""){
+            if (datos[i].contacte.xarxes.web != "") {
                 var newWeba = document.createElement("a");
                 newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
                 newWeba.setAttribute('target', "_blank");
                 newWeba.setAttribute('href', datos[i].contacte.xarxes.web);
 
                 var newWebi = document.createElement("i");
-                newWebi.setAttribute('class', "fas fa-at") 
+                newWebi.setAttribute('class', "fas fa-at")
                 //fas fa-globe-europe">
                 newWeba.append(newWebi);
                 $("#enlaces").append(newWeba);
             }
-            if (datos[i].contacte.email != ""){
+            if (datos[i].contacte.email != "") {
                 var newEmaila = document.createElement("a");
                 newEmaila.setAttribute('class', "btn btn-primary btn-social mx-2");
                 newEmaila.setAttribute('target', "_blank");
                 newEmaila.setAttribute('href', datos[i].contacte.email);
 
                 var newEmaili = document.createElement("i");
-                newEmaili.setAttribute('class', "fa fa-envelope") 
+                newEmaili.setAttribute('class', "fa fa-envelope")
                 newEmaila.appendChild(newEmaili);
                 $("#enlaces").append(newEmaila);
             }
-            
-            
-           
-            
-            
+
+
+
+
+
 
             // var newA1 = document.createElement("a");
             var newI1 = document.createElement("i");
@@ -645,20 +722,20 @@ function desplegable(i) {
                 newComentFav.appendChild(inactivo);
             }
             $("#favorito").append(newI1);
-            
+
             //Poner estrellas hasta que queden 0,5 o ninguna estrella por poner
             //json totes les puntuacions han de ser .5 o senceres
             var estrellas = datos[i].puntuacio
             console.log(datos[i].puntuacio)
-            
-           
+
+
             for (var x = 0.5; x < estrellas; estrellas--) {
                 var newI1 = document.createElement("i");
                 newI1.setAttribute('style', "color:#f8d160");
                 newI1.setAttribute('class', "fa fa-star");
                 $("#puntuacio").append(newI1);
             }
- 
+
             //Comrpobar si falta la media estrella
             if (estrellas == 0.5) {
                 var newI1 = document.createElement("i");
@@ -706,7 +783,6 @@ function guardarFav(i) {
             var datos = {
                 id: datos[i].nom
             };
-
             // leemos los favoritos del localStorage
             var favoritos = localStorage.getItem("favoritos") || "[]";
             favoritos = JSON.parse(favoritos);
@@ -1175,16 +1251,16 @@ function desplegableFires(i) {
             newFacebooka.setAttribute('href', "datos[i].contacte.xarxes.facebook");
 
             var newFacebooki = document.createElement("i");
-            newFacebooki.setAttribute('class', "fab fa-facebook-f") 
+            newFacebooki.setAttribute('class', "fab fa-facebook-f")
             newFacebooka.appendChild(newFacebooki);
 
             var newTripAdvisora = document.createElement("a");
             newTripAdvisora.setAttribute('class', "btn btn-primary btn-social mx-2");
             newTripAdvisora.setAttribute('target', "_blank");
-            newTripAdvisora.setAttribute('href',  datos[i].contacte.xarxes.tripadvisor);
+            newTripAdvisora.setAttribute('href', datos[i].contacte.xarxes.tripadvisor);
 
             var newTripAdvisori = document.createElement("i");
-            newTripAdvisori.setAttribute('class', "fab fa-tripadvisor") 
+            newTripAdvisori.setAttribute('class', "fab fa-tripadvisor")
             newTripAdvisora.appendChild(newTripAdvisori);
 
             var newInstagrama = document.createElement("a");
@@ -1193,7 +1269,7 @@ function desplegableFires(i) {
             newInstagrama.setAttribute('href', datos[i].contacte.xarxes.instagram);
 
             var newInstagrami = document.createElement("i");
-            newInstagrami.setAttribute('class', "fab fa-instagram") 
+            newInstagrami.setAttribute('class', "fab fa-instagram")
             newInstagrama.appendChild(newInstagrami);
 
             var newTwittera = document.createElement("a");
@@ -1202,7 +1278,7 @@ function desplegableFires(i) {
             newTwittera.setAttribute('href', datos[i].contacte.xarxes.twitter);
 
             var newTwitteri = document.createElement("i");
-            newTwitteri.setAttribute('class', "fab fa-twitter") 
+            newTwitteri.setAttribute('class', "fab fa-twitter")
             newTwittera.appendChild(newTwitteri);
 
             var newWeba = document.createElement("a");
@@ -1211,7 +1287,7 @@ function desplegableFires(i) {
             newWeba.setAttribute('href', datos[i].contacte.xarxes.web);
 
             var newWebi = document.createElement("i");
-            newWebi.setAttribute('class', "fab fa-globe") 
+            newWebi.setAttribute('class', "fab fa-globe")
             newWeba.append(newWebi);
 
             var newEmaila = document.createElement("a");
@@ -1220,15 +1296,15 @@ function desplegableFires(i) {
             newEmaila.setAttribute('href', datos[i].contacte.xarxes.web);
 
             var newEmaili = document.createElement("i");
-            newEmaili.setAttribute('class', "fab fa-envelope") 
+            newEmaili.setAttribute('class', "fab fa-envelope")
             newEmaila.appendChild(newEmaili);
 
             console.log("heyyy");
             $("#enlaces").append(newWeba);
-         /*   $("#enlaces").append(newEmaila);
-            $("#enlaces").append(newTripAdvisora);
-            $("#enlaces").append(newInstagrama);
-            $("#enlaces").append(newTwittera);*/
+            /*   $("#enlaces").append(newEmaila);
+               $("#enlaces").append(newTripAdvisora);
+               $("#enlaces").append(newInstagrama);
+               $("#enlaces").append(newTwittera);*/
 
         }
     };
