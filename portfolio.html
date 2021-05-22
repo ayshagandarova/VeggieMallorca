@@ -42,7 +42,7 @@
                     <nav id="menu">
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <!-- Aquí estarán todos los links a las planas-->
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Mapa</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#mapidGran">Mapa</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger"
                                     href="portfolio.html?restaurant">Restaurants</a>
                             </li>
@@ -88,12 +88,12 @@
                         <option value="1">Més valorades</option>
                         <option value="2">Preu decreixent</option>
                         <option value="3">Preu ascendent</option>
-                        <option value="4">A-Z</option>
+                        <option onchange="CercadorFlexi(4)" value="4">Flexivegetarians</option>
                     </select>
                 </div>
                 <div class="col-lg-4 sort-container ">
                     <!-- Filtrar -->
-                    <span>Elegir zonar:</span>
+                    <span>Elegir zona:</span>
                     <!--<div class="select-style" style="background-color: #F8D160;color: white;width:600px;"></div>-->
                     <select id="selectOrdenar">
                         <!-- hacer que sea dinámico, que mire los que hay en el json-->

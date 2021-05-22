@@ -41,7 +41,7 @@ input.addEventListener('keyup', function (event) {
 var datosBuscados
 // coger el texto y imprimir los elementos en la consola que se corresponden a la busqueda 
 function searchBar() {
-    buscado=true;
+    buscado = true;
     datosBuscados = []
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
@@ -53,7 +53,7 @@ function searchBar() {
             galeria = document.getElementById("galeriaPortfoli")
             divs = galeria.getElementsByTagName("div");
             for (i = 0; i < datos.length; i++) {
-                
+
                 a = datos[i].nom
                 if (a.toUpperCase().indexOf(filter) > -1) {
                     datosBuscados.push(i);
@@ -94,6 +94,7 @@ function Cercador(filtrado) {
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log("no flexi")
             var datos = JSON.parse(xmlhttp.responseText);
             var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
             var id = urlweb.replace("?", "")
@@ -110,11 +111,42 @@ function Cercador(filtrado) {
                 $("#descPortfoli").append("Conjunt de restaurants i supermercats favorits.")
             }
             addElement(datos, id, filtrado);
+            console.log(id)
+            console.log("filtrado " + filtrado)
         }
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
+
+//Filtrar para diferenciar entre restaurants o supermercats
+function CercadorFlexi(filtrado) {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://bares-mallorca.netlify.app/data.json";
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var datosFlexi = JSON.parse(xmlhttp.responseText);
+            var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
+            var id = urlweb.replace("?", "")
+            $("#titolPortfoli").html("")
+            $("#descPortfoli").html("")
+            if (id == "restaurant") {
+                $("#titolPortfoli").append("Restaurants")
+                $("#descPortfoli").append("Aquí trobàs la millor secció de restaurants que tenen opcions veganes o vegetarianes.")
+            } else if (id == "supermercat") {
+                $("#titolPortfoli").append("Supermercats")
+                $("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
+            } else if (id == "favorits") {
+                $("#titolPortfoli").append("Favorits")
+                $("#descPortfoli").append("Conjunt de restaurants i supermercats favorits.")
+            }
+            addElement(datosFlexi, id, filtrado);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
 
 //Afegir elements al portfoli de restaurants o supermercats
 function addElement(datos, id, filtrado) {
@@ -169,15 +201,21 @@ function addElement(datos, id, filtrado) {
             datosFiltrados.push(idPreuD);
             datosBuscados
         }
-    } else if(filtrado==4){
-        
-        datosFiltrados=datosBuscados;
-        console.log(datosFiltrados);
+    } else if (filtrado == 4) {
+        console.log("holadins if flexi ")
+        for (var i = 0; i < datos.length; i++) {
+            if (datos[i].tipus == "vegetariano") {
+                console.log("dins if flexi ")
+                console.log("vegetaria flexi " + datos[i].nom)
+                datosFiltrados.push(i)
+            }
+        }
     }
     $("#galeriaPortfoli").html("")
 
     for (var i = 0; i < datosFiltrados.length; i++) {
-        if (datos[datosFiltrados[i]].tipus == id) { //id = "restaurant o sueprmercats"
+
+        if ((datos[datosFiltrados[i]].tipus == id) || (datos[datosFiltrados[i]].tipus == "vegetariano")) { //id = "restaurant o sueprmercats"
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
             newDiv.setAttribute('id', "elemento-" + i)
@@ -190,7 +228,13 @@ function addElement(datos, id, filtrado) {
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
             newa1.setAttribute('data-target', "#myModal");
-            newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");");
+            if (datos[datosFiltrados[i]].tipus == "vegetariano") {
+                datosFiltrados[i] = datosFiltrados[i]+ 100;
+                newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");");
+                datosFiltrados[i] = datosFiltrados[i]-100
+            }else{
+            newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");")
+            }
             newDiv1.appendChild(newa1);
 
             var newDiv2 = document.createElement("div");
@@ -243,74 +287,74 @@ function addElement(datos, id, filtrado) {
     var favoritos = localStorage.getItem("favoritos") || "[]";
     favoritos = JSON.parse(favoritos);
     // para cada producto en favoritos
-        for (var j = 0; j < datos.length; j++) {
-            for (var x = 0; x < favoritos.length; x++) {
-                if ((favoritos[x].id == datos[j].nom) & (id == "favorits"))   {
+    for (var j = 0; j < datos.length; j++) {
+        for (var x = 0; x < favoritos.length; x++) {
+            if ((favoritos[x].id == datos[j].nom) & (id == "favorits")) {
 
-                    var newDiv = document.createElement("div");   // crea un nuevo div
-                    newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
-                    //newDiv.setAttribute('id', "elemento-" + j)
+                var newDiv = document.createElement("div");   // crea un nuevo div
+                newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
+                //newDiv.setAttribute('id', "elemento-" + j)
 
-                    var newDiv1 = document.createElement("div");
-                    newDiv1.setAttribute('class', "portfolio-item")
-                    newDiv.appendChild(newDiv1); //afegim node newDiv1 com a fill del pare newDiv
+                var newDiv1 = document.createElement("div");
+                newDiv1.setAttribute('class', "portfolio-item")
+                newDiv.appendChild(newDiv1); //afegim node newDiv1 com a fill del pare newDiv
 
-                    var newa1 = document.createElement("a");
-                    newa1.setAttribute('class', "portfolio-link");
-                    newa1.setAttribute('data-toggle', "modal");
-                    newa1.setAttribute('data-target', "#myModal");
-                    newa1.setAttribute('onclick', "desplegable(" + j + ");");
-                    newa1.setAttribute('id', "iddeslplegable")
-                    newDiv1.appendChild(newa1);
+                var newa1 = document.createElement("a");
+                newa1.setAttribute('class', "portfolio-link");
+                newa1.setAttribute('data-toggle', "modal");
+                newa1.setAttribute('data-target', "#myModal");
+                newa1.setAttribute('onclick', "desplegable(" + j + ");");
+                newa1.setAttribute('id', "iddeslplegable")
+                newDiv1.appendChild(newa1);
 
-                    var newDiv2 = document.createElement("div");
-                    newDiv2.setAttribute('class', "portfolio-hover")
+                var newDiv2 = document.createElement("div");
+                newDiv2.setAttribute('class', "portfolio-hover")
 
-                    newa1.appendChild(newDiv2);
+                newa1.appendChild(newDiv2);
 
-                    var newDiv3 = document.createElement("div");
-                    newDiv3.setAttribute('class', "portfolio-hover-content")
+                var newDiv3 = document.createElement("div");
+                newDiv3.setAttribute('class', "portfolio-hover-content")
 
-                    newDiv2.appendChild(newDiv3);
+                newDiv2.appendChild(newDiv3);
 
-                    var newi = document.createElement("i");
-                    newi.setAttribute('class', "fas fa-plus fa-3x")
+                var newi = document.createElement("i");
+                newi.setAttribute('class', "fas fa-plus fa-3x")
 
-                    newDiv3.appendChild(newi);
+                newDiv3.appendChild(newi);
 
-                    var newimg = document.createElement("img");
-                    newimg.setAttribute('class', "img-fluid")
-                    //newimg.setAttribute('class', "ml-1")
-                    newimg.setAttribute('src', datos[j].imatges[0])
-                    newimg.setAttribute('alt', "")
+                var newimg = document.createElement("img");
+                newimg.setAttribute('class', "img-fluid")
+                //newimg.setAttribute('class', "ml-1")
+                newimg.setAttribute('src', datos[j].imatges[0])
+                newimg.setAttribute('alt', "")
 
-                    newa1.appendChild(newimg);
-        
-                    var newDiv4 = document.createElement("div");
-                    newDiv4.setAttribute('class', "portfolio-caption")
+                newa1.appendChild(newimg);
 
-                    newDiv1.appendChild(newDiv4);
+                var newDiv4 = document.createElement("div");
+                newDiv4.setAttribute('class', "portfolio-caption")
 
-                    var newDiv5 = document.createElement("div");
-                    newDiv5.setAttribute('class', "portfolio-caption-heading")
-                    var newContent = document.createTextNode(datos[j].nom);
-                    newDiv5.appendChild(newContent)
+                newDiv1.appendChild(newDiv4);
 
-                    newDiv4.appendChild(newDiv5);
+                var newDiv5 = document.createElement("div");
+                newDiv5.setAttribute('class', "portfolio-caption-heading")
+                var newContent = document.createTextNode(datos[j].nom);
+                newDiv5.appendChild(newContent)
 
-                    var newDiv6 = document.createElement("div");
-                    newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-                    var newContent2 = document.createTextNode(datos[j].geo1.city);
-                    newDiv6.appendChild(newContent2)
-                    newDiv4.appendChild(newDiv6);
+                newDiv4.appendChild(newDiv5);
 
-                    // añade el elemento creado y su contenido al DOM
-                    $("#galeriaPortfoli").append(newDiv);
+                var newDiv6 = document.createElement("div");
+                newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
+                var newContent2 = document.createTextNode(datos[j].geo1.city);
+                newDiv6.appendChild(newContent2)
+                newDiv4.appendChild(newDiv6);
 
-                }
+                // añade el elemento creado y su contenido al DOM
+                $("#galeriaPortfoli").append(newDiv);
+
             }
         }
-  
+    }
+
 
 }
 /* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
@@ -347,8 +391,16 @@ function desplegable(i) {
     if ($("#nombreElement").html() !== null) {
         eliminarDatosElemento();
     }
+
+    console.log("i: "+i)
     var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json"
+    if (i >= 100) {
+        var url = "https://bares-mallorca.netlify.app/data.json"
+        i = i-100
+        console.log("i flexi: "+i)
+    } else {
+        var url = "dades.json"
+    }
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
@@ -604,7 +656,6 @@ function desplegable(i) {
             $("#horariDs").append(pDs);
             $("#horariDg").append(pDg);
 
-
             var newDeteall = document.createElement("p");
             newDeteall.setAttribute('class', "item-intro text-mutedg")
             var textoDetall = document.createTextNode(datos[i].detall);
@@ -710,8 +761,8 @@ function desplegable(i) {
             //Aquest és el text que surt inicialment:
             var favo = document.getElementById("Textfavorito");
             var newComentFav = document.createElement("p")
-            var activo = document.createTextNode("Afegeix a favorits: ");
-            var inactivo = document.createTextNode("Elimina de favorits: ")
+            var activo = document.createTextNode("Afegeix a favorits ");
+            var inactivo = document.createTextNode("Elimina de favorits ")
             favo.innerHTML = ""; // Limpia el contenido.
 
             // buscamos el producto en la lista de favoritos
@@ -1466,6 +1517,9 @@ document.addEventListener("click", closeAllSelect);
         }
         if ($(this).val() == 3) {
             Cercador(3); //preu ascendent
+        }
+        if ($(this).val() == 4) {
+            CercadorFlexi(4); //preu ascendent
         }
     });
 })(jQuery); // End of use strict
