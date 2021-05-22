@@ -42,6 +42,7 @@
                     <nav id="menu">
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <!-- Aquí estarán todos los links a las planas-->
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Mapa</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger"
                                     href="portfolio.html?restaurant">Restaurants</a>
                             </li>
@@ -58,6 +59,10 @@
                                     <li class="subitem"> <a href="informacio.html?info">
                                             +Info</a></li>
                                 </ul>
+                            </li>
+                            <!--Favorits-->
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                href="portfolio.html?favorits"><i class="fa fa-heart"></i> Favorits</a>
                             </li>
                         </ul>
                     </nav>
@@ -86,12 +91,20 @@
                         <option value="4">A-Z</option>
                     </select>
                 </div>
-                <!--Favorits-->
-                <div class="col-lg-4 ">
-                    <div style="margin-top: 16px; margin-bottom: 16px;">
-                        <a href="portfolio.html?favorits">Mostra els favorits</a>
-                    </div>
+                <div class="col-lg-4 sort-container ">
+                    <!-- Filtrar -->
+                    <span>Elegir zonar:</span>
+                    <!--<div class="select-style" style="background-color: #F8D160;color: white;width:600px;"></div>-->
+                    <select id="selectOrdenar">
+                        <!-- hacer que sea dinámico, que mire los que hay en el json-->
+                        <option value="0">Tots</option>
+                        <option value="1">Palma</option>
+                        <option value="2">Santa Ponça</option>
+                        <option value="3">Inca</option>
+                        <option value="4">Andratx</option>
+                    </select>
                 </div>
+                
                 <div class="col-lg-4 ">
                     <!-- Barra buscador-->
                     <div class="search-container">
