@@ -91,12 +91,13 @@ function punteros(){
   var url = "dades.json"
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      console.log("holaaaa");
       var datos = JSON.parse(xmlhttp.responseText);
       
       datos.forEach(function (marker){ // marker = datos[i]
         // add markers to map
-
+        if(marker.nom=="Donna Vegana"){
+          console.log("donnaaaa veganaaa: marker tipus=" + marker.tipus + " geolocali: "+ marker.geo1.long + "," +marker.geo1.lat);
+        }
         // create a HTML element for each feature
         
         var el = document.createElement('div');

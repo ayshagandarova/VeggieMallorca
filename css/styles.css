@@ -10859,17 +10859,17 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .marker-supermercat {
   background-image: url('../assets/img/icones/supermercats.svg');
-  background-size: cover;
-  width: 30px;
-  height: 30px;
+  filter: invert(43%) sepia(11%) saturate(720%) hue-rotate(67deg) brightness(97%) contrast(84%);/* verde, la conversión se hace en esta página: https://codepen.io/sosuke/pen/Pjoqqp*/
+  width: 28px;
+  height: 25px;
   border-radius: 0%;
   cursor: pointer;
 }
 
-.marker-restuarant {
+.marker-restaurant {
   background-image: url('../assets/img/icones/restaurants.svg');
-  background-size: cover;
-  width: 30px;
+  filter: invert(50%) sepia(25%) saturate(724%) hue-rotate(151deg) brightness(102%) contrast(83%);/* azul */
+  width: 25px;
   height: 30px;
   border-radius: 0%;
   cursor: pointer;
@@ -10877,18 +10877,18 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .marker-curs {
   background-image: url('../assets/img/icones/fires.svg');
-  background-size: cover;
+  filter: invert(65%) sepia(91%) saturate(352%) hue-rotate(345deg) brightness(101%) contrast(91%); /* naranja */
   width: 30px;
-  height: 30px;
+  height: 24px;
   border-radius: 0%;
   cursor: pointer;
 }
 
 .marker-info {
   background-image: url('../assets/img/icones/cursos.svg');
-  background-size: cover;
+  filter: invert(83%) sepia(15%) saturate(3972%) hue-rotate(314deg) brightness(98%) contrast(87%); /* rojo */
   width: 30px;
-  height: 30px;
+  height: 24px;
   border-radius: 0%;
   cursor: pointer;
 }

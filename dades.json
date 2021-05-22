@@ -987,8 +987,8 @@
         ],
         "geo1":{
             "address": "",
-            "lat": "39.4380576638462",
-            "long":"3.013554426339741",
+            "lat": 39.4380576638462,
+            "long": 3.013554426339741,
             "city":"",
             "Country":"Espanya",
             "zip": "07010"
@@ -1632,6 +1632,107 @@
                 ],
                 "ds": [
                     {"in": "","out": ""},
+                    {"in": "","out": ""}
+                ],
+                "dg": [
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+    },
+    {
+        "nom":"Eco Punt",
+        "descripcio": "Eco Punt és una empresa de responsabilitat social i ambiental que vetlla per la salut de les persones i la societat a través de la innovació, l'agricultura i el treball en xarxa.",
+        "detall": "",
+        "tipus": "supermercat",
+        "identificador":"",
+        "comentari": "",
+        "preu":{
+            "import":"15€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "971 85 07 24", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://ecopunt-alternativo-bio.negocio.site",   
+                "facebook": "https://www.facebook.com/eco.punt.5",
+                "twitter": "",
+                "instagram": "",
+                "tripadvisor": ""
+            }
+        },
+        "puntuacio":4.5,
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [ 
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/EcoPunt/tenda1.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/EcoPunt/tenda2.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/EcoPunt/tenda3.png",
+            "https://veggiemallorca.netlify.app/assets/img/Supermercats/EcoPunt/tenda4.png"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "Carrer Ran de Mar, 20",
+            "lat": 39.76629614250313,    
+            "long": 3.149303325514258 ,
+            "city":"Can Picafort",
+            "Country":"Espanya",
+            "zip": "07458"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"",
+            "Country":"",
+            "zip":""
+        },
+        "horari":{
+                "di": [
+                    {"in": "10:00","out": "13:30"},
+                    {"in": "16:00","out": "20:00"}
+                ],
+                "dm": [
+                    {"in": "10:00","out": "13:30"},
+                    {"in": "16:00","out": "20:00"}
+                ],
+                "dx": [
+                    {"in": "10:00","out": "13:30"},
+                    {"in": "16:00","out": "20:00"}
+                ],
+                "dj": [
+                    {"in": "10:00","out": "13:30"},
+                    {"in": "16:00","out": "20:00"}
+                ],
+                "dv": [
+                    {"in": "10:00","out": "13:30"},
+                    {"in": "16:00","out": "20:00"}
+                ],
+                "ds": [
+                    {"in": "10:00","out": "13:30"},
                     {"in": "","out": ""}
                 ],
                 "dg": [

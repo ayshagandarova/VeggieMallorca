@@ -29,6 +29,7 @@ var marker;
 
 /* BARRA BUSCADOR */
 
+var buscado;
 // si se pulsa enter reacciona igual que si clicas el botón de buscar:
 var input = document.getElementById("myInput");
 input.addEventListener('keyup', function (event) {
@@ -37,9 +38,11 @@ input.addEventListener('keyup', function (event) {
         document.getElementById("buscar").click();
     }
 });
-
+var datosBuscados
 // coger el texto y imprimir los elementos en la consola que se corresponden a la busqueda 
 function searchBar() {
+    buscado=true;
+    datosBuscados = []
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
@@ -50,12 +53,15 @@ function searchBar() {
             galeria = document.getElementById("galeriaPortfoli")
             divs = galeria.getElementsByTagName("div");
             for (i = 0; i < datos.length; i++) {
+                
                 a = datos[i].nom
                 if (a.toUpperCase().indexOf(filter) > -1) {
+                    datosBuscados.push(i);
                     //aqui es donde habria q mostrarlo por pantalla y hacer el array de los datos q queremos mostrar
                     console.log(datos[i].nom + " y el tipo: " + datos[i].tipus);
                 }
             }
+            Cercador(4);
         }
     };
     xmlhttp.open("GET", url, true);
@@ -161,11 +167,16 @@ function addElement(datos, id, filtrado) {
                 }
             }
             datosFiltrados.push(idPreuD);
+            datosBuscados
         }
+    } else if(filtrado==4){
+        
+        datosFiltrados=datosBuscados;
+        console.log(datosFiltrados);
     }
     $("#galeriaPortfoli").html("")
 
-    for (var i = 0; i < datos.length; i++) {
+    for (var i = 0; i < datosFiltrados.length; i++) {
         if (datos[datosFiltrados[i]].tipus == id) { //id = "restaurant o sueprmercats"
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
