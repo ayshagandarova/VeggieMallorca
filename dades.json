@@ -673,8 +673,8 @@
         ],
         "geo1":{
             "address": "Plaça del Bisbe Berenguer de Palou, 2",
-            "lat": "",  
-            "long": "",
+            "lat": 39.57555419334206,  
+            "long": 2.6486795212647793,
             "city":"Palma",
             "Country":"Espanya",
             "zip": "07003"
