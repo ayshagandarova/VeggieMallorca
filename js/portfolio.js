@@ -27,7 +27,7 @@ var marker;
 !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
 
 
-/* BARRA BUSCADOR */
+/* BARRA BUSCADOR 
 
 // si se pulsa enter reacciona igual que si clicas el botón de buscar:
 var input = document.getElementById("myInput");
@@ -36,11 +36,103 @@ input.addEventListener('keyup', function (event) {
         event.preventDefault();
         document.getElementById("buscar").click();
     }
-});
+});*/
 var datosBuscados
+
+var xmlhttp = new XMLHttpRequest();
+var url = "dades.json";
+var dades;
+xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        dadesS = JSON.parse(xmlhttp.responseText);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+const searchWrapper = document.querySelector(".search-container");
+const inputBox = searchWrapper.querySelector("input");
+const suggBox = searchWrapper.querySelector(".autocom-box");
+const icon = searchWrapper.querySelector(".icon");
+inputBox.addEventListener('keyup', (e) => {
+    const searchString = e.target.value.toLowerCase();
+    datosBuscados = dadesS.filter((element) => {
+        return (
+            
+            element.nom.toLowerCase().includes(searchString)
+        )
+    });
+    console.log(datosBuscados);
+});
+
+/*
+    let webLink;
+    var xmlhttp = new XMLHttpRequest();
+    var url = "dades.json";
+    xmlhttp.onreadystatechange = function () {
+        
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var suggestions = JSON.parse(xmlhttp.responseText);
+            inputBox.onkeyup = (e)=>{
+                let userData = e.target.value; //user enetered data
+                let emptyArray = [];
+                
+                if(userData){
+                    icon.onclick = ()=>{
+                        webLink = "https://www.google.com/search?q=" + userData;
+                        linkTag.setAttribute("href", webLink);
+                        console.log(webLink);
+                        linkTag.click();
+                    }
+                    
+                    emptyArray = suggestions.filter((data)=>{
+                        //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
+                        return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase()); 
+                    });
+                    emptyArray = emptyArray.map((data)=>{
+                        // passing return data inside li tag
+                        return data = '<li>'+ data +'</li>';
+                    });
+                    searchWrapper.classList.add("active"); //show autocomplete box
+                    showSuggestions(emptyArray);
+                    let allList = suggBox.querySelectorAll("li");
+                    for (let i = 0; i < allList.length; i++) {
+                        //adding onclick attribute in all li tag
+                        allList[i].setAttribute("onclick", "select(this)");
+                    }
+                }else{
+                    searchWrapper.classList.remove("active"); //hide autocomplete box
+                }
+            }
+        }
+    }
+});
+            
+function select(element){
+    let selectData = element.textContent;
+    inputBox.value = selectData;
+    icon.onclick = ()=>{
+        webLink = "https://www.google.com/search?q=" + selectData;
+        linkTag.setAttribute("href", webLink);
+        linkTag.click();
+    }
+    searchWrapper.classList.remove("active");
+}
+             
+function showSuggestions(list){
+    let listData;
+    if(!list.length){
+        userValue = inputBox.value;
+        listData = '<li>'+ userValue +'</li>';
+    }else{
+        listData = list.join('');
+    }
+    suggBox.innerHTML = listData;
+}
+
+//function searchBar() {
 // coger el texto y imprimir los elementos en la consola que se corresponden a la busqueda 
-function searchBar() {
-    
+/*
     datosBuscados = []
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
@@ -64,6 +156,7 @@ function searchBar() {
     xmlhttp.send();
 }
 
+*/
 /* BOTÓN DE SCROLL HACIA ARRIBA */
 
 var mybutton = document.getElementById("myBtn");

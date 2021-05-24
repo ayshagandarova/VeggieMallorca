@@ -10757,6 +10757,48 @@ section#contact form#contactForm :-ms-input-placeholder {
   background: #F3B04E;
 }
 
+.search-container .autocom-box{
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.search-container.active .autocom-box{
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.autocom-box li{
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+}
+
+.search-container.active .autocom-box li{
+  display: block;
+}
+.autocom-box li:hover{
+  background: #efefef;
+}
+
+.search-container .icon{
+  position: absolute;
+  right: 0px;
+  top: 2px;
+  height: 55px;
+  width: 55px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  color: #F8D160;
+  cursor: pointer;
+}
+
 .texto-centrado{
   display: flex;
   justify-content: center;
