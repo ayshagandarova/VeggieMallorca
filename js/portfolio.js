@@ -25,8 +25,38 @@ var marker;
 // Tiempo 
 
 !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+/*TEMPS NOU */
 
 
+
+
+//fetch('https://api.openweathermap.org/data/2.5/weather?q=%27+input.value+%27&appid=50a7aa80fa492fa92e874d23ad061374%27)
+fetch('http://api.openweathermap.org/data/2.5/onecall?lat=39.57304093831823&lon=2.637623597939436&units=metric&appid=d65b0eca8f33e6d27845457213d44750')
+.then((response) => {
+    return response.json();
+})
+.then(data => {
+   // $("#name").append( data.main.temp_max)
+    $("#kkculopedopis").attr("src", "http://openweathermap.org/img/wn/" + data.daily[0].weather[0].icon + ".png");
+    console.log(data)
+})
+
+/*
+
+//Proximos 3 dias
+        for (var i = 0; i < 3; i++) {
+          if (i != 0) {
+            var date = new Date(json.daily[i].dt * 1000);
+            $('#diaT' + i).append(date.getDate() + " de " + nombreMes(date.getMonth()));
+          }
+          $("#diaT" + i + "icon").attr("src", "http://openweathermap.org/img/wn/" + json.daily[i].weather[0].icon + ".png");
+          var max_t = Math.round(json.daily[i].temp.max - 273.15);
+          var min_t = Math.round(json.daily[i].temp.min - 273.15);
+          $("#diaT" + i + "temp").append(min_t + " - " + max_t + " °C");
+          $("#diaT" + i + "cloud").append(json.current.clouds + "%");
+        }
+      });
+*/
 /* BARRA BUSCADOR 
 
 // si se pulsa enter reacciona igual que si clicas el botón de buscar:
