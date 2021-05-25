@@ -716,11 +716,8 @@ function desplegable(i) {
             /*  WEATHER */
 
 
-            //weather
-console.log("lat: "+datos[i].geo1.lat)
-console.log("long: "+datos[i].geo1.long)
             var endpoint =
-                "https://api.openweathermap.org/data/2.5/onecall?lat="+datos[i].geo1.lat+"&lon="+datos[i].geo1.long+"&lang=es&exclude=alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
+                "https://api.openweathermap.org/data/2.5/onecall?lat="+datos[i].geo1.long+"&lon="+datos[i].geo1.lat+"&lang=es&exclude=alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
             fetch(endpoint)
                 .then(function (response) {
                     if (200 !== response.status) {
