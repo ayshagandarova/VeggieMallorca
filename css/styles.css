@@ -10934,3 +10934,11 @@ section#contact form#contactForm :-ms-input-placeholder {
   border-radius: 0%;
   cursor: pointer;
 }
+
+
+/*  WEATHER */
+
+.weather  {
+  padding-right: 3.5em;
+  float: left; 
+}

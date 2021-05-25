@@ -26,7 +26,7 @@
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 </head>
 
-<body id="page-top" onload="Cercador(0)">
+<body id="page-top" onload="Cercador(0), fetchForecast()">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
@@ -42,7 +42,8 @@
                     <nav id="menu">
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <!-- Aquí estarán todos los links a las planas-->
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#mapidGran">Mapa</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                    href="index.html#mapidGran">Mapa</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger"
                                     href="portfolio.html?restaurant">Restaurants</a>
                             </li>
@@ -61,8 +62,8 @@
                                 </ul>
                             </li>
                             <!--Favorits-->
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger"
-                                href="portfolio.html?favorits"><i class="fa fa-heart"></i> Favorits</a>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="portfolio.html?favorits"><i
+                                        class="fa fa-heart"></i> Favorits</a>
                             </li>
                         </ul>
                     </nav>
@@ -80,11 +81,69 @@
             </div>
             <div>
                 <h2>prova temps</h2>
-
-                <img  id= "kkculopedopis">
-
-
             </div>
+            <div class="weather">  
+                <p id="diaSetmana0"></p>
+                <img id="icono0">
+                <p id="temp0"></p>
+            </div>
+            <div class="weather">  
+                <p id="diaSetmana1"> Avui: </p>
+                <img id="icono1">
+                <p id="temp1"> temp: </p>
+            </div>
+            <div class="weather">  
+                <p id="diaSetmana2"> Avui: </p>
+                <img id="icono2">
+                <p id="temp2"> temp: </p>
+            </div>
+            
+
+
+
+
+
+
+
+
+
+            <!--<section class=”weather”>
+                    <div class=”container”>
+                        <div class=”forecast”>
+                            <p id="diaSetmana"> Avui: </p>
+                            here we populate the 7 days forecast
+                        </div>
+                    </div>
+                </section>
+            
+           
+            <section class="ajax-section"> 
+                <div class="container">
+                     <ul id="cities">
+
+                        <li class="city"> 
+                            <h2 class="city-name"  id="zorra" data-name="..."> 
+                                <span>...</span> 
+                                <sup>...</sup> 
+                            </h2> 
+                            <span class="city-temp">
+                                ...<sup>°C</sup>
+                            </span> 
+                            <figure>
+                                 <img class="city-icon" src="..." alt="..."> 
+                                 <figcaption>...</figcaption> 
+                            </figure> 
+                        </li>
+
+
+                     </ul> 
+                     
+                </div>
+            </section>-->
+
+
+
+
             <div class="row justify-content-center">
                 <div class="col-lg-4 sort-container ">
                     <!-- Filtrar -->
@@ -111,13 +170,13 @@
                         <option value="4">Andratx</option>
                     </select>
                 </div>
-                
+
                 <div class="col-lg-4 ">
                     <!-- Barra buscador-->
                     <div class="search-container">
                         <a href="" target="_blank" hidden></a>
                         <input type="text" name="search" id="myInput" placeholder="Cercar..." />
-                        <div class="autocom-box" >
+                        <div class="autocom-box">
                             <li>HOla</li>
                         </div>
                         <div class="icon"><i class="fas fa-search"></i></div>

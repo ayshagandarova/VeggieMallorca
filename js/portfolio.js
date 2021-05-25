@@ -30,18 +30,77 @@ var marker;
 
 
 
-//fetch('https://api.openweathermap.org/data/2.5/weather?q=%27+input.value+%27&appid=50a7aa80fa492fa92e874d23ad061374%27)
-fetch('http://api.openweathermap.org/data/2.5/onecall?lat=39.57304093831823&lon=2.637623597939436&units=metric&appid=d65b0eca8f33e6d27845457213d44750')
-.then((response) => {
-    return response.json();
-})
-.then(data => {
-   // $("#name").append( data.main.temp_max)
-    $("#kkculopedopis").attr("src", "http://openweathermap.org/img/wn/" + data.daily[0].weather[0].icon + ".png");
-    console.log(data)
-})
+var endpoint =
+    "http://api.openweathermap.org/data/2.5/onecall?lat=39.57304093831823&lon=2.637623597939436&exclude=hourly,alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
+fetch(endpoint)
+    .then(function (response) {
+        if (200 !== response.status) {
+            console.log(
+                "Looks like there was a problem. Status Code: " + response.status
+            );
+            return;
+        }
+        response.json().then(function (data) {
 
+        for (var w = 0; w<3 ; w++){
+            var dayname = new Date(data.daily[w].dt * 1000).toLocaleDateString("en", {
+                weekday: "long",
+            });
+            $("#diaSetmana"+w).append(dayname);
+
+            var icon = data.daily[w].weather[0].icon;
+            $("#icono"+w).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+
+            var tempMax = data.daily[w].temp.max.toFixed(0);
+            var tempMin = data.daily[w].temp.min.toFixed(0);
+            $("#temp"+w).append(tempMax + " °C - "+tempMin+" °C");
+            //$("#kkculopedopis").attr("src", "http://openweathermap.org/img/wn/" + data.daily[0].weather[0].icon + ".png");
+            console.log(data)
+
+        }
+       
+   
+
+        });
+
+    })
+
+    /*
+
+
+     //Proximos 3 dias
+        for (var i = 0; i < 3; i++) {
+            if (i != 0) {
+              var date = new Date(json.daily[i].dt * 1000);
+              $('#diaT' + i).append(date.getDate() + " de " + nombreMes(date.getMonth()));
+            }
+            $("#diaT" + i + "icon").attr("src", "http://openweathermap.org/img/wn/" + json.daily[i].weather[0].icon + ".png");
+            var max_t = Math.round(json.daily[i].temp.max - 273.15);
+            var min_t = Math.round(json.daily[i].temp.min - 273.15);
+            $("#diaT" + i + "temp").append(min_t + " - " + max_t + " °C");
+            $("#diaT" + i + "cloud").append(json.current.clouds + "%");
+          }
+
+
+    const li = document.createElement("li");
+    li.classList.add("city");
+    const markup = `
+      <h2 class="city-name" data-name="${name},${sys.country}">
+        <span>${name}</span>
+        <sup>${sys.country}</sup>
+      </h2>
+      <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup>
+      </div>
+      <figure>
+        <img class="city-icon" src=${icon} alt=${weather[0]["main"]}>
+        <figcaption>${weather[0]["description"]}</figcaption>
+      </figure>
+    `;
+    li.innerHTML = markup;
+    list.appendChild(li);
+    */
 /*
+
 
 //Proximos 3 dias
         for (var i = 0; i < 3; i++) {
@@ -57,6 +116,76 @@ fetch('http://api.openweathermap.org/data/2.5/onecall?lat=39.57304093831823&lon=
         }
       });
 */
+fetchForecast = function () {
+    var endpoint =
+        "http://api.openweathermap.org/data/2.5/onecall?lat=39.57304093831823&lon=2.637623597939436&exclude=hourly,alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
+    var forecastEl = document.getElementsByClassName("forecast");
+
+    fetch(endpoint)
+        .then(function (response) {
+            if (200 !== response.status) {
+                console.log(
+                    "Looks like there was a problem. Status Code: " + response.status
+                );
+                return;
+            }
+
+            //forecastEl[0].classList.add('loaded');
+            response.json().then(function (data) {
+                var fday = "";
+                //data.daily.forEach((value, index) => {
+                //	if (index > 0) {
+
+                var dayname = new Date(data.daily[0].dt * 1000).toLocaleDateString("en", {
+                    weekday: "long",
+                });
+                console.log("dayname: " + dayname)
+                var icon = data.daily[0].weather[0].icon;
+                $("#forecast").attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+                var temp = data.daily[0].temp.day.toFixed(0);
+                console.log("temp " + temp)
+                fday = `<div class="forecast-day">
+						<p>${dayname}</p>
+						<p><span class="ico-${icon}" title="${icon}"></span></p>
+						<div class="forecast-day--temp">${temp}<sup>°C</sup></div>
+					</div>`;
+                $("#forecast").append(fday)
+                //forecastEl.insertAdjacentHTML('afterbegin', fday);
+                //}
+                //});
+            });
+        })
+        .catch(function (err) {
+            console.log("Fetch Error :-S", err);
+        });
+};
+
+
+/*
+document.addEventListener( 'DOMContentLoaded', function() {
+    var weather;
+
+    if ( 'IntersectionObserver' in window ) {
+        weather = document.querySelectorAll('.weather');
+
+        var weatherObserver = new IntersectionObserver( function( entries, observer ) {
+            entries.forEach( function( entry ) {
+                if ( entry.isIntersecting ) {
+                    if (entry.target.classList.contains('weather')) {
+                        fetchForecast();
+                    }
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -120px 0px'
+        });
+
+        weather.forEach(function (s) {
+            weatherObserver.observe(s);
+        });
+    }
+});*/
+
 /* BARRA BUSCADOR 
 
 // si se pulsa enter reacciona igual que si clicas el botón de buscar:
@@ -88,7 +217,7 @@ inputBox.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
     datosBuscados = dadesS.filter((element) => {
         return (
-            
+
             element.nom.toLowerCase().includes(searchString)
         )
     });
@@ -283,11 +412,11 @@ function addElement(datos, id, filtrado) {
             newa1.setAttribute('data-toggle', "modal");
             newa1.setAttribute('data-target', "#myModal");
             if (datos[datosFiltrados[i]].tipus == "vegetariano") {
-                datosFiltrados[i] = datosFiltrados[i]+ 100;
+                datosFiltrados[i] = datosFiltrados[i] + 100;
                 newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");");
-                datosFiltrados[i] = datosFiltrados[i]-100
-            }else{
-            newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");")
+                datosFiltrados[i] = datosFiltrados[i] - 100
+            } else {
+                newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");")
             }
             newDiv1.appendChild(newa1);
 
@@ -443,12 +572,12 @@ function desplegable(i) {
     if ($("#nombreElement").html() !== null) {
         eliminarDatosElemento();
     }
-    console.log("i: "+i)
+    console.log("i: " + i)
     var xmlhttp = new XMLHttpRequest();
     if (i >= 100) {
         var url = "https://bares-mallorca.netlify.app/data.json"
-        i = i-100
-        console.log("i flexi: "+i)
+        i = i - 100
+        console.log("i flexi: " + i)
     } else {
         var url = "dades.json"
     }
