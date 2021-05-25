@@ -1,3 +1,4 @@
+Access-Control-Allow-Origin: *
 /* MAPA */
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
 var map = new mapboxgl.Map({
