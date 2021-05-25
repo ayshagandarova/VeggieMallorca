@@ -736,7 +736,7 @@ function desplegable(i) {
                             $("#actualTemp" + w).append(data.current.temp + " °C");
                             var icon = data.daily[w].weather[0].icon;
                             $("#icono" + w).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
-                            $("#description" + w).append(data.current.weather[0].description);
+                            $("#description" + w).append(data.daily[w].weather[0].description);
 
                             var tempMax = data.daily[w].temp.max.toFixed(0);
                             var tempMin = data.daily[w].temp.min.toFixed(0);
