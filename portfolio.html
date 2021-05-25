@@ -26,7 +26,7 @@
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 </head>
 
-<body id="page-top" onload="Cercador(0), fetchForecast()">
+<body id="page-top" onload="Cercador(0)">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
@@ -79,71 +79,6 @@
                 <h2 class="section-heading text-uppercase" id="titolPortfoli"></h2>
                 <h3 class="section-subheading text-muted" id="descPortfoli"></h3>
             </div>
-            <div>
-                <h2>prova temps</h2>
-            </div>
-            <div class="weather">  
-                <p id="diaSetmana0"></p>
-                <img id="icono0">
-                <p id="temp0"></p>
-            </div>
-            <div class="weather">  
-                <p id="diaSetmana1"> Avui: </p>
-                <img id="icono1">
-                <p id="temp1"> temp: </p>
-            </div>
-            <div class="weather">  
-                <p id="diaSetmana2"> Avui: </p>
-                <img id="icono2">
-                <p id="temp2"> temp: </p>
-            </div>
-            
-
-
-
-
-
-
-
-
-
-            <!--<section class=”weather”>
-                    <div class=”container”>
-                        <div class=”forecast”>
-                            <p id="diaSetmana"> Avui: </p>
-                            here we populate the 7 days forecast
-                        </div>
-                    </div>
-                </section>
-            
-           
-            <section class="ajax-section"> 
-                <div class="container">
-                     <ul id="cities">
-
-                        <li class="city"> 
-                            <h2 class="city-name"  id="zorra" data-name="..."> 
-                                <span>...</span> 
-                                <sup>...</sup> 
-                            </h2> 
-                            <span class="city-temp">
-                                ...<sup>°C</sup>
-                            </span> 
-                            <figure>
-                                 <img class="city-icon" src="..." alt="..."> 
-                                 <figcaption>...</figcaption> 
-                            </figure> 
-                        </li>
-
-
-                     </ul> 
-                     
-                </div>
-            </section>-->
-
-
-
-
             <div class="row justify-content-center">
                 <div class="col-lg-4 sort-container ">
                     <!-- Filtrar -->
@@ -234,9 +169,43 @@
                             <div id="puntuacio"></div>
 
                             <!-- Widget tiempo -->
-                            <a class="weatherwidget-io  texto-centrado" href="https://forecast7.com/es/39d572d65/palma/"
-                                data-label_1="PALMA" data-label_2="WEATHER" data-icons="Climacons Animated"
-                                data-mode="Forecast" data-theme="pure">PALMA</a>
+                            <div class="container">
+                                <div class="weather">
+                                    <div class="boxWeather">
+                                        <div class="text-center">
+                                            <p id="diaSetmana0"></p>
+                                            <h5 id="actualTemp0"></h5>
+                                            <img id="icono0">
+                                            <p id="description0" style="font-size: 10px;"></p>
+                                            <p id="temp0"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weather">
+                                    <div class="boxWeather">
+                                        <div class="text-center">
+                                            <p id="diaSetmana1"></p>
+                                            <h5 id="actualTemp1"></h5>
+                                            <img id="icono1">
+                                            <p id="description1" style="font-size: 10px;"></p>
+                                            <p id="temp1"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weather">
+                                    <div class="boxWeather">
+                                        <div class="text-center">
+                                            <p id="diaSetmana2"></p>
+                                            <h5 id="actualTemp2"></h5>
+                                            <img id="icono2">
+                                            <p id="description2" style="font-size: 10px;"></p>
+                                            <p id="temp2"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                     <div class="row justify-content-center">

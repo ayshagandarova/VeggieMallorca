@@ -20,145 +20,9 @@ map.addControl(new mapboxgl.GeolocateControl({
 })
 );
 
-var marker;
-
-// Tiempo 
-
-!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
-/*TEMPS NOU */
+var marker;    
 
 
-
-
-var endpoint =
-    "http://api.openweathermap.org/data/2.5/onecall?lat=39.57304093831823&lon=2.637623597939436&exclude=hourly,alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
-fetch(endpoint)
-    .then(function (response) {
-        if (200 !== response.status) {
-            console.log(
-                "Looks like there was a problem. Status Code: " + response.status
-            );
-            return;
-        }
-        response.json().then(function (data) {
-
-        for (var w = 0; w<3 ; w++){
-            var dayname = new Date(data.daily[w].dt * 1000).toLocaleDateString("en", {
-                weekday: "long",
-            });
-            $("#diaSetmana"+w).append(dayname);
-
-            var icon = data.daily[w].weather[0].icon;
-            $("#icono"+w).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
-
-            var tempMax = data.daily[w].temp.max.toFixed(0);
-            var tempMin = data.daily[w].temp.min.toFixed(0);
-            $("#temp"+w).append(tempMax + " °C - "+tempMin+" °C");
-            //$("#kkculopedopis").attr("src", "http://openweathermap.org/img/wn/" + data.daily[0].weather[0].icon + ".png");
-            console.log(data)
-
-        }
-       
-   
-
-        });
-
-    })
-
-    /*
-
-
-     //Proximos 3 dias
-        for (var i = 0; i < 3; i++) {
-            if (i != 0) {
-              var date = new Date(json.daily[i].dt * 1000);
-              $('#diaT' + i).append(date.getDate() + " de " + nombreMes(date.getMonth()));
-            }
-            $("#diaT" + i + "icon").attr("src", "http://openweathermap.org/img/wn/" + json.daily[i].weather[0].icon + ".png");
-            var max_t = Math.round(json.daily[i].temp.max - 273.15);
-            var min_t = Math.round(json.daily[i].temp.min - 273.15);
-            $("#diaT" + i + "temp").append(min_t + " - " + max_t + " °C");
-            $("#diaT" + i + "cloud").append(json.current.clouds + "%");
-          }
-
-
-    const li = document.createElement("li");
-    li.classList.add("city");
-    const markup = `
-      <h2 class="city-name" data-name="${name},${sys.country}">
-        <span>${name}</span>
-        <sup>${sys.country}</sup>
-      </h2>
-      <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup>
-      </div>
-      <figure>
-        <img class="city-icon" src=${icon} alt=${weather[0]["main"]}>
-        <figcaption>${weather[0]["description"]}</figcaption>
-      </figure>
-    `;
-    li.innerHTML = markup;
-    list.appendChild(li);
-    */
-/*
-
-
-//Proximos 3 dias
-        for (var i = 0; i < 3; i++) {
-          if (i != 0) {
-            var date = new Date(json.daily[i].dt * 1000);
-            $('#diaT' + i).append(date.getDate() + " de " + nombreMes(date.getMonth()));
-          }
-          $("#diaT" + i + "icon").attr("src", "http://openweathermap.org/img/wn/" + json.daily[i].weather[0].icon + ".png");
-          var max_t = Math.round(json.daily[i].temp.max - 273.15);
-          var min_t = Math.round(json.daily[i].temp.min - 273.15);
-          $("#diaT" + i + "temp").append(min_t + " - " + max_t + " °C");
-          $("#diaT" + i + "cloud").append(json.current.clouds + "%");
-        }
-      });
-*/
-fetchForecast = function () {
-    var endpoint =
-        "http://api.openweathermap.org/data/2.5/onecall?lat=39.57304093831823&lon=2.637623597939436&exclude=hourly,alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
-    var forecastEl = document.getElementsByClassName("forecast");
-
-    fetch(endpoint)
-        .then(function (response) {
-            if (200 !== response.status) {
-                console.log(
-                    "Looks like there was a problem. Status Code: " + response.status
-                );
-                return;
-            }
-
-            //forecastEl[0].classList.add('loaded');
-            response.json().then(function (data) {
-                var fday = "";
-                //data.daily.forEach((value, index) => {
-                //	if (index > 0) {
-
-                var dayname = new Date(data.daily[0].dt * 1000).toLocaleDateString("en", {
-                    weekday: "long",
-                });
-                console.log("dayname: " + dayname)
-                var icon = data.daily[0].weather[0].icon;
-                $("#forecast").attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
-                var temp = data.daily[0].temp.day.toFixed(0);
-                console.log("temp " + temp)
-                fday = `<div class="forecast-day">
-						<p>${dayname}</p>
-						<p><span class="ico-${icon}" title="${icon}"></span></p>
-						<div class="forecast-day--temp">${temp}<sup>°C</sup></div>
-					</div>`;
-                $("#forecast").append(fday)
-                //forecastEl.insertAdjacentHTML('afterbegin', fday);
-                //}
-                //});
-            });
-        })
-        .catch(function (err) {
-            console.log("Fetch Error :-S", err);
-        });
-};
 
 
 /*
@@ -562,9 +426,22 @@ function eliminarDatosElemento() {
     $("#favorito").html("");
     $("#puntuacio").html("");
     $("#enlaces").html("");
-    if (marker != null) {
-        marker.remove();
-    }
+    /*parte de tiempo a continuacion ( se tiene q mejorar)*/
+    $("#diaSetmana0").html("");
+    $("#diaSetmana1").html("");
+    $("#diaSetmana2").html("");
+    $("#actualTemp0").html("");
+    $("#actualTemp1").html("");
+    $("#actualTemp2").html("");
+    $("#icono0").html("");
+    $("#icono1").html("");
+    $("#icono2").html("");
+    $("#description0").html("");
+    $("#description1").html("");
+    $("#description2").html("");
+    $("#temp0").html("");
+    $("#temp1").html("");
+    $("#temp2").html("");
 }
 
 /* Función que rellena los datos de los desplegables */
@@ -835,6 +712,42 @@ function desplegable(i) {
             $("#horariDv").append(pDv);
             $("#horariDs").append(pDs);
             $("#horariDg").append(pDg);
+
+            /*  WEATHER */
+
+
+            //weather
+
+            var endpoint =
+                "http://api.openweathermap.org/data/2.5/onecall?lat="+datos[i].geo1.lat+"&lon="+datos[i].geo1.long+"&lang=es&exclude=alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
+            fetch(endpoint)
+                .then(function (response) {
+                    if (200 !== response.status) {
+                        console.log(
+                            "Looks like there was a problem. Status Code: " + response.status
+                        );
+                        return;
+                    }
+                    response.json().then(function (data) {
+
+                        for (var w = 0; w < 3; w++) {
+                            var dayname = new Date(data.daily[w].dt * 1000).toLocaleDateString("es", {
+                                weekday: "long",
+                            });
+                            $("#diaSetmana" + w).append(dayname);
+                            $("#actualTemp" + w).append(data.current.temp + " °C");
+                            var icon = data.daily[w].weather[0].icon;
+                            $("#icono" + w).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+                            $("#description" + w).append(data.current.weather[0].description);
+
+                            var tempMax = data.daily[w].temp.max.toFixed(0);
+                            var tempMin = data.daily[w].temp.min.toFixed(0);
+                            console.log("tempmax "+tempMax)
+                            $("#temp" + w).append(tempMin + " °C - " + tempMax + " °C");
+
+                        }
+                    });
+                })
 
 
             var newDeteall = document.createElement("p");

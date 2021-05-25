@@ -10939,6 +10939,17 @@ section#contact form#contactForm :-ms-input-placeholder {
 /*  WEATHER */
 
 .weather  {
-  padding-right: 3.5em;
-  float: left; 
+  padding-right: 0.5em;
+  float: left;  /* queden alineados horizontalmente, además el número de artículos en cada fila se ajustará automáticamente al ancho de la pantalla.*/
 }
+
+.boxWeather{
+  border: 10px solid #E0E0E0;
+  background: #ffffff;
+  height: 250px;
+  width: 140px;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 15px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
+  }
