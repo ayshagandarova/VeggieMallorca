@@ -733,14 +733,13 @@ function desplegable(i) {
                                 weekday: "long",
                             });
                             $("#diaSetmana" + w).append(dayname);
-                            $("#actualTemp" + w).append(data.current.temp + " °C");
+                            $("#actualTemp" + w).append(data.daily[w].temp.day + " °C");
                             var icon = data.daily[w].weather[0].icon;
                             $("#icono" + w).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
                             $("#description" + w).append(data.daily[w].weather[0].description);
 
                             var tempMax = data.daily[w].temp.max.toFixed(0);
                             var tempMin = data.daily[w].temp.min.toFixed(0);
-                            console.log("tempmax "+tempMax)
                             $("#temp" + w).append(tempMin + " °C - " + tempMax + " °C");
 
                         }
