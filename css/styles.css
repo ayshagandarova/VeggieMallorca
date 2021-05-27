@@ -10981,3 +10981,55 @@ section#contact form#contactForm :-ms-input-placeholder {
   border-radius: 15px;
   box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
   }
+
+
+.card{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  background: #ffffff;
+  margin-bottom: 2rem;
+  border: 0px;
+  
+}
+.card p{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.card p{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+.card h3{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+.card h5{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+.card:nth-child(even) .text-card {
+  order: 2;
+}
+@media(max-width:800px) {
+  .card {
+    display: block;
+  }
+}
