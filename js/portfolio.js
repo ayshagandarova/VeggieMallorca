@@ -78,15 +78,54 @@ const inputBox = searchWrapper.querySelector("input");
 const suggBox = searchWrapper.querySelector(".autocom-box");
 const icon = searchWrapper.querySelector(".icon");
 inputBox.addEventListener('keyup', (e) => {
-    const searchString = e.target.value.toLowerCase();
-    datosBuscados = dadesS.filter((element) => {
-        return (
-
-            element.nom.toLowerCase().includes(searchString)
-        )
-    });
-    console.log(datosBuscados);
+    let userData = e.target.value; //user enetered data
+    if(userData){
+        const searchString = e.target.value.toLowerCase();
+        datosBuscados = dadesS.filter((element) => {
+            return (
+                element.nom.toLowerCase().includes(searchString)
+            )
+        });
+        datosBuscados = datosBuscados.map((data)=>{
+            // passing return data inside li tag
+            return data = '<li>'+ data.nom +'</li>';
+        });
+        searchWrapper.classList.add("active"); //show autocomplete box
+        mostrarSugerits(datosBuscados);
+        let allList = suggBox.querySelectorAll("li");
+        for (let i = 0; i < allList.length; i++) {
+            //adding onclick attribute in all li tag
+            allList[i].setAttribute("onclick", "select(this)");
+            console.log(this);
+        }
+    }else{
+        searchWrapper.classList.remove("active"); //hide autocomplete box
+    }
 });
+
+function select(element){
+    let selectData = element.textContent;
+    console.log(element.textcontent);
+    inputBox.value = selectData;
+    icon.onclick = ()=>{
+        console.log("KUKUUUU");
+        webLink = "https://www.google.com/search?q=" + selectData;
+        linkTag.setAttribute("href", webLink);
+        linkTag.click();
+    }
+    searchWrapper.classList.remove("active");
+}
+
+function mostrarSugerits(list){
+    let listData;
+    if(!list.length){
+        userValue = inputBox.value;
+        listData = '<li>'+ userValue +'</li>';
+    }else{
+        listData = list.join('');
+    }
+    suggBox.innerHTML = listData;
+}
 
 /*
 
