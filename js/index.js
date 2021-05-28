@@ -172,30 +172,38 @@ function contador(){
         }
         //$("#numrest").append(document.createTextNode("Restaurants: "+ numRest));
         $("#restText").append(document.createTextNode(numRest+" Restaurants"))
-        numRest= numRest*10;
-        numRest= numRest+100;
-        document.getElementById('rest').setAttribute("width", numRest+"px");
-        document.getElementById('rest').setAttribute("height", "35px");
+        numRest= numRest*100
+        numRest= numRest+100
+        document.getElementById('rest').setAttribute("width", numRest+"px")
+        document.getElementById('rest').setAttribute("height", "35px")
         
+       
         numRest=numRest+5
         document.getElementById('restText').setAttribute("x", numRest+"px");
         
-        //<text id="restText" x="185" y="9.5" dy=".85em">8 restaurants</text>
 
         $("#superText").append(document.createTextNode(numSuper+" Supermercats"))
-        numSuper= numSuper*10;
+        numSuper= numSuper*100;
         numSuper= numSuper+100;
         document.getElementById('super').setAttribute("width", numSuper+"px");
         document.getElementById('super').setAttribute("height", "35px");
 
+        numSuper=numSuper+5
+        document.getElementById('superText').setAttribute("x", numSuper+"px");
+
+
         $("#cursText").append(document.createTextNode(numCursos+" Cursos"))
-        numCursos= numCursos*10;
+        numCursos= numCursos*100;
         numCursos= numCursos+100;
         document.getElementById('curs').setAttribute("width", numCursos+"px");
         document.getElementById('curs').setAttribute("height", "35px");
 
+        numCursos=numCursos+5
+        document.getElementById('cursText').setAttribute("x", numCursos+"px");
+
+
         $("#infoText").append(document.createTextNode(numInfo+" + Informació"))
-        numInfo= numInfo*10;
+        numInfo= numInfo*100;
         numInfo= numInfo+100;
         document.getElementById('mesinfo').setAttribute("width", numInfo+"px");
         document.getElementById('mesinfo').setAttribute("height", "35px");

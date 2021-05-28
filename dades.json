@@ -1759,17 +1759,17 @@
         "identificador":"",
         "comentari": "",
         "preu":{
-            "import":"4€",
+            "import":"0€",
             "coment-preu":""
         },
         "contacte":{
             "telf": "", 
             "email": "",
             "xarxes":  {  
-                "web": "https://www.lidl.es/es/next-level-meat/b1695",   
-                "facebook": "https://www.facebook.com/lidlespana/",
-                "twitter": "https://twitter.com/lidlespana?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
-                "instagram": "https://www.instagram.com/lidlespana/?hl=es",
+                "web": "https://www.beingbiotiful.com",   
+                "facebook": "https://es-es.facebook.com/BeingBiotiful/",
+                "twitter": "https://twitter.com/beingbiotiful",
+                "instagram": "https://www.instagram.com/beingbiotiful/?hl=es",
                 "tripadvisor": ""
             }
         },
@@ -1782,12 +1782,13 @@
             " "
         ],
         "imatges": [
-            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/fotoTimeLine.jpg",
-            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto1.jpg",
-            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto2.jpg",
-            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto3.jpg",
-            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto4.webp",
-            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto5.jpg"
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/biotiful/fotoTimeLine.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/biotiful/foto1.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/biotiful/foto2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/biotiful/foto3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/biotiful/foto4.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/biotiful/foto5.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/biotiful/foto6.jpg"
         ],
         "videos": [
             {"tipus": "youtube"},
