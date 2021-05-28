@@ -1750,6 +1750,110 @@
             "menu": "",
             "pedido": ""
         }
+    },
+    {
+        "nom":"Receptes Being Biotiful",
+        "descripcio": "Una pàgina web molt completa amb moltes idees de receptes de cuina vegetariana i vegana." ,
+        "detall": "LA PLATAFORMA QUE TE AYUDA A ORGANIZARTE EN LA COCINA, HACER TU COMPRA ONLINE Y COMER MEJOR TODOS LOS DÍAS.",
+        "tipus": "info",
+        "identificador":"",
+        "comentari": "",
+        "preu":{
+            "import":"4€",
+            "coment-preu":""
+        },
+        "contacte":{
+            "telf": "", 
+            "email": "",
+            "xarxes":  {  
+                "web": "https://www.lidl.es/es/next-level-meat/b1695",   
+                "facebook": "https://www.facebook.com/lidlespana/",
+                "twitter": "https://twitter.com/lidlespana?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+                "instagram": "https://www.instagram.com/lidlespana/?hl=es",
+                "tripadvisor": ""
+            }
+        },
+        "puntuacio":5,
+        "visualitzacions":"",
+        "likes":0,
+
+        "icones": [
+            " ",
+            " "
+        ],
+        "imatges": [
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/fotoTimeLine.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto1.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto2.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto3.jpg",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto4.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Informacio/info/lidl/foto5.jpg"
+        ],
+        "videos": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "audio": [
+            {"tipus": "youtube"},
+            {"url": ""}
+        ],
+        "geo1":{
+            "address": "",
+            "lat": 39.4380576638462,
+            "long": 3.013554426339741,
+            "city":"",
+            "Country":"Espanya",
+            "zip": "07010"
+        },
+        "geo2":{
+            "address": "",
+            "lat": "",
+            "long":"",
+            "city":"Palma",
+            "Country":"Espanya",
+            "zip":"07002"
+        },
+        "horari":{
+                "di": [
+                    {"in": "09:00","out": "21:30"},
+                    {"in": "","out": ""}
+                ],
+                "dm": [
+                    {"in": "09:00","out": "21:30"},
+                    {"in": "","out": ""}
+                ],
+                "dx": [
+                    {"in": "09:00","out": "21:30"},
+                    {"in": "","out": ""}
+                ],
+                "dj": [
+                    {"in": "09:00","out": "21:30"},
+                    {"in": "","out": ""}
+                ],
+                "dv": [
+                    {"in": "09:00","out": "21:30"},
+                    {"in": "","out": ""}
+                ],
+                "ds": [
+                    {"in": "09:00","out": "21:30"},
+                    {"in": "","out": ""}
+                ],
+                "dg": [
+                    {"in": "","out": ""},
+                    {"in": "","out": ""}
+                ]
+        },
+        "calendari" :{
+            "startDataEvent": "",
+            "startTimeEvent": "",
+            "endDataEvent":"",
+            "endTimeEvent":""
+        },
+        "dadesPropies" : { 
+            "menu": "",
+            "pedido": ""
+        }
+        
     }
 
 ]

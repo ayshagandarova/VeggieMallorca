@@ -170,10 +170,44 @@ function contador(){
               break;
           }
         }
-        $("#numrest").append(document.createTextNode("Restaurants: "+ numRest));
-        $("#numsup").append(document.createTextNode("Supermercats: "+ numSuper));
-        $("#numcurs").append(document.createTextNode("Cursos: "+ numCursos));
-        $("#numinfo").append(document.createTextNode("Info: "+ numInfo));
+        //$("#numrest").append(document.createTextNode("Restaurants: "+ numRest));
+        $("#restText").append(document.createTextNode(numRest+" Restaurants"))
+        numRest= numRest*10;
+        numRest= numRest+100;
+        document.getElementById('rest').setAttribute("width", numRest+"px");
+        document.getElementById('rest').setAttribute("height", "35px");
+        
+        numRest=numRest+5
+        document.getElementById('restText').setAttribute("x", numRest+"px");
+        
+        //<text id="restText" x="185" y="9.5" dy=".85em">8 restaurants</text>
+
+        $("#superText").append(document.createTextNode(numSuper+" Supermercats"))
+        numSuper= numSuper*10;
+        numSuper= numSuper+100;
+        document.getElementById('super').setAttribute("width", numSuper+"px");
+        document.getElementById('super').setAttribute("height", "35px");
+
+        $("#cursText").append(document.createTextNode(numCursos+" Cursos"))
+        numCursos= numCursos*10;
+        numCursos= numCursos+100;
+        document.getElementById('curs').setAttribute("width", numCursos+"px");
+        document.getElementById('curs').setAttribute("height", "35px");
+
+        $("#infoText").append(document.createTextNode(numInfo+" + Informació"))
+        numInfo= numInfo*10;
+        numInfo= numInfo+100;
+        document.getElementById('mesinfo').setAttribute("width", numInfo+"px");
+        document.getElementById('mesinfo').setAttribute("height", "35px");
+
+        numInfo=numInfo+5
+        document.getElementById('infoText').setAttribute("x", numInfo+"px");
+        
+
+        /*
+         <rect id="numrest" width="180" height="35"></rect>
+                        <text x="185" y="9.5" dy=".85em">8 restaurants</text>
+        */
     }
   };
   xmlhttp.open("GET", url, true);
