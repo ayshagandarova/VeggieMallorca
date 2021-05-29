@@ -4,7 +4,7 @@
         "descripcio": "Tenda d'aliments a granel. Productes de qualitat: arrossos, llgums, farines, fruites deshidratades, vi, vermut... A més, hi ha conserves i varietat de snacks." ,
         "detall": "Aposta per el producte local i per pensar un poc més en el medi ambient.",
         "tipus": "supermercat",
-        "identificador":"",
+        "identificador": 0,
         "comentari": "",
         "preu":{
             "import":"13€",
@@ -109,7 +109,7 @@
         "descripcio": "A les nostres tendes trobaràs una extensa gama d'alimentació natural i ecològica, artícles per dietes macrobiòtiques, cosmètica, llibres i altres articles relacionats amb la vida sana i natural." ,
         "detall": "Productes d'alta qualitat.",
         "tipus": "supermercat",
-        "identificador":"",
+        "identificador": 1,
         "comentari": "",
         "preu":{
             "import":"17€",
@@ -213,7 +213,7 @@
         "descripcio": "En Veritas apostem per un model ecològic, per això, en els nostres supermercats només trobaràs productes ecològics. Diversitat en l'assortit, Fórmules saludables, Envasos sostenibles" ,
         "detall": "",
         "tipus": "supermercat",
-        "identificador":"",
+        "identificador": 2,
         "comentari": "",
         "preu":{
             "import":"10",
@@ -315,7 +315,7 @@
         "descripcio": "Restaurant vegetarià, ovolàcteo i ecològic. Situat en el centre de Palma.",
         "detall": "Fan enviaments a domicili.",
         "tipus": "restaurant",
-        "identificador":"",
+        "identificador": 3,
         "comentari": "exemple: posar tipus de menjar del restaurante",
         "preu":{
             "import":"12€",
@@ -422,7 +422,7 @@
         "descripcio": "Ofereixen menjars elaborats amb productes locals, d'agricultura ecològica i de comerç just, per una alimentació sana i gustosa.",
         "detall": "Els dijous fan tapes.",
         "tipus": "restaurant",
-        "identificador":"",
+        "identificador": 4,
         "comentari": "",
         "preu":{
             "import":"15€",
@@ -526,7 +526,7 @@
         "descripcio": "Cervesses artesanes i plats vegetarians internacionals a un restaurant amb altillo de fusta i terrassa.",
         "detall": "Fan menú del dia complet per 15€.",
         "tipus": "restaurant",
-        "identificador":"",
+        "identificador": 5,
         "comentari": "",
         "preu":{
             "import":"13€",
@@ -629,7 +629,7 @@
         "descripcio": "Consumir alimentos crudi-veganos de Vegan & Raw despertara en ti la curiosidad de una nueva forma de nutrirse, mas sabia, respetuoso con nuestro entorno y uno mismo. Te llevara a tomar mas conciencia de tu forma de alimentarte y dará ese impulso de vida a zonas de tu cuerpo donde faltaba salud.",
         "detall": "Fan menú del dia complet per 15€.",
         "tipus": "restaurant",
-        "identificador":"",
+        "identificador": 6,
         "comentari": "",
         "preu":{
             "import":"8€",
@@ -733,7 +733,7 @@
         "descripcio": "Curs de cuina vegetariana, on pots preparar i cuinar les millors verdures de temporada, del mercat directament a la taula." ,
         "detall": "Aposta per el producte local.",
         "tipus": "curs",
-        "identificador":"",
+        "identificador": 7,
         "comentari": "",
         "preu":{
             "import":"50€",
@@ -840,7 +840,7 @@
         "descripcio": "Si estàs pensant en dur una dieta més vegetariana, menjar mé sa i veure lo bé que ets trobes fent un canvi d'alimentació, amb aquest curs podràs conèixer el món vegetarià des de la base, sense gastar fortunes en la teva alimentació, sentint-te amb molta més vitalitat." ,
         "detall": "Només per 4 alumnes.",
         "tipus": "curs",
-        "identificador":"",
+        "identificador": 8,
         "comentari": "",
         "preu":{
             "import":"200€",
@@ -944,7 +944,7 @@
         "descripcio": "Tota una nova gama de productes vegans." ,
         "detall": "",
         "tipus": "info",
-        "identificador":"",
+        "identificador": 9,
         "comentari": "",
         "preu":{
             "import":"4€",
@@ -1047,7 +1047,7 @@
         "descripcio": "Aquest restaurant no te opciones veganer pero si vegetarianes.",
         "detall": "Fan menú del dia complet per 15€.",
         "tipus": "restaurant",
-        "identificador":"",
+        "identificador": 10,
         "comentari": "",
         "preu":{
             "import":"15€",
@@ -1146,7 +1146,7 @@
         "descripcio": "IN 2019 DONNA VEGANA WAS FOUNDED WITH THE IDEA TO CREATE A FUN AND TASTY MENU WHICH ALLOWS US TO MAKE CHOICES THAT ARE HEALTHY FOR OURSELF AND FOR THE PLANET. WE BELIEVE THAT LIFE IT’S ABOUT BALANCE, OUR BODY IS OUR TEMPLE AND WE DISCOVER THAT HEALTH AND FUN CAN BE VERY GOOD TOGHETER.",
         "detall": " OUR MENU IS 100% VEGAN, ORGANIC AND GLUTEN FREE, MOSTLY LOCAL PRODUCED.",
         "tipus": "restaurant",
-        "identificador":"",
+        "identificador": 11,
         "comentari": "",
         "preu":{
             "import":"15€",
@@ -1248,7 +1248,7 @@
         "descripcio": "Aquest restaurant no te opciones veganer pero si vegetarianes.",
         "detall": "Fan menú del dia complet per 15€.",
         "tipus": "restaurant",
-        "identificador":"",
+        "identificador": 12,
         "comentari": "",
         "preu":{
             "import":"15€",
@@ -1350,7 +1350,7 @@
         "descripcio": "Aquest restaurant no te opciones veganer pero si vegetarianes.",
         "detall": "Fan menú del dia complet per 15€.",
         "tipus": "restaurant",
-        "identificador":"",
+        "identificador":13,
         "comentari": "",
         "preu":{
             "import":"15€",
@@ -1450,7 +1450,7 @@
         "descripcio": "Ofrecemos a nuestros clientes los mejores productos de Mallorca, fruto del esfuerzo y la experiencia de generaciones pasadas.",
         "detall": "Agromart cuenta con 22 tiendas repartidas por diferentes puntos de la isla de Mallorca.",
         "tipus": "supermercat",
-        "identificador":"",
+        "identificador":14,
         "comentari": "",
         "preu":{
             "import":"5€",
@@ -1553,7 +1553,7 @@
         "descripcio": "A Viveco li apassiona que la vida sostenible sigui accessible per a tanta gent com sigui possible. Nosaltres hem provat i provat tots els articles i pretenem emmagatzemar productes funcionals, ètics i ben dissenyats que ajudin a reduir l’ús diari de plàstic.",
         "detall": "Ofrece artículos alternativos que generan menos residuos y que empleamos a diario en estancias como la cocina o el baño.",
         "tipus": "supermercat",
-        "identificador":"",
+        "identificador":15,
         "comentari": "",
         "preu":{
             "import":"15€",
@@ -1655,7 +1655,7 @@
         "descripcio": "Eco Punt és una empresa de responsabilitat social i ambiental que vetlla per la salut de les persones i la societat a través de la innovació, l'agricultura i el treball en xarxa.",
         "detall": "",
         "tipus": "supermercat",
-        "identificador":"",
+        "identificador":16,
         "comentari": "",
         "preu":{
             "import":"15€",
@@ -1756,7 +1756,7 @@
         "descripcio": "Una pàgina web molt completa amb moltes idees de receptes de cuina vegetariana i vegana." ,
         "detall": "LA PLATAFORMA QUE TE AYUDA A ORGANIZARTE EN LA COCINA, HACER TU COMPRA ONLINE Y COMER MEJOR TODOS LOS DÍAS.",
         "tipus": "info",
-        "identificador":"",
+        "identificador":17,
         "comentari": "",
         "preu":{
             "import":"0€",

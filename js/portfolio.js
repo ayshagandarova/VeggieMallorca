@@ -20,10 +20,7 @@ map.addControl(new mapboxgl.GeolocateControl({
 })
 );
 
-var marker;    
-
-
-
+var marker;
 
 /*
 document.addEventListener( 'DOMContentLoaded', function() {
@@ -60,68 +57,164 @@ input.addEventListener('keyup', function (event) {
         document.getElementById("buscar").click();
     }
 });*/
-var datosBuscados
 
-var xmlhttp = new XMLHttpRequest();
-var url = "dades.json";
+
+
+
+var datosBuscados = [];
+
+
 var dades;
-xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        dadesS = JSON.parse(xmlhttp.responseText);
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+var datosFiltrados = [];
+/*
+DispatchQueue.main.async{
+    dades.reloadData()
+    datosFiltrados.reloadData()
+   }
+   */
+
+cargarDades(0);
+
+function cargarDades(filtrado) {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "dades.json";
+    var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
+    var id = urlweb.replace("?", "")
+
+    // leemos nuestros datos
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            dades = [];
+            var tot = JSON.parse(xmlhttp.responseText);
+            var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
+            var id = urlweb.replace("?", "")
+            if (id != "fira") {
+                for (var i = 0; i < tot.length; i++) {
+                    if (id == tot[i].tipus) {
+                        dades.push(tot[i]);
+                    }
+                }
+                // leemos los restaurantes de dilpreet  si son vegetarianos
+                if (id == "restaurant") {
+                    var xmlhttp2 = new XMLHttpRequest();
+                    var url2 = "https://bares-mallorca.netlify.app/data.json";
+                    xmlhttp2.onreadystatechange = function () {
+                        if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+                            var dadesExt = JSON.parse(xmlhttp2.responseText);
+
+                            for (var i = 0; i < dadesExt.length; i++) {
+                                if (dadesExt[i].tipus == "vegetariano") {
+                                    dades.push(dadesExt[i]);
+                                }
+                            }
+                            Cercador(filtrado);
+                        }
+                    };
+                    xmlhttp2.open("GET", url2, true);
+                    xmlhttp2.send();
+                }
+            } else {
+                var xmlhttp2 = new XMLHttpRequest();
+                var url2 = "https://fires-mallorca.netlify.app/jsonBase_1.json";
+                xmlhttp2.onreadystatechange = function () {
+                    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+                        dades = JSON.parse(xmlhttp2.responseText);
+                        var id = "Vegeteriana";
+                        //afegirElemPortfoliInfo(dadesFires, id);
+                        Cercador(filtrado);
+                    }
+                };
+                xmlhttp2.open("GET", url2, true);
+                xmlhttp2.send();
+
+
+            }
+            /*
+                        if (id == "favorits"){
+                            var dades = localStorage.getItem("favoritos") || "[]";
+                            dedes = JSON.parse(dades);
+                           // console.log(favoritos)
+                          //  dades = [];
+                        //   (()) dedes = favoritos;
+                            console.log(dades)
+                        }
+                        */
+
+
+            if (id != "restaurant" || id != "fira") {
+                Cercador(filtrado);
+            }
+
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
 
 const searchWrapper = document.querySelector(".search-container");
-const inputBox = searchWrapper.querySelector("input");
-const suggBox = searchWrapper.querySelector(".autocom-box");
-const icon = searchWrapper.querySelector(".icon");
-inputBox.addEventListener('keyup', (e) => {
-    let userData = e.target.value; //user enetered data
-    if(userData){
-        const searchString = e.target.value.toLowerCase();
-        datosBuscados = dadesS.filter((element) => {
-            return (
-                element.nom.toLowerCase().includes(searchString)
-            )
-        });
-        datosBuscados = datosBuscados.map((data)=>{
-            // passing return data inside li tag
-            return data = '<li>'+ data.nom +'</li>';
-        });
-        searchWrapper.classList.add("active"); //show autocomplete box
-        mostrarSugerits(datosBuscados);
-        let allList = suggBox.querySelectorAll("li");
-        for (let i = 0; i < allList.length; i++) {
-            //adding onclick attribute in all li tag
-            allList[i].setAttribute("onclick", "select(this)");
-            console.log(this);
-        }
-    }else{
-        searchWrapper.classList.remove("active"); //hide autocomplete box
-    }
-});
+if (searchWrapper != null) {
+    const inputBox = searchWrapper.querySelector("input");
+    const suggBox = searchWrapper.querySelector(".autocom-box");
+    const icon = searchWrapper.querySelector(".icon");
+    inputBox.addEventListener('keyup', (e) => {
+        let userData = e.target.value; //user enetered data
+        if (userData) {
 
-function select(element){
+            const searchString = e.target.value.toLowerCase();
+            datosBuscados = dades.filter((element) => {
+                return (
+                    element.nom.toLowerCase().includes(searchString)
+                )
+            });
+            datosBuscados = datosBuscados.map((data) => {
+                // passing return data inside li tag
+                return data = '<li>' + data.nom + '</li>';
+            });
+            searchWrapper.classList.add("active"); //show autocomplete box
+            mostrarSugerits(datosBuscados);
+            let allList = suggBox.querySelectorAll("li");
+            for (let i = 0; i < allList.length; i++) {
+                //adding onclick attribute in all li tag
+                allList[i].setAttribute("onclick", "select(this)");
+            }
+        } else {
+            searchWrapper.classList.remove("active"); //hide autocomplete box
+        }
+    });
+
+}
+
+
+
+function select(element) {
+    let linkTag = searchWrapper.querySelector("a");
     let selectData = element.textContent;
-    console.log(element.textcontent);
+    console.log(selectData);
     inputBox.value = selectData;
-    icon.onclick = ()=>{
-        console.log("KUKUUUU");
+    icon.onclick = () => {
         webLink = "https://www.google.com/search?q=" + selectData;
         linkTag.setAttribute("href", webLink);
+        linkTag.setAttribute('class', "portfolio-link");
+        linkTag.setAttribute('data-toggle', "modal");
+        linkTag.setAttribute('data-target', "#myModal");
+        for (var i = 0; i < datosFiltrados.length; i++) {
+            if (datosFiltrados[i].nom == selectData) {
+                linkTag.setAttribute('onclick', "desplegable(" + i + ");");
+            }
+        }
+
         linkTag.click();
     }
     searchWrapper.classList.remove("active");
 }
 
-function mostrarSugerits(list){
+function mostrarSugerits(list) {
     let listData;
-    if(!list.length){
+    if (!list.length) {
         userValue = inputBox.value;
-        listData = '<li>'+ userValue +'</li>';
-    }else{
+        listData = '<li>' + userValue + '</li>';
+    } else {
         listData = list.join('');
     }
     suggBox.innerHTML = listData;
@@ -178,130 +271,140 @@ function topFunction() {
 /* FILTRADO */
 //Filtrar para diferenciar entre restaurants o supermercats
 function Cercador(filtrado) {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json";
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            console.log("no flexi")
-            var datos = JSON.parse(xmlhttp.responseText);
-            var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
-            var id = urlweb.replace("?", "")
-            $("#titolPortfoli").html("")
-            $("#descPortfoli").html("")
-            if (id == "restaurant") {
-                $("#titolPortfoli").append("Restaurants")
-                $("#descPortfoli").append("Aquí trobàs la millor secció de restaurants que tenen opcions veganes o vegetarianes.")
-            } else if (id == "supermercat") {
-                $("#titolPortfoli").append("Supermercats")
-                $("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
-            } else if (id == "favorits") {
-                $("#titolPortfoli").append("Favorits")
-                $("#descPortfoli").append("Conjunt de restaurants i supermercats favorits.")
-            }
-            addElement(datos, id, filtrado);
-            console.log(id)
-            console.log("filtrado " + filtrado)
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+    var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
+    var id = urlweb.replace("?", "")
+    $("#titolPortfoli").html("")
+    $("#descPortfoli").html("")
+    switch (id) {
+        case "restaurant":
+            $("#titolPortfoli").append("Restaurants")
+            $("#descPortfoli").append("Aquí trobàs la millor secció de restaurants que tenen opcions veganes o vegetarianes.")
+            break;
+        case "supermercat":
+            $("#titolPortfoli").append("Supermercats")
+            $("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
+            break;
+        case "favorits":
+            $("#titolPortfoli").append("Favorits")
+            $("#descPortfoli").append("Conjunt de restaurants i supermercats favorits.")
+            break;
+        case "curs":
+            $("#headingInfo").append("CURSOS")
+            $("#subHeadingInfo").append("Troba aquí una petita selecció de cursos online i presencials vegetarians o vegans")
+            //afegirElemPortfoliInfo( id);
+            break;
+        case "info":
+            $("#headingInfo").append("DADES INTERESSANTS")
+            $("#subHeadingInfo").append("No et perdis les darreres notícies.")
+            // afegirElemPortfoliInfo(datos, id);
+            break;
+        case "fira":
+            id = "Vegeteriana";
+            $("#headingInfo").append("FIRES VEGETARIANES I VEGANES DE L'ILLA")
+            $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
+            //  buscadorFires();
+            break;
+    }
+    /*
+    if (id == "restaurant") {
+        $("#titolPortfoli").append("Restaurants")
+        $("#descPortfoli").append("Aquí trobàs la millor secció de restaurants que tenen opcions veganes o vegetarianes.")
+    } else if (id == "supermercat") {
+        $("#titolPortfoli").append("Supermercats")
+        $("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
+    } else if (id == "favorits") {
+        $("#titolPortfoli").append("Favorits")
+        $("#descPortfoli").append("Conjunt de restaurants i supermercats favorits.")
+    }else if (id == "informacio") {
+        $("#headingInfo").append("MÉS INFORMACIÓ RELLEVANT")
+        $("#subHeadingInfo").append("Segueix descobrint visitant les fires de l'illa, diferents cursos i tot un conjunt de curiositats.")
+        addElemTimeLine(datos);
+    } else if (id == "curs") {
+        $("#headingInfo").append("CURSOS")
+        $("#subHeadingInfo").append("Troba aquí una petita selecció de cursos online i presencials vegetarians o vegans")
+        afegirElemPortfoliInfo(datos, id);
+    } else if (id == "info") {
+        $("#headingInfo").append("DADES INTERESSANTS")
+        $("#subHeadingInfo").append("No et perdis les darreres notícies.")
+        afegirElemPortfoliInfo(datos, id);
+    } else if (id == "fira") {
+        $("#headingInfo").append("FIRES VEGETARIANES I VEGANES DE L'ILLA")
+        $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
+        buscadorFires();
+    }*/
+    filtrar(id, filtrado);
+    addElement(id);
 }
 
-//Filtrar para diferenciar entre restaurants o supermercats
-function CercadorFlexi(filtrado) {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "https://bares-mallorca.netlify.app/data.json";
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datosFlexi = JSON.parse(xmlhttp.responseText);
-            var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
-            var id = urlweb.replace("?", "")
-            $("#titolPortfoli").html("")
-            $("#descPortfoli").html("")
-            if (id == "restaurant") {
-                $("#titolPortfoli").append("Restaurants")
-                $("#descPortfoli").append("Aquí trobàs la millor secció de restaurants que tenen opcions veganes o vegetarianes.")
-            } else if (id == "supermercat") {
-                $("#titolPortfoli").append("Supermercats")
-                $("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
-            } else if (id == "favorits") {
-                $("#titolPortfoli").append("Favorits")
-                $("#descPortfoli").append("Conjunt de restaurants i supermercats favorits.")
+
+
+
+function filtrar(id, filtrado) {
+    datosFiltrados = [];
+    if (id == "restaurant" || id == "favorits" || id == "supermercat") {
+        if (filtrado == 0) { // predeterminado        ya esta hecho en  cargarDades      
+            datosFiltrados = dades;
+        } else if (filtrado == 1) { //Més valorades
+            for (var i = 0; i < dades.length; i++) {
+                var idPuntuacio = 0;
+                var puntuacioAnterior = 0;
+                //mira qué actividad és la siguiente con más puntuación
+                for (var j = 0; j < dades.length; j++) {
+                    if (dades[j].puntuacio >= puntuacioAnterior && !datosFiltrados.includes(dades[j])) {
+                        idPuntuacio = j;
+                        puntuacioAnterior = dades[j].puntuacio;
+                    }
+                }
+
+                datosFiltrados.push(dades[idPuntuacio]);
             }
-            addElement(datosFlexi, id, filtrado);
+            console.log(datosFiltrados);
+        } else if (filtrado == 2) { //Preu decreixent
+            console.log(dades);
+            for (var i = 0; i < dades.length; i++) {
+                var idPreuA = 0;
+                var preuAAnterior = 0;
+                //mira qué actividad és la siguiente con más puntuación
+                for (var j = 0; j < dades.length; j++) {
+                    var preu = dades[j].preu.import;
+                    preu = preu.replace(" €", "");
+                    preu = parseFloat(preu); //Convierto el String a Int
+                    if (preu >= preuAAnterior && !datosFiltrados.includes(dades[j])) {
+                        idPreuA = j;
+                        preuAAnterior = preu;
+                    }
+                }
+                datosFiltrados.push(dades[idPreuA]);
+            }
+        } else if (filtrado == 3) { //Preu ascendent
+            for (var i = 0; i < dades.length; i++) {
+                var idPreuD = 0;
+                var preuDAnterior = 1000;
+                //mira qué actividad és la siguiente con más puntuación
+                for (var j = 0; j < dades.length; j++) {
+                    var preu = dades[j].preu.import;
+                    preu = preu.replace(" €", "");
+                    preu = parseFloat(preu); //Convierto el String a Int
+                    if (preu < preuDAnterior && !datosFiltrados.includes(dades[j])) {
+                        idPreuD = j;
+                        preuDAnterior = preu;
+                    }
+                }
+                datosFiltrados.push(dades[idPreuD]);
+            }
         }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+    } else { // fira, curs, info o vegetariana
+        datosFiltrados = dades;
+    }
+    $("#galeriaPortfoli").html("");
+
+    console.log("Estoy en filtrado (" + filtrado + ") y mi id es: " + id);
 }
 
 //Afegir elements al portfoli de restaurants o supermercats
-function addElement(datos, id, filtrado) {
-    var datosFiltrados = []
-    if (filtrado == 0) { //predeterminado
-        for (var i = 0; i < datos.length; i++) {
-            datosFiltrados.push(i)
-        }
-    } else if (filtrado == 1) { //Més valorades
-        for (var i = 0; i < datos.length; i++) {
-            var idPuntuacio = 0;
-            var puntuacioAnterior = 0;
-            //mira qué actividad és la siguiente con más puntuación
-            for (var j = 0; j < datos.length; j++) {
-                if (datos[j].puntuacio >= puntuacioAnterior && !datosFiltrados.includes(j)) {
-                    idPuntuacio = j;
-                    puntuacioAnterior = datos[j].puntuacio;
-                }
-            }
-            datosFiltrados.push(idPuntuacio);
-        }
-    } else if (filtrado == 2) { //Preu decreixent
-        for (var i = 0; i < datos.length; i++) {
-            var idPreuA = 0;
-            var preuAAnterior = 0;
-            //mira qué actividad és la siguiente con más puntuación
-            for (var j = 0; j < datos.length; j++) {
-                var preu = datos[j].preu.import;
-                preu = preu.replace(" €", "");
-                preu = parseFloat(preu); //Convierto el String a Int
-                if (preu >= preuAAnterior && !datosFiltrados.includes(j)) {
-                    idPreuA = j;
-                    preuAAnterior = preu;
-                }
-            }
-            datosFiltrados.push(idPreuA);
-        }
-    } else if (filtrado == 3) { //Preu ascendent
-        for (var i = 0; i < datos.length; i++) {
-            var idPreuD = 0;
-            var preuDAnterior = 1000;
-            //mira qué actividad és la siguiente con más puntuación
-            for (var j = 0; j < datos.length; j++) {
-                var preu = datos[j].preu.import;
-                preu = preu.replace(" €", "");
-                preu = parseFloat(preu); //Convierto el String a Int
-                if (preu < preuDAnterior && !datosFiltrados.includes(j)) {
-                    idPreuD = j;
-                    preuDAnterior = preu;
-                }
-            }
-            datosFiltrados.push(idPreuD);
-            datosBuscados
-        }
-    } else if (filtrado == 4) {
-        console.log("holadins if flexi ")
-        for (var i = 0; i < datos.length; i++) {
-            if (datos[i].tipus == "vegetariano") {
-                console.log("dins if flexi ")
-                console.log("vegetaria flexi " + datos[i].nom)
-                datosFiltrados.push(i)
-            }
-        }
-    }
-    $("#galeriaPortfoli").html("")
-
+function addElement(id) {
     for (var i = 0; i < datosFiltrados.length; i++) {
-        if ((datos[datosFiltrados[i]].tipus == id) || (datos[datosFiltrados[i]].tipus == "vegetariano")) { //id = "restaurant o sueprmercats"
+        if ((datosFiltrados[i].tipus == id) || (datosFiltrados[i].tipus == "vegetariano")) { //id = "restaurant o sueprmercats"  // el vegetariano es de dilpreet
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
             newDiv.setAttribute('id', "elemento-" + i)
@@ -314,13 +417,8 @@ function addElement(datos, id, filtrado) {
             newa1.setAttribute('class', "portfolio-link");
             newa1.setAttribute('data-toggle', "modal");
             newa1.setAttribute('data-target', "#myModal");
-            if (datos[datosFiltrados[i]].tipus == "vegetariano") {
-                datosFiltrados[i] = datosFiltrados[i] + 100;
-                newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");");
-                datosFiltrados[i] = datosFiltrados[i] - 100
-            } else {
-                newa1.setAttribute('onclick', "desplegable(" + datosFiltrados[i] + ");")
-            }
+            newa1.setAttribute('onclick', "desplegable(" + i + ");")
+
             newDiv1.appendChild(newa1);
 
             var newDiv2 = document.createElement("div");
@@ -340,7 +438,7 @@ function addElement(datos, id, filtrado) {
 
             var newimg = document.createElement("img");
             newimg.setAttribute('class', "img-fluid")
-            newimg.setAttribute('src', datos[datosFiltrados[i]].imatges[0])
+            newimg.setAttribute('src', datosFiltrados[i].imatges[0])
             newimg.setAttribute('alt', "")
 
             newa1.appendChild(newimg);
@@ -352,15 +450,23 @@ function addElement(datos, id, filtrado) {
 
             var newDiv5 = document.createElement("div");
             newDiv5.setAttribute('class', "portfolio-caption-heading")
-            var newContent = document.createTextNode(datos[datosFiltrados[i]].nom);
+            var newContent = document.createTextNode(datosFiltrados[i].nom);
             newDiv5.appendChild(newContent)
 
             newDiv4.appendChild(newDiv5);
 
             var newDiv6 = document.createElement("div");
             newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-            var newContent2 = document.createTextNode(datos[datosFiltrados[i]].geo1.city);
-            newDiv6.appendChild(newContent2)
+            if (id == "Vegeteriana") {
+                console.log(datosFiltrados[i].geoposicionament1.city);
+                var newContent2 = document.createTextNode(datosFiltrados[i].geoposicionament1.city);
+                newDiv6.appendChild(newContent2)
+            } else {
+                var newContent2 = document.createTextNode(datosFiltrados[i].geo1.city);
+                newDiv6.appendChild(newContent2)
+            }
+
+
             newDiv4.appendChild(newDiv6);
 
             // añade el elemento creado y su contenido al DOM
@@ -368,15 +474,16 @@ function addElement(datos, id, filtrado) {
         }
     }
 
+
     //Para luego en la página de favoritos podrías hacer un listado simple:
     // leemos los favoritos del localStorage
     var favoritos = localStorage.getItem("favoritos") || "[]";
     favoritos = JSON.parse(favoritos);
     // para cada producto en favoritos
-    for (var j = 0; j < datos.length; j++) {
+    for (var j = 0; j < dades.length; j++) {
         for (var x = 0; x < favoritos.length; x++) {
-            if ((favoritos[x].id == datos[j].nom) & (id == "favorits")) {
-
+            if ((favoritos[x].id == dades[j].nom) & (id == "favorits")) {
+                console.log("en favoritos");
                 var newDiv = document.createElement("div");   // crea un nuevo div
                 newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
                 //newDiv.setAttribute('id', "elemento-" + j)
@@ -411,7 +518,7 @@ function addElement(datos, id, filtrado) {
                 var newimg = document.createElement("img");
                 newimg.setAttribute('class', "img-fluid")
                 //newimg.setAttribute('class', "ml-1")
-                newimg.setAttribute('src', datos[j].imatges[0])
+                newimg.setAttribute('src', dades[j].imatges[0])
                 newimg.setAttribute('alt', "")
 
                 newa1.appendChild(newimg);
@@ -423,14 +530,14 @@ function addElement(datos, id, filtrado) {
 
                 var newDiv5 = document.createElement("div");
                 newDiv5.setAttribute('class', "portfolio-caption-heading")
-                var newContent = document.createTextNode(datos[j].nom);
+                var newContent = document.createTextNode(dades[j].nom);
                 newDiv5.appendChild(newContent)
 
                 newDiv4.appendChild(newDiv5);
 
                 var newDiv6 = document.createElement("div");
                 newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-                var newContent2 = document.createTextNode(datos[j].geo1.city);
+                var newContent2 = document.createTextNode(dades[j].geo1.city);
                 newDiv6.appendChild(newContent2)
                 newDiv4.appendChild(newDiv6);
 
@@ -441,6 +548,7 @@ function addElement(datos, id, filtrado) {
         }
     }
 }
+
 /* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
 function eliminarDatosElemento() {
     $("#nombreElement").html(""); //limpiar la seccion
@@ -488,484 +596,521 @@ function desplegable(i) {
     if ($("#nombreElement").html() !== null) {
         eliminarDatosElemento();
     }
-    console.log("i: " + i)
-    var xmlhttp = new XMLHttpRequest();
-    if (i >= 100) {
-        var url = "https://bares-mallorca.netlify.app/data.json"
-        i = i - 100
-        console.log("i flexi: " + i)
+    /* var xmlhttp = new XMLHttpRequest();
+     if (i >= 100) {
+         var url = "https://bares-mallorca.netlify.app/data.json"
+         i = i - 100
+         console.log("i flexi: " + i)
+     } else {
+         var url = "dades.json"
+     }
+     xmlhttp.onreadystatechange = function () {
+         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
+             var datos = JSON.parse(xmlhttp.responseText); */
+
+    // Nombre y descripcion:
+    var newTitulo = document.createElement("h2");
+    newTitulo.setAttribute('class', "portfolio-caption-heading")
+    var texto1 = document.createTextNode(datosFiltrados[i].nom);
+    newTitulo.appendChild(texto1)
+
+    $("#nombreElement").append(newTitulo);
+
+    var newDescripcio = document.createElement("p");   // Añade la descripción a la ventana emergente
+    newDescripcio.setAttribute('class', "item-intro text-mutedg")
+    var text2 = document.createTextNode(datosFiltrados[i].descripcio);
+    newDescripcio.appendChild(text2)
+
+    $("#descripcioElement").append(newDescripcio);
+
+    // Puntero:
+    var long,lat, address;
+    console.log(datosFiltrados[i].tipus)
+    if (datosFiltrados[i].tipus != "supermercat" || datosFiltrados[i].tipus != "restaurant" || datosFiltrados[i].tipus !="curs" || datosFiltrados[i].tipus !="info" ){
+        long = datosFiltrados[i].geoposicionament1.long;
+        lat = datosFiltrados[i].geoposicionament1.lat;
+        address = datosFiltrados[i].geoposicionament1.addres
+    }else{
+        long = datosFiltrados[i].geo1.long;
+        lat = datosFiltrados[i].geo1.lat;
+        address = datosFiltrados[i].geo1.addres
+    }
+
+        var f
+        marker = new mapboxgl.Marker()
+            .setLngLat([long, lat])
+            .setPopup(
+                new mapboxgl.Popup({ offset: 25 })
+                    .setHTML(
+                        '<h4>' +
+                        datosFiltrados[i].nom +
+                        '</h4><p>' +
+                        address +
+                        '</p>' +
+                        '<img src="' + datosFiltrados[i].imatges[0] + '" style="height: 150px;"/>'
+                    )
+            )
+            .addTo(map);
+  
+    // Carousel:
+    var newCarousel1 = document.createElement("div");
+    newCarousel1.setAttribute('class', "carousel slide")
+    newCarousel1.setAttribute('id', "myCarousel")
+    newCarousel1.setAttribute('data-ride', "carousel")
+
+    var newCarousel2 = document.createElement("ol");
+    newCarousel2.setAttribute('class', "carousel-indicators")
+    newCarousel1.appendChild(newCarousel2);
+
+    for (var k = 0; k < datosFiltrados[i].imatges.length; k++) {
+        var newCarouselLiK = document.createElement("li");
+        if (k == 0) {
+            newCarouselLiK.setAttribute('class', "active")
+        }
+        newCarouselLiK.setAttribute('data-target', "#myCarousel")
+        newCarouselLiK.setAttribute('data-slide-to', k)
+        newCarousel2.appendChild(newCarouselLiK);
+    }
+
+    var newCarousel3 = document.createElement("div");
+    newCarousel3.setAttribute('class', "carousel-inner")
+    newCarousel1.appendChild(newCarousel3);
+
+    var newCarousel4 = document.createElement("div");
+    newCarousel4.setAttribute('class', "carousel-item active")
+    newCarousel3.appendChild(newCarousel4);
+
+    var newCarouselImg1 = document.createElement("img");
+    newCarouselImg1.setAttribute('class', "0-slide")
+    if (datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info") {
+        newCarouselImg1.setAttribute('src', datosFiltrados[i].imatges[1])
     } else {
-        var url = "dades.json"
+        newCarouselImg1.setAttribute('src', datosFiltrados[i].imatges[0])
     }
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
 
-            // Nombre y descripcion:
-            var newTitulo = document.createElement("h2");
-            newTitulo.setAttribute('class', "portfolio-caption-heading")
-            var texto1 = document.createTextNode(datos[i].nom);
-            newTitulo.appendChild(texto1)
+    newCarouselImg1.setAttribute('alt', "0-slide")
+    newCarouselImg1.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
+    newCarousel4.appendChild(newCarouselImg1);
 
-            $("#nombreElement").append(newTitulo);
+    if (datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info") {
+        var k = 2
+    } else {
+        var k = 1
+    }
+    for (k; k < datosFiltrados[i].imatges.length; k++) {
+        var newCarouselK = document.createElement("div");
+        newCarouselK.setAttribute('class', "carousel-item")
+        newCarousel3.appendChild(newCarouselK);
 
-            var newDescripcio = document.createElement("p");   // Añade la descripción a la ventana emergente
-            newDescripcio.setAttribute('class', "item-intro text-mutedg")
-            var text2 = document.createTextNode(datos[i].descripcio);
-            newDescripcio.appendChild(text2)
+        var newCarouselImgK = document.createElement("img");
+        newCarouselImgK.setAttribute('class', k + "-slide")
+        newCarouselImgK.setAttribute('src', datosFiltrados[i].imatges[k])
+        newCarouselImgK.setAttribute('alt', k + "-slide")
+        newCarouselImgK.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
+        newCarouselK.appendChild(newCarouselImgK);
+    }
 
-            $("#descripcioElement").append(newDescripcio);
+    var newCarouselA = document.createElement("a");
+    newCarouselA.setAttribute('class', "carousel-control-prev")
+    newCarouselA.setAttribute('href', "#myCarousel")
+    newCarouselA.setAttribute('role', "button")
+    newCarouselA.setAttribute('data-slide', "prev")
+    newCarousel1.appendChild(newCarouselA);
 
-            // Puntero:
-            marker = new mapboxgl.Marker()
-                .setLngLat([datos[i].geo1.long, datos[i].geo1.lat])
-                .setPopup(
-                    new mapboxgl.Popup({ offset: 25 })
-                        .setHTML(
-                            '<h4>' +
-                            datos[i].nom +
-                            '</h4><p>' +
-                            datos[i].geo1.address +
-                            '</p>' +
-                            '<img src="' + datos[i].imatges[0] + '" style="height: 150px;"/>'
-                        )
-                )
-                .addTo(map);
+    var newSpan = document.createElement("span");
+    newSpan.setAttribute('class', "carousel-control-prev-icon")
+    newSpan.setAttribute('aria-hidden', "true")
+    newCarouselA.appendChild(newSpan);
 
-            // Carousel:
-            var newCarousel1 = document.createElement("div");
-            newCarousel1.setAttribute('class', "carousel slide")
-            newCarousel1.setAttribute('id', "myCarousel")
-            newCarousel1.setAttribute('data-ride', "carousel")
+    var newSpan1 = document.createElement("span");
+    newSpan1.setAttribute('class', "sr-only")
+    newSpan1.setAttribute('id', "num1-slide")
+    $("#num1-slide").append("Previous")
+    newCarouselA.appendChild(newSpan1);
 
-            var newCarousel2 = document.createElement("ol");
-            newCarousel2.setAttribute('class', "carousel-indicators")
-            newCarousel1.appendChild(newCarousel2);
 
-            for (var k = 0; k < datos[i].imatges.length; k++) {
-                var newCarouselLiK = document.createElement("li");
-                if (k == 0) {
-                    newCarouselLiK.setAttribute('class', "active")
+    var newCarouselA1 = document.createElement("a");
+    newCarouselA1.setAttribute('class', "carousel-control-next")
+    newCarouselA1.setAttribute('href', "#myCarousel")
+    newCarouselA1.setAttribute('role', "button")
+    newCarouselA1.setAttribute('data-slide', "next")
+    newCarousel1.appendChild(newCarouselA1);
+
+    var newCarouselSpan2 = document.createElement("span");
+    newCarouselSpan2.setAttribute('class', "carousel-control-next-icon")
+    newCarouselSpan2.setAttribute('aria-hidden', "true")
+    newCarouselA1.appendChild(newCarouselSpan2);
+
+    var newCarouselSpan3 = document.createElement("span");
+    newCarouselSpan3.setAttribute('class', "sr-only")
+    newCarouselSpan3.setAttribute('id', "num2-slide")
+    $("#num2-slide").append("Next")
+    newCarouselA1.appendChild(newCarouselSpan3);
+
+    $("#carouselElement").append(newCarousel1);
+
+    /*
+                if (datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info") {
+    
+                } else {
+    
+    */
+
+
+   if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus =="curs" || datosFiltrados[i].tipus == "info" ){
+    
+
+        // Disponibilidad horaria:
+        var date = new Date();
+        var d = date.getDay();
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var hora = h + ":" + m;
+        var disponibilidad;
+
+
+        // Comprueba si en este momento está abierto el local
+        switch (d) {
+            case 1:
+                if (hora >= datosFiltrados[i].horari.di[0].in && hora <= datosFiltrados[i].horari.di[0].out) {
+                    disponibilidad = document.createTextNode("Abierto");
+                    $("#horario").css({ "background-color": "#B8CD65" });
+
+                } else {
+                    disponibilidad = document.createTextNode("Cerrado");
+                    $("#horario").css({ "background-color": "#E99565" });
                 }
-                newCarouselLiK.setAttribute('data-target', "#myCarousel")
-                newCarouselLiK.setAttribute('data-slide-to', k)
-                newCarousel2.appendChild(newCarouselLiK);
+                break;
+            case 2:
+                if (hora >= datosFiltrados[i].horari.dm[0].in && hora <= datosFiltrados[i].horari.dm[0].out) {
+                    disponibilidad = document.createTextNode("Abierto");
+                    $("#horario").css({ "background-color": "#B8CD65" });
+                } else {
+                    disponibilidad = document.createTextNode("Cerrado");
+                    $("#horario").css({ "background-color": "#E99565" });
+                }
+                break;
+            case 3:
+                if (hora >= datosFiltrados[i].horari.dx[0].in && hora <= datosFiltrados[i].horari.dx[0].out) {
+                    disponibilidad = document.createTextNode("Abierto");
+                    $("#horario").css({ "background-color": "#B8CD65" });
+                } else {
+                    disponibilidad = document.createTextNode("Cerrado");
+                    $("#horario").css({ "background-color": "#E99565" });
+                }
+                break;
+            case 4:
+                if (hora >= datosFiltrados[i].horari.dj[0].in && hora <= datosFiltrados[i].horari.dj[0].out) {
+                    disponibilidad = document.createTextNode("Abierto");
+                    $("#horario").css({ "background-color": "#B8CD65" });
+                } else {
+                    disponibilidad = document.createTextNode("Cerrado");
+                    $("#horario").css({ "background-color": "#E99565" });
+                }
+                break;
+            case 5:
+                if (hora >= datosFiltrados[i].horari.dv[0].in && hora <= datosFiltrados[i].horari.dv[0].out) {
+                    disponibilidado = document.createTextNode("Abierto");
+                    $("#horario").css({ "background-color": "#B8CD65" });
+                } else {
+                    disponibilidad = document.createTextNode("Cerrado");
+                    $("#horario").css({ "background-color": "#E99565" });
+                }
+                break;
+            case 6:
+                if (hora >= datosFiltrados[i].horari.ds[0].in && hora <= datosFiltrados[i].horari.ds[0].out) {
+                    disponibilidad = document.createTextNode("Abierto");
+                    $("#horario").css({ "background-color": "#B8CD65" });
+                } else {
+                    disponibilidad = document.createTextNode("Cerrado");
+                    $("#horario").css({ "background-color": "#E99565" });
+                }
+                break;
+            case 0:
+
+                if (hora >= datosFiltrados[i].horari.dg[0].in && hora <= datosFiltrados[i].horari.dg[0].out) {
+                    disponibilidad = document.createTextNode("Abierto");
+                    $("#horario").css({ "background-color": "#B8CD65" });
+                } else {
+                    disponibilidad = document.createTextNode("Cerrado");
+                    $("#horario").css({ "background-color": "#E99565" });
+                }
+                break;
+        }
+        $("#horario").append(disponibilidad);
+        // Crea el horario desplegable:
+        var pDi = document.createElement("p");
+        var textDi = document.createTextNode("Dilluns: " + datosFiltrados[i].horari.di[0].in + "-" + datosFiltrados[i].horari.di[0].out + "  " + datosFiltrados[i].horari.di[1].in + "-" + datosFiltrados[i].horari.di[1].out);
+
+        var pDm = document.createElement("p");
+        var textDm = document.createTextNode("Dimarts: " + datosFiltrados[i].horari.dm[0].in + "-" + datosFiltrados[i].horari.dm[0].out + "  " + datosFiltrados[i].horari.dm[1].in + "-" + datosFiltrados[i].horari.dm[1].out);
+
+        var pDx = document.createElement("p");
+        var textDx = document.createTextNode("Dimecres: " + datosFiltrados[i].horari.dx[0].in + "-" + datosFiltrados[i].horari.dx[0].out + "  " + datosFiltrados[i].horari.dx[1].in + "-" + datosFiltrados[i].horari.dx[1].out);
+
+        var pDj = document.createElement("p");
+        var textDj = document.createTextNode("Dijous: " + datosFiltrados[i].horari.dj[0].in + "-" + datosFiltrados[i].horari.dj[0].out + "  " + datosFiltrados[i].horari.dj[1].in + "-" + datosFiltrados[i].horari.dj[1].out);
+
+        var pDv = document.createElement("p");
+        var textDv = document.createTextNode("Divendres: " + datosFiltrados[i].horari.dv[0].in + "-" + datosFiltrados[i].horari.dv[0].out + "  " + datosFiltrados[i].horari.dv[1].in + "-" + datosFiltrados[i].horari.dv[1].out);
+
+        var pDs = document.createElement("p");
+        var textDs = document.createTextNode("Dissabte: " + datosFiltrados[i].horari.ds[0].in + "-" + datosFiltrados[i].horari.ds[0].out + "  " + datosFiltrados[i].horari.ds[1].in + "-" + datosFiltrados[i].horari.ds[1].out);
+
+        var pDg = document.createElement("p");
+        var textDg = document.createTextNode("Diumenge: " + datosFiltrados[i].horari.dg[0].in + "-" + datosFiltrados[i].horari.dg[0].out + "  " + datosFiltrados[i].horari.dg[1].in + "-" + datosFiltrados[i].horari.dg[1].out);
+
+        pDi.appendChild(textDi);
+        pDm.appendChild(textDm);
+        pDx.appendChild(textDx);
+        pDj.appendChild(textDj);
+        pDv.appendChild(textDv);
+        pDs.appendChild(textDs);
+        pDg.appendChild(textDg);
+        //Añadimos el horario de cada día al div correspondiente con el id = respectivo
+        $("#horariDll").append(pDi);
+        $("#horariDm").append(pDm);
+        $("#horariDx").append(pDx);
+        $("#horariDj").append(pDj);
+        $("#horariDv").append(pDv);
+        $("#horariDs").append(pDs);
+        $("#horariDg").append(pDg);
+
+    }else{
+        disponibilitat = document.createTextNode("Mostra horari");
+        $("#calendar").css({ "background-color": "#B8CD65" });
+        $("#calendar").append(disponibilitat);
+                    //for (var m = 0; i < 2; m++) {//datos[i].dadesPropies.events.length
+
+            //Contingut desplegable fires
+            //event 1:
+        var event1 = document.createElement("h6");
+        var textEvent1 = document.createTextNode(datosFiltrados[i].dadesPropies.events[0].nom);
+        event1.appendChild(textEvent1);
+        $("#eventNum1").append(event1);
+
+        var event1_preu = document.createElement("p");
+        var text2Event1 = document.createTextNode("Preu: " + datosFiltrados[i].dadesPropies.events[0].preu);
+        event1_preu.appendChild(text2Event1);
+        $("#eventNum1").append(event1_preu);
+
+        var event1_descripcio = document.createElement("p");
+        var text3Event1 = document.createTextNode(datosFiltrados[i].dadesPropies.events[0].Descripcio);
+        event1_descripcio.appendChild(text3Event1);
+        $("#eventNum1").append(event1_descripcio);
+
+        var event1_calendar = document.createElement("p");
+        var text4Event1 = document.createTextNode("Data: " + datosFiltrados[i].dadesPropies.events[0].Calendari.startDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[0].Calendari.startTimeEvent + " fins dia " + datosFiltrados[i].dadesPropies.events[0].Calendari.endDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[0].Calendari.endTimeEvent);
+        event1_calendar.appendChild(text4Event1);
+        $("#eventNum1").append(event1_calendar);
+        //event2
+        var event2 = document.createElement("h6");
+        var textEvent2 = document.createTextNode(datosFiltrados[i].dadesPropies.events[1].nom);
+        event2.appendChild(textEvent2);
+        $("#eventNum2").append(event2);
+
+        var event2_preu = document.createElement("p");
+        var text2Event2 = document.createTextNode("Preu: " + datosFiltrados[i].dadesPropies.events[1].preu);
+        event2_preu.appendChild(text2Event2);
+        $("#eventNum2").append(event2_preu);
+
+        var event2_descripcio = document.createElement("p");
+        var text3Event2 = document.createTextNode(datosFiltrados[i].dadesPropies.events[1].Descripcio);
+        event2_descripcio.appendChild(text3Event2);
+        $("#eventNum2").append(event2_descripcio);
+
+        var event2_calendar = document.createElement("p");
+        var text4Event2 = document.createTextNode("Data: " + datosFiltrados[i].dadesPropies.events[1].Calendari.startDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[1].Calendari.startTimeEvent + " fins dia " + datosFiltrados[i].dadesPropies.events[1].Calendari.endDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[1].Calendari.endTimeEvent);
+        event2_calendar.appendChild(text4Event2);
+        $("#eventNum2").append(event2_calendar);
+    }
+    /*  WEATHER */
+
+
+    var endpoint =
+        "https://api.openweathermap.org/data/2.5/onecall?lat=" + long + "&lon=" + lat + "&lang=es&exclude=alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
+    fetch(endpoint)
+        .then(function (response) {
+            if (200 !== response.status) {
+                console.log(
+                    "Looks like there was a problem. Status Code: " + response.status
+                );
+                return;
             }
+            response.json().then(function (data) {
 
-            var newCarousel3 = document.createElement("div");
-            newCarousel3.setAttribute('class', "carousel-inner")
-            newCarousel1.appendChild(newCarousel3);
-
-            var newCarousel4 = document.createElement("div");
-            newCarousel4.setAttribute('class', "carousel-item active")
-            newCarousel3.appendChild(newCarousel4);
-
-            var newCarouselImg1 = document.createElement("img");
-            newCarouselImg1.setAttribute('class', "0-slide")
-            if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
-                newCarouselImg1.setAttribute('src', datos[i].imatges[1])
-            } else {
-                newCarouselImg1.setAttribute('src', datos[i].imatges[0])
-            }
-
-            newCarouselImg1.setAttribute('alt', "0-slide")
-            newCarouselImg1.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
-            newCarousel4.appendChild(newCarouselImg1);
-
-            if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
-                var k = 2
-            } else {
-                var k = 1
-            }
-            for (k; k < datos[i].imatges.length; k++) {
-                var newCarouselK = document.createElement("div");
-                newCarouselK.setAttribute('class', "carousel-item")
-                newCarousel3.appendChild(newCarouselK);
-
-                var newCarouselImgK = document.createElement("img");
-                newCarouselImgK.setAttribute('class', k + "-slide")
-                newCarouselImgK.setAttribute('src', datos[i].imatges[k])
-                newCarouselImgK.setAttribute('alt', k + "-slide")
-                newCarouselImgK.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
-                newCarouselK.appendChild(newCarouselImgK);
-            }
-
-            var newCarouselA = document.createElement("a");
-            newCarouselA.setAttribute('class', "carousel-control-prev")
-            newCarouselA.setAttribute('href', "#myCarousel")
-            newCarouselA.setAttribute('role', "button")
-            newCarouselA.setAttribute('data-slide', "prev")
-            newCarousel1.appendChild(newCarouselA);
-
-            var newSpan = document.createElement("span");
-            newSpan.setAttribute('class', "carousel-control-prev-icon")
-            newSpan.setAttribute('aria-hidden', "true")
-            newCarouselA.appendChild(newSpan);
-
-            var newSpan1 = document.createElement("span");
-            newSpan1.setAttribute('class', "sr-only")
-            newSpan1.setAttribute('id', "num1-slide")
-            $("#num1-slide").append("Previous")
-            newCarouselA.appendChild(newSpan1);
-
-
-            var newCarouselA1 = document.createElement("a");
-            newCarouselA1.setAttribute('class', "carousel-control-next")
-            newCarouselA1.setAttribute('href', "#myCarousel")
-            newCarouselA1.setAttribute('role', "button")
-            newCarouselA1.setAttribute('data-slide', "next")
-            newCarousel1.appendChild(newCarouselA1);
-
-            var newCarouselSpan2 = document.createElement("span");
-            newCarouselSpan2.setAttribute('class', "carousel-control-next-icon")
-            newCarouselSpan2.setAttribute('aria-hidden', "true")
-            newCarouselA1.appendChild(newCarouselSpan2);
-
-            var newCarouselSpan3 = document.createElement("span");
-            newCarouselSpan3.setAttribute('class', "sr-only")
-            newCarouselSpan3.setAttribute('id', "num2-slide")
-            $("#num2-slide").append("Next")
-            newCarouselA1.appendChild(newCarouselSpan3);
-
-            $("#carouselElement").append(newCarousel1);
-
-            /*
-                        if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
-            
-                        } else {
-            
-            */
-
-            // Disponibilidad horaria:
-            var date = new Date();
-            var d = date.getDay();
-            var h = date.getHours();
-            var m = date.getMinutes();
-            var hora = h + ":" + m;
-            var disponibilidad;
-
-
-            // Comprueba si en este momento está abierto el local
-            switch (d) {
-                case 1:
-                    if (hora >= datos[i].horari.di[0].in && hora <= datos[i].horari.di[0].out) {
-                        disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({ "background-color": "#B8CD65" });
-
-                    } else {
-                        disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({ "background-color": "#E99565" });
-                    }
-                    break;
-                case 2:
-                    if (hora >= datos[i].horari.dm[0].in && hora <= datos[i].horari.dm[0].out) {
-                        disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({ "background-color": "#B8CD65" });
-                    } else {
-                        disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({ "background-color": "#E99565" });
-                    }
-                    break;
-                case 3:
-                    if (hora >= datos[i].horari.dx[0].in && hora <= datos[i].horari.dx[0].out) {
-                        disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({ "background-color": "#B8CD65" });
-                    } else {
-                        disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({ "background-color": "#E99565" });
-                    }
-                    break;
-                case 4:
-                    if (hora >= datos[i].horari.dj[0].in && hora <= datos[i].horari.dj[0].out) {
-                        disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({ "background-color": "#B8CD65" });
-                    } else {
-                        disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({ "background-color": "#E99565" });
-                    }
-                    break;
-                case 5:
-                    if (hora >= datos[i].horari.dv[0].in && hora <= datos[i].horari.dv[0].out) {
-                        disponibilidado = document.createTextNode("Abierto");
-                        $("#horario").css({ "background-color": "#B8CD65" });
-                    } else {
-                        disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({ "background-color": "#E99565" });
-                    }
-                    break;
-                case 6:
-                    if (hora >= datos[i].horari.ds[0].in && hora <= datos[i].horari.ds[0].out) {
-                        disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({ "background-color": "#B8CD65" });
-                    } else {
-                        disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({ "background-color": "#E99565" });
-                    }
-                    break;
-                case 0:
-
-                    if (hora >= datos[i].horari.dg[0].in && hora <= datos[i].horari.dg[0].out) {
-                        disponibilidad = document.createTextNode("Abierto");
-                        $("#horario").css({ "background-color": "#B8CD65" });
-                    } else {
-                        disponibilidad = document.createTextNode("Cerrado");
-                        $("#horario").css({ "background-color": "#E99565" });
-                    }
-                    break;
-            }
-            $("#horario").append(disponibilidad);
-            // Crea el horario desplegable:
-            var pDi = document.createElement("p");
-            var textDi = document.createTextNode("Dilluns: " + datos[i].horari.di[0].in + "-" + datos[i].horari.di[0].out + "  " + datos[i].horari.di[1].in + "-" + datos[i].horari.di[1].out);
-
-            var pDm = document.createElement("p");
-            var textDm = document.createTextNode("Dimarts: " + datos[i].horari.dm[0].in + "-" + datos[i].horari.dm[0].out + "  " + datos[i].horari.dm[1].in + "-" + datos[i].horari.dm[1].out);
-
-            var pDx = document.createElement("p");
-            var textDx = document.createTextNode("Dimecres: " + datos[i].horari.dx[0].in + "-" + datos[i].horari.dx[0].out + "  " + datos[i].horari.dx[1].in + "-" + datos[i].horari.dx[1].out);
-
-            var pDj = document.createElement("p");
-            var textDj = document.createTextNode("Dijous: " + datos[i].horari.dj[0].in + "-" + datos[i].horari.dj[0].out + "  " + datos[i].horari.dj[1].in + "-" + datos[i].horari.dj[1].out);
-
-            var pDv = document.createElement("p");
-            var textDv = document.createTextNode("Divendres: " + datos[i].horari.dv[0].in + "-" + datos[i].horari.dv[0].out + "  " + datos[i].horari.dv[1].in + "-" + datos[i].horari.dv[1].out);
-
-            var pDs = document.createElement("p");
-            var textDs = document.createTextNode("Dissabte: " + datos[i].horari.ds[0].in + "-" + datos[i].horari.ds[0].out + "  " + datos[i].horari.ds[1].in + "-" + datos[i].horari.ds[1].out);
-
-            var pDg = document.createElement("p");
-            var textDg = document.createTextNode("Diumenge: " + datos[i].horari.dg[0].in + "-" + datos[i].horari.dg[0].out + "  " + datos[i].horari.dg[1].in + "-" + datos[i].horari.dg[1].out);
-
-            pDi.appendChild(textDi);
-            pDm.appendChild(textDm);
-            pDx.appendChild(textDx);
-            pDj.appendChild(textDj);
-            pDv.appendChild(textDv);
-            pDs.appendChild(textDs);
-            pDg.appendChild(textDg);
-            //Añadimos el horario de cada día al div correspondiente con el id = respectivo
-            $("#horariDll").append(pDi);
-            $("#horariDm").append(pDm);
-            $("#horariDx").append(pDx);
-            $("#horariDj").append(pDj);
-            $("#horariDv").append(pDv);
-            $("#horariDs").append(pDs);
-            $("#horariDg").append(pDg);
-
-            /*  WEATHER */
-
-
-            var endpoint =
-                "https://api.openweathermap.org/data/2.5/onecall?lat="+datos[i].geo1.long+"&lon="+datos[i].geo1.lat+"&lang=es&exclude=alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
-            fetch(endpoint)
-                .then(function (response) {
-                    if (200 !== response.status) {
-                        console.log(
-                            "Looks like there was a problem. Status Code: " + response.status
-                        );
-                        return;
-                    }
-                    response.json().then(function (data) {
-
-                        for (var w = 0; w < 3; w++) {
-                            var dayname = new Date(data.daily[w].dt * 1000).toLocaleDateString("es", {
-                                weekday: "long",
-                            });
-                            $("#diaSetmana" + w).append(dayname);
-                            $("#actualTemp" + w).append(data.daily[w].temp.day + " °C");
-                            var icon = data.daily[w].weather[0].icon;
-                            $("#icono" + w).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
-                            $("#description" + w).append(data.daily[w].weather[0].description);
-
-                            var tempMax = data.daily[w].temp.max.toFixed(0);
-                            var tempMin = data.daily[w].temp.min.toFixed(0);
-                            $("#temp" + w).append(tempMin + " °C - " + tempMax + " °C");
-
-                        }
+                for (var w = 0; w < 3; w++) {
+                    var dayname = new Date(data.daily[w].dt * 1000).toLocaleDateString("es", {
+                        weekday: "long",
                     });
-                })
+                    $("#diaSetmana" + w).append(dayname);
+                    $("#actualTemp" + w).append(data.daily[w].temp.day + " °C");
+                    var icon = data.daily[w].weather[0].icon;
+                    $("#icono" + w).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+                    $("#description" + w).append(data.daily[w].weather[0].description);
+
+                    var tempMax = data.daily[w].temp.max.toFixed(0);
+                    var tempMin = data.daily[w].temp.min.toFixed(0);
+                    $("#temp" + w).append(tempMin + " °C - " + tempMax + " °C");
+
+                }
+            });
+        })
 
 
-            var newDeteall = document.createElement("p");
-            newDeteall.setAttribute('class', "item-intro text-mutedg")
-            var textoDetall = document.createTextNode(datos[i].detall);
-            newDeteall.appendChild(textoDetall)
+    var newDeteall = document.createElement("p");
+    newDeteall.setAttribute('class', "item-intro text-mutedg")
+    var textoDetall = document.createTextNode(datosFiltrados[i].detall);
+    newDeteall.appendChild(textoDetall)
 
-            var newGeo = document.createElement("p");
-            newGeo.setAttribute('class', "item-intro text-mutedg")
-            var textoGeo = document.createTextNode(datos[i].geo1.address);
-            newGeo.appendChild(textoGeo)
+    var newGeo = document.createElement("p");
+    newGeo.setAttribute('class', "item-intro text-mutedg")
+    var textoGeo = document.createTextNode(address);
+    newGeo.appendChild(textoGeo)
 
-            var newTelefon = document.createElement("p");
-            newTelefon.setAttribute('class', "item-intro text-mutedg")
-            var textoTelef = document.createTextNode("Telèfon: " + datos[i].contacte.telf);
-            newTelefon.appendChild(textoTelef)
+    var newTelefon = document.createElement("p");
+    newTelefon.setAttribute('class', "item-intro text-mutedg")
+    var textoTelef = document.createTextNode("Telèfon: " + datosFiltrados[i].contacte.telf);
+    newTelefon.appendChild(textoTelef)
 
-            $("#datosElemento").append(newDeteall);
-            $("#datosElemento").append(newGeo);
-            $("#datosElemento").append(newTelefon);
+    $("#datosElemento").append(newDeteall);
+    $("#datosElemento").append(newGeo);
+    $("#datosElemento").append(newTelefon);
 
-            if (datos[i].contacte.xarxes.facebook != "") {
-                var newFacebooka = document.createElement("a");
-                newFacebooka.setAttribute('class', "btn btn-primary btn-social mx-2");
-                newFacebooka.setAttribute('target', "_blank");
-                newFacebooka.setAttribute('href', datos[i].contacte.xarxes.facebook);
+    if (datosFiltrados[i].contacte.xarxes.facebook != "") {
+        var newFacebooka = document.createElement("a");
+        newFacebooka.setAttribute('class', "btn btn-primary btn-social mx-2");
+        newFacebooka.setAttribute('target', "_blank");
+        newFacebooka.setAttribute('href', datosFiltrados[i].contacte.xarxes.facebook);
 
-                var newFacebooki = document.createElement("i");
-                newFacebooki.setAttribute('class', "fab fa-facebook-f")
-                newFacebooka.appendChild(newFacebooki);
-                $("#enlaces").append(newFacebooka);
-            }
+        var newFacebooki = document.createElement("i");
+        newFacebooki.setAttribute('class', "fab fa-facebook-f")
+        newFacebooka.appendChild(newFacebooki);
+        $("#enlaces").append(newFacebooka);
+    }
 
-            if (datos[i].contacte.xarxes.tripadvisor != "") {
-                var newTripAdvisora = document.createElement("a");
-                newTripAdvisora.setAttribute('class', "btn btn-primary btn-social mx-2");
-                newTripAdvisora.setAttribute('target', "_blank");
-                newTripAdvisora.setAttribute('href', datos[i].contacte.xarxes.tripadvisor);
+    if (datosFiltrados[i].contacte.xarxes.tripadvisor != "") {
+        var newTripAdvisora = document.createElement("a");
+        newTripAdvisora.setAttribute('class', "btn btn-primary btn-social mx-2");
+        newTripAdvisora.setAttribute('target', "_blank");
+        newTripAdvisora.setAttribute('href', datosFiltrados[i].contacte.xarxes.tripadvisor);
 
-                var newTripAdvisori = document.createElement("i");
-                newTripAdvisori.setAttribute('class', "fab fa-tripadvisor")
-                newTripAdvisora.appendChild(newTripAdvisori);
-                $("#enlaces").append(newTripAdvisora);
-            }
-            if (datos[i].contacte.xarxes.instagram != "") {
-                var newInstagrama = document.createElement("a");
-                newInstagrama.setAttribute('class', "btn btn-primary btn-social mx-2");
-                newInstagrama.setAttribute('target', "_blank");
-                newInstagrama.setAttribute('href', datos[i].contacte.xarxes.instagram);
+        var newTripAdvisori = document.createElement("i");
+        newTripAdvisori.setAttribute('class', "fab fa-tripadvisor")
+        newTripAdvisora.appendChild(newTripAdvisori);
+        $("#enlaces").append(newTripAdvisora);
+    }
+    if (datosFiltrados[i].contacte.xarxes.instagram != "") {
+        var newInstagrama = document.createElement("a");
+        newInstagrama.setAttribute('class', "btn btn-primary btn-social mx-2");
+        newInstagrama.setAttribute('target', "_blank");
+        newInstagrama.setAttribute('href', datosFiltrados[i].contacte.xarxes.instagram);
 
-                var newInstagrami = document.createElement("i");
-                newInstagrami.setAttribute('class', "fab fa-instagram")
-                newInstagrama.appendChild(newInstagrami);
-                $("#enlaces").append(newInstagrama);
-            }
-            if (datos[i].contacte.xarxes.twitter != "") {
-                var newTwittera = document.createElement("a");
-                newTwittera.setAttribute('class', "btn btn-primary btn-social mx-2");
-                newTwittera.setAttribute('target', "_blank");
-                newTwittera.setAttribute('href', datos[i].contacte.xarxes.twitter);
+        var newInstagrami = document.createElement("i");
+        newInstagrami.setAttribute('class', "fab fa-instagram")
+        newInstagrama.appendChild(newInstagrami);
+        $("#enlaces").append(newInstagrama);
+    }
+    if (datosFiltrados[i].contacte.xarxes.twitter != "") {
+        var newTwittera = document.createElement("a");
+        newTwittera.setAttribute('class', "btn btn-primary btn-social mx-2");
+        newTwittera.setAttribute('target', "_blank");
+        newTwittera.setAttribute('href', datosFiltrados[i].contacte.xarxes.twitter);
 
-                var newTwitteri = document.createElement("i");
-                newTwitteri.setAttribute('class', "fab fa-twitter")
-                newTwittera.appendChild(newTwitteri);
-                $("#enlaces").append(newTwittera);
-            }
-            if (datos[i].contacte.xarxes.web != "") {
-                var newWeba = document.createElement("a");
-                newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
-                newWeba.setAttribute('target', "_blank");
-                newWeba.setAttribute('href', datos[i].contacte.xarxes.web);
+        var newTwitteri = document.createElement("i");
+        newTwitteri.setAttribute('class', "fab fa-twitter")
+        newTwittera.appendChild(newTwitteri);
+        $("#enlaces").append(newTwittera);
+    }
+    if (datosFiltrados[i].contacte.xarxes.web != "") {
+        var newWeba = document.createElement("a");
+        newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
+        newWeba.setAttribute('target', "_blank");
+        newWeba.setAttribute('href', datosFiltrados[i].contacte.xarxes.web);
 
-                var newWebi = document.createElement("i");
-                newWebi.setAttribute('class', "fas fa-at")
-                //fas fa-globe-europe">
-                newWeba.append(newWebi);
-                $("#enlaces").append(newWeba);
-            }
-            if (datos[i].contacte.email != "") {
-                var newEmaila = document.createElement("a");
-                newEmaila.setAttribute('class', "btn btn-primary btn-social mx-2");
-                newEmaila.setAttribute('target', "_blank");
-                newEmaila.setAttribute('href', datos[i].contacte.email);
+        var newWebi = document.createElement("i");
+        newWebi.setAttribute('class', "fas fa-at")
+        //fas fa-globe-europe">
+        newWeba.append(newWebi);
+        $("#enlaces").append(newWeba);
+    }
+    if (datosFiltrados[i].contacte.email != "") {
+        var newEmaila = document.createElement("a");
+        newEmaila.setAttribute('class', "btn btn-primary btn-social mx-2");
+        newEmaila.setAttribute('target', "_blank");
+        newEmaila.setAttribute('href', datosFiltrados[i].contacte.email);
 
-                var newEmaili = document.createElement("i");
-                newEmaili.setAttribute('class', "fa fa-envelope")
-                newEmaila.appendChild(newEmaili);
-                $("#enlaces").append(newEmaila);
-            }
+        var newEmaili = document.createElement("i");
+        newEmaili.setAttribute('class', "fa fa-envelope")
+        newEmaila.appendChild(newEmaili);
+        $("#enlaces").append(newEmaila);
+    }
 
-            // var newA1 = document.createElement("a");
-            var newI1 = document.createElement("i");
-            newI1.setAttribute('class', "fa fa-heart");
-            newI1.setAttribute('onclick', "guardarFav(" + i + ")");
-            newI1.setAttribute('id', "fav" + i);
+    // var newA1 = document.createElement("a");
+    var newI1 = document.createElement("i");
+    newI1.setAttribute('class', "fa fa-heart");
+    newI1.setAttribute('onclick', "guardarFav(" + i + ")");
+    newI1.setAttribute('id', "fav" + i);
 
-            var dades = {
-                id: datos[i].nom
-            };
-
-            // leemos los favoritos del localStorage
-            var favoritos = localStorage.getItem("favoritos") || "[]";
-            favoritos = JSON.parse(favoritos);
-
-            //Aquest és el text que surt inicialment:
-            var favo = document.getElementById("Textfavorito");
-            var newComentFav = document.createElement("p")
-            var activo = document.createTextNode("Afegeix a favorits ");
-            var inactivo = document.createTextNode("Elimina de favorits ")
-            favo.innerHTML = ""; // Limpia el contenido.
-
-            // buscamos el producto en la lista de favoritos
-            var posLista = favoritos.findIndex(function (e) { return e.id == dades.id; });
-            if (posLista == -1) {
-                newI1.setAttribute('style', "color:black");
-                //Text inicial
-                favo.appendChild(newComentFav);
-                newComentFav.appendChild(activo);
-            } else {
-                newI1.setAttribute('style', "color:red");
-                //Text inicial
-                favo.appendChild(newComentFav);
-                newComentFav.appendChild(inactivo);
-            }
-            $("#favorito").append(newI1);
-
-            //Poner estrellas hasta que queden 0,5 o ninguna estrella por poner
-            //json totes les puntuacions han de ser .5 o senceres
-            var estrellas = datos[i].puntuacio
-
-
-            for (var x = 0.5; x < estrellas; estrellas--) {
-                var newI1 = document.createElement("i");
-                newI1.setAttribute('style', "color:#f8d160");
-                newI1.setAttribute('class', "fa fa-star");
-                $("#puntuacio").append(newI1);
-            }
-
-            //Comrpobar si falta la media estrella
-            if (estrellas == 0.5) {
-                var newI1 = document.createElement("i");
-                newI1.setAttribute('style', "color:#f8d160");
-                newI1.setAttribute('class', "fas fa-star-half-alt");
-                $("#puntuacio").append(newI1);
-            }
-
-        }
+    var dades = {
+        id: datosFiltrados[i].nom
     };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
+
+    // leemos los favoritos del localStorage
+    var favoritos = localStorage.getItem("favoritos") || "[]";
+    favoritos = JSON.parse(favoritos);
+
+    //Aquest és el text que surt inicialment:
+    var favo = document.getElementById("Textfavorito");
+    var newComentFav = document.createElement("p")
+    var activo = document.createTextNode("Afegeix a favorits ");
+    var inactivo = document.createTextNode("Elimina de favorits ")
+    favo.innerHTML = ""; // Limpia el contenido.
+
+    // buscamos el producto en la lista de favoritos
+    var posLista = favoritos.findIndex(function (e) { return e.id == dades.id; });
+    if (posLista == -1) {
+        newI1.setAttribute('style', "color:black");
+        //Text inicial
+        favo.appendChild(newComentFav);
+        newComentFav.appendChild(activo);
+    } else {
+        newI1.setAttribute('style', "color:red");
+        //Text inicial
+        favo.appendChild(newComentFav);
+        newComentFav.appendChild(inactivo);
+    }
+    $("#favorito").append(newI1);
+
+    //Poner estrellas hasta que queden 0,5 o ninguna estrella por poner
+    //json totes les puntuacions han de ser .5 o senceres
+    var estrellas = datosFiltrados[i].puntuacio
 
 
-//Funcion del desplegable de horario
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+    for (var x = 0.5; x < estrellas; estrellas--) {
+        var newI1 = document.createElement("i");
+        newI1.setAttribute('style', "color:#f8d160");
+        newI1.setAttribute('class', "fa fa-star");
+        $("#puntuacio").append(newI1);
+    }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
+    //Comrpobar si falta la media estrella
+    if (estrellas == 0.5) {
+        var newI1 = document.createElement("i");
+        newI1.setAttribute('style', "color:#f8d160");
+        newI1.setAttribute('class', "fas fa-star-half-alt");
+        $("#puntuacio").append(newI1);
     }
 }
+
+
 //Función para guardar favoritos
 function guardarFav(i) {
-
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
-
             var datos = {
                 id: datos[i].nom
             };
@@ -1011,7 +1156,7 @@ function guardarFav(i) {
     console.log("favs");
 }
 
-
+/*
 //+ INFORMACIO.HTML
 //Crear la timeline dinámicamente:
 function buscador() {
@@ -1044,6 +1189,10 @@ function buscador() {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
+
+*/
+
+
 //cas de fires
 function buscadorFires() {
     var xmlhttp = new XMLHttpRequest();
@@ -1513,11 +1662,13 @@ window.onclick = function (event) {
 }
 
 
+
 //+ INFORMACIO.HTML
 //Crear la timeline dinámicamente:
 function buscador() {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
+    console.log("aaaaaaaaaaaaaaaa");
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var datos = JSON.parse(xmlhttp.responseText);
@@ -1549,64 +1700,6 @@ function buscador() {
 
 
 
-
-
-// para el filtrado:
-
-var x, i, j, l, ll, selElmnt, a, b, c;
-/*look for any elements with the class "custom-select":*/
-x = document.getElementsByClassName("custom-select");
-l = x.length;
-for (i = 0; i < l; i++) {
-    selElmnt = x[i].getElementsByTagName("select")[0];
-    ll = selElmnt.length;
-    /*for each element, create a new DIV that will act as the selected item:*/
-    a = document.createElement("DIV");
-    a.setAttribute("class", "select-selected");
-    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-    x[i].appendChild(a);
-    /*for each element, create a new DIV that will contain the option list:*/
-    b = document.createElement("DIV");
-    b.setAttribute("class", "select-items select-hide");
-    for (j = 1; j < ll; j++) {
-        /*for each option in the original select element,
-        create a new DIV that will act as an option item:*/
-        c = document.createElement("DIV");
-        c.innerHTML = selElmnt.options[j].innerHTML;
-        c.addEventListener("click", function (e) {
-            /*when an item is clicked, update the original select box,
-            and the selected item:*/
-            var y, i, k, s, h, sl, yl;
-            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-            sl = s.length;
-            h = this.parentNode.previousSibling;
-            for (i = 0; i < sl; i++) {
-                if (s.options[i].innerHTML == this.innerHTML) {
-                    s.selectedIndex = i;
-                    h.innerHTML = this.innerHTML;
-                    y = this.parentNode.getElementsByClassName("same-as-selected");
-                    yl = y.length;
-                    for (k = 0; k < yl; k++) {
-                        y[k].removeAttribute("class");
-                    }
-                    this.setAttribute("class", "same-as-selected");
-                    break;
-                }
-            }
-            h.click();
-        });
-        b.appendChild(c);
-    }
-    x[i].appendChild(b);
-    a.addEventListener("click", function (e) {
-        /*when the select box is clicked, close any other select boxes,
-        and open/close the current select box:*/
-        e.stopPropagation();
-        closeAllSelect(this);
-        this.nextSibling.classList.toggle("select-hide");
-        this.classList.toggle("select-arrow-active");
-    });
-}
 function closeAllSelect(elmnt) {
     /*a function that will close all select boxes in the document,
     except the current select box:*/
@@ -1632,21 +1725,24 @@ function closeAllSelect(elmnt) {
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 
+
+
 /* FUNCIONS JQUERY */
 (function ($) {
     "use strict"; // Start of use strict
     $("#selectOrdenar").change(function () {
         if ($(this).val() == 0) {
-            Cercador(0); //predeterminat
+            cargarDades(0); //predeterminat
         }
         if ($(this).val() == 1) {
-            Cercador(1); //més valorat
+            console.log("Mes valorat");
+            cargarDades(1); //més valorat
         }
         if ($(this).val() == 2) {
-            Cercador(2); //preu ascendent
+            cargarDades(2); //preu ascendent
         }
         if ($(this).val() == 3) {
-            Cercador(3); //preu ascendent
+            cargarDades(3); //preu ascendent
         }
     });
 })(jQuery); // End of use strict

@@ -24,7 +24,7 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
-<body id="page-top" onload="buscador()">
+<body id="page-top" >
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
@@ -74,11 +74,12 @@
                 <h2 class="section-heading text-uppercase" id="headingInfo"></h2>
                 <h3 class="section-subheading text-muted" id="subHeadingInfo"></h3>
             </div>
+            <!--
             <div class= "row justify-content-center">
                 <div class="col-lg-6 sort-container ">
-                    <!-- Filtrar -->
+                    <!- Filtrar ->
                     <span >Ordenar per:</span>
-                    <!--<div class="select-style" style="background-color: #F8D160;color: white;width:600px;"></div>-->
+                    <!-<div class="select-style" style="background-color: #F8D160;color: white;width:600px;"></div>->
                         <select  id="selectOrdenar">
                             <option value="0">Predeterminat</option>
                             <option value="1">Més valorades</option>
@@ -86,10 +87,10 @@
                             <option value="3">Preu decreixent</option>
                             <option value="4">A-Z</option>
                         </select>
-                    <!--</div>-->
+                    <!-</div>->
                 </div>
                 <div class="col-lg-6 ">
-                    <!-- Barra buscador-->
+                    <!- Barra buscador->
                     <div class="search-container">
                         <input
                             type="text"
@@ -100,11 +101,12 @@
                         <button type="submit" onclick="filtrar();" id="buscar"><i class="fa fa-search"></i></button>
                 </div>  
             </div>
+        -->
             <!-- TIME LINE -->
             <ul class="timeline" id="timeLineInfo"></ul>
             <!-- Portfolio Grid per CURS / FIRA / + INFO-->
             <div class="container" id="portfolio">
-                <div class="row" id="portfolioInfo"></div>
+                <div class="row" id="galeriaPortfoli"></div>
 
                 
             </div>
@@ -112,17 +114,19 @@
     </section>
 
 
-    <!-- Portfolio Modals: desplegable dels diferents cursos/fires-->
-    <div class="portfolio-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+     <!-- Portfolio Modals: desplegable dels diferents supermercats / restaurants-->
+     <div class="portfolio-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" id="añadirInfoElemento">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" />
                 </div>
                 <div class="row justify-content-center">
                     <!-- Nombre y descripción del elemento -->
-                    <div class="modal-body" id="nombreDescripcioElement"></div>
+                    <div class="modal-body" id="nombreElement"></div>
                 </div>
                 <div class="container" id="carouselElement"></div> <!-- Carousel del elemento -->
+                <div class="modal-body" id="descripcioElement"></div>
+
                 <div class="container">
                     <div class="row justify-content-left" style="margin-bottom: 15px; margin-top: 15px;">
                         <div class="col-lg-6 ">
@@ -134,20 +138,55 @@
                                     <a href="#" id="eventNum2"></a>
                                 </div>
                             </div>
+
                             <!-- Datos information -->
                             <div id="datosElemento"></div>
-                            <a class="btn btn-primary btn-social mx-2" target="_blank" id="facebookElem"><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-social mx-2" target="_blank" id="InstaElem"><i
-                                    class="fab fa-instagram"></i></a>
-                            <a class="btn btn-primary btn-social mx-2" target="_blank" id="TwitterElem"><i
-                                    class="fab fa-tripadvisor"></i></i></a>
+                            <!-- Estrellas puntuación -->
+                            <div id="puntuacio"></div>
+                            <!-- Favoritos -->
+                            <div class="row justify-content-center">
+                                <div id="Textfavorito"> </div>
+                                <div id="favorito"></div>
+                            </div>
+                            <div id="enlaces"></div>
                         </div>
-                        <div class="col-lg-6 texto-centrado">
+                        <div class="col-lg-6">
                             <!-- Widget tiempo -->
-                            <a class="weatherwidget-io" href="https://forecast7.com/es/39d572d65/palma/"
-                                data-label_1="PALMA" data-label_2="WEATHER" data-icons="Climacons Animated"
-                                data-mode="Forecast" data-theme="pure">PALMA</a>
+                            <div class="container">
+                                <div class="weather">
+                                    <div class="boxWeather">
+                                        <div class="text-center">
+                                            <h7 id="diaSetmana0"></h7><br>
+                                            <h5 id="actualTemp0"></h5>
+                                            <img id="icono0" ><br>
+                                            <h7 id="description0" style="font-size: 10px;"></h7><br>
+                                            <h7 id="temp0"></h7>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weather">
+                                    <div class="boxWeather">
+                                        <div class="text-center">
+                                            <h7 id="diaSetmana1"></h7><br>
+                                            <h5 id="actualTemp1"></h5>
+                                            <img id="icono1"><br>
+                                            <h7 id="description1" style="font-size: 10px;"></h7><br>
+                                            <h7 id="temp1"></h7>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weather">
+                                    <div class="boxWeather">
+                                        <div class="text-center">
+                                            <h7 id="diaSetmana2"></h7><br>
+                                            <h5 id="actualTemp2"></h5>
+                                            <img id="icono2" ><br>
+                                            <h7 id="description2" style="font-size: 10px;"></h7><br>
+                                            <h7 id="temp2"></h7>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -160,6 +199,7 @@
             </div>
         </div>
     </div>
+
     <!-- Clients-->
     <div class="py-5 bg-light">
         <div class="container">
