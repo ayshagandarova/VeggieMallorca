@@ -140,11 +140,10 @@ function cargarDades(filtrado) {
                         }
                         */
 
-
+            // caso de supermercados, info, cursos (porque en restaurante hacemos la llamada en lo de dilpreet)
             if (id != "restaurant" || id != "fira") {
                 Cercador(filtrado);
             }
-
         }
     };
     xmlhttp.open("GET", url, true);
@@ -571,24 +570,16 @@ function eliminarDatosElemento() {
     $("#contactoElemento").html("");
     $("#datosElemento").html("");
     $("#favorito").html("");
-    $("#puntuacio").html("");
+    $("#puntuacioPreu").html("");
     $("#enlaces").html("");
-    /*parte de tiempo a continuacion ( se tiene q mejorar)*/
-    $("#diaSetmana0").html("");
-    $("#diaSetmana1").html("");
-    $("#diaSetmana2").html("");
-    $("#actualTemp0").html("");
-    $("#actualTemp1").html("");
-    $("#actualTemp2").html("");
-    $("#icono0").html("");
-    $("#icono1").html("");
-    $("#icono2").html("");
-    $("#description0").html("");
-    $("#description1").html("");
-    $("#description2").html("");
-    $("#temp0").html("");
-    $("#temp1").html("");
-    $("#temp2").html("");
+    /*parte de tiempo a continuacion*/
+    for (var t = 0; t < 3; t++) {
+        $("#diaSetmana" + t).html("");
+        $("#actualTemp" + t).html("");
+        $("#icono" + t).html("");
+        $("#description" + t).html("");
+        $("#temp" + t).html("");
+    }
 }
 
 /* Función que rellena los datos de los desplegables */
@@ -596,17 +587,6 @@ function desplegable(i) {
     if ($("#nombreElement").html() !== null) {
         eliminarDatosElemento();
     }
-    /* var xmlhttp = new XMLHttpRequest();
-     if (i >= 100) {
-         var url = "https://bares-mallorca.netlify.app/data.json"
-         i = i - 100
-         console.log("i flexi: " + i)
-     } else {
-         var url = "dades.json"
-     }
-     xmlhttp.onreadystatechange = function () {
-         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
-             var datos = JSON.parse(xmlhttp.responseText); */
 
     // Nombre y descripcion:
     var newTitulo = document.createElement("h2");
@@ -624,33 +604,33 @@ function desplegable(i) {
     $("#descripcioElement").append(newDescripcio);
 
     // Puntero:
+
     var long,lat, address;
-    console.log(datosFiltrados[i].tipus)
-    if (datosFiltrados[i].tipus != "supermercat" || datosFiltrados[i].tipus != "restaurant" || datosFiltrados[i].tipus !="curs" || datosFiltrados[i].tipus !="info" ){
-        long = datosFiltrados[i].geoposicionament1.long;
-        lat = datosFiltrados[i].geoposicionament1.lat;
-        address = datosFiltrados[i].geoposicionament1.addres
-    }else{
+    if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info" || datosFiltrados[i].tipus == "vegetariano"){
         long = datosFiltrados[i].geo1.long;
         lat = datosFiltrados[i].geo1.lat;
-        address = datosFiltrados[i].geo1.addres
+        address = datosFiltrados[i].geo1.address
+    }else  {
+        long = datosFiltrados[i].geoposicionament1.long;
+        lat = datosFiltrados[i].geoposicionament1.lat;
+        address = datosFiltrados[i].geoposicionament1.address
     }
 
-        var f
-        marker = new mapboxgl.Marker()
-            .setLngLat([long, lat])
-            .setPopup(
-                new mapboxgl.Popup({ offset: 25 })
-                    .setHTML(
-                        '<h4>' +
-                        datosFiltrados[i].nom +
-                        '</h4><p>' +
-                        address +
-                        '</p>' +
-                        '<img src="' + datosFiltrados[i].imatges[0] + '" style="height: 150px;"/>'
-                    )
-            )
-            .addTo(map);
+    var f
+    marker = new mapboxgl.Marker()
+        .setLngLat([long, lat])
+        .setPopup(
+            new mapboxgl.Popup({ offset: 25 })
+                .setHTML(
+                    '<h4>' +
+                    datosFiltrados[i].nom +
+                    '</h4><p>' +
+                    address +
+                    '</p>' +
+                    '<img src="' + datosFiltrados[i].imatges[0] + '" style="height: 150px;"/>'
+                )
+        )
+        .addTo(map);
   
     // Carousel:
     var newCarousel1 = document.createElement("div");
@@ -749,17 +729,9 @@ function desplegable(i) {
 
     $("#carouselElement").append(newCarousel1);
 
-    /*
-                if (datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info") {
-    
-                } else {
-    
-    */
 
-
-   if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus =="curs" || datosFiltrados[i].tipus == "info" ){
+   if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus =="curs" || datosFiltrados[i].tipus == "info" || datosFiltrados[i].tipus == "vegetariano"){
     
-
         // Disponibilidad horaria:
         var date = new Date();
         var d = date.getDay();
@@ -767,7 +739,6 @@ function desplegable(i) {
         var m = date.getMinutes();
         var hora = h + ":" + m;
         var disponibilidad;
-
 
         // Comprueba si en este momento está abierto el local
         switch (d) {
@@ -1022,17 +993,19 @@ function desplegable(i) {
         newTwittera.appendChild(newTwitteri);
         $("#enlaces").append(newTwittera);
     }
-    if (datosFiltrados[i].contacte.xarxes.web != "") {
-        var newWeba = document.createElement("a");
-        newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
-        newWeba.setAttribute('target', "_blank");
-        newWeba.setAttribute('href', datosFiltrados[i].contacte.xarxes.web);
+    if(datosFiltrados[i].tipus != "vegetariano"){
+        if (datosFiltrados[i].contacte.xarxes.web != "" ) {
+            var newWeba = document.createElement("a");
+            newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
+            newWeba.setAttribute('target', "_blank");
+            newWeba.setAttribute('href', datosFiltrados[i].contacte.xarxes.web);
 
-        var newWebi = document.createElement("i");
-        newWebi.setAttribute('class', "fas fa-at")
-        //fas fa-globe-europe">
-        newWeba.append(newWebi);
-        $("#enlaces").append(newWeba);
+            var newWebi = document.createElement("i");
+            newWebi.setAttribute('class', "fas fa-at")
+            //fas fa-globe-europe">
+            newWeba.append(newWebi);
+            $("#enlaces").append(newWeba);
+        }
     }
     if (datosFiltrados[i].contacte.email != "") {
         var newEmaila = document.createElement("a");
@@ -1091,7 +1064,7 @@ function desplegable(i) {
         var newI1 = document.createElement("i");
         newI1.setAttribute('style', "color:#f8d160");
         newI1.setAttribute('class', "fa fa-star");
-        $("#puntuacio").append(newI1);
+        $("#puntuacioPreu").append(newI1);
     }
 
     //Comrpobar si falta la media estrella
@@ -1099,7 +1072,36 @@ function desplegable(i) {
         var newI1 = document.createElement("i");
         newI1.setAttribute('style', "color:#f8d160");
         newI1.setAttribute('class', "fas fa-star-half-alt");
-        $("#puntuacio").append(newI1);
+        $("#puntuacioPreu").append(newI1);
+    }
+
+
+    //Poner símbolos de dinero según el precio
+    var preu = datosFiltrados[i].preu.import;
+    preu = preu.replace("€", "");
+    console.log(preu)
+
+    if (preu < 5) { //1 símbol
+        num_euros = 1;
+    } else if (preu < 10) { //2 símbols
+        num_euros = 2;
+    } else if (preu < 20) { //3 símbols
+        num_euros = 3;
+    } else if (preu < 30) {//4 símbols
+        num_euros = 4;
+    } else { //5 símbols
+        num_euros = 5;
+    }
+    for (var x = 0; x < num_euros; x++) {
+
+        var newI1 = document.createElement("i");
+        newI1.setAttribute('style', "color:#212529");
+        newI1.setAttribute('class', "fas fa-euro-sign");
+        if (x == 0) {
+            newI1.setAttribute('class', "ml-3");
+        }
+        $("#puntuacioPreu").append(newI1);
+
     }
 }
 
@@ -1211,12 +1213,16 @@ function buscadorFires() {
 
 }
 
+
+
 // aqui molaria tb poner el caso de los datos fira de miquel, pero no termino de ver como hacerlo todo en uno
 function addElemTimeLine(datos) {
     //antes de empezar el for, hacer un push de las fires dentro de datos
+    var contador = 0;
     for (var i = 0; i < datos.length; i++) {
         if (datos[i].tipus == "curs" || datos[i].tipus == "fira" || datos[i].tipus == "info") {
-            if (i % 2) {
+            contador++
+            if (contador % 2) {
                 var newLi = document.createElement("li")
             } else {
                 var newLi = document.createElement("li")
