@@ -1,26 +1,4 @@
-/* MAPA */
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
-var map = new mapboxgl.Map({
-    container: 'mapid', // container ID
-    style: 'mapbox://styles/mapbox/streets-v11', // style URL
-    center: [2.942477242579887, 39.63623814828035], // starting position [lng, lat]
-    zoom: 9 // starting zoom
-});
-map.on('idle', function () {
-    map.resize()
-});
-map.scrollZoom.disable();
-map.addControl(new mapboxgl.NavigationControl());
-// Add geolocate control to the map.
-map.addControl(new mapboxgl.GeolocateControl({
-    positionOptions: {
-        enableHighAccuracy: true
-    },
-    trackUserLocation: true
-})
-);
 
-var marker;
 
 /*
 document.addEventListener( 'DOMContentLoaded', function() {
@@ -61,11 +39,12 @@ input.addEventListener('keyup', function (event) {
 
 
 
-var datosBuscados = [];
+
 
 
 var dades;
 var datosFiltrados = [];
+var datosBuscados = [];
 /*
 DispatchQueue.main.async{
     dades.reloadData()
@@ -160,11 +139,49 @@ function cargarDades(filtrado) {
     xmlhttp.send();
 }
 
+
+/* MAPA */
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
+    var map = new mapboxgl.Map({
+        container: 'mapid', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [2.942477242579887, 39.63623814828035], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+    map.on('idle', function () {
+        map.resize()
+    });
+    map.scrollZoom.disable();
+    map.addControl(new mapboxgl.NavigationControl());
+    // Add geolocate control to the map.
+    map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    })
+    );
+
+    var marker;
+
+
+
+
 const searchWrapper = document.querySelector(".search-container");
-if (searchWrapper != null) {
-    const inputBox = searchWrapper.querySelector("input");
-    const suggBox = searchWrapper.querySelector(".autocom-box");
-    const icon = searchWrapper.querySelector(".icon");
+if (searchWrapper != null){
+const inputBox = searchWrapper.querySelector("input");
+const suggBox = searchWrapper.querySelector(".autocom-box");
+const icon = searchWrapper.querySelector(".icon");
+
+// si se pulsa enter reacciona igual que si clicas el botón de buscar:
+    
+inputBox.addEventListener('keyup', function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        icon.click();
+    }
+});
+
     inputBox.addEventListener('keyup', (e) => {
         let userData = e.target.value; //user enetered data
         if (userData) {
@@ -175,47 +192,44 @@ if (searchWrapper != null) {
                     element.nom.toLowerCase().includes(searchString)
                 )
             });
-            datosBuscados = datosBuscados.map((data) => {
-                // passing return data inside li tag
-                return data = '<li>' + data.nom + '</li>';
-            });
+            var rellenarHTML = [];
+
+            for (var i=0; i< datosFiltrados.length; i++){
+                for(var j=0; j<datosBuscados.length; j++){
+                    if (datosFiltrados[i].nom == datosBuscados[j].nom){
+                        rellenarHTML.push('<li> <a class="portfolio-link" data-toggle="modal" data-target="#myModal" onclick="desplegable(' + i + ');"</a>' + datosFiltrados[i].nom + '</li>')
+                    }
+                }
+            }
             searchWrapper.classList.add("active"); //show autocomplete box
-            mostrarSugerits(datosBuscados);
+            mostrarSugerits(rellenarHTML, inputBox, suggBox);
+            /*
             let allList = suggBox.querySelectorAll("li");
             for (let i = 0; i < allList.length; i++) {
                 //adding onclick attribute in all li tag
-                allList[i].setAttribute("onclick", "select(this)");
+                allList[i].setAttribute("onclick", "select(this)"); // su pulso el boton del buscador
             }
+            */
+
+
+            icon.onclick = () => {
+                $("#galeriaPortfoli").html("");
+                datosFiltrados = datosBuscados;
+                var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
+                var id = urlweb.replace("?", "")
+                addElement(id);
+                searchWrapper.classList.remove("active"); //hide autocomplete box
+                $("#myInput").html("");
+                document.getElementById('myInput').value = '';
+            }
+           
         } else {
             searchWrapper.classList.remove("active"); //hide autocomplete box
         }
     });
-
 }
 
-function select(element) {
-    let linkTag = searchWrapper.querySelector("a");
-    let selectData = element.textContent;
-    console.log(selectData);
-    inputBox.value = selectData;
-    icon.onclick = () => {
-        webLink = "https://www.google.com/search?q=" + selectData;
-        linkTag.setAttribute("href", webLink);
-        linkTag.setAttribute('class', "portfolio-link");
-        linkTag.setAttribute('data-toggle', "modal");
-        linkTag.setAttribute('data-target', "#myModal");
-        for (var i = 0; i < datosFiltrados.length; i++) {
-            if (datosFiltrados[i].nom == selectData) {
-                linkTag.setAttribute('onclick', "desplegable(" + i + ");");
-            }
-        }
-
-        linkTag.click();
-    }
-    searchWrapper.classList.remove("active");
-}
-
-function mostrarSugerits(list) {
+function mostrarSugerits(list, inputBox, suggBox) {
     let listData;
     if (!list.length) {
         userValue = inputBox.value;
@@ -378,7 +392,7 @@ function filtrar(id, filtrado) {
 function addElement(id) {
     var contador = 0;
     for (var i = 0; i < datosFiltrados.length; i++) {
-        if (id == "informacio") {
+        if (id == "informacio") {  // timeline
             contador++
             if (contador % 2) {
                 var newLi = document.createElement("li")
@@ -394,7 +408,7 @@ function addElement(id) {
             newLi.appendChild(newDiv)//añade texto al div creado.
 
             var newimg = document.createElement("img");   // crea un nuevo div
-            newimg.setAttribute('class', "img-fluid")
+            newimg.setAttribute('class', "rounded-circle img-fluid")
             newimg.setAttribute('src', datosFiltrados[i].imatges[0]) // datos[i].imatges[0]
             newimg.setAttribute('alt', "")
             newDiv.appendChild(newimg)
@@ -438,7 +452,7 @@ function addElement(id) {
             // añade el elemento creado y su contenido al DOM
             $("#timeLineInfo").append(newLi);
 
-        }else{
+        }else{ // portfolio
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
             newDiv.setAttribute('id', "elemento-" + i)
@@ -617,6 +631,7 @@ function eliminarDatosElemento() {
 
 /* Función que rellena los datos de los desplegables */
 function desplegable(i) {
+    console.log("i: "+ i);
     if ($("#nombreElement").html() !== null) {
         eliminarDatosElemento();
     }
@@ -1189,9 +1204,6 @@ function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-
-
-
 // Si la persona pulsa en otro lado (que no sea el horario) se cierra el dropdown
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
@@ -1227,6 +1239,7 @@ function closeAllSelect(elmnt) {
         }
     }
 }
+
 //if the user clicks anywhere outside the select box,
 //then close all select boxes:
 document.addEventListener("click", closeAllSelect);
