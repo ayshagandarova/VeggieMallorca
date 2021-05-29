@@ -54,11 +54,46 @@ DispatchQueue.main.async{
 
 cargarDades(0);
 
+function dadesRestaurantExt(filtrado){
+    var xmlhttp2 = new XMLHttpRequest();
+    var url2 = "https://bares-mallorca.netlify.app/data.json";
+    xmlhttp2.onreadystatechange = function () {
+        if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+            var dadesExt = JSON.parse(xmlhttp2.responseText);
+            for (var i = 0; i < dadesExt.length; i++) {
+                if (dadesExt[i].tipus == "vegetariano") {
+                    dades.push(dadesExt[i]);
+                }
+            }
+            Cercador(filtrado);  // restaurantes
+        }
+    };
+    xmlhttp2.open("GET", url2, true);
+    xmlhttp2.send();
+}
+
+function dadesFiresExt(filtrado){
+    var xmlhttp2 = new XMLHttpRequest();
+    var url2 = "https://fires-mallorca.netlify.app/jsonBase_1.json";
+    xmlhttp2.onreadystatechange = function () {
+        if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+            dadesExt = JSON.parse(xmlhttp2.responseText);
+            for (var i = 0; i < dadesExt.length; i++) {
+                if (dadesExt[i].tipus == "Vegeteriana") {
+                    dades.push(dadesExt[i]);
+                }
+            }
+            Cercador(filtrado);  // fires (o informacio)
+        }
+    };
+    xmlhttp2.open("GET", url2, true);
+    xmlhttp2.send();
+}
+
+
 function cargarDades(filtrado) {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
-    var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
-    var id = urlweb.replace("?", "")
 
     // leemos nuestros datos
     xmlhttp.onreadystatechange = function () {
@@ -67,7 +102,54 @@ function cargarDades(filtrado) {
             var tot = JSON.parse(xmlhttp.responseText);
             var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
             var id = urlweb.replace("?", "")
-            if (id != "fira" && id!="informacio") {
+
+
+            if (id == "favorits"){
+                var favoritos = localStorage.getItem("favoritos") || "[]";
+                favoritos = JSON.parse(favoritos);
+                // para cada producto en favoritos
+                for (var j = 0; j < tot.length; j++) {
+                    for (var x = 0; x < favoritos.length; x++) {
+                        if ((favoritos[x].id == tot[j].nom)) {
+                            dades.push(tot[j]);
+                        }
+                    }
+                }
+                var xmlhttp2 = new XMLHttpRequest();
+                var url2 = "https://bares-mallorca.netlify.app/data.json";
+                xmlhttp2.onreadystatechange = function () {
+                    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+                        var dadesExt = JSON.parse(xmlhttp2.responseText);
+                        for (var j = 0; j < dadesExt.length; j++) {
+                            for (var x = 0; x < favoritos.length; x++) {
+                                if ((favoritos[x].id == dadesExt[j].nom)) {
+                                    dades.push(dadesExt[j]);
+                                }
+                            }
+                        }
+                        var xmlhttp3 = new XMLHttpRequest();
+                        var url3 = "https://fires-mallorca.netlify.app/jsonBase_1.json";
+                        xmlhttp3.onreadystatechange = function () {
+                            if (xmlhttp3.readyState == 4 && xmlhttp3.status == 200) {
+                                dadesExt2 = JSON.parse(xmlhttp3.responseText);
+                                for (var j = 0; j < dadesExt2.length; j++) {
+                                    for (var x = 0; x < favoritos.length; x++) {
+                                        if ((favoritos[x].id == dadesExt2[j].nom)) {
+                                            dades.push(dadesExt2[j]);
+                                        }
+                                    }
+                                }
+                                Cercador(filtrado);   // favoritos
+                            }
+                        };
+                        xmlhttp3.open("GET", url3, true);
+                        xmlhttp3.send();
+                    }
+                };
+                xmlhttp2.open("GET", url2, true);
+                xmlhttp2.send();
+
+            }else if (id != "fira" && id!="informacio") {  // restaurante, info, curso, supermercado
                 for (var i = 0; i < tot.length; i++) {
                     if (id == tot[i].tipus) {
                         dades.push(tot[i]);
@@ -75,22 +157,7 @@ function cargarDades(filtrado) {
                 }
                 // leemos los restaurantes de dilpreet  si son vegetarianos
                 if (id == "restaurant") {
-                    var xmlhttp2 = new XMLHttpRequest();
-                    var url2 = "https://bares-mallorca.netlify.app/data.json";
-                    xmlhttp2.onreadystatechange = function () {
-                        if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
-                            var dadesExt = JSON.parse(xmlhttp2.responseText);
-
-                            for (var i = 0; i < dadesExt.length; i++) {
-                                if (dadesExt[i].tipus == "vegetariano") {
-                                    dades.push(dadesExt[i]);
-                                }
-                            }
-                            Cercador(filtrado);
-                        }
-                    };
-                    xmlhttp2.open("GET", url2, true);
-                    xmlhttp2.send();
+                    dadesRestaurantExt(filtrado) 
                 }
             } else if(id=="informacio"){ // añadimos curs, fires y info
                 for (var i = 0; i < tot.length; i++) {
@@ -102,35 +169,11 @@ function cargarDades(filtrado) {
             } 
             
             if (id == "fira") { // fires, si salimos de informacio, también añadimos les fires de miquel
-                var xmlhttp2 = new XMLHttpRequest();
-                var url2 = "https://fires-mallorca.netlify.app/jsonBase_1.json";
-                xmlhttp2.onreadystatechange = function () {
-                    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
-                        dadesExt = JSON.parse(xmlhttp2.responseText);
-                        for (var i = 0; i < dadesExt.length; i++) {
-                            if (dadesExt[i].tipus == "Vegeteriana") {
-                                dades.push(dadesExt[i]);
-                            }
-                        }
-                        Cercador(filtrado);
-                    }
-                };
-                xmlhttp2.open("GET", url2, true);
-                xmlhttp2.send();
+                dadesFiresExt(filtrado)
             }
-            /*
-                        if (id == "favorits"){
-                            var dades = localStorage.getItem("favoritos") || "[]";
-                            dedes = JSON.parse(dades);
-                           // console.log(favoritos)
-                          //  dades = [];
-                        //   (()) dedes = favoritos;
-                            console.log(dades)
-                        }
-                        */
 
             // caso de supermercados, info, cursos (porque en restaurante hacemos la llamada
-            if (id != "restaurant" && id != "fira" && id != "informacio") {
+            if (id != "restaurant" && id != "fira" && id != "informacio" && id!="favorits") {
                 Cercador(filtrado);
             }
         }
@@ -291,6 +334,7 @@ function topFunction() {
 /* FILTRADO */
 //Filtrar para diferenciar entre restaurants o supermercats
 function Cercador(filtrado) {
+    
     var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
     var id = urlweb.replace("?", "")
     $("#titolPortfoli").html("")
@@ -505,7 +549,7 @@ function addElement(id) {
 
             var newDiv6 = document.createElement("div");
             newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-            if (id == "Vegeteriana") {
+            if (datosFiltrados[i].tipus == "Vegeteriana") {
                 var newContent2 = document.createTextNode(datosFiltrados[i].geoposicionament1.city);
                 newDiv6.appendChild(newContent2)
             } else {
@@ -519,80 +563,7 @@ function addElement(id) {
             // añade el elemento creado y su contenido al DOM
             $("#galeriaPortfoli").append(newDiv);
         }
-    }
-
-
-    //Para luego en la página de favoritos podrías hacer un listado simple:
-    // leemos los favoritos del localStorage
-    var favoritos = localStorage.getItem("favoritos") || "[]";
-    favoritos = JSON.parse(favoritos);
-    // para cada producto en favoritos
-    for (var j = 0; j < dades.length; j++) {
-        for (var x = 0; x < favoritos.length; x++) {
-            if ((favoritos[x].id == dades[j].nom) & (id == "favorits")) {
-                var newDiv = document.createElement("div");   // crea un nuevo div
-                newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
-                //newDiv.setAttribute('id', "elemento-" + j)
-
-                var newDiv1 = document.createElement("div");
-                newDiv1.setAttribute('class', "portfolio-item")
-                newDiv.appendChild(newDiv1); //afegim node newDiv1 com a fill del pare newDiv
-
-                var newa1 = document.createElement("a");
-                newa1.setAttribute('class', "portfolio-link");
-                newa1.setAttribute('data-toggle', "modal");
-                newa1.setAttribute('data-target', "#myModal");
-                newa1.setAttribute('onclick', "desplegable(" + j + ");");
-                newa1.setAttribute('id', "iddeslplegable")
-                newDiv1.appendChild(newa1);
-
-                var newDiv2 = document.createElement("div");
-                newDiv2.setAttribute('class', "portfolio-hover")
-
-                newa1.appendChild(newDiv2);
-
-                var newDiv3 = document.createElement("div");
-                newDiv3.setAttribute('class', "portfolio-hover-content")
-
-                newDiv2.appendChild(newDiv3);
-
-                var newi = document.createElement("i");
-                newi.setAttribute('class', "fas fa-plus fa-3x")
-
-                newDiv3.appendChild(newi);
-
-                var newimg = document.createElement("img");
-                newimg.setAttribute('class', "img-fluid")
-                //newimg.setAttribute('class', "ml-1")
-                newimg.setAttribute('src', dades[j].imatges[0])
-                newimg.setAttribute('alt', "")
-
-                newa1.appendChild(newimg);
-
-                var newDiv4 = document.createElement("div");
-                newDiv4.setAttribute('class', "portfolio-caption")
-
-                newDiv1.appendChild(newDiv4);
-
-                var newDiv5 = document.createElement("div");
-                newDiv5.setAttribute('class', "portfolio-caption-heading")
-                var newContent = document.createTextNode(dades[j].nom);
-                newDiv5.appendChild(newContent)
-
-                newDiv4.appendChild(newDiv5);
-
-                var newDiv6 = document.createElement("div");
-                newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-                var newContent2 = document.createTextNode(dades[j].geo1.city);
-                newDiv6.appendChild(newContent2)
-                newDiv4.appendChild(newDiv6);
-
-                // añade el elemento creado y su contenido al DOM
-                $("#galeriaPortfoli").append(newDiv);
-
-            }
-        }
-    }
+    }    
 }
 
 /* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
@@ -631,7 +602,6 @@ function eliminarDatosElemento() {
 
 /* Función que rellena los datos de los desplegables */
 function desplegable(i) {
-    console.log("i: "+ i);
     if ($("#nombreElement").html() !== null) {
         eliminarDatosElemento();
     }
@@ -1144,57 +1114,49 @@ function desplegable(i) {
     }
 }
 
-
 //Función para guardar favoritos
 function guardarFav(i) {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json";
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
-            var datos = {
-                id: datos[i].nom
-            };
-            // leemos los favoritos del localStorage
-            var favoritos = localStorage.getItem("favoritos") || "[]";
-            favoritos = JSON.parse(favoritos);
-            //Aquest és el texte que es va canviant depenent de l'estat del coret.
-            var favo = document.getElementById("Textfavorito");
-            var newComentFav = document.createElement("p")
-            var activo = document.createTextNode("Afegeix a favorits ");
-            var inactivo = document.createTextNode("Elimina de favorits ")
-            favo.innerHTML = ""; // Limpia el contenido.
-
-            // buscamos el producto en la lista de favoritos
-            var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
-            if (posLista > -1) {
-                // si está, lo quitamos
-                favoritos.splice(posLista, 1);
-                //Cambiar Icono
-                var ic = document.getElementById("fav" + i);
-                ic.setAttribute('style', "color:black");
-
-                favo.appendChild(newComentFav);
-                newComentFav.appendChild(activo);
-            } else {
-                // si no está, lo añadimos
-                favoritos.push(datos);
-                //Cambiar ICono
-                var ic = document.getElementById("fav" + i);
-                ic.setAttribute('style', "color:red");
-
-                favo.appendChild(newComentFav);
-                newComentFav.appendChild(inactivo);
-            }
-
-            // guardamos la lista de favoritos 
-            localStorage.setItem("favoritos", JSON.stringify(favoritos));
-
-        }
+    var datos = {
+        id: dades[i].nom
     };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+
+    // leemos los favoritos del localStorage
+    var favoritos = localStorage.getItem("favoritos") || "[]";
+    favoritos = JSON.parse(favoritos);
+    //Aquest és el texte que es va canviant depenent de l'estat del coret.
+    var favo = document.getElementById("Textfavorito");
+    var newComentFav = document.createElement("p")
+    var activo = document.createTextNode("Afegeix a favorits ");
+    var inactivo = document.createTextNode("Elimina de favorits ")
+    favo.innerHTML = ""; // Limpia el contenido.
+
+    // buscamos el producto en la lista de favoritos
+    var posLista = favoritos.findIndex(function (e) { return e.id == datos.id; });
+    if (posLista > -1) {
+        // si está, lo quitamos
+        favoritos.splice(posLista, 1);
+        //Cambiar Icono
+        var ic = document.getElementById("fav" + i);
+        ic.setAttribute('style', "color:black");
+
+        favo.appendChild(newComentFav);
+        newComentFav.appendChild(activo);
+    } else {
+        // si no está, lo añadimos
+        favoritos.push(datos);
+        //Cambiar ICono
+        var ic = document.getElementById("fav" + i);
+        ic.setAttribute('style', "color:red");
+
+        favo.appendChild(newComentFav);
+        newComentFav.appendChild(inactivo);
+    }
+
+    // guardamos la lista de favoritos 
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
 }
+    
 
 
 //Funcion del desplegable de horario
