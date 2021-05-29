@@ -739,8 +739,9 @@ function desplegable(i) {
 
     $("#carouselElement").append(newCarousel1);
 
+    console.log(datosFiltrados[i].tipus);
 
-   if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus =="curs" || datosFiltrados[i].tipus == "info" || datosFiltrados[i].tipus == "vegetariano"){
+   if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus == "vegetariano"){
     
         // Disponibilidad horaria:
         var date = new Date();
@@ -857,6 +858,8 @@ function desplegable(i) {
         $("#horariDs").append(pDs);
         $("#horariDg").append(pDg);
 
+    }else if  (datosFiltrados[i].tipus =="curs" || datosFiltrados[i].tipus == "info"){
+        console.log("holaaaa")
     }else{
         disponibilitat = document.createTextNode("Mostra horari");
         $("#calendar").css({ "background-color": "#B8CD65" });
@@ -927,7 +930,7 @@ function desplegable(i) {
                     $("#diaSetmana" + w).append(dayname);
                     $("#actualTemp" + w).append(data.daily[w].temp.day + " °C");
                     var icon = data.daily[w].weather[0].icon;
-                    $("#icono" + w).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+                    $("#icono" + w).attr("src", "https://openweathermap.org/img/wn/" + icon + ".png");
                     $("#description" + w).append(data.daily[w].weather[0].description);
 
                     var tempMax = data.daily[w].temp.max.toFixed(0);
