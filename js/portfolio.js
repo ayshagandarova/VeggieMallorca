@@ -88,7 +88,7 @@ function cargarDades(filtrado) {
             var tot = JSON.parse(xmlhttp.responseText);
             var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
             var id = urlweb.replace("?", "")
-            if (id != "fira") {
+            if (id != "fira" && id!="informacio") {
                 for (var i = 0; i < tot.length; i++) {
                     if (id == tot[i].tipus) {
                         dades.push(tot[i]);
@@ -113,21 +113,31 @@ function cargarDades(filtrado) {
                     xmlhttp2.open("GET", url2, true);
                     xmlhttp2.send();
                 }
-            } else {
+            } else if(id=="informacio"){ // añadimos curs, fires y info
+                for (var i = 0; i < tot.length; i++) {
+                    if (tot[i].tipus == "curs" || tot[i].tipus == "info") {
+                        dades.push(tot[i]);
+                    }
+                }
+                id = "fira"; // para que luego también haga los datos de miquel
+            } 
+            
+            if (id == "fira") { // fires, si salimos de informacio, también añadimos les fires de miquel
                 var xmlhttp2 = new XMLHttpRequest();
                 var url2 = "https://fires-mallorca.netlify.app/jsonBase_1.json";
                 xmlhttp2.onreadystatechange = function () {
                     if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
-                        dades = JSON.parse(xmlhttp2.responseText);
-                        var id = "Vegeteriana";
-                        //afegirElemPortfoliInfo(dadesFires, id);
+                        dadesExt = JSON.parse(xmlhttp2.responseText);
+                        for (var i = 0; i < dadesExt.length; i++) {
+                            if (dadesExt[i].tipus == "Vegeteriana") {
+                                dades.push(dadesExt[i]);
+                            }
+                        }
                         Cercador(filtrado);
                     }
                 };
                 xmlhttp2.open("GET", url2, true);
                 xmlhttp2.send();
-
-
             }
             /*
                         if (id == "favorits"){
@@ -140,8 +150,8 @@ function cargarDades(filtrado) {
                         }
                         */
 
-            // caso de supermercados, info, cursos (porque en restaurante hacemos la llamada en lo de dilpreet)
-            if (id != "restaurant" || id != "fira") {
+            // caso de supermercados, info, cursos (porque en restaurante hacemos la llamada
+            if (id != "restaurant" && id != "fira" && id != "informacio") {
                 Cercador(filtrado);
             }
         }
@@ -149,7 +159,6 @@ function cargarDades(filtrado) {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
-
 
 const searchWrapper = document.querySelector(".search-container");
 if (searchWrapper != null) {
@@ -183,8 +192,6 @@ if (searchWrapper != null) {
     });
 
 }
-
-
 
 function select(element) {
     let linkTag = searchWrapper.querySelector("a");
@@ -290,53 +297,24 @@ function Cercador(filtrado) {
         case "curs":
             $("#headingInfo").append("CURSOS")
             $("#subHeadingInfo").append("Troba aquí una petita selecció de cursos online i presencials vegetarians o vegans")
-            //afegirElemPortfoliInfo( id);
             break;
         case "info":
             $("#headingInfo").append("DADES INTERESSANTS")
             $("#subHeadingInfo").append("No et perdis les darreres notícies.")
-            // afegirElemPortfoliInfo(datos, id);
             break;
         case "fira":
             id = "Vegeteriana";
             $("#headingInfo").append("FIRES VEGETARIANES I VEGANES DE L'ILLA")
             $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
-            //  buscadorFires();
+            break;
+        case "informacio":
+            $("#headingInfo").append("MÉS INFORMACIÓ RELLEVANT")
+            $("#subHeadingInfo").append("Segueix descobrint visitant les fires de l'illa, diferents cursos i tot un conjunt de curiositats.")
             break;
     }
-    /*
-    if (id == "restaurant") {
-        $("#titolPortfoli").append("Restaurants")
-        $("#descPortfoli").append("Aquí trobàs la millor secció de restaurants que tenen opcions veganes o vegetarianes.")
-    } else if (id == "supermercat") {
-        $("#titolPortfoli").append("Supermercats")
-        $("#descPortfoli").append("Selecció de supermercats i petits comerços que ofereixen productes ecològics.")
-    } else if (id == "favorits") {
-        $("#titolPortfoli").append("Favorits")
-        $("#descPortfoli").append("Conjunt de restaurants i supermercats favorits.")
-    }else if (id == "informacio") {
-        $("#headingInfo").append("MÉS INFORMACIÓ RELLEVANT")
-        $("#subHeadingInfo").append("Segueix descobrint visitant les fires de l'illa, diferents cursos i tot un conjunt de curiositats.")
-        addElemTimeLine(datos);
-    } else if (id == "curs") {
-        $("#headingInfo").append("CURSOS")
-        $("#subHeadingInfo").append("Troba aquí una petita selecció de cursos online i presencials vegetarians o vegans")
-        afegirElemPortfoliInfo(datos, id);
-    } else if (id == "info") {
-        $("#headingInfo").append("DADES INTERESSANTS")
-        $("#subHeadingInfo").append("No et perdis les darreres notícies.")
-        afegirElemPortfoliInfo(datos, id);
-    } else if (id == "fira") {
-        $("#headingInfo").append("FIRES VEGETARIANES I VEGANES DE L'ILLA")
-        $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
-        buscadorFires();
-    }*/
     filtrar(id, filtrado);
     addElement(id);
 }
-
-
-
 
 function filtrar(id, filtrado) {
     datosFiltrados = [];
@@ -357,9 +335,7 @@ function filtrar(id, filtrado) {
 
                 datosFiltrados.push(dades[idPuntuacio]);
             }
-            console.log(datosFiltrados);
         } else if (filtrado == 2) { //Preu decreixent
-            console.log(dades);
             for (var i = 0; i < dades.length; i++) {
                 var idPreuA = 0;
                 var preuAAnterior = 0;
@@ -392,18 +368,77 @@ function filtrar(id, filtrado) {
                 datosFiltrados.push(dades[idPreuD]);
             }
         }
-    } else { // fira, curs, info o vegetariana
+    }else { // fira, curs, info, vegetariana  o informacio Timeline
         datosFiltrados = dades;
-    }
+    } 
     $("#galeriaPortfoli").html("");
-
-    console.log("Estoy en filtrado (" + filtrado + ") y mi id es: " + id);
 }
 
 //Afegir elements al portfoli de restaurants o supermercats
 function addElement(id) {
+    var contador = 0;
     for (var i = 0; i < datosFiltrados.length; i++) {
-        if ((datosFiltrados[i].tipus == id) || (datosFiltrados[i].tipus == "vegetariano")) { //id = "restaurant o sueprmercats"  // el vegetariano es de dilpreet
+        if (id == "informacio") {
+            contador++
+            if (contador % 2) {
+                var newLi = document.createElement("li")
+            } else {
+                var newLi = document.createElement("li")
+                newLi.setAttribute('class', "timeline-inverted")
+            }
+            var newDiv = document.createElement("div")  // crea un nuevo div
+            newDiv.setAttribute('class', "timeline-image image-cropper ")
+            newDiv.setAttribute('data-toggle', "modal")
+            newDiv.setAttribute('data-target', "#myModal");
+            newDiv.setAttribute('onclick', "desplegable(" + i + ");");
+            newLi.appendChild(newDiv)//añade texto al div creado.
+
+            var newimg = document.createElement("img");   // crea un nuevo div
+            newimg.setAttribute('class', "img-fluid")
+            newimg.setAttribute('src', datosFiltrados[i].imatges[0]) // datos[i].imatges[0]
+            newimg.setAttribute('alt', "")
+            newDiv.appendChild(newimg)
+
+            var newDiv1 = document.createElement("div")  // crea un nuevo div
+            newDiv1.setAttribute('class', "timeline-panel")
+            newLi.appendChild(newDiv1)//añade texto al div creado.
+
+            var newDiv2 = document.createElement("div")  // crea un nuevo div
+            newDiv2.setAttribute('class', "timeline-heading")
+            newDiv2.setAttribute('data-toggle', "modal")
+            newDiv2.setAttribute('data-target', "#myModal");
+            newDiv2.setAttribute('onclick', "desplegable(" + i + ");");
+            newDiv1.appendChild(newDiv2)//añade texto al div creado.
+
+            var newh4 = document.createElement("h4")
+            var newContent = document.createTextNode(datosFiltrados[i].nom); //nom Rest datos[i].nom
+            newh4.appendChild(newContent)
+            newDiv2.appendChild(newh4)
+
+            var newh4_2 = document.createElement("h4")
+            newh4_2.setAttribute('class', "subheading")
+            var newContent2 = document.createTextNode(datosFiltrados[i].calendari.startDataEvent);
+            newh4_2.appendChild(newContent2)
+            newDiv2.appendChild(newh4_2)
+
+            var newDiv3 = document.createElement("div")  // crea un nuevo div
+            newDiv3.setAttribute('class', "timeline-body")
+            newDiv3.setAttribute('data-toggle', "modal")
+            newDiv3.setAttribute('href', "#portfolioModal1")
+            newDiv1.appendChild(newDiv3)//añade texto al div creado.
+
+            var newp = document.createElement("p")
+            newp.setAttribute('class', "text-muted")
+            newp.setAttribute('class', "p-justificado")
+            var newContent3 = document.createTextNode(datosFiltrados[i].descripcio); //«Va a haber stands de comida vegana, y el domingo haremos unconcurso, además de platos condimentados y talleres, haremos charlas para explicar qué significa ser vegano y como vive un vegano».
+            newp.appendChild(newContent3)
+            newDiv3.appendChild(newp)
+
+
+            // añade el elemento creado y su contenido al DOM
+            $("#timeLineInfo").append(newLi);
+
+        }else{
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
             newDiv.setAttribute('id', "elemento-" + i)
@@ -457,7 +492,6 @@ function addElement(id) {
             var newDiv6 = document.createElement("div");
             newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
             if (id == "Vegeteriana") {
-                console.log(datosFiltrados[i].geoposicionament1.city);
                 var newContent2 = document.createTextNode(datosFiltrados[i].geoposicionament1.city);
                 newDiv6.appendChild(newContent2)
             } else {
@@ -482,7 +516,6 @@ function addElement(id) {
     for (var j = 0; j < dades.length; j++) {
         for (var x = 0; x < favoritos.length; x++) {
             if ((favoritos[x].id == dades[j].nom) & (id == "favorits")) {
-                console.log("en favoritos");
                 var newDiv = document.createElement("div");   // crea un nuevo div
                 newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
                 //newDiv.setAttribute('id', "elemento-" + j)
@@ -662,21 +695,13 @@ function desplegable(i) {
 
     var newCarouselImg1 = document.createElement("img");
     newCarouselImg1.setAttribute('class', "0-slide")
-    if (datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info") {
-        newCarouselImg1.setAttribute('src', datosFiltrados[i].imatges[1])
-    } else {
-        newCarouselImg1.setAttribute('src', datosFiltrados[i].imatges[0])
-    }
-
+    newCarouselImg1.setAttribute('src', datosFiltrados[i].imatges[0])
     newCarouselImg1.setAttribute('alt', "0-slide")
     newCarouselImg1.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
     newCarousel4.appendChild(newCarouselImg1);
 
-    if (datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info") {
-        var k = 2
-    } else {
-        var k = 1
-    }
+    var k = 1
+    
     for (k; k < datosFiltrados[i].imatges.length; k++) {
         var newCarouselK = document.createElement("div");
         newCarouselK.setAttribute('class', "carousel-item")
@@ -1079,7 +1104,6 @@ function desplegable(i) {
     //Poner símbolos de dinero según el precio
     var preu = datosFiltrados[i].preu.import;
     preu = preu.replace("€", "");
-    console.log(preu)
 
     if (preu < 5) { //1 símbol
         num_euros = 1;
@@ -1155,494 +1179,6 @@ function guardarFav(i) {
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-    console.log("favs");
-}
-
-/*
-//+ INFORMACIO.HTML
-//Crear la timeline dinámicamente:
-function buscador() {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json";
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
-            var urlweb = location.search //agafa la url on hem clicat a partir de l'? inclòs
-            var id = urlweb.replace("?", "")
-            if (id == "informacio") {
-                $("#headingInfo").append("MÉS INFORMACIÓ RELLEVANT")
-                $("#subHeadingInfo").append("Segueix descobrint visitant les fires de l'illa, diferents cursos i tot un conjunt de curiositats.")
-                addElemTimeLine(datos);
-            } else if (id == "curs") {
-                $("#headingInfo").append("CURSOS")
-                $("#subHeadingInfo").append("Troba aquí una petita selecció de cursos online i presencials vegetarians o vegans")
-                afegirElemPortfoliInfo(datos, id);
-            } else if (id == "info") {
-                $("#headingInfo").append("DADES INTERESSANTS")
-                $("#subHeadingInfo").append("No et perdis les darreres notícies.")
-                afegirElemPortfoliInfo(datos, id);
-            } else if (id == "fira") {
-                $("#headingInfo").append("FIRES VEGETARIANES I VEGANES DE L'ILLA")
-                $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
-                buscadorFires();
-            }
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
-
-*/
-
-
-//cas de fires
-function buscadorFires() {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "https://fires-mallorca.netlify.app/jsonBase_1.json";
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var dadesFires = JSON.parse(xmlhttp.responseText);
-            var id = "Vegeteriana";
-            // $("#headingInfo").append("FIRES VEGETARIANES I VENAGES DE L'ILLA")
-            //  $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
-            afegirElemPortfoliInfo(dadesFires, id);
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-
-}
-
-
-
-// aqui molaria tb poner el caso de los datos fira de miquel, pero no termino de ver como hacerlo todo en uno
-function addElemTimeLine(datos) {
-    //antes de empezar el for, hacer un push de las fires dentro de datos
-    var contador = 0;
-    for (var i = 0; i < datos.length; i++) {
-        if (datos[i].tipus == "curs" || datos[i].tipus == "fira" || datos[i].tipus == "info") {
-            contador++
-            if (contador % 2) {
-                var newLi = document.createElement("li")
-            } else {
-                var newLi = document.createElement("li")
-                newLi.setAttribute('class', "timeline-inverted")
-
-            }
-            var newDiv = document.createElement("div")  // crea un nuevo div
-            newDiv.setAttribute('class', "timeline-image")
-            newDiv.setAttribute('data-toggle', "modal")
-            newDiv.setAttribute('data-target', "#myModal");
-            newDiv.setAttribute('onclick', "desplegable(" + i + ");");
-            newLi.appendChild(newDiv)//añade texto al div creado.
-
-            var newimg = document.createElement("img");   // crea un nuevo div
-            newimg.setAttribute('class', "rounded-circle img-fluid")
-            newimg.setAttribute('src', datos[i].imatges[0]) // datos[i].imatges[0]
-            newimg.setAttribute('alt', "")
-            newDiv.appendChild(newimg)
-
-            var newDiv1 = document.createElement("div")  // crea un nuevo div
-            newDiv1.setAttribute('class', "timeline-panel")
-            newLi.appendChild(newDiv1)//añade texto al div creado.
-
-            var newDiv2 = document.createElement("div")  // crea un nuevo div
-            newDiv2.setAttribute('class', "timeline-heading")
-            newDiv2.setAttribute('data-toggle', "modal")
-            newDiv2.setAttribute('data-target', "#myModal");
-            newDiv2.setAttribute('onclick', "desplegable(" + i + ");");
-            newDiv1.appendChild(newDiv2)//añade texto al div creado.
-
-            var newh4 = document.createElement("h4")
-            var newContent = document.createTextNode(datos[i].nom); //nom Rest datos[i].nom
-            newh4.appendChild(newContent)
-            newDiv2.appendChild(newh4)
-
-            var newh4_2 = document.createElement("h4")
-            newh4_2.setAttribute('class', "subheading")
-            var newContent2 = document.createTextNode(datos[i].calendari.startDataEvent);
-            newh4_2.appendChild(newContent2)
-            newDiv2.appendChild(newh4_2)
-
-            var newDiv3 = document.createElement("div")  // crea un nuevo div
-            newDiv3.setAttribute('class', "timeline-body")
-            newDiv3.setAttribute('data-toggle', "modal")
-            newDiv3.setAttribute('href', "#portfolioModal1")
-            newDiv1.appendChild(newDiv3)//añade texto al div creado.
-
-            var newp = document.createElement("p")
-            newp.setAttribute('class', "text-muted")
-            newp.setAttribute('class', "p-justificado")
-            var newContent3 = document.createTextNode(datos[i].descripcio); //«Va a haber stands de comida vegana, y el domingo haremos unconcurso, además de platos condimentados y talleres, haremos charlas para explicar qué significa ser vegano y como vive un vegano».
-            newp.appendChild(newContent3)
-            newDiv3.appendChild(newp)
-
-
-            // añade el elemento creado y su contenido al DOM
-            $("#timeLineInfo").append(newLi);
-        }
-    }
-    var newLi2 = document.createElement("li")
-    var newDiv4 = document.createElement("div")  // crea un nuevo div
-    newDiv4.setAttribute('class', "timeline-image")
-    newDiv4.setAttribute('data-toggle', "modal")
-    newDiv4.setAttribute('href', "#portfolioModal1")
-    newLi2.appendChild(newDiv4)//añade texto al div creado.
-
-    var newh4_2 = document.createElement("h4")
-    var newContent4 = document.createTextNode("Continua\n"); //nom Rest datos[i].nom
-    newh4_2.appendChild(newContent4)
-    var newContent5 = document.createTextNode("descobrint \r"); //nom Rest datos[i].nom
-    newh4_2.appendChild(newContent5)
-    var newContent6 = document.createTextNode("\naquí!\n"); //nom Rest datos[i].nom
-    newh4_2.appendChild(newContent6)
-
-    newDiv4.appendChild(newh4_2)
-    $("#timeLineInfo").append(newLi2);
-}
-
-// a lo mejor llamarlo Info o algo, para no confundir
-function afegirElemPortfoliInfo(datos, id) {
-    for (var i = 0; i < datos.length; i++) {
-        if (datos[i].tipus == id) {
-            var newDiv = document.createElement("div");   // crea un nuevo div
-            newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4")
-
-            var newDiv1 = document.createElement("div");   // crea un nuevo div
-            newDiv1.setAttribute('class', "portfolio-item")
-            newDiv.appendChild(newDiv1); //añade texto al div creado.
-
-            var newa1 = document.createElement("a");
-            //newa1.setAttribute('onclick', "test()");
-            newa1.setAttribute('class', "portfolio-link");
-            newa1.setAttribute('data-toggle', "modal")
-            newa1.setAttribute('data-target', "#myModal");
-            if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
-                newa1.setAttribute('onclick', "desplegable(" + i + ");")
-            } else {
-                newa1.setAttribute('onclick', "desplegableFires(" + i + ");");
-
-            }
-
-            newDiv1.appendChild(newa1); //añade texto al div creado.
-
-            var newDiv2 = document.createElement("div");   // crea un nuevo div
-            newDiv2.setAttribute('class', "portfolio-hover")
-
-            newa1.appendChild(newDiv2);
-
-            var newDiv3 = document.createElement("div");   // crea un nuevo div
-            newDiv3.setAttribute('class', "portfolio-hover-content")
-
-            newDiv2.appendChild(newDiv3);
-
-            var newi = document.createElement("i");   // crea un nuevo div
-            newi.setAttribute('class', "fas fa-plus fa-3x")
-
-            newDiv3.appendChild(newi);
-
-            var newimg = document.createElement("img");   // crea un nuevo div
-
-            newimg.setAttribute('class', "img-fluid")
-            newimg.setAttribute('src', datos[i].imatges[1])
-            newimg.setAttribute('alt', "")
-
-            newa1.appendChild(newimg);
-
-            var newDiv4 = document.createElement("div");   // crea un nuevo div
-            newDiv4.setAttribute('class', "portfolio-caption")
-
-            newDiv1.appendChild(newDiv4);
-
-            var newDiv5 = document.createElement("div");   // crea un nuevo div
-            newDiv5.setAttribute('class', "portfolio-caption-heading")
-            var newContent = document.createTextNode(datos[i].nom); //nom Rest
-            newDiv5.appendChild(newContent)
-
-            newDiv4.appendChild(newDiv5);
-
-            var newDiv6 = document.createElement("div");   // crea un nuevo div
-            newDiv6.setAttribute('class', "portfolio-caption-subheading text-muted")
-
-            if (datos[i].tipus == "curs" || datos[i].tipus == "info") {
-                var newContent2 = document.createTextNode(datos[i].geo1.address); //geo Rest
-                newDiv6.appendChild(newContent2)
-            } else {
-                var newContent2 = document.createTextNode(datos[i].geoposicionament1.address); //geo Rest
-                newDiv6.appendChild(newContent2)
-            }
-            newDiv4.appendChild(newDiv6);
-
-            // añade el elemento creado y su contenido al DOM
-            $("#portfolioInfo").append(newDiv);
-        }
-    }
-}
-
-
-/* Función que rellena los datos de los desplegables */
-function desplegableFires(i) {
-    if ($("#nombreDescripcioElement").html() !== null) {
-        eliminarDatosElemento();
-    }
-    var xmlhttp = new XMLHttpRequest();
-    var url = "https://fires-mallorca.netlify.app/jsonBase_1.json"
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
-
-            // Nombre y descripcion:
-            var newTitulo = document.createElement("h2");
-            newTitulo.setAttribute('class', "portfolio-caption-heading")
-            var texto1 = document.createTextNode(datos[i].nom);
-            newTitulo.appendChild(texto1)
-
-            $("#nombreDescripcioElement").append(newTitulo);
-
-            var newDescripcio = document.createElement("p");   // Añade la descripción a la ventana emergente
-            newDescripcio.setAttribute('class', "item-intro text-mutedg")
-            var text2 = document.createTextNode(datos[i].descripcio);
-            newDescripcio.appendChild(text2)
-
-            $("#nombreDescripcioElement").append(newDescripcio);
-
-            // Puntero:
-            marker = new mapboxgl.Marker()
-                .setLngLat([datos[i].geoposicionament1.long, datos[i].geoposicionament1.lat])
-                .setPopup(
-                    new mapboxgl.Popup({ offset: 25 })
-                        .setHTML(
-                            '<h4>' +
-                            datos[i].nom +
-                            '</h4><p>' +
-                            datos[i].geoposicionament1.address +
-                            '</p>'
-                        )
-                )
-                .addTo(map);
-
-            // Carousel:
-            var newCarousel1 = document.createElement("div");
-            newCarousel1.setAttribute('class', "carousel slide")
-            newCarousel1.setAttribute('id', "myCarousel")
-            newCarousel1.setAttribute('data-ride', "carousel")
-
-            var newCarousel2 = document.createElement("ol");
-            newCarousel2.setAttribute('class', "carousel-indicators")
-            newCarousel1.appendChild(newCarousel2);
-
-            for (var k = 0; k < datos[i].imatges.length; k++) {
-                var newCarouselLiK = document.createElement("li");
-                if (k == 0) {
-                    newCarouselLiK.setAttribute('class', "active")
-                }
-                newCarouselLiK.setAttribute('data-target', "#myCarousel")
-                newCarouselLiK.setAttribute('data-slide-to', k)
-                newCarousel2.appendChild(newCarouselLiK);
-            }
-
-            var newCarousel3 = document.createElement("div");
-            newCarousel3.setAttribute('class', "carousel-inner")
-            newCarousel1.appendChild(newCarousel3);
-
-            var newCarousel4 = document.createElement("div");
-            newCarousel4.setAttribute('class', "carousel-item active")
-            newCarousel3.appendChild(newCarousel4);
-
-            var newCarouselImg1 = document.createElement("img");
-            newCarouselImg1.setAttribute('class', "0-slide")
-            newCarouselImg1.setAttribute('src', datos[i].imatges[0])
-            newCarouselImg1.setAttribute('alt', "0-slide")
-            newCarouselImg1.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
-            newCarousel4.appendChild(newCarouselImg1);
-
-            for (var k = 1; k < datos[i].imatges.length; k++) {
-                var newCarouselK = document.createElement("div");
-                newCarouselK.setAttribute('class', "carousel-item")
-                newCarousel3.appendChild(newCarouselK);
-
-                var newCarouselImgK = document.createElement("img");
-                newCarouselImgK.setAttribute('class', k + "-slide")
-                newCarouselImgK.setAttribute('src', datos[i].imatges[k])
-                newCarouselImgK.setAttribute('alt', k + "-slide")
-                newCarouselImgK.setAttribute('style', "object-fit:scale-down; width:500px; height:300px")
-                newCarouselK.appendChild(newCarouselImgK);
-            }
-
-            var newCarouselA = document.createElement("a");
-            newCarouselA.setAttribute('class', "carousel-control-prev")
-            newCarouselA.setAttribute('href', "#myCarousel")
-            newCarouselA.setAttribute('role', "button")
-            newCarouselA.setAttribute('data-slide', "prev")
-            newCarousel1.appendChild(newCarouselA);
-
-            var newSpan = document.createElement("span");
-            newSpan.setAttribute('class', "carousel-control-prev-icon")
-            newSpan.setAttribute('aria-hidden', "true")
-            newCarouselA.appendChild(newSpan);
-
-            var newSpan1 = document.createElement("span");
-            newSpan1.setAttribute('class', "sr-only")
-            newSpan1.setAttribute('id', "num1-slide")
-            $("#num1-slide").append("Previous")
-            newCarouselA.appendChild(newSpan1);
-
-
-            var newCarouselA1 = document.createElement("a");
-            newCarouselA1.setAttribute('class', "carousel-control-next")
-            newCarouselA1.setAttribute('href', "#myCarousel")
-            newCarouselA1.setAttribute('role', "button")
-            newCarouselA1.setAttribute('data-slide', "next")
-            newCarousel1.appendChild(newCarouselA1);
-
-            var newCarouselSpan2 = document.createElement("span");
-            newCarouselSpan2.setAttribute('class', "carousel-control-next-icon")
-            newCarouselSpan2.setAttribute('aria-hidden', "true")
-            newCarouselA1.appendChild(newCarouselSpan2);
-
-            var newCarouselSpan3 = document.createElement("span");
-            newCarouselSpan3.setAttribute('class', "sr-only")
-            newCarouselSpan3.setAttribute('id', "num2-slide")
-            $("#num2-slide").append("Next")
-            newCarouselA1.appendChild(newCarouselSpan3);
-
-            $("#carouselElement").append(newCarousel1);
-
-            disponibilitat = document.createTextNode("Mostra horari");
-            $("#calendar").css({ "background-color": "#B8CD65" });
-            $("#calendar").append(disponibilitat);
-
-            //for (var m = 0; i < 2; m++) {//datos[i].dadesPropies.events.length
-
-            //Contingut desplegable fires
-            //event 1:
-            var event1 = document.createElement("h6");
-            var textEvent1 = document.createTextNode(datos[i].dadesPropies.events[0].nom);
-            event1.appendChild(textEvent1);
-            $("#eventNum1").append(event1);
-
-
-            var event1_preu = document.createElement("p");
-            var text2Event1 = document.createTextNode("Preu: " + datos[i].dadesPropies.events[0].preu);
-            event1_preu.appendChild(text2Event1);
-            $("#eventNum1").append(event1_preu);
-
-            var event1_descripcio = document.createElement("p");
-            var text3Event1 = document.createTextNode(datos[i].dadesPropies.events[0].Descripcio);
-            event1_descripcio.appendChild(text3Event1);
-            $("#eventNum1").append(event1_descripcio);
-
-            var event1_calendar = document.createElement("p");
-            var text4Event1 = document.createTextNode("Data: " + datos[i].dadesPropies.events[0].Calendari.startDateEvent + " a les " + datos[i].dadesPropies.events[0].Calendari.startTimeEvent + " fins dia " + datos[i].dadesPropies.events[0].Calendari.endDateEvent + " a les " + datos[i].dadesPropies.events[0].Calendari.endTimeEvent);
-            event1_calendar.appendChild(text4Event1);
-            $("#eventNum1").append(event1_calendar);
-
-            //event2
-            var event2 = document.createElement("h6");
-            var textEvent2 = document.createTextNode(datos[i].dadesPropies.events[1].nom);
-            event2.appendChild(textEvent2);
-            $("#eventNum2").append(event2);
-
-            var event2_preu = document.createElement("p");
-            var text2Event2 = document.createTextNode("Preu: " + datos[i].dadesPropies.events[1].preu);
-            event2_preu.appendChild(text2Event2);
-            $("#eventNum2").append(event2_preu);
-
-            var event2_descripcio = document.createElement("p");
-            var text3Event2 = document.createTextNode(datos[i].dadesPropies.events[1].Descripcio);
-            event2_descripcio.appendChild(text3Event2);
-            $("#eventNum2").append(event2_descripcio);
-
-            var event2_calendar = document.createElement("p");
-            var text4Event2 = document.createTextNode("Data: " + datos[i].dadesPropies.events[1].Calendari.startDateEvent + " a les " + datos[i].dadesPropies.events[1].Calendari.startTimeEvent + " fins dia " + datos[i].dadesPropies.events[1].Calendari.endDateEvent + " a les " + datos[i].dadesPropies.events[1].Calendari.endTimeEvent);
-            event2_calendar.appendChild(text4Event2);
-            $("#eventNum2").append(event2_calendar);
-            //fin de desplegable fires
-
-            var newWeb = document.createElement("p");
-            newWeb.setAttribute('class', "item-intro text-mutedg")
-            var textWeb = document.createTextNode("Email: " + datos[i].contacte.email);
-            newWeb.appendChild(textWeb)
-
-            var newDeteall = document.createElement("p");
-            newDeteall.setAttribute('class', "item-intro text-mutedg")
-            var textoDetall = document.createTextNode(datos[i].detall);
-            newDeteall.appendChild(textoDetall)
-
-            var newTelefon = document.createElement("p");
-            newTelefon.setAttribute('class', "item-intro text-mutedg")
-            var textoTelef = document.createTextNode("Telèfon: " + datos[i].contacte.telf);
-            newTelefon.appendChild(textoTelef)
-
-            $("#datosElemento").append(newWeb);
-            $("#datosElemento").append(newDeteall);
-            $("#datosElemento").append(newTelefon);
-
-            var newFacebooka = document.createElement("a");
-            newFacebooka.setAttribute('class', "btn btn-primary btn-social mx-2");
-            newFacebooka.setAttribute('target', "_blank");
-            newFacebooka.setAttribute('href', "datos[i].contacte.xarxes.facebook");
-
-            var newFacebooki = document.createElement("i");
-            newFacebooki.setAttribute('class', "fab fa-facebook-f")
-            newFacebooka.appendChild(newFacebooki);
-
-            var newTripAdvisora = document.createElement("a");
-            newTripAdvisora.setAttribute('class', "btn btn-primary btn-social mx-2");
-            newTripAdvisora.setAttribute('target', "_blank");
-            newTripAdvisora.setAttribute('href', datos[i].contacte.xarxes.tripadvisor);
-
-            var newTripAdvisori = document.createElement("i");
-            newTripAdvisori.setAttribute('class', "fab fa-tripadvisor")
-            newTripAdvisora.appendChild(newTripAdvisori);
-
-            var newInstagrama = document.createElement("a");
-            newInstagrama.setAttribute('class', "btn btn-primary btn-social mx-2");
-            newInstagrama.setAttribute('target', "_blank");
-            newInstagrama.setAttribute('href', datos[i].contacte.xarxes.instagram);
-
-            var newInstagrami = document.createElement("i");
-            newInstagrami.setAttribute('class', "fab fa-instagram")
-            newInstagrama.appendChild(newInstagrami);
-
-            var newTwittera = document.createElement("a");
-            newTwittera.setAttribute('class', "btn btn-primary btn-social mx-2");
-            newTwittera.setAttribute('target', "_blank");
-            newTwittera.setAttribute('href', datos[i].contacte.xarxes.twitter);
-
-            var newTwitteri = document.createElement("i");
-            newTwitteri.setAttribute('class', "fab fa-twitter")
-            newTwittera.appendChild(newTwitteri);
-
-            var newWeba = document.createElement("a");
-            newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
-            newWeba.setAttribute('target', "_blank");
-            newWeba.setAttribute('href', datos[i].contacte.xarxes.web);
-
-            var newWebi = document.createElement("i");
-            newWebi.setAttribute('class', "fab fa-globe")
-            newWeba.append(newWebi);
-
-            var newEmaila = document.createElement("a");
-            newEmaila.setAttribute('class', "btn btn-primary btn-social mx-2");
-            newEmaila.setAttribute('target', "_blank");
-            newEmaila.setAttribute('href', datos[i].contacte.xarxes.web);
-
-            var newEmaili = document.createElement("i");
-            newEmaili.setAttribute('class', "fab fa-envelope")
-            newEmaila.appendChild(newEmaili);
-
-            console.log("heyyy");
-            $("#enlaces").append(newWeba);
-            /*   $("#enlaces").append(newEmaila);
-               $("#enlaces").append(newTripAdvisora);
-               $("#enlaces").append(newInstagrama);
-               $("#enlaces").append(newTwittera);*/
-
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
 }
 
 
@@ -1653,7 +1189,10 @@ function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
+
+
+
+// Si la persona pulsa en otro lado (que no sea el horario) se cierra el dropdown
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -1667,48 +1206,9 @@ window.onclick = function (event) {
     }
 }
 
-
-
-//+ INFORMACIO.HTML
-//Crear la timeline dinámicamente:
-function buscador() {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json";
-    console.log("aaaaaaaaaaaaaaaa");
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
-            var urlweb = location.search //agafa la url on hem clicat a partir de l'? inclòs
-            var id = urlweb.replace("?", "")
-            if (id == "informacio") {
-                $("#headingInfo").append("MÉS INFORMACIÓ RELLEVANT")
-                $("#subHeadingInfo").append("Segueix descobrint visitant les fires de l'illa, diferents cursos i tot un conjunt de curiositats.")
-                addElemTimeLine(datos);
-            } else if (id == "curs") {
-                $("#headingInfo").append("CURSOS")
-                $("#subHeadingInfo").append("Troba aquí una petita selecció de cursos online i presencials vegetarians o vegans")
-                afegirElemPortfoliInfo(datos, id);
-            } else if (id == "info") {
-                $("#headingInfo").append("DADES INTERESSANTS")
-                $("#subHeadingInfo").append("No et perdis les darreres notícies.")
-                afegirElemPortfoliInfo(datos, id);
-            } else if (id == "fira") {
-                $("#headingInfo").append("FIRES VEGETARIANES I VEGANES DE L'ILLA")
-                $("#subHeadingInfo").append("Descobreix l'illa visitant aquestes fires.")
-                buscadorFires();
-            }
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
-
-
-
-
 function closeAllSelect(elmnt) {
-    /*a function that will close all select boxes in the document,
-    except the current select box:*/
+    //a function that will close all select boxes in the document,
+    //except the current select box:
     var x, y, i, xl, yl, arrNo = [];
     x = document.getElementsByClassName("select-items");
     y = document.getElementsByClassName("select-selected");
@@ -1727,8 +1227,8 @@ function closeAllSelect(elmnt) {
         }
     }
 }
-/*if the user clicks anywhere outside the select box,
-then close all select boxes:*/
+//if the user clicks anywhere outside the select box,
+//then close all select boxes:
 document.addEventListener("click", closeAllSelect);
 
 
@@ -1741,7 +1241,6 @@ document.addEventListener("click", closeAllSelect);
             cargarDades(0); //predeterminat
         }
         if ($(this).val() == 1) {
-            console.log("Mes valorat");
             cargarDades(1); //més valorat
         }
         if ($(this).val() == 2) {

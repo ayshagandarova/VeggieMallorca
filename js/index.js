@@ -95,9 +95,6 @@ function punteros(){
       
       datos.forEach(function (marker){ // marker = datos[i]
         // add markers to map
-        if(marker.nom=="Donna Vegana"){
-          console.log("donnaaaa veganaaa: marker tipus=" + marker.tipus + " geolocali: "+ marker.geo1.long + "," +marker.geo1.lat);
-        }
         // create a HTML element for each feature
         
         var el = document.createElement('div');

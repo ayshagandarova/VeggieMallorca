@@ -10776,7 +10776,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   cursor: pointer;
 }
 .search-container input{
-  height: 40px;
+  height: 30px;
   width: 100%;
   outline: none;
   border: none;
@@ -10824,8 +10824,8 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .search-container .icon{
   position: absolute;
-  right: 0px;
-  top: 2px;
+  right: -5px;
+  top: -5px;
   height: 40px;
   width: 55px;
   text-align: center;
@@ -11086,3 +11086,18 @@ figcaption {
 
 
 
+
+.image-cropper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.image-cropper img {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
