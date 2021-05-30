@@ -547,6 +547,7 @@ function generarJsonLDElement(element) {
     var type;
     switch (element.tipus) {
         case "restaurant":
+            case "Vegetariano":
             type = "Restaurant"
             break
         case "supermercat":
@@ -561,30 +562,25 @@ function generarJsonLDElement(element) {
         "@context": "http://www.schema.org",
         "@type": type,
         "name": element["nom"],
-        "location":
-            {
-                "@type":"Place",
-                "latitude":element["geo1"]["lat"],
-                "longitude":element["geo1"]["long"],
-                 "address":
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": element["geo1"]["lat"],
+            "longitude": element["geo1"]["long"]
+        },
+        "address":
                     {
                     "@type":"PostalAddress",
                     "addressLocality":element["geo1"]["city"],
                     "addressCountry":element["geo1"]["Country"],
                     "postalCode":element["geo1"]["zip"]
-                    }
-            },
-        /*"geo": {
-            "@type": "GeoCoordinates",
-            "latitude": element["geo1"]["lat"],
-            "longitude": element["geo1"]["long"]
-        },*/
+                    },
         "aggregateRating": {
             "@type": "AggregateRating",
             "itemReviewed": "Thing",
             "bestRating": "5",
             "worstRating": "0",
-            "ratingValue": element["puntuacio"]
+            "ratingValue": element["puntuacio"],
+            "reviewCount": "1"
         },
         "description": element["descripcio"],
         "image": element["imatges"][0],
