@@ -553,7 +553,7 @@ function generarJsonLDElement(element) {
             type = "Store"
             break
         case "vegetariano":
-            type = "Store"
+            type = "Restaurant"
             break
         default:
             break
