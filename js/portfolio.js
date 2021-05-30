@@ -469,7 +469,7 @@ function addElement(id) {
             $("#timeLineInfo").append(newLi);
 
         } else { // portfolio
-            if (datosFiltrados[i].tipus != "Vegetariana" || datosFiltrados[i].tipus != "curs" || datosFiltrados[i].tipus != "info") {
+            if (datosFiltrados[i].tipus != "Vegetariana" ) {//|| datosFiltrados[i].tipus != "curs" || datosFiltrados[i].tipus != "info"
                 infoElements[i] = generarJsonLDElement(datosFiltrados[i]); //Web semantica
             }
             var newDiv = document.createElement("div");   // crea un nuevo div
