@@ -13,7 +13,7 @@ function loadJSON_LD(info) {
 }
 
 //crea el jsonld para el indice
-function carregarJsonldIndex() {
+function generarJsonLDIndex() {
   //let infoFiraPortada = crearJsonldFira(firaPortada);
   let info = {
     "@context": "http://schema.org/",
