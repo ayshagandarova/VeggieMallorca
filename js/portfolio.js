@@ -561,22 +561,20 @@ function generarJsonLDElement(element) {
         "@context": "http://www.schema.org",
         "@type": type,
         "name": element["nom"],
-        /*"geo": {
+        "geo": {
             "@type": "GeoCoordinates",
-            "latitude": cala["geoposicionament1"]["lat"],
-            "longitude": cala["geoposicionament1"]["long"]
+            "latitude": element["geo1"]["lat"],
+            "longitude": element["geo1"]["long"]
         },
         "aggregateRating": {
             "@type": "AggregateRating",
             "itemReviewed": "Thing",
             "bestRating": "5",
             "worstRating": "0",
-            "ratingValue": objComentarios["calas"][numero]["valoracionGlobal"],
-            "reviewCount": likes
+            "ratingValue": element["puntuacio"]
         },
-        "description": cala["descripcio"].substr(0, 170).replace("<br><br>", "") + " (...)",
-        "photo": cala["imatges"][0],
-        "url": url*/
+        "description": element["descripcio"],
+        "photo": element["imatges"][0]
     }
     return info;
 }
