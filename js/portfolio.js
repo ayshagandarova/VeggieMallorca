@@ -1,5 +1,4 @@
 
-
 /*
 document.addEventListener( 'DOMContentLoaded', function() {
     var weather;
@@ -54,7 +53,7 @@ DispatchQueue.main.async{
 
 cargarDades(0);
 
-function dadesRestaurantExt(filtrado){
+function dadesRestaurantExt(filtrado) {
     var xmlhttp2 = new XMLHttpRequest();
     var url2 = "https://bares-mallorca.netlify.app/data.json";
     xmlhttp2.onreadystatechange = function () {
@@ -72,7 +71,7 @@ function dadesRestaurantExt(filtrado){
     xmlhttp2.send();
 }
 
-function dadesFiresExt(filtrado){
+function dadesFiresExt(filtrado) {
     var xmlhttp2 = new XMLHttpRequest();
     var url2 = "https://fires-mallorca.netlify.app/jsonBase_1.json";
     xmlhttp2.onreadystatechange = function () {
@@ -104,7 +103,7 @@ function cargarDades(filtrado) {
             var id = urlweb.replace("?", "")
 
 
-            if (id == "favorits"){
+            if (id == "favorits") {
                 var favoritos = localStorage.getItem("favoritos") || "[]";
                 favoritos = JSON.parse(favoritos);
                 // para cada producto en favoritos
@@ -149,7 +148,7 @@ function cargarDades(filtrado) {
                 xmlhttp2.open("GET", url2, true);
                 xmlhttp2.send();
 
-            }else if (id != "fira" && id!="informacio") {  // restaurante, info, curso, supermercado
+            } else if (id != "fira" && id != "informacio") {  // restaurante, info, curso, supermercado
                 for (var i = 0; i < tot.length; i++) {
                     if (id == tot[i].tipus) {
                         dades.push(tot[i]);
@@ -157,23 +156,23 @@ function cargarDades(filtrado) {
                 }
                 // leemos los restaurantes de dilpreet  si son vegetarianos
                 if (id == "restaurant") {
-                    dadesRestaurantExt(filtrado) 
+                    dadesRestaurantExt(filtrado)
                 }
-            } else if(id=="informacio"){ // añadimos curs, fires y info
+            } else if (id == "informacio") { // añadimos curs, fires y info
                 for (var i = 0; i < tot.length; i++) {
                     if (tot[i].tipus == "curs" || tot[i].tipus == "info") {
                         dades.push(tot[i]);
                     }
                 }
                 id = "fira"; // para que luego también haga los datos de miquel
-            } 
-            
+            }
+
             if (id == "fira") { // fires, si salimos de informacio, también añadimos les fires de miquel
                 dadesFiresExt(filtrado)
             }
 
             // caso de supermercados, info, cursos (porque en restaurante hacemos la llamada
-            if (id != "restaurant" && id != "fira" && id != "informacio" && id!="favorits") {
+            if (id != "restaurant" && id != "fira" && id != "informacio" && id != "favorits") {
                 Cercador(filtrado);
             }
         }
@@ -184,46 +183,46 @@ function cargarDades(filtrado) {
 
 
 /* MAPA */
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
-    var map = new mapboxgl.Map({
-        container: 'mapid', // container ID
-        style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        center: [2.942477242579887, 39.63623814828035], // starting position [lng, lat]
-        zoom: 9 // starting zoom
-    });
-    map.on('idle', function () {
-        map.resize()
-    });
-    map.scrollZoom.disable();
-    map.addControl(new mapboxgl.NavigationControl());
-    // Add geolocate control to the map.
-    map.addControl(new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUserLocation: true
-    })
-    );
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXNob29rMDA3IiwiYSI6ImNrbnZ4bGg3bzByMTcydnFucWdpcGx6bWEifQ.jHKo86UYDX6fcEVz_VoHZQ';
+var map = new mapboxgl.Map({
+    container: 'mapid', // container ID
+    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    center: [2.942477242579887, 39.63623814828035], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+});
+map.on('idle', function () {
+    map.resize()
+});
+map.scrollZoom.disable();
+map.addControl(new mapboxgl.NavigationControl());
+// Add geolocate control to the map.
+map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+})
+);
 
-    var marker;
+var marker;
 
 
 
 
 const searchWrapper = document.querySelector(".search-container");
-if (searchWrapper != null){
-const inputBox = searchWrapper.querySelector("input");
-const suggBox = searchWrapper.querySelector(".autocom-box");
-const icon = searchWrapper.querySelector(".icon");
+if (searchWrapper != null) {
+    const inputBox = searchWrapper.querySelector("input");
+    const suggBox = searchWrapper.querySelector(".autocom-box");
+    const icon = searchWrapper.querySelector(".icon");
 
-// si se pulsa enter reacciona igual que si clicas el botón de buscar:
-    
-inputBox.addEventListener('keyup', function (event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        icon.click();
-    }
-});
+    // si se pulsa enter reacciona igual que si clicas el botón de buscar:
+
+    inputBox.addEventListener('keyup', function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            icon.click();
+        }
+    });
 
     inputBox.addEventListener('keyup', (e) => {
         let userData = e.target.value; //user enetered data
@@ -237,9 +236,9 @@ inputBox.addEventListener('keyup', function (event) {
             });
             var rellenarHTML = [];
 
-            for (var i=0; i< datosFiltrados.length; i++){
-                for(var j=0; j<datosBuscados.length; j++){
-                    if (datosFiltrados[i].nom == datosBuscados[j].nom){
+            for (var i = 0; i < datosFiltrados.length; i++) {
+                for (var j = 0; j < datosBuscados.length; j++) {
+                    if (datosFiltrados[i].nom == datosBuscados[j].nom) {
                         rellenarHTML.push('<li> <a class="portfolio-link" data-toggle="modal" data-target="#myModal" onclick="desplegable(' + i + ');"</a>' + datosFiltrados[i].nom + '</li>')
                     }
                 }
@@ -265,7 +264,7 @@ inputBox.addEventListener('keyup', function (event) {
                 $("#myInput").html("");
                 document.getElementById('myInput').value = '';
             }
-           
+
         } else {
             searchWrapper.classList.remove("active"); //hide autocomplete box
         }
@@ -283,35 +282,6 @@ function mostrarSugerits(list, inputBox, suggBox) {
     suggBox.innerHTML = listData;
 }
 
-/*
-
-//function searchBar() {
-// coger el texto y imprimir los elementos en la consola que se corresponden a la busqueda 
-/*
-    datosBuscados = []
-    var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json";
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var datos = JSON.parse(xmlhttp.responseText);
-            var a
-            var filter = input.value.toUpperCase();
-            galeria = document.getElementById("galeriaPortfoli")
-            divs = galeria.getElementsByTagName("div");
-            for (i = 0; i < datos.length; i++) {
-                a = datos[i].nom
-                if (a.toUpperCase().indexOf(filter) > -1) {
-                    datosBuscados.push(i);
-                }
-            }
-            Cercador(4);
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
-
-*/
 /* BOTÓN DE SCROLL HACIA ARRIBA */
 
 var mybutton = document.getElementById("myBtn");
@@ -334,7 +304,7 @@ function topFunction() {
 /* FILTRADO */
 //Filtrar para diferenciar entre restaurants o supermercats
 function Cercador(filtrado) {
-    
+
     var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
     var id = urlweb.replace("?", "")
     $("#titolPortfoli").html("")
@@ -426,14 +396,15 @@ function filtrar(id, filtrado) {
                 datosFiltrados.push(dades[idPreuD]);
             }
         }
-    }else { // fira, curs, info, vegetariana  o informacio Timeline
+    } else { // fira, curs, info, vegetariana  o informacio Timeline
         datosFiltrados = dades;
-    } 
+    }
     $("#galeriaPortfoli").html("");
 }
 
 //Afegir elements al portfoli de restaurants o supermercats
 function addElement(id) {
+    var infoElements = []; //array que contiene toda la web semantica de las ** filtradas
     var contador = 0;
     for (var i = 0; i < datosFiltrados.length; i++) {
         if (id == "informacio") {  // timeline
@@ -444,6 +415,7 @@ function addElement(id) {
                 var newLi = document.createElement("li")
                 newLi.setAttribute('class', "timeline-inverted")
             }
+
             var newDiv = document.createElement("div")  // crea un nuevo div
             newDiv.setAttribute('class', "timeline-image image-cropper ")
             newDiv.setAttribute('data-toggle', "modal")
@@ -496,7 +468,10 @@ function addElement(id) {
             // añade el elemento creado y su contenido al DOM
             $("#timeLineInfo").append(newLi);
 
-        }else{ // portfolio
+        } else { // portfolio
+            if (datosFiltrados[i].tipus != "Vegetariana") {
+                infoElements[i] = generarJsonLDElement(datosFiltrados[i]); //Web semantica
+            }
             var newDiv = document.createElement("div");   // crea un nuevo div
             newDiv.setAttribute('class', "col-lg-4 col-sm-6 mb-4") // definim atributs
             newDiv.setAttribute('id', "elemento-" + i)
@@ -563,8 +538,69 @@ function addElement(id) {
             // añade el elemento creado y su contenido al DOM
             $("#galeriaPortfoli").append(newDiv);
         }
-    }    
+    }
+    cargarJsonLD(infoElements); //cargar web semantica
 }
+
+//WEB SEMANTICA
+function generarJsonLDElement(element) {
+    var type;
+    switch (element.tipus) {
+        case "restaurant":
+            type = "Restaurant"
+            break
+        case "supermercat":
+            type = "Store"
+            break
+        default:
+            break
+    }
+    //likes = cala["likes"]
+    //if (likes == 0) likes = 1;
+    let info = {
+        "@context": "http://www.schema.org",
+        "@type": type,
+        "name": element["nom"],
+        /*"geo": {
+            "@type": "GeoCoordinates",
+            "latitude": cala["geoposicionament1"]["lat"],
+            "longitude": cala["geoposicionament1"]["long"]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "itemReviewed": "Thing",
+            "bestRating": "5",
+            "worstRating": "0",
+            "ratingValue": objComentarios["calas"][numero]["valoracionGlobal"],
+            "reviewCount": likes
+        },
+        "description": cala["descripcio"].substr(0, 170).replace("<br><br>", "") + " (...)",
+        "photo": cala["imatges"][0],
+        "url": url*/
+    }
+    return info;
+}
+
+function cargarJsonLD(info) {
+    const script = document.createElement('script');
+    script.setAttribute('type', 'application/ld+json');
+    script.textContent = JSON.stringify(info);
+    document.head.appendChild(script);
+}
+/*
+function carregarJsonldElement(x){
+    for(let k = 0; k<dades.length; k++){
+        let info = crearJsonldElement(x);
+        loadJSON_LD(info)
+    }
+
+}
+
+function crearJsonldElement(dadesElement){
+
+
+}*/
+
 
 /* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
 function eliminarDatosElemento() {
@@ -623,12 +659,12 @@ function desplegable(i) {
 
     // Puntero:
 
-    var long,lat, address;
-    if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info" || datosFiltrados[i].tipus == "vegetariano"){
+    var long, lat, address;
+    if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info" || datosFiltrados[i].tipus == "vegetariano") {
         long = datosFiltrados[i].geo1.long;
         lat = datosFiltrados[i].geo1.lat;
         address = datosFiltrados[i].geo1.address
-    }else  {
+    } else {
         long = datosFiltrados[i].geoposicionament1.long;
         lat = datosFiltrados[i].geoposicionament1.lat;
         address = datosFiltrados[i].geoposicionament1.address
@@ -649,7 +685,7 @@ function desplegable(i) {
                 )
         )
         .addTo(map);
-  
+
     // Carousel:
     var newCarousel1 = document.createElement("div");
     newCarousel1.setAttribute('class', "carousel slide")
@@ -686,7 +722,7 @@ function desplegable(i) {
     newCarousel4.appendChild(newCarouselImg1);
 
     var k = 1
-    
+
     for (k; k < datosFiltrados[i].imatges.length; k++) {
         var newCarouselK = document.createElement("div");
         newCarouselK.setAttribute('class', "carousel-item")
@@ -741,8 +777,8 @@ function desplegable(i) {
 
     console.log(datosFiltrados[i].tipus);
 
-   if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus == "vegetariano"){
-    
+    if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus == "vegetariano") {
+
         // Disponibilidad horaria:
         var date = new Date();
         var d = date.getDay();
@@ -858,16 +894,16 @@ function desplegable(i) {
         $("#horariDs").append(pDs);
         $("#horariDg").append(pDg);
 
-    }else if  (datosFiltrados[i].tipus =="curs" || datosFiltrados[i].tipus == "info"){
+    } else if (datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info") {
         console.log("holaaaa")
-    }else{
+    } else {
         disponibilitat = document.createTextNode("Mostra horari");
         $("#calendar").css({ "background-color": "#B8CD65" });
         $("#calendar").append(disponibilitat);
-                    //for (var m = 0; i < 2; m++) {//datos[i].dadesPropies.events.length
+        //for (var m = 0; i < 2; m++) {//datos[i].dadesPropies.events.length
 
-            //Contingut desplegable fires
-            //event 1:
+        //Contingut desplegable fires
+        //event 1:
         var event1 = document.createElement("h6");
         var textEvent1 = document.createTextNode(datosFiltrados[i].dadesPropies.events[0].nom);
         event1.appendChild(textEvent1);
@@ -1006,8 +1042,8 @@ function desplegable(i) {
         newTwittera.appendChild(newTwitteri);
         $("#enlaces").append(newTwittera);
     }
-    if(datosFiltrados[i].tipus != "vegetariano"){
-        if (datosFiltrados[i].contacte.xarxes.web != "" ) {
+    if (datosFiltrados[i].tipus != "vegetariano") {
+        if (datosFiltrados[i].contacte.xarxes.web != "") {
             var newWeba = document.createElement("a");
             newWeba.setAttribute('class', "btn btn-primary btn-social mx-2");
             newWeba.setAttribute('target', "_blank");
@@ -1159,7 +1195,7 @@ function guardarFav(i) {
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
 }
-    
+
 
 
 //Funcion del desplegable de horario

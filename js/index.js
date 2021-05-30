@@ -76,7 +76,6 @@ function generarJsonLDIndex() {
       },
   }
   return info;
-  //loadJSON_LD(info);
 }
 
 
