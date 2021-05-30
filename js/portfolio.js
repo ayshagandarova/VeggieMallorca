@@ -547,7 +547,7 @@ function generarJsonLDElement(element) {
     var type;
     switch (element.tipus) {
         case "restaurant":
-            case "Vegetariano":
+            //case "Vegetariano":
             type = "Restaurant"
             break
         case "supermercat":
