@@ -469,7 +469,7 @@ function addElement(id) {
             $("#timeLineInfo").append(newLi);
 
         } else { // portfolio
-            if (datosFiltrados[i].tipus != "Vegetariana" || datosFiltrados[i].tipus != "curs" || datosFiltrados[i].tipus != "info") {
+            if (datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "vegetariano") {
                 infoElements[i] = generarJsonLDElement(datosFiltrados[i]); //Web semantica
             }
             var newDiv = document.createElement("div");   // crea un nuevo div
@@ -545,9 +545,11 @@ function addElement(id) {
 //WEB SEMANTICA
 function generarJsonLDElement(element) {
     var type;
+    var geoposicio;
     switch (element.tipus) {
         case "restaurant":
             type = "Restaurant"
+            // geoposicio = geo1
             break
         case "supermercat":
             type = "Store"
@@ -558,8 +560,6 @@ function generarJsonLDElement(element) {
         default:
             break
     }
-    //likes = cala["likes"]
-    //if (likes == 0) likes = 1;
     let info = {
         "@context": "http://www.schema.org",
         "@type": type,
@@ -570,12 +570,12 @@ function generarJsonLDElement(element) {
             "longitude": element["geo1"]["long"]
         },
         "address":
-                    {
-                    "@type":"PostalAddress",
-                    "addressLocality":element["geo1"]["city"],
-                    "addressCountry":element["geo1"]["Country"],
-                    "postalCode":element["geo1"]["zip"]
-                    },
+        {
+            "@type": "PostalAddress",
+            "addressLocality": element["geo1"]["city"],
+            "addressCountry": element["geo1"]["Country"],
+            "postalCode": element["geo1"]["zip"]
+        },
         "aggregateRating": {
             "@type": "AggregateRating",
             "itemReviewed": "Thing",
@@ -586,8 +586,8 @@ function generarJsonLDElement(element) {
         },
         "description": element["descripcio"],
         "image": element["imatges"][0],
-        "priceRange":element["preu"]["import"],
-        "telephone":element["contacte"]["telf"]
+        "priceRange": element["preu"]["import"],
+        "telephone": element["contacte"]["telf"]
     }
     return info;
 }
@@ -599,19 +599,6 @@ function cargarJsonLD(info) {
     script.textContent = JSON.stringify(info);
     document.head.appendChild(script);
 }
-/*
-function carregarJsonldElement(x){
-    for(let k = 0; k<dades.length; k++){
-        let info = crearJsonldElement(x);
-        loadJSON_LD(info)
-    }
-
-}
-
-function crearJsonldElement(dadesElement){
-
-
-}*/
 
 
 /* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
@@ -631,13 +618,15 @@ function eliminarDatosElemento() {
     $("#horariDs").html("")
     $("#horariDg").html("")
     $("#calendar").html("")
+    $("#eventNum0").html("")
     $("#eventNum1").html("")
-    $("#eventNum2").html("")
     $("#contactoElemento").html("");
     $("#datosElemento").html("");
     $("#favorito").html("");
     $("#puntuacioPreu").html("");
     $("#enlaces").html("");
+    $("#textoDesplegable").html("");
+
     /*parte de tiempo a continuacion*/
     for (var t = 0; t < 3; t++) {
         $("#diaSetmana" + t).html("");
@@ -906,55 +895,80 @@ function desplegable(i) {
         $("#horariDs").append(pDs);
         $("#horariDg").append(pDg);
 
-    } else if (datosFiltrados[i].tipus == "curs" || datosFiltrados[i].tipus == "info") {
-        console.log("holaaaa")
-    } else {
+    } else if (datosFiltrados[i].tipus == "curs") {
+        $("#textoDesplegable").append("Horari del curs: ");
+        var newButton = document.createElement("button");
+        newButton.setAttribute('onclick', "myFunction()")
+        newButton.setAttribute('class', "btn btn-primary text-uppercas dropbtn")
+        newButton.setAttribute('id', "calendar")
+        $("#textoDesplegable").append(newButton);
+
         disponibilitat = document.createTextNode("Mostra horari");
         $("#calendar").css({ "background-color": "#B8CD65" });
         $("#calendar").append(disponibilitat);
-        //for (var m = 0; i < 2; m++) {//datos[i].dadesPropies.events.length
 
-        //Contingut desplegable fires
-        //event 1:
-        var event1 = document.createElement("h6");
-        var textEvent1 = document.createTextNode(datosFiltrados[i].dadesPropies.events[0].nom);
-        event1.appendChild(textEvent1);
-        $("#eventNum1").append(event1);
 
-        var event1_preu = document.createElement("p");
-        var text2Event1 = document.createTextNode("Preu: " + datosFiltrados[i].dadesPropies.events[0].preu);
-        event1_preu.appendChild(text2Event1);
-        $("#eventNum1").append(event1_preu);
+        //Contingut desplegable cursos
+        var diaInici = document.createElement("h6");
+        var textDiaInici = document.createTextNode("Dia d'inici: ");
+        diaInici.appendChild(textDiaInici);
+        $("#eventNum" + 0).append(diaInici);
 
-        var event1_descripcio = document.createElement("p");
-        var text3Event1 = document.createTextNode(datosFiltrados[i].dadesPropies.events[0].Descripcio);
-        event1_descripcio.appendChild(text3Event1);
-        $("#eventNum1").append(event1_descripcio);
 
-        var event1_calendar = document.createElement("p");
-        var text4Event1 = document.createTextNode("Data: " + datosFiltrados[i].dadesPropies.events[0].Calendari.startDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[0].Calendari.startTimeEvent + " fins dia " + datosFiltrados[i].dadesPropies.events[0].Calendari.endDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[0].Calendari.endTimeEvent);
-        event1_calendar.appendChild(text4Event1);
-        $("#eventNum1").append(event1_calendar);
-        //event2
-        var event2 = document.createElement("h6");
-        var textEvent2 = document.createTextNode(datosFiltrados[i].dadesPropies.events[1].nom);
-        event2.appendChild(textEvent2);
-        $("#eventNum2").append(event2);
+        var diaInici_horari = document.createElement("p");
+        var text1_horari = document.createTextNode(datosFiltrados[i].calendari.startDataEvent + " a les " + datosFiltrados[i].calendari.startTimeEvent);
+        diaInici_horari.appendChild(text1_horari);
+        $("#eventNum" + 0).append(diaInici_horari);
 
-        var event2_preu = document.createElement("p");
-        var text2Event2 = document.createTextNode("Preu: " + datosFiltrados[i].dadesPropies.events[1].preu);
-        event2_preu.appendChild(text2Event2);
-        $("#eventNum2").append(event2_preu);
+        var diaFi = document.createElement("h6");
+        var textDiaFi = document.createTextNode("Dia final: ");
+        diaFi.appendChild(textDiaFi);
+        $("#eventNum" + 1).append(diaFi);
 
-        var event2_descripcio = document.createElement("p");
-        var text3Event2 = document.createTextNode(datosFiltrados[i].dadesPropies.events[1].Descripcio);
-        event2_descripcio.appendChild(text3Event2);
-        $("#eventNum2").append(event2_descripcio);
 
-        var event2_calendar = document.createElement("p");
-        var text4Event2 = document.createTextNode("Data: " + datosFiltrados[i].dadesPropies.events[1].Calendari.startDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[1].Calendari.startTimeEvent + " fins dia " + datosFiltrados[i].dadesPropies.events[1].Calendari.endDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[1].Calendari.endTimeEvent);
-        event2_calendar.appendChild(text4Event2);
-        $("#eventNum2").append(event2_calendar);
+        var diaFi_horari = document.createElement("p");
+        var text2_horari = document.createTextNode(datosFiltrados[i].calendari.endDataEvent + " a les " + datosFiltrados[i].calendari.endTimeEvent);
+        diaFi_horari.appendChild(text2_horari);
+        $("#eventNum" + 1).append(diaFi_horari);
+    } else if(datosFiltrados[i].tipus == "info"){
+
+    }
+    else {
+        $("#textoDesplegable").append("Calendari d'events: ");
+        var newButton = document.createElement("button");
+        newButton.setAttribute('onclick', "myFunction()")
+        newButton.setAttribute('class', "btn btn-primary text-uppercas dropbtn")
+        newButton.setAttribute('id', "calendar")
+        $("#textoDesplegable").append(newButton);
+
+        disponibilitat = document.createTextNode("Mostra horari");
+        $("#calendar").css({ "background-color": "#B8CD65" });
+        $("#calendar").append(disponibilitat);
+        for (var m = 0; m < datosFiltrados[i].dadesPropies.events.length; m++) {//datos[i].dadesPropies.events.length
+
+            //Contingut desplegable fires
+            //event 1:
+            var event1 = document.createElement("h6");
+            var textEvent1 = document.createTextNode(datosFiltrados[i].dadesPropies.events[m].nom);
+            event1.appendChild(textEvent1);
+            $("#eventNum" + m).append(event1);
+
+
+            var event1_preu = document.createElement("p");
+            var text2Event1 = document.createTextNode("Preu: " + datosFiltrados[i].dadesPropies.events[m].preu);
+            event1_preu.appendChild(text2Event1);
+            $("#eventNum" + m).append(event1_preu);
+
+            var event1_descripcio = document.createElement("p");
+            var text3Event1 = document.createTextNode(datosFiltrados[i].dadesPropies.events[m].Descripcio);
+            event1_descripcio.appendChild(text3Event1);
+            $("#eventNum" + m).append(event1_descripcio);
+
+            var event1_calendar = document.createElement("p");
+            var text4Event1 = document.createTextNode("Data: " + datosFiltrados[i].dadesPropies.events[m].Calendari.startDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[m].Calendari.startTimeEvent + " fins dia " + datosFiltrados[i].dadesPropies.events[m].Calendari.endDateEvent + " a les " + datosFiltrados[i].dadesPropies.events[m].Calendari.endTimeEvent);
+            event1_calendar.appendChild(text4Event1);
+            $("#eventNum" + m).append(event1_calendar);
+        }
     }
     /*  WEATHER */
 
