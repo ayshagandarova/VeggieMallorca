@@ -985,7 +985,7 @@
             "address": "",
             "lat": 39.4380576638462,
             "long": 3.013554426339741,
-            "city":"",
+            "city":"Palma",
             "Country":"Espanya",
             "zip": "07010"
         },
@@ -993,9 +993,9 @@
             "address": "",
             "lat": "",
             "long":"",
-            "city":"Palma",
-            "Country":"Espanya",
-            "zip":"07002"
+            "city":"",
+            "Country":"",
+            "zip":""
         },
         "horari":{
                 "di": [
