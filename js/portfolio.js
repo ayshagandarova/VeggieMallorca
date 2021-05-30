@@ -469,7 +469,7 @@ function addElement(id) {
             $("#timeLineInfo").append(newLi);
 
         } else { // portfolio
-            if (datosFiltrados[i].tipus != "Vegetariana") {
+            if (datosFiltrados[i].tipus != "Vegetariana" &&datosFiltrados[i].tipus != "curs" && datosFiltrados[i].tipus != "info") {
                 infoElements[i] = generarJsonLDElement(datosFiltrados[i]); //Web semantica
             }
             var newDiv = document.createElement("div");   // crea un nuevo div
@@ -584,7 +584,8 @@ function generarJsonLDElement(element) {
         },
         "description": element["descripcio"],
         "image": element["imatges"][0],
-        "priceRange":element["preu"]["import"]
+        "priceRange":element["preu"]["import"],
+        "telephone":element["contecte"]["telf"]
     }
     return info;
 }
