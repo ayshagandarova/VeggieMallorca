@@ -61,9 +61,9 @@ function generarJsonLDIndex() {
       "name": "Vídeo Cocina",
       "description": "Video de cocina vegetariana Mallorca",
       "contentUrl": ["assets/img/fotosIndex/videoPortada.mp4", "assets/img/fotosIndex/videoPortada.webm"],
-      "about": {
-        "@type": "Product"
-      },
+      //"about": {
+       // "@type": "Product"
+      //},
       "uploadDate": "2021-05-15",
       "thumbnailUrl": ["assets/img/fotosIndex/videoPortada.mp4", "assets/img/fotosIndex/videoPortada.webm"],
     },
