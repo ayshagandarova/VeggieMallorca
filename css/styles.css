@@ -4418,6 +4418,7 @@ padding:0;
 
 #menu ul li .subitem:hover {
 background:#F3B04E;
+position: absolute;
 }
 
 #menu ul ul {
