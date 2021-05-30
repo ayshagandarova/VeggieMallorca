@@ -66,14 +66,7 @@ function generarJsonLDIndex() {
       //},
       "uploadDate": "2021-05-15",
       "thumbnailUrl": ["assets/img/fotosIndex/videoPortada.mp4", "assets/img/fotosIndex/videoPortada.webm"],
-    },
-    "aggregateRating":
-      {
-        "@type":"AggregateRating",
-        "itemReviewed": "Thing",
-        "bestRating": "5",
-        "worstRating": "0",
-      },
+    }
   }
   return info;
 }
