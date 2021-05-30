@@ -54,6 +54,7 @@ function generarJsonLDIndex() {
     },
 
     "genre": "Restaurants Vegetarians Mallorca, Supermercats Vegetarians Mallorca",
+    "operatingSystem": "Windows, MacOS, iOS, Android, Linux",
     "video":
     {
       "@type": "VideoObject",
@@ -61,10 +62,18 @@ function generarJsonLDIndex() {
       "description": "Video de cocina vegetariana Mallorca",
       "contentUrl": ["assets/img/fotosIndex/videoPortada.mp4", "assets/img/fotosIndex/videoPortada.webm"],
       "about": {
-        "@type": "Food"
+        "@type": "Product"
       },
       "uploadDate": "2021-05-15",
-    }
+      "thumbnailUrl": ["assets/img/fotosIndex/videoPortada.mp4", "assets/img/fotosIndex/videoPortada.webm"],
+    },
+    "aggregateRating":
+      {
+        "@type":"AggregateRating",
+        "itemReviewed": "Thing",
+        "bestRating": "5",
+        "worstRating": "0",
+      },
   }
   return info;
   //loadJSON_LD(info);
