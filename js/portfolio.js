@@ -552,7 +552,7 @@ function generarJsonLDElement(element) {
         case "supermercat":
             type = "Store"
             break
-        case "Vegetariano":
+        case "vegetariano":
             type = "Store"
             break
         default:
