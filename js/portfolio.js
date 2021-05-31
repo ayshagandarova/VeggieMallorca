@@ -776,7 +776,6 @@ function desplegable(i) {
 
     $("#carouselElement").append(newCarousel1);
 
-    console.log(datosFiltrados[i].tipus);
 
     if (datosFiltrados[i].tipus == "supermercat" || datosFiltrados[i].tipus == "restaurant" || datosFiltrados[i].tipus == "vegetariano") {
 
