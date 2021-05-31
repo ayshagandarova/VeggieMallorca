@@ -1158,9 +1158,9 @@ function desplegable(i) {
         num_euros = 1;
     } else if (preu < 10) { //2 símbols
         num_euros = 2;
-    } else if (preu < 20) { //3 símbols
+    } else if (preu < 15) { //3 símbols
         num_euros = 3;
-    } else if (preu < 30) {//4 símbols
+    } else if (preu < 20) {//4 símbols
         num_euros = 4;
     } else { //5 símbols
         num_euros = 5;
