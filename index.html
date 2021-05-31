@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Descobreix les meravelles que ofereix el món vegetarià." />
-    <  <meta name="author" content="Aisha Gandarova & Maria Orell" />
+    <meta name="author" content="Aisha Gandarova & Maria Orell" />
     <title>VeggieMallorca</title>
     <!-- això és per que a la pipella se vegi un logo -> hem de cercar foto i convertirla a ".ico"-->
     <link rel="icon" type="image/x-icon" href="assets/img/logoWeb.png" />
@@ -19,10 +19,9 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <!-- API MAPA -->
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=5">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-
     <!-- charts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"></link>
@@ -43,7 +42,7 @@
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <nav id="menu">
                         <ul class="navbar-nav text-uppercase ml-auto">
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#mapidGran">Mapa</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#titolMapa">Mapa</a></li>
                             <!--Favorits-->
                             <li class="nav-item "><a class="nav-link js-scroll-trigger"
                                 href="portfolio.html?favorits "><i class="fa fa-heart"></i> Favorits</a>
@@ -86,10 +85,10 @@
             <div class="masthead-heading text-uppercase">Veggie Mallorca</div>
         </div>
     </header>
-
+<section></section>
     <!-- Services-->
     <section class="page-section bg-light">
-        <div class="container show-on-scroll inline-section">
+        <div class="container show-on-scroll inline-section" >
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Menjar bé tots els dies és més senzill del que et penses.
                 </h2>
@@ -127,14 +126,15 @@
             </div>
         </div>
     </section>
-    
-
+    <section></section>
+<section class="page-section bg-white">
         <div class="container" style="position: relative; background-color: white;">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Les nostres dades</h2>
             </div>
             <canvas id="myChart" width="600" height="250"></canvas>
         </div>
+    </section>
 
     <!-- Inspiration -->
     <section class="page-section">
@@ -193,13 +193,15 @@
 
     <!--  -->
     <!-- MAPA -->
-    <div class="container">
+    <section class="page-section bg-light">
+    <div class="container ">
         <!-- falta añadir un titulo -->
         <div class="text-center">
-            <h2 class="section-heading text-uppercase" style="position: relative;color:white;">Mapa</h2>
+            <h2 id="titolMapa" class="section-heading text-uppercase" style="position: relative;">Mapa</h2>
         </div>
         <div class="col-md-12" id='mapidGran'></div>
     </div>
+</section>
 
     <!--  -->
     <!-- Team-->
@@ -216,7 +218,7 @@
                         <h4>Maria Orell</h4>
                         <p class="text-muted">Enginyera Informàtica</p>
                         <a class="btn btn-primary btn-social mx-2" href="https://www.facebook.com" target="_blank" rel="noopener">
-                            <i class="fab fa-facebook-f"></i>Hola</a>
+                            <i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-primary btn-social mx-2" href="https://www.instagram.com" target="_blank" rel="noopener"><i
                                 class="fab fa-instagram"></i></a>
                         <a class="btn btn-primary btn-social mx-2" href="https://twitter.com/home" target="_blank" rel="noopener"><i
@@ -262,42 +264,45 @@
     </div>
 
     <!--  -->
+    <section></section>
     <!-- Clients-->
-    <div class="py-5 bg-light">
+    <section class="page-section bg-white">
+    <div class="py-5">
         <div class="container">
-            <div class="row" style="background-color: white;">
+            <div class="row">
                 <div class="col-md-2 col-sm-6 my-3">
                     <a href="https://www.facebook.com/caferiutort/" target="_blank" rel="noopener">
-                        <amp-img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png" width="100"
+                        <img class="img-fluid d-block mx-auto" src="assets/img/logos/riuTort.png" width="100"
                             alt="" /></a>
                 </div>
                 <div class="col-md-2 col-sm-6 my-3">
                     <a href="https://es-es.facebook.com/pages/category/Vegetarian-Vegan-Restaurant/Plaer-Natural-247394029401/"
                         target="_blank" rel="noopener">
-                        <amp-img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png" width="200"
+                        <img class="img-fluid d-block mx-auto" src="assets/img/logos/plaerVegetaria.png" width="200"
                             alt="" /></a>
                 </div>
                 <div class="col-md-2 col-sm-6 my-3">
-                    <a href="https://www.facebook.com/EcoVegetaria/" target="_blank" rel="noopener"><amp-img
+                    <a href="https://www.facebook.com/EcoVegetaria/" target="_blank" rel="noopener"><imgimg
                             class="img-fluid d-block mx-auto" src="assets/img/logos/ecoVegetaria.png" width="100"
                             alt="" /></a>
                 </div>
                 <div class="col-md-2 col-sm-6 my-3">
-                    <a href="https://www.santoshapalma.com" target="_blank" rel="noopener"><amp-img class="img-fluid d-block mx-auto"
+                    <a href="https://www.santoshapalma.com" target="_blank" rel="noopener"><img class="img-fluid d-block mx-auto"
                             src="assets/img/logos/santosha.png" width="170" alt="" /></a>
                 </div>
                 <div class="col-md-2 col-sm-6 my-3">
                     <a href="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiPqoTzudPwAhWF7-0KHcrwCYQYABAAGgJkZw&ae=2&ohost=www.google.es&cid=CAESQeD2eJIzWSdilcMZlhLFC-db2xuvbTGgdYDTXsbRxGavXdBI_Z27G-AA_c7bKuvUOZz3C-mI1oZCJkIMmIAEXnSM&sig=AOD64_1P3F37TvqVb12Qe4rmyt9--0Scyw&q&adurl&ved=2ahUKEwjrzvnyudPwAhUlpHEKHRH-ALwQ0Qx6BAgCEAE&dct=1"
-                        target="_blank" rel="noopener"><amp-img class="img-fluid d-block mx-auto" src="assets/img/logos/navarro.png"
+                        target="_blank" rel="noopener"><img class="img-fluid d-block mx-auto" src="assets/img/logos/navarro.png"
                             width="170" alt="" /></a>
                 </div>
                 <div class="col-md-2 col-sm-6 my-3">
-                    <a href="https://www.veganandraw.es" target="_blank" rel="noopener"><amp-img class="img-fluid d-block mx-auto"
+                    <a href="https://www.veganandraw.es" target="_blank" rel="noopener"><img class="img-fluid d-block mx-auto"
                             src="assets/img/logos/vegan.png" width="170" alt="" /></a>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
     <!-- Footer-->
     <footer class="footer py-4 ">
