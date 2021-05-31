@@ -23,7 +23,9 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
 
-    
+    <!-- charts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"></link>
 </head>
 
 <body id="page-top">
@@ -125,52 +127,17 @@
             </div>
         </div>
     </section>
+    
 
-
-    <section></section>
-
-    <section class="page-section bg-light">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-3" id="numrest"></div>
-                <div class="col-md-3" id="numsup"></div>
-                <div class="col-md-3" id="numcurs"></div>
-                <div class="col-md-3" id="numinfo"></div>
-            </div>
-
+        <div class="container" style="position: relative; background-color: white;">
             <div class="text-center">
-                <figure class="graph">
-                    <figcaption>Resum de informació a la nostra web</figcaption>
-                    <svg version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"
-                        class="chart" width="1920" height="150" aria-labelledby="title" role="img">
-                        <title id="title">Gràfica resum</title>
-                        <g class="bar">
-                            <rect id="rest"></rect>
-                            <text id="restText" y="9.5" dy=".85em"></text>
-                        </g>
-                        <g class="bar">
-                            <rect id="super" y="40"></rect>
-                            <text id="superText" y="50" dy=".85em"></text>
-                        </g>
-                        <g class="bar">
-                            <rect id="curs" y="80"></rect>
-                            <text id="cursText" y="90" dy=".85em"></text>
-                        </g>
-                        <g class="bar">
-                            <rect id="mesinfo" y="120"></rect>
-                            <text id="infoText" y="130" dy=".85em"></text>
-                        </g>
-                    </svg>
-                </figure>
+                <h2 class="section-heading text-uppercase">Les nostres dades</h2>
             </div>
+            <canvas id="myChart" width="600" height="250"></canvas>
         </div>
-    </section>
-
-    <!--  -->
 
     <!-- Inspiration -->
     <section class="page-section">
-
         <div class="container ">
             <div class="container show-on-scroll inline-section">
                 <div class="text-center" style="color: white;">
@@ -355,6 +322,8 @@
 
 
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class='fas fa-arrow-up'></i> </button>
+   
+    
     <!-- o esta flecha far fa-arrow-alt-circle-up-->
     <!--Includes -->
     <!-- Bootstrap core JS-->

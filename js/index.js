@@ -2,9 +2,12 @@
 var info = generarJsonLDIndex();
 loadJSON_LD(info);
 
+
+
 /**
  * Funció per afegir el JSON-LD a la pàgina web
  */
+
 function loadJSON_LD(info) {
   const script = document.createElement('script');
   script.setAttribute('type', 'application/ld+json');
@@ -12,6 +15,155 @@ function loadJSON_LD(info) {
   document.head.appendChild(script);
 }
 
+
+
+
+  var numSuper = 0, numRest = 0, numCursos = 0, numInfo = 0, numFires=0;
+var dades = [];
+
+cargarDades();
+
+function cargarDades() {
+  var xmlhttp = new XMLHttpRequest();
+  var url = "dades.json"
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      dades = JSON.parse(xmlhttp.responseText);
+      for (var i = 0; i < dades.length; i++) {
+        switch (dades[i].tipus) {
+          case 'supermercat':
+            numSuper++;
+            break;
+          case 'restaurant':
+            numRest++;
+            break;
+          case 'curs':
+            numCursos++;
+            break;
+          case 'info':
+            numInfo++;
+            break;
+        }
+      }
+      contadorFires();
+    }   
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+}
+
+function contadorFires() {
+  var xmlhttp3 = new XMLHttpRequest();
+  var url3 = "https://fires-mallorca.netlify.app/jsonBase_1.json";
+  xmlhttp3.onreadystatechange = function () {
+      if (xmlhttp3.readyState == 4 && xmlhttp3.status == 200) {
+        dadesExt2 = JSON.parse(xmlhttp3.responseText);
+        for (var j = 0; j < dadesExt2.length; j++) {
+          if ("Vegeteriana" == dadesExt2[j].tipus) {
+            numFires++;
+            dadesExt2[j].tipus = "fira";
+            dades.push(dadesExt2[j]);
+          }
+        }
+        contadorBars();
+      }
+  };
+  xmlhttp3.open("GET", url3, true);
+  xmlhttp3.send();
+}
+
+function contadorBars(){
+  var xmlhttp2 = new XMLHttpRequest();
+  var url2 = "https://bares-mallorca.netlify.app/data.json";
+  xmlhttp2.onreadystatechange = function () {
+    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+      var dadesExt = JSON.parse(xmlhttp2.responseText);
+      for (var j = 0; j < dadesExt.length; j++) {
+        if ("vegetariano" == dadesExt[j].tipus) {
+            numRest++;
+            dadesExt[j].tipus = "restaurant";
+            dades.push(dadesExt[j]);
+        }
+      }
+      grafica();
+
+      punteros();
+    }
+  };
+  xmlhttp2.open("GET", url2, true);
+  xmlhttp2.send();
+}
+
+
+function grafica(){
+  let myChart = document.getElementById('myChart')
+  let elements = new Chart(myChart, {
+    type: 'horizontalBar', // o bar
+    data: {
+      labels: ["Restaurants", "Supermercats", "Info", "Cursos", "Fires" ],
+      datasets: [{
+        axis: 'y',
+        data: [
+            numRest,numSuper, numInfo,numCursos, numFires
+        ],
+        fill: false,
+        backgroundColor:[
+          'rgba(159, 209, 201, 0.2)',
+          'rgba(184, 205, 101, 0.2)',
+          'rgba(243, 176, 78, 0.2)',
+          'rgba(233, 149, 101, 0.2)',
+          'rgba(167, 124, 222, 0.2)'],
+        borderColor: [
+          'rgb(159, 209, 201)',
+          'rgb(184, 205, 101)',
+          'rgb(243, 176, 78)',
+          'rgb(233, 149, 101)',
+          'rgba(167, 124, 222)'
+        ],
+        borderWidth: 1.5
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        xAxes: [{
+          display: true,
+          ticks: {
+            suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+            // OR //
+            beginAtZero: true   // minimum value will be 0.
+          }
+        }]
+      },
+      legend: {
+        display: false
+      },
+    }
+  });
+}
+
+// char
+
+/*
+
+const CHART = document.getElementById("chart");
+
+CHART.defaults.global.animation.duration = 200;
+
+let barChart = new Chart(CHART, {
+  type: 'bar',
+  data: {
+    labels: ["hola1", "hola2", "hola3", "hola4"],
+    datasets: [
+      {
+        data: [10,11,12,13,14,15]
+      }
+    ]
+  }
+});
+
+
+*/
 //crea el jsonld para el indice
 function generarJsonLDIndex() {
   //let infoFiraPortada = crearJsonldFira(firaPortada);
@@ -163,136 +315,37 @@ function generarJsonLDIndex() {
 
 
   function punteros() {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json"
-    xmlhttp.onreadystatechange = function () {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        var datos = JSON.parse(xmlhttp.responseText);
+    dades.forEach(function (marker) { // marker = datos[i]
+      // add markers to map
+      // create a HTML element for each feature
 
-        datos.forEach(function (marker) { // marker = datos[i]
-          // add markers to map
-          // create a HTML element for each feature
+      var el = document.createElement('div');
+      el.className = 'marker-' + marker.tipus;
 
-          var el = document.createElement('div');
-          el.className = 'marker-' + marker.tipus;
-
-          // make a marker for each feature and add to the map
-          new mapboxgl.Marker(el)
-            .setLngLat([marker.geo1.long, marker.geo1.lat])
-            .setPopup(
-              new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(
-                  '<h4>' +
-                  marker.nom +
-                  '</h4><p>' +
-                  marker.geo1.address +
-                  '</p>' +
-                  '<img src="' + marker.imatges[0] + '" style="height: 150px;"/>'
-                )
+      var address, long,lat;
+      // make a marker for each feature and add to the map
+      if (marker.tipus=="fira"){
+        address = marker.geoposicionament1.address;
+        long = marker.geoposicionament1.long
+        lat =marker.geoposicionament1.lat
+      }else{
+        address = marker.geo1.address;
+        long = marker.geo1.long
+        lat =marker.geo1.lat
+      }
+      new mapboxgl.Marker(el)
+        .setLngLat([long, lat])
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              '<h4>' +
+              marker.nom +
+              '</h4><p>' +
+              address +
+              '</p>' +
+              '<div class="image-cropper-rectangle"> <img class="img-fluid" src="' + marker.imatges[0] + '"/> </div>' //style="height: 150px;"
             )
-            .addTo(map);
-        });
-      }
-    };
-
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-  }
-
-  punteros();
-
-
-  /*     marker = new mapboxgl.Marker()
-   .setLngLat([datos[i].geo1.long, datos[i].geo1.lat])
-   .setPopup(
-       new mapboxgl.Popup({ offset: 25 })
-           .setHTML(
-               '<h4>'  +
-               datos[i].nom +
-               '</h4><p>' +
-               datos[i].geo1.address +
-               '</p>'+
-               '<img src="' + datos[i].imatges[0]+ '" style="height: 150px;"/>'
-               
-           )
-   )
-   .addTo(map);*/
-
-
-  function contador() {
-    var xmlhttp = new XMLHttpRequest();
-    var url = "dades.json"
-    var numSuper = 0, numRest = 0, numCursos = 0, numInfo = 0;
-    xmlhttp.onreadystatechange = function () {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        var datos = JSON.parse(xmlhttp.responseText);
-        var numSuper = 0, numRest = 0, numCursos = 0, numInfo = 0;
-        for (var i = 0; i < datos.length; i++) {
-          switch (datos[i].tipus) {
-            case 'supermercat':
-              numSuper++;
-              break;
-            case 'restaurant':
-              numRest++;
-              break;
-            case 'curs':
-              numCursos++;
-              break;
-            case 'info':
-              numInfo++;
-              break;
-          }
-        }
-        //$("#numrest").append(document.createTextNode("Restaurants: "+ numRest));
-        $("#restText").append(document.createTextNode(numRest + " Restaurants"))
-        numRest = numRest * 100
-        numRest = numRest + 100
-        document.getElementById('rest').setAttribute("width", numRest + "px")
-        document.getElementById('rest').setAttribute("height", "35px")
-
-
-        numRest = numRest + 5
-        document.getElementById('restText').setAttribute("x", numRest + "px");
-
-
-        $("#superText").append(document.createTextNode(numSuper + " Supermercats"))
-        numSuper = numSuper * 100;
-        numSuper = numSuper + 100;
-        document.getElementById('super').setAttribute("width", numSuper + "px");
-        document.getElementById('super').setAttribute("height", "35px");
-
-        numSuper = numSuper + 5
-        document.getElementById('superText').setAttribute("x", numSuper + "px");
-
-
-        $("#cursText").append(document.createTextNode(numCursos + " Cursos"))
-        numCursos = numCursos * 100;
-        numCursos = numCursos + 100;
-        document.getElementById('curs').setAttribute("width", numCursos + "px");
-        document.getElementById('curs').setAttribute("height", "35px");
-
-        numCursos = numCursos + 5
-        document.getElementById('cursText').setAttribute("x", numCursos + "px");
-
-
-        $("#infoText").append(document.createTextNode(numInfo + " + Informació"))
-        numInfo = numInfo * 100;
-        numInfo = numInfo + 100;
-        document.getElementById('mesinfo').setAttribute("width", numInfo + "px");
-        document.getElementById('mesinfo').setAttribute("height", "35px");
-
-        numInfo = numInfo + 5
-        document.getElementById('infoText').setAttribute("x", numInfo + "px");
-
-
-        /*
-         <rect id="numrest" width="180" height="35"></rect>
-                        <text x="185" y="9.5" dy=".85em">8 restaurants</text>
-        */
-      }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-  }
-
-  contador();
+        )
+        .addTo(map);
+    });
+}

@@ -4418,7 +4418,6 @@ padding:0;
 
 #menu ul li .subitem:hover {
 background:#F3B04E;
-position: absolute;
 }
 
 #menu ul ul {
@@ -10908,6 +10907,8 @@ section#contact form#contactForm :-ms-input-placeholder {
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  position: absolute ;
+  left: -80px;
 }
 
 .dropdown-content a {
@@ -10938,7 +10939,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .marker-supermercat {
   background-image: url('../assets/img/icones/supermercats.svg');
-  filter: invert(43%) sepia(11%) saturate(720%) hue-rotate(67deg) brightness(97%) contrast(84%);/* verde, la conversión se hace en esta página: https://codepen.io/sosuke/pen/Pjoqqp*/
+  filter: invert(43%) sepia(11%) saturate(720%) hue-rotate(67deg) brightness(97%) contrast(84%);/* verde, la conversión se hace en esta página: https://codepen.io/sosuke/pen/Pjoqqp */
   width: 28px;
   height: 25px;
   border-radius: 0%;
@@ -10955,7 +10956,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 .marker-curs {
-  background-image: url('../assets/img/icones/fires.svg');
+  background-image: url('../assets/img/icones/cursos.svg');
   filter: invert(65%) sepia(91%) saturate(352%) hue-rotate(345deg) brightness(101%) contrast(91%); /* naranja */
   width: 30px;
   height: 24px;
@@ -10964,8 +10965,17 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 .marker-info {
-  background-image: url('../assets/img/icones/cursos.svg');
+  background-image: url('../assets/img/icones/info.svg');
   filter: invert(83%) sepia(15%) saturate(3972%) hue-rotate(314deg) brightness(98%) contrast(87%); /* rojo */
+  width: 30px;
+  height: 24px;
+  border-radius: 0%;
+  cursor: pointer;
+}
+
+.marker-fira {
+  background-image: url('../assets/img/icones/fires.svg');
+  filter: invert(61%) sepia(10%) saturate(2850%) hue-rotate(221deg) brightness(95%) contrast(82%); /* lila */
   width: 30px;
   height: 24px;
   border-radius: 0%;
@@ -10976,6 +10986,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 /*  WEATHER */
 
 .weather  {
+  padding-top: 0.5rem;
   padding-right: 0.5em;
   float: left;  /* queden alineados horizontalmente, además el número de artículos en cada fila se ajustará automáticamente al ancho de la pantalla.*/
 }
@@ -11088,7 +11099,7 @@ figcaption {
 
 
 
-.image-cropper {
+.image-cropper-circle {
   width: 100px;
   height: 100px;
   position: relative;
@@ -11096,9 +11107,33 @@ figcaption {
   border-radius: 50%;
 }
 
-.image-cropper img {
+
+.image-cropper-rectangle{
+  width: 200px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+    justify-content: center;
+}
+
+.image-cropper-rectangle img {
   display: inline;
   margin: 0 auto;
   height: 100%;
   width: auto;
+  align-items: center;
+    justify-content: center;
+}
+
+
+.image-cropper-circle img {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+
+#canvas{
+  position: relative;
 }

@@ -417,7 +417,7 @@ function addElement(id) {
             }
 
             var newDiv = document.createElement("div")  // crea un nuevo div
-            newDiv.setAttribute('class', "timeline-image image-cropper ")
+            newDiv.setAttribute('class', "timeline-image image-cropper-circle ")
             newDiv.setAttribute('data-toggle', "modal")
             newDiv.setAttribute('data-target', "#myModal");
             newDiv.setAttribute('onclick', "desplegable(" + i + ");");
