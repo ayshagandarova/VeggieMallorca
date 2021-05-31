@@ -142,28 +142,6 @@ function grafica(){
   });
 }
 
-// char
-
-/*
-
-const CHART = document.getElementById("chart");
-
-CHART.defaults.global.animation.duration = 200;
-
-let barChart = new Chart(CHART, {
-  type: 'bar',
-  data: {
-    labels: ["hola1", "hola2", "hola3", "hola4"],
-    datasets: [
-      {
-        data: [10,11,12,13,14,15]
-      }
-    ]
-  }
-});
-
-
-*/
 //crea el jsonld para el indice
 function generarJsonLDIndex() {
   //let infoFiraPortada = crearJsonldFira(firaPortada);
