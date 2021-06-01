@@ -603,6 +603,9 @@ function cargarJsonLD(info) {
 
 /* Función para eliminar los datos del desplegable y que no aparezcan repetidos */
 function eliminarDatosElemento() {
+    if (marker != null){
+        marker.remove();
+    }
     $("#nombreElement").html(""); //limpiar la seccion
     $("#descripcioElement").html("");
     $("#carouselElement").html("");
