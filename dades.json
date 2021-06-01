@@ -655,13 +655,13 @@
             " "
         ],
         "imatges": [ 
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/portada.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/interior.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/menu.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato1.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato2.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato3.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato4.png"  
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/portada.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/interior.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/menu.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato1.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato2.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato3.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/Vegan&Raw/plato4.webp"  
         ],
         "videos": [
             {"tipus": "youtube"},
