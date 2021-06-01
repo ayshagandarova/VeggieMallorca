@@ -341,12 +341,12 @@
             " "
         ],
         "imatges": [
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/portada.jp2",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/restaurante.jp2",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato1.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato2.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato3.png",
-            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato4.png"
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/portada.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/restaurante.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato1.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato2.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato3.webp",
+            "https://veggiemallorca.netlify.app/assets/img/Restaurants/EcoVegetaria/plato4.webp"
         ],
         "videos": [
             {"tipus": "youtube"},
