@@ -144,7 +144,6 @@ function grafica(){
 
 //crea el jsonld para el indice
 function generarJsonLDIndex() {
-  //let infoFiraPortada = crearJsonldFira(firaPortada);
   let info = {
     "@context": "http://schema.org/",
     "@type": "WebApplication",
@@ -191,18 +190,12 @@ function generarJsonLDIndex() {
       "name": "Vídeo Cocina",
       "description": "Video de cocina vegetariana Mallorca",
       "contentUrl": ["assets/img/fotosIndex/videoPortada.mp4", "assets/img/fotosIndex/videoPortada.webm"],
-      //"about": {
-       // "@type": "Product"
-      //},
       "uploadDate": "2021-05-15",
       "thumbnailUrl": ["assets/img/fotosIndex/videoPortada.mp4", "assets/img/fotosIndex/videoPortada.webm"],
     }
   }
   return info;
 }
-
-
-
 
   //Get the button
   var mybutton = document.getElementById("myBtn");
