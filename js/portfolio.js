@@ -254,9 +254,7 @@ function topFunction() {
 }
 
 /* FILTRADO */
-//Filtrar para diferenciar entre restaurants o supermercats
 function Cercador(filtrado) {
-
     var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
     var id = urlweb.replace("?", "")
     $("#titolPortfoli").html("")
