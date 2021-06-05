@@ -297,7 +297,7 @@ function Cercador(filtrado) {
 function filtrar(id, filtrado) {
     datosFiltrados = [];
     if (id == "restaurant" || id == "favorits" || id == "supermercat") {
-        if (filtrado == 0) { // predeterminado        ya esta hecho en  cargarDades      
+        if (filtrado == 0) { // predeterminado         
             datosFiltrados = dades;
         } else if (filtrado == 1) { //Més valorades
             for (var i = 0; i < dades.length; i++) {
@@ -317,7 +317,7 @@ function filtrar(id, filtrado) {
             for (var i = 0; i < dades.length; i++) {
                 var idPreuA = 0;
                 var preuAAnterior = 0;
-                //mira qué actividad és la siguiente con más puntuación
+                //mira qué actividad és la siguiente con menos precio
                 for (var j = 0; j < dades.length; j++) {
                     var preu = dades[j].preu.import;
                     preu = preu.replace(" €", "");
@@ -333,7 +333,7 @@ function filtrar(id, filtrado) {
             for (var i = 0; i < dades.length; i++) {
                 var idPreuD = 0;
                 var preuDAnterior = 1000;
-                //mira qué actividad és la siguiente con más puntuación
+                //mira qué actividad és la siguiente con más precio
                 for (var j = 0; j < dades.length; j++) {
                     var preu = dades[j].preu.import;
                     preu = preu.replace(" €", "");
@@ -346,7 +346,7 @@ function filtrar(id, filtrado) {
                 datosFiltrados.push(dades[idPreuD]);
             }
         }
-    } else { // fira, curs, info, vegetariana  o informacio Timeline
+    } else { // fira, curs, info, o informacio Timeline
         datosFiltrados = dades;
     }
     $("#galeriaPortfoli").html("");
@@ -354,7 +354,7 @@ function filtrar(id, filtrado) {
 
 //Afegir elements al portfoli de restaurants o supermercats
 function addElement(id) {
-    var infoElements = []; //array que contiene toda la web semantica de las ** filtradas
+    var infoElements = []; //array que contiene toda la web semantica de los elementos filtrados
     var contador = 0;
     for (var i = 0; i < datosFiltrados.length; i++) {
         if (id == "informacio") {  // timeline
@@ -579,7 +579,7 @@ function eliminarDatosElemento() {
     $("#enlaces").html("");
     $("#textoDesplegable").html("");
 
-    /*parte de tiempo a continuacion*/
+    /*parte de tiempo*/
     for (var t = 0; t < 3; t++) {
         $("#diaSetmana" + t).html("");
         $("#actualTemp" + t).html("");
@@ -1084,8 +1084,6 @@ function desplegable(i) {
     //Poner estrellas hasta que queden 0,5 o ninguna estrella por poner
     //json totes les puntuacions han de ser .5 o senceres
     var estrellas = datosFiltrados[i].puntuacio
-
-
     for (var x = 0.5; x < estrellas; estrellas--) {
         var newI1 = document.createElement("i");
         newI1.setAttribute('style', "color:#f8d160");
@@ -1100,7 +1098,6 @@ function desplegable(i) {
         newI1.setAttribute('class', "fas fa-star-half-alt");
         $("#puntuacioPreu").append(newI1);
     }
-
 
     //Poner símbolos de dinero según el precio
     var preu = datosFiltrados[i].preu.import;
@@ -1118,11 +1115,10 @@ function desplegable(i) {
         num_euros = 5;
     }
     for (var x = 0; x < num_euros; x++) {
-
         var newI1 = document.createElement("i");
         newI1.setAttribute('style', "color:#212529");
         newI1.setAttribute('class', "fas fa-euro-sign");
-        if (x == 0) {
+        if (x == 0) { //si és la primera icona, hi feim un marge:
             newI1.setAttribute('class', "ml-3");
         }
         $("#puntuacioPreu").append(newI1);
