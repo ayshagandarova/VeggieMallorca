@@ -3,7 +3,6 @@ var info = generarJsonLDIndex();
 loadJSON_LD(info);
 
 
-
 /**
  * Funció per afegir el JSON-LD a la pàgina web
  */
@@ -15,10 +14,7 @@ function loadJSON_LD(info) {
   document.head.appendChild(script);
 }
 
-
-
-
-  var numSuper = 0, numRest = 0, numCursos = 0, numInfo = 0, numFires=0;
+var numSuper = 0, numRest = 0, numCursos = 0, numInfo = 0, numFires=0;
 var dades = [];
 
 cargarDades();

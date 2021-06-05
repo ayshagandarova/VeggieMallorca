@@ -922,8 +922,6 @@ function desplegable(i) {
         }
     }
     /*  WEATHER */
-
-
     var endpoint =
         "https://api.openweathermap.org/data/2.5/onecall?lat=" + long + "&lon=" + lat + "&lang=es&exclude=alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
     fetch(endpoint)
@@ -935,7 +933,6 @@ function desplegable(i) {
                 return;
             }
             response.json().then(function (data) {
-
                 for (var w = 0; w < 3; w++) {
                     var dayname = new Date(data.daily[w].dt * 1000).toLocaleDateString("es", {
                         weekday: "long",
@@ -949,7 +946,6 @@ function desplegable(i) {
                     var tempMax = data.daily[w].temp.max.toFixed(0);
                     var tempMin = data.daily[w].temp.min.toFixed(0);
                     $("#temp" + w).append(tempMin + " °C - " + tempMax + " °C");
-
                 }
             });
         })
