@@ -45,7 +45,6 @@ function dadesFiresExt(filtrado) {
 function cargarDades(filtrado) {
     var xmlhttp = new XMLHttpRequest();
     var url = "dades.json";
-
     // leemos nuestros datos
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -53,8 +52,7 @@ function cargarDades(filtrado) {
             var tot = JSON.parse(xmlhttp.responseText);
             var urlweb = location.search //agafa de la url on hem clicat a partir del '?' inclòs
             var id = urlweb.replace("?", "")
-
-
+            // Caso de favoritos (local storage)
             if (id == "favorits") {
                 var favoritos = localStorage.getItem("favoritos") || "[]";
                 favoritos = JSON.parse(favoritos);
@@ -179,7 +177,6 @@ if (searchWrapper != null) {
     inputBox.addEventListener('keyup', (e) => {
         let userData = e.target.value; //user enetered data
         if (userData) {
-
             const searchString = e.target.value.toLowerCase();
             datosBuscados = dades.filter((element) => {
                 return (
@@ -187,25 +184,16 @@ if (searchWrapper != null) {
                 )
             });
             var rellenarHTML = [];
-
             for (var i = 0; i < datosFiltrados.length; i++) {
                 for (var j = 0; j < datosBuscados.length; j++) {
                     if (datosFiltrados[i].nom == datosBuscados[j].nom) {
-                        rellenarHTML.push('<li> <a class="portfolio-link" data-toggle="modal" data-target="#myModal" onclick="desplegable(' + i + ');"</a>' + datosFiltrados[i].nom + '</li>')
+                        rellenarHTML.push('<li> <a class="portfolio-link" data-toggle="modal" data-target="#myModal" onclick="desplegable('
+                         + i + ');"</a>' + datosFiltrados[i].nom + '</li>')
                     }
                 }
             }
             searchWrapper.classList.add("active"); //show autocomplete box
             mostrarSugerits(rellenarHTML, inputBox, suggBox);
-            /*
-            let allList = suggBox.querySelectorAll("li");
-            for (let i = 0; i < allList.length; i++) {
-                //adding onclick attribute in all li tag
-                allList[i].setAttribute("onclick", "select(this)"); // su pulso el boton del buscador
-            }
-            */
-
-
             icon.onclick = () => {
                 $("#galeriaPortfoli").html("");
                 datosFiltrados = datosBuscados;
@@ -297,7 +285,7 @@ function Cercador(filtrado) {
 function filtrar(id, filtrado) {
     datosFiltrados = [];
     if (id == "restaurant" || id == "favorits" || id == "supermercat") {
-        if (filtrado == 0) { // predeterminado         
+        if (filtrado == 0) { // predeterminado        ya esta hecho en  cargarDades      
             datosFiltrados = dades;
         } else if (filtrado == 1) { //Més valorades
             for (var i = 0; i < dades.length; i++) {
@@ -317,7 +305,7 @@ function filtrar(id, filtrado) {
             for (var i = 0; i < dades.length; i++) {
                 var idPreuA = 0;
                 var preuAAnterior = 0;
-                //mira qué actividad és la siguiente con menos precio
+                //mira qué actividad és la siguiente con más puntuación
                 for (var j = 0; j < dades.length; j++) {
                     var preu = dades[j].preu.import;
                     preu = preu.replace(" €", "");
@@ -333,7 +321,7 @@ function filtrar(id, filtrado) {
             for (var i = 0; i < dades.length; i++) {
                 var idPreuD = 0;
                 var preuDAnterior = 1000;
-                //mira qué actividad és la siguiente con más precio
+                //mira qué actividad és la siguiente con más puntuación
                 for (var j = 0; j < dades.length; j++) {
                     var preu = dades[j].preu.import;
                     preu = preu.replace(" €", "");
@@ -346,7 +334,7 @@ function filtrar(id, filtrado) {
                 datosFiltrados.push(dades[idPreuD]);
             }
         }
-    } else { // fira, curs, info, o informacio Timeline
+    } else { // fira, curs, info, vegetariana  o informacio Timeline
         datosFiltrados = dades;
     }
     $("#galeriaPortfoli").html("");
@@ -354,7 +342,7 @@ function filtrar(id, filtrado) {
 
 //Afegir elements al portfoli de restaurants o supermercats
 function addElement(id) {
-    var infoElements = []; //array que contiene toda la web semantica de los elementos filtrados
+    var infoElements = []; //array que contiene toda la web semantica de las ** filtradas
     var contador = 0;
     for (var i = 0; i < datosFiltrados.length; i++) {
         if (id == "informacio") {  // timeline
@@ -579,7 +567,7 @@ function eliminarDatosElemento() {
     $("#enlaces").html("");
     $("#textoDesplegable").html("");
 
-    /*parte de tiempo*/
+    /*parte de tiempo a continuacion*/
     for (var t = 0; t < 3; t++) {
         $("#diaSetmana" + t).html("");
         $("#actualTemp" + t).html("");
@@ -882,7 +870,7 @@ function desplegable(i) {
         diaFi_horari.appendChild(text2_horari);
         $("#eventNum" + 1).append(diaFi_horari);
     } else if(datosFiltrados[i].tipus == "info"){
-
+        
     }
     else {
         $("#textoDesplegable").append("Calendari d'events: ");
@@ -922,6 +910,8 @@ function desplegable(i) {
         }
     }
     /*  WEATHER */
+
+
     var endpoint =
         "https://api.openweathermap.org/data/2.5/onecall?lat=" + long + "&lon=" + lat + "&lang=es&exclude=alerts&units=metric&appid=d65b0eca8f33e6d27845457213d44750";
     fetch(endpoint)
@@ -933,6 +923,7 @@ function desplegable(i) {
                 return;
             }
             response.json().then(function (data) {
+
                 for (var w = 0; w < 3; w++) {
                     var dayname = new Date(data.daily[w].dt * 1000).toLocaleDateString("es", {
                         weekday: "long",
@@ -946,6 +937,7 @@ function desplegable(i) {
                     var tempMax = data.daily[w].temp.max.toFixed(0);
                     var tempMin = data.daily[w].temp.min.toFixed(0);
                     $("#temp" + w).append(tempMin + " °C - " + tempMax + " °C");
+
                 }
             });
         })
@@ -1080,6 +1072,8 @@ function desplegable(i) {
     //Poner estrellas hasta que queden 0,5 o ninguna estrella por poner
     //json totes les puntuacions han de ser .5 o senceres
     var estrellas = datosFiltrados[i].puntuacio
+
+
     for (var x = 0.5; x < estrellas; estrellas--) {
         var newI1 = document.createElement("i");
         newI1.setAttribute('style', "color:#f8d160");
@@ -1094,6 +1088,7 @@ function desplegable(i) {
         newI1.setAttribute('class', "fas fa-star-half-alt");
         $("#puntuacioPreu").append(newI1);
     }
+
 
     //Poner símbolos de dinero según el precio
     var preu = datosFiltrados[i].preu.import;
@@ -1111,10 +1106,11 @@ function desplegable(i) {
         num_euros = 5;
     }
     for (var x = 0; x < num_euros; x++) {
+
         var newI1 = document.createElement("i");
         newI1.setAttribute('style', "color:#212529");
         newI1.setAttribute('class', "fas fa-euro-sign");
-        if (x == 0) { //si és la primera icona, hi feim un marge:
+        if (x == 0) {
             newI1.setAttribute('class', "ml-3");
         }
         $("#puntuacioPreu").append(newI1);

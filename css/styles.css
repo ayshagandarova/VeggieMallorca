@@ -10680,14 +10680,6 @@ section#contact form#contactForm :-ms-input-placeholder {
 .text-footer {
   color: white;
 }
-
-.marker {
-  background-image: url('../assets/img/punteroMapa.png');
-  background-size: cover;
-  width: 50px;
-  height: 70px;
-  cursor: pointer;
-}
 .mapboxgl-popup {
   max-width: 200px;
   }

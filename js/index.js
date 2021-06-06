@@ -285,7 +285,6 @@ function generarJsonLDIndex() {
     dades.forEach(function (marker) { // marker = datos[i]
       // add markers to map
       // create a HTML element for each feature
-
       var el = document.createElement('div');
       el.className = 'marker-' + marker.tipus;
 
